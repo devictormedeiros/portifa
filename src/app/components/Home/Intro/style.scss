@@ -1,0 +1,39 @@
+section.sec-intro {
+  z-index: -1;
+  position: relative;
+    >.container{
+        min-height: 90vh;
+        padding: 80px 0;
+        display: flex;
+        align-items: center;
+    }
+    .text {
+      position: fixed;
+      z-index: -1;
+      span {
+        display: block;
+        color: var(--primary);
+        min-height: 110px;
+        position: relative;
+        &:after{
+            content: "|";
+            display: inline-block;
+            @apply content-title-h1;
+            margin-left: 10px;
+            animation: write 0.8s infinite;
+        }
+      }
+    }
+  }
+
+  @keyframes write {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+  }

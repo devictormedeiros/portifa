@@ -1,0 +1,136 @@
+"use client"; // Necessário para usar hooks no diretório app
+import { useState, useEffect, useRef } from "react";
+import Nav from "./Nav";
+import "./style.scss";
+import Link from 'next/link'
+
+const Header = () =>{
+
+    const [isHeaderSticky, setIsHeaderSticky] = useState(false);
+    const headerRef = useRef(null);
+    
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        if (headerRef.current) {
+          const headerTop = headerRef.current.getBoundingClientRect().top;
+          setIsHeaderSticky(headerTop === 0);
+        }
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, []);
+    return(
+        <header
+        ref={headerRef}
+        className={`bg-black text-white ${
+          isHeaderSticky ? "sticky-header" : ""
+        }`}
+      >
+        <div className="mx-auto px-10 py-4">
+          <div className="grid grid-cols-12 items-center gap-4">
+            <div className="col-span-4 md:col-span-3 flex items-center">
+            <Link className="logo" href="/">
+            <svg
+                width="46"
+                height="47"
+                viewBox="0 0 46 47"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clipPath="url(#clip0_205_229)">
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M14.1497 6.22314L8.6213 0.107649C8.43538 -0.0978317 8.18098 0.04894 8.18098 0.283775V29.5501C8.18098 29.6968 8.25926 30.0002 8.32775 30.0784L22.7114 46.0081C22.9169 46.2331 23.1223 46.1744 23.2789 45.9983L37.6528 30.0784C37.731 29.9904 37.7995 29.6968 37.7995 29.5501V21.458C37.7995 21.1939 37.5255 21.1058 37.3592 21.2819L23.2691 36.8789C23.1223 37.0354 22.8582 37.0746 22.7016 36.8887L14.4335 27.7301C14.3552 27.6127 14.2769 27.3387 14.2769 27.2115V6.74173C14.2769 6.52647 14.2084 6.3112 14.1301 6.21335L14.1497 6.22314ZM39.8543 16.1645C39.8543 15.9003 39.5804 15.8122 39.414 15.9884L23.2985 33.8358C23.1517 33.9924 22.8875 34.0315 22.731 33.8456L16.4883 26.9375C16.41 26.8593 16.3415 26.5559 16.3415 26.4091V18.3171C16.3415 18.0529 16.6155 17.9649 16.7818 18.141L22.819 24.824C22.9169 24.9414 23.0343 25.0295 23.2104 24.824L45.5295 0.107649C45.6958 -0.0684774 45.9698 0.0195856 45.9698 0.283775V32.6812C45.9698 32.828 45.8915 33.1313 45.823 33.2096L34.8739 45.3329C34.7075 45.509 34.4336 45.421 34.4336 45.1568V37.0648C34.4336 36.918 34.5118 36.6147 34.5803 36.5364L39.7076 30.8612C39.7858 30.7732 39.8543 30.4796 39.8543 30.3328V16.1743V16.1645ZM6.15553 30.3328C6.15553 30.4796 6.23381 30.7732 6.3023 30.8612L11.4295 36.5364C11.5078 36.6245 11.5763 36.918 11.5763 37.0648V45.1568C11.5763 45.421 11.3023 45.509 11.136 45.3329L0.186811 33.2096C0.108533 33.1215 0.0400391 32.828 0.0400391 32.6812V0.283775C0.0400391 0.00980087 0.314013 -0.0782622 0.480354 0.107649L5.99897 6.22314C6.07725 6.30142 6.14574 6.59496 6.14574 6.75152V30.3426L6.15553 30.3328ZM31.8602 6.22314L37.3788 0.107649C37.5451 -0.0684774 37.8191 0.0195856 37.8191 0.283775V5.59691C37.8191 5.74368 37.7408 6.04701 37.6723 6.12529L32.1537 12.2408C31.9874 12.4169 31.7134 12.3288 31.7134 12.0647V6.75152C31.7134 6.60475 31.7917 6.30142 31.8602 6.22314Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_205_229">
+                    <rect
+                      width="45.92"
+                      height="46.145"
+                      fill="white"
+                      transform="translate(0.0400391 0.00976562)"
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </Link>
+            </div>
+            <div className="col-span-6 hidden md:block">
+            <Nav/>
+            </div>
+            <div className="col-span-8 md:col-span-3 flex justify-end">
+              <label className="switch-darkmode mr-6">
+                <input type="checkbox" />
+                <span className="slider-darkmode"></span>
+              </label>
+              <div className="menu-hamburguer flex items-center gap-2">
+                <svg
+                  width="28"
+                  height="24"
+                  viewBox="0 0 33 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 1.84615C0 0.826551 0.619913 0 1.38462 0H30.9231C31.6878 0 32.3077 0.826551 32.3077 1.84615C32.3077 2.86576 31.6878 3.69231 30.9231 3.69231H1.38462C0.619913 3.69231 0 2.86576 0 1.84615Z"
+                    fill="#EDEDED"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 12C0 10.9804 0.619913 10.1538 1.38462 10.1538H30.9231C31.6878 10.1538 32.3077 10.9804 32.3077 12C32.3077 13.0196 31.6878 13.8461 30.9231 13.8461H1.38462C0.619913 13.8461 0 13.0196 0 12Z"
+                    fill="#EDEDED"
+                  />
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M0 22.1539C0 21.1343 0.619913 20.3077 1.38462 20.3077H30.9231C31.6878 20.3077 32.3077 21.1343 32.3077 22.1539C32.3077 23.1735 31.6878 24 30.9231 24H1.38462C0.619913 24 0 23.1735 0 22.1539Z"
+                    fill="#EDEDED"
+                  />
+                </svg>
+                <span>Menu</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    )
+}
+
+export default Header
+
+
+
+function prepararPedido(resposta) {
+  console.log("Pedido recebido! Preparando...");
+  
+  setTimeout(() => { // Simula o tempo de preparar o pedido
+    const pedido = "🍔 Hambúrguer";
+    console.log("Pedido pronto!");
+    resposta(pedido); // O garçom chama o cliente (resposta)
+  }, 2000); // Leva 2 segundos
+}
+
+// Fazendo o pedido e dizendo o que fazer quando estiver pronto
+prepararPedido((comida) => {
+  console.log("Comendo:", comida);
+});
+
+
+function processarTexto(texto,resposta){
+    const textoTransformado = "AQUI É O TEXTO"
+    resposta(textoTransformado);
+}
+
+processarTexto("aqui é o texto", (text) =>{
+  console.log(text)
+})

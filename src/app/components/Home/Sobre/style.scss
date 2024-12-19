@@ -1,0 +1,18 @@
+.sec-sobre {
+    padding: 120px 0px 160px;
+    min-height: 100vh;
+    .text {
+      padding-right: 80px;
+      h2 {
+        margin-bottom: 40px;
+      }
+      p{
+        color: var(--white-70);
+      }
+    }
+    .image img {
+      position: sticky;
+      top: 100px;
+      width: 100%;
+    }
+  }
