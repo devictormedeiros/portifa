@@ -1,17 +1,21 @@
-import { useState } from "react";
 import "./style.scss";
+import {useState } from 'react';
+import ObserverHtml from "../../hooks/ObserverHtml";
 
 const Accordion = ({ title, children }) => {
     const [accordion, setAccordion] = useState(1);
 
     const toggleAccordion = () =>{
         setAccordion((prev) => !prev);
-        console.log(accordion);
     }
+
+    const { isVisible, targetRef } = ObserverHtml({ threshold: 0.5 });
+
+    
     return (
-      <section className="pb-10">
+      <article ref={targetRef} className={`accordion pb-10  ${accordion ? "open" : ""} ${isVisible ? "sec-visible" : ''}`} >
         <div className="container">
-          <div className="accordion px-5">
+          <div className={`px-5`}>
             <div className="accordion-header mb-12">
               <button
                 className="accordion-toggle flex items-center justify-between w-full py-5 text-gray-200 uppercase border-b border-gray-700"
@@ -37,12 +41,12 @@ const Accordion = ({ title, children }) => {
                 </svg>
               </button>
             </div>
-            <div className={`accordion-body ${accordion ? "open" : ""}`}>
+            <div className={`accordion-body`}>
               <div className="accordion-content">{children}</div>
             </div>
           </div>
         </div>
-      </section>
+      </article>
     );
   };
   

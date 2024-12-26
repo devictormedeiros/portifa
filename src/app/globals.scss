@@ -15,9 +15,10 @@
   --black-90: #000000e5;
   --black-100: #000000;
 
-  --white-10: #ffffff0d;
-  --white-20: #ffffff1a;
-  --white-30: #ffffff4d;
+  --white-5: #FFFFFF0D;
+  --white-10: #FFFFFF1A;
+  --white-20: #FFFFFF33;
+  --white-30: #FFFFFF4D;
   --white-40: #ffffff66;
   --white-50: #ffffff80;
   --white-60: #ffffff99;
@@ -118,6 +119,8 @@ body {
 
 html {
   scroll-behavior: auto;
+  scrollbar-color: var(--primary) transparent;
+  scrollbar-width: thin;
 }
 
 main {

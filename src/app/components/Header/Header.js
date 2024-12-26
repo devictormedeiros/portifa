@@ -107,30 +107,3 @@ const Header = () =>{
 }
 
 export default Header
-
-
-
-function prepararPedido(resposta) {
-  console.log("Pedido recebido! Preparando...");
-  
-  setTimeout(() => { // Simula o tempo de preparar o pedido
-    const pedido = "🍔 Hambúrguer";
-    console.log("Pedido pronto!");
-    resposta(pedido); // O garçom chama o cliente (resposta)
-  }, 2000); // Leva 2 segundos
-}
-
-// Fazendo o pedido e dizendo o que fazer quando estiver pronto
-prepararPedido((comida) => {
-  console.log("Comendo:", comida);
-});
-
-
-function processarTexto(texto,resposta){
-    const textoTransformado = "AQUI É O TEXTO"
-    resposta(textoTransformado);
-}
-
-processarTexto("aqui é o texto", (text) =>{
-  console.log(text)
-})

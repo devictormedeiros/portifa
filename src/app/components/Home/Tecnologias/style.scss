@@ -1,18 +1,20 @@
 .accordion {
-  &:not(.open) {
+  &:not(.open), &:not(.sec-visible) {
     .progress-bar .progress-bar-percent {
       width: 0 !important;
       transition: width 0.5s ease-out 0.2s;
     }
   }
-  .progress-bar {
-    border-radius: 80px;
+  .accordion-body{
+    .progress-bar {
+      border-radius: 80px;
+      &-percent {
+        background: var(--gradient-primary-b);
+        border-radius: 80px;
+        height: 12px;
+        transition: width 1.2s ease-out;
+      }
+    }
   }
 
-  .progress-bar-percent {
-    background: var(--gradient-primary-b);
-    border-radius: 80px;
-    height: 12px;
-    transition: width 1.2s ease-out;
-  }
 }

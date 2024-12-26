@@ -1,10 +1,12 @@
 
 import Accordion from "../../Accordion/Accordion";
+import "./style.scss";
 
 const Tecnologias = () => {
+
   return (
-    <>
-      <Accordion title="Tecnologias">
+    <section className={`sec-tecnologias`}>
+      <Accordion title="Tecnologias" >
         <ul className="grid grid-cols-12 gap-4">
           <li className="grid grid-cols-12 col-span-12 py-3 rounded items-center">
             <div className="col-span-3 flex items-center gap-3">
@@ -192,7 +194,7 @@ const Tecnologias = () => {
           </li>
         </ul>
       </Accordion>
-      </>
+      </section>
       
   );
 };
