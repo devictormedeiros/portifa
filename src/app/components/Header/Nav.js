@@ -1,27 +1,28 @@
-const Nav = () =>{
+"use client";
+import { useEffect,useState } from "react";
+import getPosts from "../../api/getPosts";
+const Nav = ({links}) =>{
+  const [itemslink, setItemsLink] = useState([]);
+  useEffect(() => {
+    const fecthItemsLinks = async () => {
+      const data = await getPosts('/menus/menu-principal');
+      setItemsLink(data);
+    };
+    fecthItemsLinks();
+  }, []);
+
     return(
         <nav>
         <ul className="flex justify-center space-x-4 w-full">
-          <li>
-            <a href="#" className="menu-section text-white-50 hover:text-white-100 hover:underline">
-              Link 1
-            </a>
-          </li>
-          <li>
-            <a href="#" className="menu-section text-white-50 hover:text-white-100 hover:underline">
-              Link 2
-            </a>
-          </li>
-          <li>
-            <a href="#" className="menu-section text-white-50 hover:text-white-100 hover:underline">
-              Link 3
-            </a>
-          </li>
-          <li>
-            <a href="#" className="menu-section text-white-50 hover:text-white-100 hover:underline">
-              Link 4
-            </a>
-          </li>
+          {itemslink?.map((item) => {
+            return(
+              <li key={item.id}>
+              <a href={item.url} className="menu-section text-white-50 hover:text-white-100 hover:underline">
+                {item.title}
+              </a>
+            </li>
+            );
+          })}
         </ul>
         </nav>
     )

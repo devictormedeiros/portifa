@@ -1,5 +1,5 @@
 .sec-sobre {
-    padding: 120px 0px 160px;
+    padding: 120px 0px;
     min-height: 100vh;
     .text {
       padding-right: 80px;
@@ -8,6 +8,8 @@
       }
       p{
         color: var(--white-70);
+        @apply content-text;
+        margin-bottom: 24px;
       }
     }
     .image img {

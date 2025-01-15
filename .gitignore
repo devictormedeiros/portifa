@@ -8,8 +8,9 @@ yarn-debug.log*
 yarn-error.log*
 
 # Ignorar arquivos de ambiente
-.env
+.env*
 .DS_Store
+package-lock.json
 
 # Ignorar caches
 .cache/

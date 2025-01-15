@@ -1,0 +1,22 @@
+async function getPosts(routes) {
+   try{
+    // realiza a requisição para o endpoint do Wordpress API e um await para aguardar a respostav 
+    const response = await fetch(`${process.env.NEXT_PUBLIC_WORDPRESS_API_URL + routes}`);
+
+    // se o response não for ok, lança(throw) uma exceção com a mensagem de erro
+    if(!response.ok){
+        throw new Error(`Erro na requisição: ${response.status}`);
+    }
+
+    // se o response for ok, retorna os dados do post em formato JSON e usa um await para aguardar a resposta do JSON
+    const wpdata = await response.json();
+    return wpdata;
+
+   }
+   catch(error){
+     console.error("Erro ao buscar posts:", error);
+   }
+  }
+  
+  export default getPosts;
+  

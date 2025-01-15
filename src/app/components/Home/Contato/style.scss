@@ -27,12 +27,15 @@
         background-color: var(--white-5);
         transition: all 0.5 ease-in-out;
         color: var(--white-70);
+
         &::placeholder {
           color: var(--white-70);
         }
         &:focus,
         &:active {
-          outline: 1.5px solid var(--primary);
+          &:not(.input-error){
+            outline: 1.5px solid var(--primary);
+          }
         }
         &:-webkit-autofill,  &:-webkit-autofill:hover,  &:-webkit-autofill:focus,  &:-webkit-autofill:active{
           -webkit-background-clip: text;
@@ -43,6 +46,11 @@
       }
       input {
         height: 44px;
+      }
+      input,textarea{
+        &.input-error{
+          outline: 1.5px solid #FF3333;
+        }
       }
       .consent-box {
         input {
@@ -72,6 +80,11 @@
             }
           }
         }
+      }
+      .error-message{
+        color: #FF3333;
+        font-size: 14px;
+        text-align: end;
       }
     }
   }

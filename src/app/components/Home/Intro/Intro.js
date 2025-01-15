@@ -2,19 +2,16 @@
 import TextAnimate from "../../TextAnimate";
 import "./style.scss";
 
-const Intro = () => {
-  const frases = [
-    "Olá, bem-vindo!",
-    "Conheça nossos produtos.",
-    "Aproveite as ofertas.",
-  ];
+const Intro = ({data}) => {
+  const frases = data?.destaque_introducao?.map((item) => item.destaque) || [];
+  const texto_introducao = data?.texto_introducao || "";
+
   return (
     <section className="sec-intro">
       <div className="container">
         <div className="text">
           <h1 className="content-title-h1 text-gray-200">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit Etiam at
-            placerat justo
+            {texto_introducao}
             <TextAnimate frases={frases} />
           </h1>
         </div>
