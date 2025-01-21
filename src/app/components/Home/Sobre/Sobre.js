@@ -16,7 +16,7 @@ const Sobre = ({ data }) => {
           </div>
           <div className="image col-span-5">
             <Image
-              src="/images/imgPortifa.png"
+              src={data?.imagem.url}
               alt="Descrição da imagem"
               width={500}
               height={500}

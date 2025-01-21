@@ -1,6 +1,7 @@
 const plugin = require("tailwindcss/plugin");
+const withMT = require("@material-tailwind/react/utils/withMT");
 
-module.exports = {
+module.exports = withMT({
   darkMode: "class",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -219,4 +220,4 @@ module.exports = {
       });
     }),
   ],
-};
+});

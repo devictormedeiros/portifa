@@ -1,6 +1,6 @@
 "use client";
 import { useEffect,useState } from "react";
-import getPosts from "../../api/getPosts";
+import getPosts from "../../api/getAPI";
 const Nav = ({links}) =>{
   const [itemslink, setItemsLink] = useState([]);
   useEffect(() => {
