@@ -8,34 +8,44 @@ import Tecnologias from "../components/Home/Tecnologias/Tecnologias";
 import Contato from "../components/Home/Contato/Contato";
 import FloatSocial from "../components/FloatSocial";
 import { getAcfOptions } from "../api/getAcfOptions";
+import { getPosts } from "../api/getPosts";
+import LoadingPage from "../components/LoadingPage";
 
 const HomePage = () => {
-  const [dataOption, setDataOptions] = useState('');
-
+  const [dataOption, setDataOptions] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchData = async () => {
       const options = await getAcfOptions();
+      const posts = await getPosts();
       setDataOptions(options);
       console.log("Options: ", options);
+      console.log("posts: ", posts);
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
     };
 
-    fetchData(); // Executa a busca quando o componente é montado
-
-  }, []); // Executa apenas uma vez ao montar o componente
+    fetchData();
+  }, []);
 
   return (
-    <>
-      <Intro data={dataOption?.introducao || null}/>
-      <Header logo={dataOption?.logo_principal || null}/>
-      <main className="grid gap-[64px] relative">
-        <Sobre data={dataOption?.sobre || null}/>
-        <Tecnologias data={dataOption?.tecnologias_atuacoes?.itens}/>
-        <Contato data={dataOption?.secao_contato} dataForm={dataOption?.configuracao_do_formulario}/>
-        <FloatSocial/>
-      </main>
-  
-    </>
-  );
-};
+    isLoading === false ? ( 
+      <>
+        <Intro data={dataOption?.introducao || null} />
+        <Header logo={dataOption?.logo_principal || null} />
+        <main className="grid gap-[64px] relative">
+          <Sobre data={dataOption?.sobre || null} />
+          <Tecnologias data={dataOption?.tecnologias_atuacoes?.itens || null} />
+          <Contato
+            data={dataOption?.secao_contato || null}
+            dataForm={dataOption?.configuracao_do_formulario || null}
+          />
+          <FloatSocial />
+        </main>
+      </>
+    ) : <LoadingPage />
+  ); 
+}
 
 export default HomePage;

@@ -129,3 +129,48 @@ main {
   z-index: 1;
 }
 
+
+
+
+.loader {
+  width: 1px;
+  height: 1px;
+  background: rgba(white, .9);
+  border-radius: 50%;
+  animation: bubble-burst .75s infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.loader-label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 28px;
+  color: black;
+  text-align: center;
+  font-weight: bold;
+  span {
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+}
+
+@keyframes bubble-burst {
+  0% {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+  }
+  95% {
+    transform: scale(130);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1);
+  }
+}

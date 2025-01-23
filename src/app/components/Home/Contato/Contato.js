@@ -2,7 +2,7 @@ import "./style.scss";
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
-import { AlertColors } from "../AlertColors";
+import { AlertForm } from "../../AlertForm";
 const Contato = ({ data, dataForm }) => {
   const {
     register,
@@ -10,11 +10,21 @@ const Contato = ({ data, dataForm }) => {
     watch,
     formState: { errors },
   } = useForm();
-
-  const [isSuccess, setIsSuccess] = useState(false);
+  const handleError = (errors) => {
+    resetAlert();
+    console.log("Erros de validação:", errors);
+    setTimeout(() => setIsSuccess(false), 0);
+  };
+  const [isSuccess, setIsSuccess] = useState(null);
   const form = useRef();
+
+  const resetAlert = () => {
+    setIsSuccess(null); // Redefine o estado antes de qualquer tentativa de envio
+  };
+
   const onSubmit = (value) => {
     console.log(form.current);
+    resetAlert();
     emailjs
       .sendForm(
         "service_mqzb30w",
@@ -29,6 +39,7 @@ const Contato = ({ data, dataForm }) => {
         },
         (error) => {
           console.log(error.text);
+          setIsSuccess(false); 
         }
       );
 
@@ -46,7 +57,6 @@ const Contato = ({ data, dataForm }) => {
           <div className="w-2/6">
             <div dangerouslySetInnerHTML={{ __html: data?.texto }}></div>
             <div className="social-media flex flex-wrap gap-6 items-center mt-8">
-              <AlertColors/>
               {data?.whatsapp && (
                 <a
                   href={data?.whatsapp}
@@ -130,7 +140,7 @@ const Contato = ({ data, dataForm }) => {
                 </a>
               )}
               <a
-                href="#"
+                href={`mailto:${data?.email}`}
                 className="social-media-icon flex items-center gap-2 w-full content-text-bold text-gray-200"
               >
                 {data?.email}
@@ -140,7 +150,7 @@ const Contato = ({ data, dataForm }) => {
           <div className="w-1/2">
             <form
               className="flex gap-6 flex-col"
-              onSubmit={handleSubmit(onSubmit)}
+              onSubmit={handleSubmit(onSubmit,handleError)}
               ref={form}
             >
               <input
@@ -195,18 +205,15 @@ const Contato = ({ data, dataForm }) => {
                   </button>
                 </div>
               </div>
-              {Object.keys(errors).length > 0 && (
-                <p className="block w-full error-message">
-                  Por favor, preencha todos os campos corretamente antes de
-                  enviar.
-                </p>
-              )}
-              {isSuccess && (
-                <p className="block w-full success-message">
-                  Formulário enviado com sucesso! Entraremos em contato em
-                  breve.
-                </p>
-              )}
+              {isSuccess === true && (
+              <AlertForm
+                alertType="sucess"
+                alertText={"Formulário enviado com sucesso! Entraremos em contato em breve."}
+              />
+            )}
+            {isSuccess === false && (
+              <AlertForm alertType="error" alertText="Ocorreu um erro ao enviar o formulário. Tente novamente." />
+            )}
             </form>
           </div>
         </div>

@@ -18,8 +18,8 @@ const Sobre = ({ data }) => {
             <Image
               src={data?.imagem.url}
               alt="Descrição da imagem"
-              width={500}
-              height={500}
+              width={200}
+              height={200}
             />
           </div>
         </div>
