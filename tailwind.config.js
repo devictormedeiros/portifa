@@ -83,6 +83,7 @@ module.exports = {
     },
   },
   plugins: [
+    require('@tailwindcss/aspect-ratio'),
     plugin(function ({ addComponents }) {
       addComponents({
         ".content-title-h1": {

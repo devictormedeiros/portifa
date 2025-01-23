@@ -126,3 +126,11 @@ main {
   z-index: 1;
 }
 
+.card-projeto {
+  background: var(--gradient-primary-c);
+  box-shadow: 0px -10px 20px 0px #00000099;
+}
+
+.card-skills {
+  background: var(--gray-gradient-b);
+}
