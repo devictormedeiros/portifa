@@ -81,6 +81,17 @@
           }
         }
       }
+      .btn-submit{
+        svg{
+          display: none;
+        }
+        &.is-loading{
+          opacity: 0.5;
+          svg{
+            display: block !important;
+          }
+        }
+      }
       .error-message{
         color: #FF3333;
         font-size: 14px;

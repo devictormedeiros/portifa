@@ -41,8 +41,8 @@ const HomePage = () => {
             data={dataOption?.secao_contato || null}
             dataForm={dataOption?.configuracao_do_formulario || null}
           />
-          <FloatSocial />
         </main>
+        <FloatSocial />
       </>
     ) : <LoadingPage />
   ); 

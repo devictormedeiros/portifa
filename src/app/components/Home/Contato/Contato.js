@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import { AlertForm } from "../../AlertForm";
+import { Spinner } from "@material-tailwind/react";
 const Contato = ({ data, dataForm }) => {
   const {
     register,
@@ -16,6 +17,7 @@ const Contato = ({ data, dataForm }) => {
     setTimeout(() => setIsSuccess(false), 0);
   };
   const [isSuccess, setIsSuccess] = useState(null);
+  const [loadingForm, setLoadingForm] = useState(false);
   const form = useRef();
 
   const resetAlert = () => {
@@ -23,7 +25,7 @@ const Contato = ({ data, dataForm }) => {
   };
 
   const onSubmit = (value) => {
-    console.log(form.current);
+    setLoadingForm(true);
     resetAlert();
     emailjs
       .sendForm(
@@ -36,13 +38,16 @@ const Contato = ({ data, dataForm }) => {
         (result) => {
           console.log("SUCCESS!", result.status, result.text);
           setIsSuccess(true); 
+          setLoadingForm(false);
+          form.current.reset();
         },
         (error) => {
           console.log(error.text);
           setIsSuccess(false); 
+          setLoadingForm(false);
         }
       );
-
+      
   };
 
   return (
@@ -149,7 +154,7 @@ const Contato = ({ data, dataForm }) => {
           </div>
           <div className="w-1/2">
             <form
-              className="flex gap-6 flex-col"
+              className="flex gap-6 flex-col relative"
               onSubmit={handleSubmit(onSubmit,handleError)}
               ref={form}
             >
@@ -199,9 +204,10 @@ const Contato = ({ data, dataForm }) => {
                 <div className="flex flex-wrap items-center justify-end w-1/4">
                   <button
                     type="submit"
-                    className="btn px-8 py-3 text-gray-700 bg-primary uppercase button-md rounded"
+                    className={`btn btn-submit flex gap-2 items-center px-8 py-3 text-gray-700 bg-primary uppercase button-md rounded ${loadingForm ? "is-loading" : ""}`}
                   >
-                    Enviar
+                   Enviar
+                   <Spinner className="h-4 w-4 absolute right-2" />
                   </button>
                 </div>
               </div>
