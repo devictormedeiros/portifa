@@ -31,7 +31,7 @@ const Projetos = () => {
     return (
         <section className="sec-projetos">
             <div className="container">
-                <div className="grid grid-cols-12 gap-6 pb-[5rem]">
+                <div className="grid grid-cols-12 gap-6 pb-[11.25rem]">
                     {projetos.map((projeto) => (
                         <CardProjeto key={projeto.id} projeto={projeto} />
                     ))}

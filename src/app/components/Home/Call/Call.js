@@ -1,7 +1,7 @@
 const Call = () => {
     return (
-        <section className="sec-call">  
-            <div className="container flex justify-center items-center h-[100vh]">
+        <section className="sec-call h-[300vh]">  
+            <div className="container flex justify-center items-center h-[100vh] sticky top-0">
                 <p className="motion-2 text-white text-center uppercase max-w-[77.5rem] w-full">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem.
                 </p>

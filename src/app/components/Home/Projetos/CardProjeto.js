@@ -8,9 +8,9 @@ const CardProjeto = ({ projeto }) => {
                     <h3 className="content-title-h3 text-gray-200 uppercase">{projeto.nome}</h3>
                     <div className="flex items-center gap-6">
                     {projeto.technologies.map((tech, index) => (
-                        <span key={index} className="badge">
-                            {tech}
-                        </span>
+                        <div className="flex cursor-pointer" key={index}>
+                            <Image  className="rounded-lg w-full h-full" src={`/icons/${tech}.svg`} alt="Tecnologia X" width={25} height={25}/>
+                        </div>
                     ))}
                     </div>
                 </div>

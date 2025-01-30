@@ -19,10 +19,10 @@ const HomePage = () => {
         <Call />
         <Projetos />
         <Tecnologias/>
-        <Skills />
-        <Recomendacoes 
-          sectionTitle={"Recomendações"}
+        <Skills 
+          sectionTitle={"Experiência"}
         />
+        <Recomendacoes />
       </main>
     </>
   );
