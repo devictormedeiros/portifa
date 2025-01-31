@@ -1,0 +1,10 @@
+.tabs-skill {
+    > nav {
+        mask-image: linear-gradient(to left, transparent 0, transparent 0px, #000 77px, #000 100%);
+        @apply overflow;
+
+        ul {
+            @apply pb-2;
+        }
+    }
+}

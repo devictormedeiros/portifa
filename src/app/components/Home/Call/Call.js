@@ -1,4 +1,6 @@
 const Call = () => {
+    
+
     return (
         <section className="sec-call h-[300vh]">  
             <div className="container flex justify-center items-center h-[100vh] sticky top-0">

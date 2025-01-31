@@ -42,7 +42,7 @@ const Recomendacoes = () => {
 
     return (
         <Accordion title={"Recomendações"}>
-            <div className="flex gap-[3rem] items-start overflow-x-hidden">
+            <div className="overflow flex gap-[3rem] items-start">
                 {recomendations.map((recomendation) => (
                     <article key={recomendation.id} className="card-recomendations min-w-[30rem] flex flex-col gap-6 p-6 rounded-2xl">
                         <figure className="relative aspect-[16/9]">

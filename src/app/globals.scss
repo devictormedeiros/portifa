@@ -126,16 +126,14 @@ main {
   z-index: 1;
 }
 
-.card-projeto {
-  background: var(--gradient-primary-c);
-  box-shadow: 0px -10px 20px 0px #00000099;
-}
+// Base
+@import 'assets/scss/base/animations';
+@import 'assets/scss/base/helpers';
 
-.card-skills,
-.card-recomendations {
-  background: var(--gray-gradient-b);
-}
+// Components
+@import 'assets/scss/components/_cards';
+@import 'assets/scss/components/_tabs-skill';
 
-.sec-call {
-  background: linear-gradient(180.07deg, rgba(168, 161, 150, 0.03) 0.06%, rgba(255, 166, 0, 0) 19.26%, rgba(255, 166, 0, 0.03) 48.17%);
-}
+
+// Pages
+@import 'assets/scss/pages/_home';
