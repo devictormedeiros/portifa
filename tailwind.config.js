@@ -194,7 +194,7 @@ module.exports = {
           "@media (max-width: 768px)":{
             fontSize: "40px",
             lineHeight: "40px",
-            fontWeight: "500",
+            fontWeight: "700",
           }
         },
         ".motion-2": {

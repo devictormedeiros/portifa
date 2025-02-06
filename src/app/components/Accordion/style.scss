@@ -1,17 +1,33 @@
 .accordion {
-    .accordion-body {
-      visibility: hidden;
-      opacity: 0;
-      max-height: 0; /* Altura inicial para ocultar */
-      overflow: hidden; /* Garante que o conteúdo não vaze */
+  .accordion-body {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0; /* Altura inicial para ocultar */
+    overflow: hidden; /* Garante que o conteúdo não vaze */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
+
+    &.open {
+      visibility: visible;
+      opacity: 1;
+      max-height: 1000px; /* Ajuste para o conteúdo máximo esperado */
       transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
-  
-      &.open {
-        visibility: visible;
-        opacity: 1;
-        max-height: 1000px; /* Ajuste para o conteúdo máximo esperado */
-        transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    .accordion-body {
+      @apply mx-[-1.5rem];
+
+      .accordion-content {
+        > div {
+          @apply px-[1.5rem];
+
+          &::-webkit-scrollbar {
+              display: none;
+          }
+        }
       }
     }
   }
+}
   

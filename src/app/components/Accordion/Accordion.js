@@ -12,7 +12,7 @@ const Accordion = ({ title, children }) => {
       <section className="pb-10">
         <div className="container">
           <div className="accordion px-5">
-            <div className="accordion-header mb-12">
+            <div className="accordion-header mb-[2rem] lg:mb-12">
               <button
                 className="accordion-toggle flex items-center justify-between w-full py-5 text-gray-200 uppercase border-b border-gray-700"
                 aria-expanded="false" onClick={() => toggleAccordion()}

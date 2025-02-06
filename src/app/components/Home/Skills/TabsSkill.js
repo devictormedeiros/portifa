@@ -12,9 +12,9 @@ const TabsSkill = ({ skills, title }) => {
 
     return (
         <Accordion title={title}>
-            <Tabs value={skills[0].value} className="tabs-skill flex flex-col gap-12">
+            <Tabs value={skills[0].value} className="tabs-skill flex flex-col gap-[2rem] lg:gap-12">
                 <TabsHeader
-                    className="bg-transparent flex gap-[2.5rem]"
+                    className="bg-transparent flex gap-6 lg:gap-[2.5rem]"
                     indicatorProps={{
                     }}
                 >
@@ -22,10 +22,13 @@ const TabsSkill = ({ skills, title }) => {
                         <Tab 
                             key={value} 
                             value={value} 
-                            className={`whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-2xl duration-300 hover:bg-primary hover:text-gray-900${activeTab === value ? " bg-primary text-gray-900" : ""}`}
+                            className={`whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-[0.5rem] lg:rounded-2xl duration-300 hover:bg-primary hover:text-gray-900${activeTab === value ? " bg-primary text-gray-900" : ""}`}
                             onClick={() => setActiveTab(value)}
                         >
-                            {`${ano} - ${cargo}`}
+                            <strong>
+                                {ano}
+                            </strong>
+                            {` - ${cargo}`}
                         </Tab>
                     ))}
                 </TabsHeader>
