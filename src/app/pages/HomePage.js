@@ -1,51 +1,33 @@
 "use client"; // Necessário para usar hooks no diretório app
-import { useState, useEffect, useRef } from "react";
-
 import Header from "../components/Header/Header";
 import Sobre from "../components/Home/Sobre/Sobre";
 import Intro from "../components/Home/Intro/Intro";
 import Tecnologias from "../components/Home/Tecnologias/Tecnologias";
-import Contato from "../components/Home/Contato/Contato";
+import Contato from "../components/Contato/Contato";
 import FloatSocial from "../components/FloatSocial";
-import { getAcfOptions } from "../api/getAcfOptions";
-import { getPosts } from "../api/getPosts";
-import LoadingPage from "../components/LoadingPage";
+import Footer from "../components/Footer";
 
-const HomePage = () => {
-  const [dataOption, setDataOptions] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    const fetchData = async () => {
-      const options = await getAcfOptions();
-      const posts = await getPosts();
-      setDataOptions(options);
-      console.log("Options: ", options);
-      console.log("posts: ", posts);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 3000);
-    };
-
-    fetchData();
-  }, []);
-
+const HomePage = ({ data }) => {
   return (
-    isLoading === false ? ( 
-      <>
-        <Intro data={dataOption?.introducao || null} />
-        <Header logo={dataOption?.logo_principal || null} />
-        <main className="grid gap-[64px] relative">
-          <Sobre data={dataOption?.sobre || null} />
-          <Tecnologias data={dataOption?.tecnologias_atuacoes?.itens || null} />
+    <>
+      {data?.introducao && <Intro data={data.introducao} />}
+      <Header logo={data?.logo_principal || null} />
+      <main className="main-home flex flex-wrap gap-y-[5rem] md:gap-y-[8.75rem] relative z-[1]">
+        {data?.sobre && <Sobre data={data?.sobre || null} />}
+        {data?.tecnologias_atuacoes && (
+          <Tecnologias data={data?.tecnologias_atuacoes || null} />
+        )}
+        {data?.tecnologias_atuacoes && (
           <Contato
-            data={dataOption?.secao_contato || null}
-            dataForm={dataOption?.configuracao_do_formulario || null}
+            data={data?.secao_contato || null}
+            dataForm={data?.configuracao_do_formulario || null}
           />
-        </main>
-        <FloatSocial />
-      </>
-    ) : <LoadingPage />
-  ); 
-}
+        )}
+      </main>
+      {data?.tecnologias_atuacoes && <FloatSocial data={data?.secao_contato} />}
+      <Footer />
+    </>
+  );
+};
 
 export default HomePage;

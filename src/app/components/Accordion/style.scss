@@ -1,32 +1,39 @@
 .accordion {
-    .accordion-body {
-      visibility: hidden;
-      opacity: 0;
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
-    }
+  .accordion-body {
+    visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
+      visibility 0.5s ease-out;
+  }
 
-    .accordion-header{
-      button.accordion-toggle{
-        .accordion-icon{
-          transition: transform 0.5s ease-in-out;
-        }
-      }
-    }
-
-    &.open {
-      .accordion-header{
-        button.accordion-toggle{
-          .accordion-icon{transform: rotate(180deg);}
-        }
-      }
-      .accordion-body{
-      visibility: visible;
-      opacity: 1;
-      max-height: 1000px;
-      transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
+  .accordion-header {
+    button.accordion-toggle {
+      .accordion-icon {
+        transition: transform 0.5s ease-in-out;
       }
     }
   }
-  
+
+  &.open {
+    .accordion-header {
+      margin-bottom: 3rem;
+      @media screen and (max-width: 48rem) {
+        margin-bottom: 2rem;
+      }
+      button.accordion-toggle {
+        .accordion-icon {
+          transform: rotate(180deg);
+        }
+      }
+    }
+    .accordion-body {
+      visibility: visible;
+      opacity: 1;
+      max-height: 62.5rem;
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
+        visibility 0.5s ease-out;
+    }
+  }
+}

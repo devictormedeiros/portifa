@@ -15,6 +15,7 @@ async function getAPI(routes) {
     return wpdata;
   } catch (error) {
     console.error("Erro se conectar com o WP REST", error);
+    throw error;
   }
 }
 

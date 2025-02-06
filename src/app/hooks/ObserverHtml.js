@@ -5,6 +5,12 @@ const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = '0px' }) => {
   const targetRef = useRef(null);
 
   useEffect(() => {
+    
+    if (!('IntersectionObserver' in window)) {
+      console.warn("IntersectionObserver não é suportado neste navegador.");
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);

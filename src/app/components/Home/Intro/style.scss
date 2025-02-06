@@ -1,39 +1,83 @@
+.sec-intro:has(+ .sticky-header) .container-text .text {
+  opacity: 0;
+}
+
 section.sec-intro {
-  z-index: -1;
   position: relative;
-    >.container{
-        min-height: 90vh;
-        padding: 80px 0;
-        display: flex;
-        align-items: center;
+  & + .sticky-header {
+    .container-text {
+      position: relative;
     }
-    .text {
-      position: fixed;
-      z-index: -1;
-      span {
-        display: block;
-        color: var(--primary);
-        min-height: 110px;
-        position: relative;
-        &:after{
-            content: "|";
-            display: inline-block;
-            @apply content-title-h1;
-            margin-left: 10px;
-            animation: write 0.8s infinite;
-        }
+  }
+  &:after {
+    content: "";
+    display: block;
+    width: 12.5rem;
+    max-width: 25%;
+    height: 12.5rem;
+    max-height: 100%;
+    background-color: var(--primary);
+    border-radius: 100%;
+    background-size: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    filter: blur(31.25rem);
+    z-index: -1;
+  }
+  &:before {
+    content: "";
+    display: block;
+    width: 12.5rem;
+    max-width: 25%;
+    height: 12.5rem;
+    max-height: 100%;
+    border-radius: 100%;
+    background-color: var(--primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(31.25rem);
+    z-index: -1;
+  }
+  > .container-text {
+    min-height: 90vh;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .text {
+    position: fixed;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    margin: auto;
+    span {
+      display: block;
+      color: var(--primary);
+      min-height: 6.875rem;
+      position: relative;
+      &:after {
+        content: "|";
+        display: inline-block;
+        @apply content-title-h1;
+        margin-left: 0.625rem;
+        animation: write 0.8s infinite;
       }
     }
   }
+}
 
-  @keyframes write {
-    0%{
-        opacity: 0;
-    }
-    50%{
-        opacity: 1;
-    }
-    100%{
-        opacity: 0;
-    }
+@keyframes write {
+  0% {
+    opacity: 0;
   }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

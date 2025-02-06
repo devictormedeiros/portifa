@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
 :root {
   --black-5: #0000000d;
@@ -15,10 +16,10 @@
   --black-90: #000000e5;
   --black-100: #000000;
 
-  --white-5: #FFFFFF0D;
-  --white-10: #FFFFFF1A;
-  --white-20: #FFFFFF33;
-  --white-30: #FFFFFF4D;
+  --white-5: #ffffff0d;
+  --white-10: #ffffff1a;
+  --white-20: #ffffff33;
+  --white-30: #ffffff4d;
   --white-40: #ffffff66;
   --white-50: #ffffff80;
   --white-60: #ffffff99;
@@ -55,13 +56,13 @@
   );
   --gray-gradient-d: linear-gradient(109.79deg, #e4e4e4 0%, #f4f4f4 101.78%);
 
-  --primary: #ffa600;
+  --primary: #fff;
   --gradient-primary-a: radial-gradient(
     50% 50% at 50% 50%,
     rgba(255, 166, 0, 0.1) 0%,
     rgba(255, 166, 0, 0) 100%
   );
-  --gradient-primary-b: linear-gradient(90deg, #191919 0%, #ffa600 100%);
+  --gradient-primary-b: linear-gradient(90deg, #191919 0%, #fff 100%);
   --gradient-primary-c: linear-gradient(109.79deg, #272522 0%, #131313 101.78%);
   --gradient-primary-d: linear-gradient(
     180.07deg,
@@ -74,7 +75,7 @@
     rgba(192, 192, 192, 0.5) 0%,
     rgba(192, 192, 192, 0) 100%
   );
-  --gradient-primary-f: linear-gradient(90deg, #afafaf 0%, #ffa600 100%);
+  --gradient-primary-f: linear-gradient(90deg, ${cor1} 0%, ${cor2} 100%);
   --gradient-primary-g: linear-gradient(
     109.79deg,
     #e1e1e1 0%,
@@ -109,14 +110,6 @@ a:hover {
   text-decoration: none !important;
 }
 
-body {
-  background-color: var(--gray-900);
-  color: white;
-  // background-image: url(/images/secIntro.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
 html {
   scroll-behavior: auto;
   scrollbar-color: var(--primary) transparent;
@@ -125,19 +118,29 @@ html {
 
 main {
   background-color: var(--gray-900);
-  position: relative;
   z-index: 1;
+  padding-bottom: 10rem;
+  @media (max-width: 768px) {
+    padding-bottom: 4rem;
+  }
+  &.main-home {
+    > section {
+      width: 100%;
+    }
+  }
 }
 
-
-
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
 
 .loader {
-  width: 1px;
-  height: 1px;
-  background: rgba(white, .9);
+  width: 0.0625rem;
+  height: 0.0625rem;
+  background: rgba(white, 0.9);
   border-radius: 50%;
-  animation: bubble-burst .75s infinite;
+  animation: loading-page 0.75s infinite;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -148,17 +151,17 @@ main {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 28px;
+  font-size: 1.75rem;
   color: black;
   text-align: center;
   font-weight: bold;
   span {
-    font-size: 12px;
-    letter-spacing: 1px;
+    font-size: 0.75rem;
+    letter-spacing: 0.0625rem;
   }
 }
 
-@keyframes bubble-burst {
+@keyframes loading-page {
   0% {
     opacity: 0;
     transform: scale(1);

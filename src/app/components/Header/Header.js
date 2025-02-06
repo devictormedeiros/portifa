@@ -1,10 +1,10 @@
 "use client"; // Necessário para usar hooks no diretório app
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import Nav from "./Nav";
 import "./style.scss";
 import Link from "next/link";
 import DrawerMenu from "./DrawerMenu";
-
+import getPosts from "../../api/getAPI";
 const Header = ({ logo }) => {
   const [isHeaderSticky, setIsHeaderSticky] = useState(false);
   const headerRef = useRef(null);
@@ -23,12 +23,21 @@ const Header = ({ logo }) => {
     };
   }, []);
 
+  const [itemslink, setItemsLink] = useState([]);
+  useEffect(() => {
+    const fecthItemsLinks = async () => {
+      const data = await getPosts("/menus/menu-principal");
+      setItemsLink(data);
+    };
+    fecthItemsLinks();
+  }, []);
+
   return (
     <header
       ref={headerRef}
       className={`bg-black text-white ${isHeaderSticky ? "sticky-header" : ""}`}
     >
-      <div className="mx-auto px-10 py-4">
+      <div className="mx-auto px-6 md:px-10 py-4">
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
             <Link className="logo" href="/">
@@ -40,15 +49,15 @@ const Header = ({ logo }) => {
             </Link>
           </div>
           <div className="col-span-6 hidden md:block">
-            <Nav />
+            <Nav data={itemslink} />
           </div>
-          <div className="col-span-8 md:col-span-3 flex justify-end items-center">
-            <label className="switch-darkmode mr-6">
+          <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-12 gap-x-6">
+            <label className="switch-darkmode">
               <input type="checkbox" />
               <span className="slider-darkmode"></span>
             </label>
             <div className="menu-hamburguer">
-              <DrawerMenu/>
+              <DrawerMenu data={itemslink}/>
             </div>
           </div>
         </div>
@@ -57,4 +66,4 @@ const Header = ({ logo }) => {
   );
 };
 
-export default Header;
+export default memo(Header);

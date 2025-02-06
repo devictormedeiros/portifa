@@ -1,172 +1,103 @@
+import React from "react";
 import {
-    Drawer,
-    Button,
-    Typography,
-    IconButton,
-    List,
-    ListItem,
-    ListItemPrefix,
-    ListItemSuffix,
-    Chip,
-  } from "@material-tailwind/react";
-  import { useState, useEffect, useRef } from "react";
-const DrawerMenu = () => {
-    const [open, setOpen] = useState(false);
-    const openDrawer = () => setOpen(true);
-    const closeDrawer = () => setOpen(false);
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
+import { useState } from "react";
+import { FaX } from "react-icons/fa6";
+const DrawerMenu = ({ data }) => {
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(!open);
+  const customStyles = {
+    base: {
+      backdrop: { backgroundColor: "var(--black-70)" },
+    },
+  };
   return (
     <>
-      <Button onClick={openDrawer} className="flex items-center gap-2">
-      <svg
-                width="28"
-                height="24"
-                viewBox="0 0 33 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0 1.84615C0 0.826551 0.619913 0 1.38462 0H30.9231C31.6878 0 32.3077 0.826551 32.3077 1.84615C32.3077 2.86576 31.6878 3.69231 30.9231 3.69231H1.38462C0.619913 3.69231 0 2.86576 0 1.84615Z"
-                  fill="#EDEDED"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0 12C0 10.9804 0.619913 10.1538 1.38462 10.1538H30.9231C31.6878 10.1538 32.3077 10.9804 32.3077 12C32.3077 13.0196 31.6878 13.8461 30.9231 13.8461H1.38462C0.619913 13.8461 0 13.0196 0 12Z"
-                  fill="#EDEDED"
-                />
-                <path
-                  fillRule="evenodd"
-                  clipRule="evenodd"
-                  d="M0 22.1539C0 21.1343 0.619913 20.3077 1.38462 20.3077H30.9231C31.6878 20.3077 32.3077 21.1343 32.3077 22.1539C32.3077 23.1735 31.6878 24 30.9231 24H1.38462C0.619913 24 0 23.1735 0 22.1539Z"
-                  fill="#EDEDED"
-                />
-              </svg>
-              <span>Menu</span>
+      <Button
+        onClick={handleOpen}
+        variant="gradient"
+        className="flex items-center gap-2 px-0"
+      >
+        <svg
+          width="28"
+          height="24"
+          viewBox="0 0 33 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M0 1.84615C0 0.826551 0.619913 0 1.38462 0H30.9231C31.6878 0 32.3077 0.826551 32.3077 1.84615C32.3077 2.86576 31.6878 3.69231 30.9231 3.69231H1.38462C0.619913 3.69231 0 2.86576 0 1.84615Z"
+            fill="#EDEDED"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M0 12C0 10.9804 0.619913 10.1538 1.38462 10.1538H30.9231C31.6878 10.1538 32.3077 10.9804 32.3077 12C32.3077 13.0196 31.6878 13.8461 30.9231 13.8461H1.38462C0.619913 13.8461 0 13.0196 0 12Z"
+            fill="#EDEDED"
+          />
+          <path
+            fillRule="evenodd"
+            clipRule="evenodd"
+            d="M0 22.1539C0 21.1343 0.619913 20.3077 1.38462 20.3077H30.9231C31.6878 20.3077 32.3077 21.1343 32.3077 22.1539C32.3077 23.1735 31.6878 24 30.9231 24H1.38462C0.619913 24 0 23.1735 0 22.1539Z"
+            fill="#EDEDED"
+          />
+        </svg>
       </Button>
 
-      <Drawer open={open} onClose={closeDrawer} className="drawer-menu">
-        <div className="mb-2 flex items-center justify-between p-4">
-          <Typography variant="h5" color="blue-gray">
-            Material Tailwind
-          </Typography>
-          <IconButton variant="text" color="blue-gray" onClick={closeDrawer}>
+      <Dialog
+        open={open}
+        size="xxl"
+        handler={handleOpen}
+        className="menu-hamburger w-full bg-black-70 backdrop-blur-[6px] items-center flex justify-center"
+      >
+        <DialogBody>
+          <Button onClick={handleOpen} className="flex items-center gap-2 px-0">
             <svg
-              xmlns="http://www.w3.org/2000/svg"
+              width="27"
+              height="28"
+              viewBox="0 0 27 28"
               fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={2}
-              stroke="currentColor"
-              className="h-5 w-5"
+              xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M1.71259 25.9602C0.95768 25.2052 0.804686 24.1343 1.37087 23.5681L23.2411 1.69787C23.8073 1.13169 24.8782 1.28468 25.6331 2.0396C26.3881 2.79451 26.5411 3.86547 25.9749 4.43165L4.10465 26.3019C3.53846 26.8681 2.4675 26.7151 1.71259 25.9602Z"
+                fill="#EDEDED"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M25.365 25.9602C26.12 25.2052 26.273 24.1343 25.7068 23.5681L3.83654 1.69787C3.27036 1.13169 2.1994 1.28468 1.44449 2.0396C0.689578 2.79451 0.536582 3.86547 1.10277 4.43165L22.973 26.3019C23.5392 26.8681 24.6101 26.7151 25.365 25.9602Z"
+                fill="#EDEDED"
               />
             </svg>
-          </IconButton>
-        </div>
-        <List>
-          <ListItem>
-            <ListItemPrefix>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.25 2.25a.75.75 0 000 1.5H3v10.5a3 3 0 003 3h1.21l-1.172 3.513a.75.75 0 001.424.474l.329-.987h8.418l.33.987a.75.75 0 001.422-.474l-1.17-3.513H18a3 3 0 003-3V3.75h.75a.75.75 0 000-1.5H2.25zm6.04 16.5l.5-1.5h6.42l.5 1.5H8.29zm7.46-12a.75.75 0 00-1.5 0v6a.75.75 0 001.5 0v-6zm-3 2.25a.75.75 0 00-1.5 0v3.75a.75.75 0 001.5 0V9zm-3 2.25a.75.75 0 00-1.5 0v1.5a.75.75 0 001.5 0v-1.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </ListItemPrefix>
-            Dashboard
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </ListItemPrefix>
-            Analytics
-            <ListItemSuffix>
-              <Chip
-                value="5"
-                size="sm"
-                color="green"
-                className="rounded-full"
-              />
-            </ListItemSuffix>
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M6.912 3a3 3 0 00-2.868 2.118l-2.411 7.838a3 3 0 00-.133.882V18a3 3 0 003 3h15a3 3 0 003-3v-4.162c0-.299-.045-.596-.133-.882l-2.412-7.838A3 3 0 0017.088 3H6.912zm13.823 9.75l-2.213-7.191A1.5 1.5 0 0017.088 4.5H6.912a1.5 1.5 0 00-1.434 1.059L3.265 12.75H6.11a3 3 0 012.684 1.658l.256.513a1.5 1.5 0 001.342.829h3.218a1.5 1.5 0 001.342-.83l.256-.512a3 3 0 012.684-1.658h2.844z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </ListItemPrefix>
-            Sales
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </ListItemPrefix>
-            Profile
-          </ListItem>
-          <ListItem>
-            <ListItemPrefix>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                className="h-5 w-5"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 00-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 00-2.282.819l-.922 1.597a1.875 1.875 0 00.432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 000 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 00-.432 2.385l.922 1.597a1.875 1.875 0 002.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 002.28-.819l.923-1.597a1.875 1.875 0 00-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 000-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 00-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 00-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 00-1.85-1.567h-1.843zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </ListItemPrefix>
-            Tables
-          </ListItem>
-        </List>
-        <Button className="mt-3 ml-5" size="sm">
-          Documentation
-        </Button>
-      </Drawer>
+          </Button>
+          <nav>
+            <ul className="w-full text-center">
+              {data?.map((item) => {
+                return (
+                  <li key={item.id}>
+                    <a
+                      href={item.url}
+                      className="content-title-h2 text-gray-200 hover:text-white-100 hover:underline uppercase mb-10 block"
+                    >
+                      {item.title}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+        </DialogBody>
+      </Dialog>
     </>
   );
 };

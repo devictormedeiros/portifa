@@ -2,6 +2,7 @@ import { Alert } from "@material-tailwind/react";
 import { useState, useEffect } from "react";
 export function AlertForm({ alertType = "information", alertText }) {
   const [visible, setVisible] = useState(true);
+
   const alerts = {
     information: {
       type: "blue",
@@ -13,7 +14,7 @@ export function AlertForm({ alertType = "information", alertText }) {
       color: "red",
       text: "Ocorreu um erro",
     },
-    sucess: {
+    success: {
       type: "green",
       color: "green",
       text: "Sucesso!",
@@ -24,6 +25,12 @@ export function AlertForm({ alertType = "information", alertText }) {
       text: "Atenção",
     },
   };
+  const alertAnimation = {
+    mount: { y: 0 },
+    unmount: { y: 100 },
+  };
+  
+  const selectedAlert = alerts[alertType] || alerts.information;
 
   // Esconde o alerta após 4 segundos
   useEffect(() => {
@@ -36,17 +43,15 @@ export function AlertForm({ alertType = "information", alertText }) {
   }, []);
 
   return (
-    <div className="flex w-full flex-col gap-2 relative w-full">
+    <div className="flex w-full flex-col gap-2 relative">
       <Alert
         open={visible}
-        animate={{
-          mount: { y: 0 },
-          unmount: { y: 100 },
-        }}
-        color={alerts[alertType].color}
+        animate={alertAnimation}
+        color={selectedAlert.color}
+        role="alert"
         className="absolute bottom-0 w-full"
       >
-        {!alertText ? alerts[alertType].text : alertText}
+        {alertText || selectedAlert.text}
       </Alert>
     </div>
   );

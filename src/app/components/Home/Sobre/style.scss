@@ -1,23 +1,33 @@
 .sec-sobre {
-    padding: 120px 0px 80px;
-    min-height: 100vh;
-    .text {
-      padding-right: 80px;
-      h2 {
-        margin-bottom: 40px;
-      }
-      p{
-        color: var(--white-70);
-        @apply content-text;
-        margin-bottom: 24px;
-      }
+  padding: 7.5rem 0rem 0rem;
+  min-height: 100vh;
+  @media (max-width: 48rem) {
+    padding: 5rem 0 0rem;
+  }
+  .text {
+    @media (min-width: 48rem) {
+      padding-right: 5rem;
     }
-    .image img {
-      position: sticky;
-      top: 100px;
-      max-width: 100%;
-      margin: auto;
-      height: auto;
-      object-fit: contain;
+    h2 {
+      margin-bottom: 2.5rem;
+    }
+    p {
+      color: var(--white-70);
+      @apply content-text;
+      margin-bottom: 1.5rem;
+      &:last-child {
+        margin-bottom: 0;
+      }
     }
   }
+  .image img {
+    @media (min-width: 48rem) {
+      position: sticky;
+      top: 6.25rem;
+    }
+    max-width: 100%;
+    margin: auto;
+    height: auto;
+    object-fit: contain;
+  }
+}

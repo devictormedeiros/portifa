@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 
 const TextAnimate = ({ frases }) => {
   const [text, setText] = useState("");
@@ -19,24 +19,29 @@ const TextAnimate = ({ frases }) => {
       return; // Evita erros se `currentFrase` for undefined
     }
 
-    const timeout = setTimeout(() => {
-      if (!isDeleting) {
-        setText(currentFrase.substring(0, letterIndex + 1));
-        setLetterIndex(letterIndex + 1);
+    const timeout = setTimeout(
+      () => {
+        if (!isDeleting) {
+          setText(currentFrase.substring(0, letterIndex + 1));
+          setLetterIndex(letterIndex + 1);
 
-        if (letterIndex + 1 === currentFrase.length) {
-          setTimeout(() => setIsDeleting(true), 1000);
-        }
-      } else {
-        setText(currentFrase.substring(0, letterIndex - 1));
-        setLetterIndex(letterIndex - 1);
+          if (letterIndex + 1 === currentFrase.length) {
+            setTimeout(() => setIsDeleting(true), 1000);
+          }
+        } else {
+          setText(currentFrase.substring(0, letterIndex - 1));
+          setLetterIndex(letterIndex - 1);
 
-        if (letterIndex === 0) {
-          setIsDeleting(false);
-          setCurrentFrasesIndex((prevIndex) => (prevIndex + 1) % frases.length);
+          if (letterIndex === 0) {
+            setIsDeleting(false);
+            setCurrentFrasesIndex(
+              (prevIndex) => (prevIndex + 1) % frases.length
+            );
+          }
         }
-      }
-    }, isDeleting ? 50 : 100);
+      },
+      isDeleting ? 50 : 100
+    );
 
     return () => clearTimeout(timeout);
   }, [text, isDeleting, letterIndex, currentFrasesIndex, frases]);
@@ -44,4 +49,4 @@ const TextAnimate = ({ frases }) => {
   return <span>{text}</span>;
 };
 
-export default TextAnimate;
+export default memo(TextAnimate);

@@ -1,84 +1,114 @@
 header {
-    position: sticky;
-    top: 0;
-    border-top-right-radius: 24px;
-    border-top-left-radius: 24px;
-    z-index: 98;
-    background-color: var(--gray-900);
-    nav {
-      column-gap: 24px;
-      @media screen and (max-width:768px){
-        display: none !important;
+  position: sticky;
+  top: 0;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  z-index: 98;
+  background-color: var(--gray-900);
+  .logo {
+    img {
+      @media (max-width: 48rem) {
+        max-width: 9.375rem;
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
       }
-      ul {
-        column-gap: 80px;
-        @media screen and (max-width:1000px){
-          column-gap: 40px;
-        }
-        li {
-          a {
-            transform: translateY(0);
-            transition: all .5s ease;
-          }
-        }
-      }
-    }
-    &.sticky-header {
-      nav ul li a {
-        opacity: 0;
-        transform: translateY(-20px);
-      }
-      .switch-darkmode{
-        opacity: 0;
-      }
-    }
-    .switch-darkmode {
-        font-size: 17px;
-        position: relative;
-        display: inline-block;
-        width: 48px;
-        height: 24px;
-        opacity: 1;
-        transition: all 0.5s ease-in-out;
-        input[type="checkbox"] {
-          opacity: 0;
-          width: 0;
-          height: 0;
-        }
-        .slider-darkmode {
-          --background: #393636;
-          position: absolute;
-          cursor: pointer;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background-color: var(--background);
-          transition: 0.5s;
-          border-radius: 30px;
-          &:before {
-            position: absolute;
-            content: "";
-            height: 18px;
-            width: 18px;
-            border-radius: 50%;
-            left: 12%;
-            bottom: 15%;
-            box-shadow: inset 8px -4px 0px 0px var(--primary);
-            background: var(--background);
-            transition: 0.5s;
-          }
-        }
-        input:checked + .slider-darkmode {
-          background-color: #393636;
-          &:before {
-            transform: translateX(100%);
-            box-shadow: inset 15px -4px 0px 15px var(--primary);
-            left: 16%;
-          }
-        }
-    }
-    .drawer-menu{
-      background: var(--gradient-primary-c);
     }
   }
+  nav {
+    column-gap: 1.5rem;
+    @media screen and (max-width: 48rem) {
+      display: none !important;
+    }
+    ul {
+      column-gap: 5rem;
+      @media screen and (max-width: 62.5rem) {
+        column-gap: 2.5rem;
+      }
+      li {
+        a {
+          transform: translateY(0);
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
+  &.sticky-header {
+    nav ul li a {
+      opacity: 0;
+      transform: translateY(-1.25rem);
+    }
+    .switch-darkmode {
+      opacity: 0;
+    }
+  }
+  .switch-darkmode {
+    font-size: 1.0625rem;
+    position: relative;
+    display: inline-block;
+    width: 3rem;
+    height: 1.5rem;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+    input[type="checkbox"] {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .slider-darkmode {
+      --background: #393636;
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--background);
+      transition: 0.5s;
+      border-radius: 1.875rem;
+      &:before {
+        position: absolute;
+        content: "";
+        height: 1.125rem;
+        width: 1.125rem;
+        border-radius: 50%;
+        left: 12%;
+        bottom: 15%;
+        box-shadow: inset 0.5rem -0.25rem 0rem 0rem var(--primary);
+        background: var(--background);
+        transition: 0.5s;
+      }
+    }
+    input:checked + .slider-darkmode {
+      background-color: #393636;
+      &:before {
+        transform: translateX(100%);
+        box-shadow: inset 0.9375rem -0.25rem 0rem 0.9375rem var(--primary);
+        left: 16%;
+      }
+    }
+  }
+  .drawer-menu {
+    background: var(--gradient-primary-c);
+  }
+}
+
+.menu-hamburger{
+ .leading-relaxed{
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  button{
+    position: absolute;
+    right: 10%;
+    top: 10%;
+    padding: 0;
+    @media (max-width: 48rem) {
+      right:6%;
+      top: 6%;
+    }
+  }
+ }
+}

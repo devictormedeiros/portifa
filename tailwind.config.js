@@ -12,13 +12,14 @@ module.exports = withMT({
   theme: {
     container: {
       center: true,
+      padding: "1.5rem"
     },
     screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1536px',
+      sm: '40rem',
+      md: '48rem',
+      lg: '64rem',
+      xl: '80rem',
+      '2xl': '96rem',
     },
     extend: {
       colors: {
@@ -63,18 +64,18 @@ module.exports = withMT({
           DEFAULT: "var(--primary)",
         },
         gradient: {
-          "gray-a": "var(--gray-gradient-a)",
-          "gray-b": "var(--gray-gradient-b)",
-          "gray-c": "var(--gray-gradient-c)",
-          "gray-d": "var(--gray-gradient-d)",
-          "primary-a": "var(--gradient-primary-a)",
-          "primary-b": "var(--gradient-primary-b)",
-          "primary-c": "var(--gradient-primary-c)",
-          "primary-d": "var(--gradient-primary-d)",
-          "primary-e": "var(--gradient-primary-e)",
-          "primary-f": "var(--gradient-primary-f)",
-          "primary-g": "var(--gradient-primary-g)",
-          "primary-h": "var(--gradient-primary-h)",
+          "gray-a": "var(--gray-gradients-a)",
+          "gray-b": "var(--gray-gradients-b)",
+          "gray-c": "var(--gray-gradients-c)",
+          "gray-d": "var(--gray-gradients-d)",
+          "primary-a": "var(--primary-gradient-a)",
+          "primary-b": "var(--primary-gradient-b)",
+          "primary-c": "var(--primary-gradient-c)",
+          "primary-d": "var(--primary-gradient-d)",
+          "primary-e": "var(--primary-gradient-e)",
+          "primary-f": "var(--primary-gradient-f)",
+          "primary-g": "var(--primary-gradient-g)",
+          "primary-h": "var(--primary-gradient-h)",
         },
         boxShadow: {
           shadow: "var(--color-shadow)",
@@ -87,134 +88,134 @@ module.exports = withMT({
     plugin(function ({ addComponents }) {
       addComponents({
         ".content-title-h1": {
-          fontSize: "100px",
-          lineHeight: "110px",
+          fontSize: "6.25rem",
+          lineHeight: "6.875rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "32px",
-            lineHeight: "36px",
+          "@media (max-width: 48rem)":{
+            fontSize: "2rem",
+            lineHeight: "2.25rem",
             fontWeight: "800",
           }
         },
         ".content-title-h2": {
-          fontSize: "64px",
-          lineHeight: "72px",
+          fontSize: "4rem",
+          lineHeight: "4.5rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "28px",
-            lineHeight: "32px",
+          "@media (max-width: 48rem)":{
+            fontSize: "1.75rem",
+            lineHeight: "2rem",
             fontWeight: "800",
           }
         },
         ".content-title-h3": {
-          fontSize: "36px",
-          lineHeight: "44px",
+          fontSize: "2.25rem",
+          lineHeight: "2.75rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "20px",
-            lineHeight: "24px",
+          "@media (max-width: 48rem)":{
+            fontSize: "1.25rem",
+            lineHeight: "1.5rem",
             fontWeight: "800",
           }
         },
         ".content-title-h4": {
-          fontSize: "28px",
-          lineHeight: "32px",
+          fontSize: "1.75rem",
+          lineHeight: "2rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "20px",
-            lineHeight: "24px",
+          "@media (max-width: 48rem)":{
+            fontSize: "1.25rem",
+            lineHeight: "1.5rem",
             fontWeight: "800",
           }
         },
         ".content-title-h5": {
-          fontSize: "24px",
-          lineHeight: "28px",
+          fontSize: "1.5rem",
+          lineHeight: "1.75rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "18px",
-            lineHeight: "22px",
+          "@media (max-width: 48rem)":{
+            fontSize: "1.125rem",
+            lineHeight: "1.375rem",
             fontWeight: "800",
           }
         },
         ".content-title-h6": {
-          fontSize: "20px",
-          lineHeight: "24px",
+          fontSize: "1.25rem",
+          lineHeight: "1.5rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "16px",
-            lineHeight: "20px",
+          "@media (max-width: 48rem)":{
+            fontSize: "1rem",
+            lineHeight: "1.25rem",
             fontWeight: "800",
           }
         },
         ".content-text": {
-          fontSize: "18px",
-          lineHeight: "28px",
+          fontSize: "1.125rem",
+          lineHeight: "1.75rem",
           fontWeight: "400",
-          "@media (max-width: 768px)":{
-            fontSize: "14px",
-            lineHeight: "22px",
+          "@media (max-width: 48rem)":{
+            fontSize: "0.875rem",
+            lineHeight: "1.375rem",
             fontWeight: "500",
           }
         },
         ".content-text-bold": {
-          fontSize: "18px",
-          lineHeight: "28px",
+          fontSize: "1.125rem",
+          lineHeight: "1.75rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "14px",
-            lineHeight: "22px",
+          "@media (max-width: 48rem)":{
+            fontSize: "0.875rem",
+            lineHeight: "1.375rem",
             fontWeight: "800",
           }
         },
         ".content-text-italic": {
-          fontSize: "18px",
-          lineHeight: "28px",
+          fontSize: "1.125rem",
+          lineHeight: "1.75rem",
           fontWeight: "300",
           fontStyle:"italic",
-          "@media (max-width: 768px)":{
-            fontSize: "14px",
-            lineHeight: "22px",
+          "@media (max-width: 48rem)":{
+            fontSize: "0.875rem",
+            lineHeight: "1.375rem",
             fontWeight: "500",
           }
         },
         ".content-caption": {
-          fontSize: "12px",
-          lineHeight: "20px",
+          fontSize: "0.75rem",
+          lineHeight: "1.25rem",
           fontWeight: "400",
-          "@media (max-width: 768px)":{
-            fontSize: "14px",
-            lineHeight: "22px",
+          "@media (max-width: 48rem)":{
+            fontSize: "0.875rem",
+            lineHeight: "1.375rem",
             fontWeight: "500",
           }
         },
         ".motion": {
-          fontSize: "140px",
-          lineHeight: "140px",
+          fontSize: "8.75rem",
+          lineHeight: "8.75rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "40px",
-            lineHeight: "40px",
+          "@media (max-width: 48rem)":{
+            fontSize: "2.5rem",
+            lineHeight: "2.5rem",
             fontWeight: "500",
           }
         },
         ".motion-2": {
-          fontSize: "64px",
-          lineHeight: "95px",
+          fontSize: "4rem",
+          lineHeight: "5.9375rem",
           fontWeight: "700",
-          "@media (max-width: 768px)":{
-            fontSize: "24px",
-            lineHeight: "40px",
+          "@media (max-width: 48rem)":{
+            fontSize: "1.5rem",
+            lineHeight: "2.5rem",
             fontWeight: "800",
           }
         },
         ".menu-section": {
-          fontSize: "14px",
-          lineHeight: "28px",
+          fontSize: "0.875rem",
+          lineHeight: "1.75rem",
           fontWeight: "500",
         },
         ".button-md": {
-          fontSize: "16px",
-          lineHeight: "20px",
+          fontSize: "1rem",
+          lineHeight: "1.25rem",
           fontWeight: "700",
         },
       });

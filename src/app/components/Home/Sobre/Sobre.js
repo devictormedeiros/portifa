@@ -1,11 +1,11 @@
-import Image from "next/image";
 import "./style.scss";
+import { memo } from "react";
 const Sobre = ({ data }) => {
   return (
-    <section className="sec-sobre">
+    <section className="sec-sobre g-col-12">
       <div className="container">
-        <div className="grid grid-cols-12 ">
-          <div className="text col-span-7">
+        <div className="grid grid-cols-12 md:gap-y-0 gap-y-12">
+          <div className="text col-span-12 md:col-span-7">
             <h2 className="content-title-h2 text-gray-200">
               {data?.titulo_sobre}
             </h2>
@@ -14,12 +14,11 @@ const Sobre = ({ data }) => {
               dangerouslySetInnerHTML={{ __html: data?.texto_sobre }}
             />
           </div>
-          <div className="image col-span-5">
-            <Image
+          <div className="image col-span-12 md:col-span-5">
+            <img
               src={data?.imagem.url}
-              alt="Descrição da imagem"
-              width={200}
-              height={200}
+              title={data?.imagem.title}
+              alt={data?.imagem.description}
             />
           </div>
         </div>
@@ -27,4 +26,4 @@ const Sobre = ({ data }) => {
     </section>
   );
 };
-export default Sobre;
+export default memo(Sobre);
