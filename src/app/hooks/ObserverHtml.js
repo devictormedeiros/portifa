@@ -5,7 +5,7 @@ const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = '0px' }) => {
   const targetRef = useRef(null);
 
   useEffect(() => {
-    
+    const currentTarget = targetRef.current;
     if (!('IntersectionObserver' in window)) {
       console.warn("IntersectionObserver não é suportado neste navegador.");
       return;
@@ -22,13 +22,13 @@ const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = '0px' }) => {
       }
     );
 
-    if (targetRef.current) {
-      observer.observe(targetRef.current);
+    if (currentTarget) {
+      observer.observe(currentTarget);
     }
 
     return () => {
-      if (targetRef.current) {
-        observer.unobserve(targetRef.current);
+      if (currentTarget) {
+        observer.unobserve(currentTarget);
       }
     };
   }, [root, rootMargin, threshold]);

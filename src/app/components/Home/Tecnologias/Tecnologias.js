@@ -4,10 +4,6 @@ import "./style.scss";
 import { useEffect, memo } from "react";
 
 const Tecnologias = ({ data }) => {
-  useEffect(() => {
-    console.log(data);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps)
-
   return (
     <section className={`sec-tecnologias g-col-12`}>
       {data?.map((accordion, index) => {

@@ -1,5 +1,6 @@
 import "./style.scss";
 import { memo } from "react";
+import Image from "next/image";
 const Sobre = ({ data }) => {
   return (
     <section className="sec-sobre g-col-12">
