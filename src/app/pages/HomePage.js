@@ -10,7 +10,6 @@ import Projetos from "../components/Home/Projetos/Projetos";
 import Call from "../components/Home/Call/Call";
 import Skills from "../components/Home/Skills/Skills";
 import Recomendacoes from "../components/Home/Recomendacoes/Recomendacoes";
-import ScrollText from "../components/Home/ScrollText/ScrollText";
 const HomePage = ({ data }) => {
   return (
     <>

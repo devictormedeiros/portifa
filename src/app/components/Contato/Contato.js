@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
+import ScrollText from "../components/Home/ScrollText/ScrollText";
 import {
   FaLinkedinIn,
   FaBehance,
