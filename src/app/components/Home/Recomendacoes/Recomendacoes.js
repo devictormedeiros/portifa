@@ -41,6 +41,7 @@ const Recomendacoes = () => {
     ];
 
     return (
+        <section className={`sec-tecnologias g-col-12`}>
         <Accordion title={"Recomendações"}>
             <div className="overflow flex gap-6 items-start shadow-right lg:gap-[3rem]">
                 {recomendations.map((recomendation) => (
@@ -60,6 +61,7 @@ const Recomendacoes = () => {
                 ))}
             </div>
         </Accordion>
+        </section>
     )
 }
 

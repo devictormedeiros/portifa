@@ -33,7 +33,7 @@ export default function ScrollingTexts() {
   }, []);
 
   return (
-    <section ref={section} className="relative py-[4.0625rem] flex flex-col justify-center items-center overflow-hidden gap-[0.25rem] lg:py-[10rem]">
+    <section ref={section} className="relative flex flex-col justify-center items-center overflow-hidden gap-[0.25rem]">
       {/* Texto superior */}
       <div
         className="relative whitespace-nowrap duration-300 motion text-primary"

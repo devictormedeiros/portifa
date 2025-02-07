@@ -11,6 +11,7 @@ const TabsSkill = ({ skills, title }) => {
     }, [skills]);
 
     return (
+        <section className={`sec-tecnologias g-col-12`}>
         <Accordion title={title}>
             <Tabs value={skills[0].value} className="tabs-skill flex flex-col gap-[2rem] lg:gap-12">
                 <TabsHeader
@@ -47,6 +48,7 @@ const TabsSkill = ({ skills, title }) => {
                 </TabsBody>
             </Tabs>
         </Accordion>
+        </section>
     )
 }
 

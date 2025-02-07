@@ -20,21 +20,21 @@ const HomePage = ({ data }) => {
         {data?.sobre && <Sobre data={data?.sobre || null} />}
         <Call />
         <Projetos />
+        
         <Skills 
           sectionTitle={"Experiência"}
         />
-        <Recomendacoes />
-        <ScrollText />
-        {data?.tecnologias_atuacoes && (
+                {data?.tecnologias_atuacoes && (
           <Tecnologias data={data?.tecnologias_atuacoes || null} />
         )}
+        <Recomendacoes />
+                <ScrollText />
         {data?.tecnologias_atuacoes && (
           <Contato
             data={data?.secao_contato || null}
             dataForm={data?.configuracao_do_formulario || null}
           />
         )}
-        <ScrollText />
       </main>
       {data?.tecnologias_atuacoes && <FloatSocial data={data?.secao_contato} />}
       <Footer />
