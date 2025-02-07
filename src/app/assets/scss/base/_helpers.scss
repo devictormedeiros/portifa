@@ -1,0 +1,27 @@
+@layer {
+    .overflow {
+        @apply overflow-x-auto;
+
+        &::-webkit-scrollbar {
+            width: 1px;
+            height: 8px;
+          }
+          
+          /* Track */
+          &::-webkit-scrollbar-track {
+            background: #dedede;
+            border-radius: 10px;
+          }
+          
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: #ffa600;
+            border-radius: 10px;
+          }
+          
+          /* Handle on hover */
+          &::-webkit-scrollbar-thumb:hover {
+            background: #555;
+          }
+    }
+}

@@ -6,7 +6,11 @@ import Tecnologias from "../components/Home/Tecnologias/Tecnologias";
 import Contato from "../components/Contato/Contato";
 import FloatSocial from "../components/FloatSocial";
 import Footer from "../components/Footer";
-
+import Projetos from "../components/Home/Projetos/Projetos";
+import Call from "../components/Home/Call/Call";
+import Skills from "../components/Home/Skills/Skills";
+import Recomendacoes from "../components/Home/Recomendacoes/Recomendacoes";
+import ScrollText from "../components/Home/ScrollText/ScrollText";
 const HomePage = ({ data }) => {
   return (
     <>
@@ -14,6 +18,13 @@ const HomePage = ({ data }) => {
       <Header logo={data?.logo_principal || null} />
       <main className="main-home flex flex-wrap gap-y-[5rem] md:gap-y-[8.75rem] relative z-[1]">
         {data?.sobre && <Sobre data={data?.sobre || null} />}
+        <Call />
+        <Projetos />
+        <Skills 
+          sectionTitle={"Experiência"}
+        />
+        <Recomendacoes />
+        <ScrollText />
         {data?.tecnologias_atuacoes && (
           <Tecnologias data={data?.tecnologias_atuacoes || null} />
         )}
@@ -23,6 +34,7 @@ const HomePage = ({ data }) => {
             dataForm={data?.configuracao_do_formulario || null}
           />
         )}
+        <ScrollText />
       </main>
       {data?.tecnologias_atuacoes && <FloatSocial data={data?.secao_contato} />}
       <Footer />

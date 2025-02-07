@@ -1,0 +1,28 @@
+@layer {
+    .shadow-right {
+        -webkit-mask-image: linear-gradient(to left, transparent 0, transparent 0px, #000 77px, #000 100%);
+        mask-image: linear-gradient(to left, transparent 0, transparent 0px, #000 77px, #000 100%);
+    }
+}
+
+.tabs-skill {
+    > nav {
+        @apply overflow relative shadow-right;
+
+        ul {
+            @apply pb-2;
+        }
+
+        @media screen and (max-width: 1024px) {
+            @apply mx-[-1.5rem];
+
+            &::-webkit-scrollbar {
+                display: none;
+            }           
+
+            ul {
+                @apply px-[1.5rem] pb-0;
+            }
+        }
+    }
+}

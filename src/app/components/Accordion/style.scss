@@ -6,6 +6,10 @@
     overflow: hidden;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
       visibility 0.5s ease-out;
+//d
+      max-height: 0; /* Altura inicial para ocultar */
+      overflow: hidden; /* Garante que o conteúdo não vaze */
+      transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
   }
 
   .accordion-header {
@@ -17,6 +21,11 @@
   }
 
   &.open {
+    //d
+    visibility: visible;
+    opacity: 1;
+    max-height: 1000px; /* Ajuste para o conteúdo máximo esperado */
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out, visibility 0.5s ease-out;
     .accordion-header {
       margin-bottom: 3rem;
       @media screen and (max-width: 48rem) {
@@ -34,6 +43,22 @@
       max-height: 62.5rem;
       transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
         visibility 0.5s ease-out;
+    }
+  }
+  //d
+  @media screen and (max-width: 1024px) {
+    .accordion-body {
+      @apply mx-[-1.5rem];
+
+      .accordion-content {
+        > div {
+          @apply px-[1.5rem];
+
+          &::-webkit-scrollbar {
+              display: none;
+          }
+        }
+      }
     }
   }
 }
