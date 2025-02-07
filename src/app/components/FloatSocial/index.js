@@ -21,7 +21,7 @@ import "./style.scss";
 const FloatSocial = ({ data }) => {
   return (
     <>
-      <div className="fixed md:bottom-12 bottom-[8rem] right-3 z-[9999]">
+      <div className="fixed md:bottom-13 bottom-[8rem] right-3 z-[9999]">
         <SpeedDial>
           <SpeedDialHandler>
             <IconButton size="lg" className="rounded-full bg-primary btn-float-social">

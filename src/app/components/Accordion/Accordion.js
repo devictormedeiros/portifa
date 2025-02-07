@@ -12,7 +12,7 @@ const Accordion = ({ title, children }) => {
   const { isVisible, targetRef } = ObserverHtml({ threshold: 0.5 });
 
   return (
-    <article
+    <section
       ref={targetRef}
       className={`accordion ${accordion ? "open" : ""} ${
         isVisible ? "sec-visible" : ""
@@ -47,7 +47,7 @@ const Accordion = ({ title, children }) => {
             <div className="accordion-content">{children}</div>
           </div>
       </div>
-    </article>
+    </section>
   );
 };
 

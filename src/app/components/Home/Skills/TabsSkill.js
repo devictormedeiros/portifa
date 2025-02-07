@@ -4,32 +4,24 @@ import Accordion from "../../Accordion/Accordion";
 import CardSkill from "./CardSkill";
 
 const TabsSkill = ({ skills, title }) => {
-    const [activeTab, setActiveTab] = useState();
+    const [activeTab, setActiveTab] = useState(0);
 
     useEffect(() => {
-        setActiveTab(skills[0].value);
+        if (skills.length > 0) setActiveTab(0); // Define o primeiro item como ativo
     }, [skills]);
 
     return (
-        <section className={`sec-tecnologias g-col-12`}>
         <Accordion title={title}>
-            <Tabs value={skills[0].value} className="tabs-skill flex flex-col gap-[2rem] lg:gap-12">
-                <TabsHeader
-                    className="bg-transparent flex gap-6 lg:gap-[2.5rem]"
-                    indicatorProps={{
-                    }}
-                >
-                    {skills.map(({ value, ano, cargo }) => (
-                        <Tab 
-                            key={value} 
-                            value={value} 
-                            className={`whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-[0.5rem] lg:rounded-2xl duration-300 hover:bg-primary hover:text-gray-900${activeTab === value ? " bg-primary text-gray-900" : ""}`}
-                            onClick={() => setActiveTab(value)}
+            <Tabs value={activeTab} className="tabs-skill flex flex-col gap-8 lg:gap-12">
+                <TabsHeader className="bg-transparent flex gap-6 lg:gap-10">
+                    {skills.map(({ ano, titulo }, index) => (
+                        <Tab
+                            key={index}
+                            value={index} // Usando o índice como valor único
+                            className={`w-auto md:min-w-[190px] whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-lg duration-300 hover:bg-primary hover:text-gray-900${activeTab === index ? " bg-primary text-gray-900" : ""}`}
+                            onClick={() => setActiveTab(index)}
                         >
-                            <strong>
-                                {ano}
-                            </strong>
-                            {` - ${cargo}`}
+                            <strong>{ano}</strong> - {titulo}
                         </Tab>
                     ))}
                 </TabsHeader>
@@ -40,16 +32,15 @@ const TabsSkill = ({ skills, title }) => {
                         unmount: { y: 250 },
                     }}
                 >
-                    {skills.map(({ value, ano, cargo, instituicao, descricao}) => (
-                        <TabPanel key={value} value={value}>
-                            <CardSkill key={value} ano={ano} cargo={cargo} instituicao={instituicao} descricao={descricao} index={value} />
+                    {skills.map((skill, index) => (
+                        <TabPanel className="px-0" key={index} value={index}>
+                            <CardSkill {...skill} />
                         </TabPanel>
                     ))}
                 </TabsBody>
             </Tabs>
         </Accordion>
-        </section>
-    )
-}
+    );
+};
 
 export default TabsSkill;

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-export default function ScrollingTexts() {
+export default function ScrollingTexts({data}) {
   const [scrollLeft, setScrollLeft] = useState(-70);
   const [scrollRight, setScrollRight] = useState(70);
   const section = useRef(null);
@@ -39,7 +39,7 @@ export default function ScrollingTexts() {
         className="relative whitespace-nowrap duration-300 motion text-primary"
         style={{ right: `${scrollLeft}%` }}
       >
-        Lorem ipsum dolor sit amet, consectetur
+        {data.texto_superior}
       </div>
 
       {/* Texto inferior */}
@@ -47,7 +47,7 @@ export default function ScrollingTexts() {
         className="relative whitespace-nowrap duration-300 motion"
         style={{ right: `${scrollRight}%` }}
       >
-        Lorem ipsum dolor sit amet, consectetur
+        {data.texto_inferior}
       </div>
     </section>
   );

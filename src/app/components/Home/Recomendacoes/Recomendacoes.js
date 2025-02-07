@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Accordion from "../../Accordion/Accordion";
 
-const Recomendacoes = () => {
+const Recomendacoes = ({data}) => {
     let recomendations = [
         {
             id: 1,
@@ -41,20 +41,18 @@ const Recomendacoes = () => {
     ];
 
     return (
-        <section className={`sec-tecnologias g-col-12`}>
-        <Accordion title={"Recomendações"}>
+        <section className={`sec-recomendacoes g-col-12`}>
+        <Accordion title={data.titulo}>
             <div className="overflow flex gap-6 items-start shadow-right lg:gap-[3rem]">
-                {recomendations.map((recomendation) => (
-                    <article key={recomendation.id} className="card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl lg:min-w-[30rem]">
+                {data.cards.map((item, index) => (
+                    <article key={index} className="card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl lg:min-w-[30rem]">
                         <figure className="relative aspect-[16/9]">
-                            <Image className="rounded-lg w-full h-full object-cover" src={recomendation.image} alt="Nome do autor" fill />
+                            <Image className="rounded-lg w-full h-full object-cover" src={item.imagem.url} alt="Nome do autor" fill />
                         </figure>
                         <div className="p-6">
-                            <p className="content-text text-white-70 pb-6 border-b border-white-10 italic">{recomendation.text}</p>
+                            <p className="content-text text-white-70 pb-6 border-b border-white-10 italic">{item.texto}</p>
                             <div className="flex pt-6 gap-2 items-center text-white-70">
-                                <p className="content-text">{recomendation.name}</p>
-                                -
-                                <p className="content-text">{recomendation.empresa}</p>
+                                <p className="content-text">{item.nome}</p>
                             </div>
                         </div>
                     </article>

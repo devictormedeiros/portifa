@@ -6,23 +6,24 @@
 }
 
 .tabs-skill {
+    ul::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        scrollbar-width: none; /* Firefox */
+    }  
     > nav {
         @apply overflow relative shadow-right;
 
         ul {
             @apply pb-2;
-        }
-
+        }   
         @media screen and (max-width: 1024px) {
-            @apply mx-[-1.5rem];
-
-            &::-webkit-scrollbar {
-                display: none;
-                width: 0;
-            }           
+            @apply mx-[-1.5rem];       
 
             ul {
                 @apply px-[1.5rem] pb-0;
+                -ms-overflow-style: none; /* IE e Edge */
+                scrollbar-width: none; /* Firefox */
             }
         }
     }

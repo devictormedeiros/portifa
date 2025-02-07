@@ -93,22 +93,22 @@ header {
   }
 }
 
-.menu-hamburger{
- .leading-relaxed{
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  button{
-    position: absolute;
-    right: 10%;
-    top: 10%;
-    padding: 0;
-    @media (max-width: 48rem) {
-      right:6%;
-      top: 6%;
+.menu-hamburger {
+  .leading-relaxed {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    button {
+      position: absolute !important;
+      right: 10%;
+      top: 10%;
+      padding: 0;
+      @media (max-width: 48rem) {
+        right: 6%;
+        top: 6%;
+      }
     }
   }
- }
 }
