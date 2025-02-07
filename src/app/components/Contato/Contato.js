@@ -4,7 +4,7 @@ import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
-import ScrollText from "../components/Home/ScrollText/ScrollText";
+
 import {
   FaLinkedinIn,
   FaBehance,
@@ -13,6 +13,7 @@ import {
   FaFacebookF,
   FaInstagram,
 } from "react-icons/fa6";
+import ScrollingText from "../Home/ScrollText/ScrollText";
 const Contato = ({ data, dataForm }) => {
   const {
     register,
@@ -60,7 +61,7 @@ const Contato = ({ data, dataForm }) => {
 
   return (
     <>
-      {data?.texto_scroll && <ScrollText data={data?.texto_scroll} />}
+      {data?.texto_scroll && <ScrollingText data={data?.texto_scroll} />}
 
       <section className="sec-contato md:mb-9 mb-0 g-col-12">
         <div className="container">
