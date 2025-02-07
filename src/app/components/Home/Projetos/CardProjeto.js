@@ -2,7 +2,7 @@ import Image from "next/image";
 
 const CardProjeto = ({ projeto }) => {
     return (
-        <article className="sticky top-[7.5rem] card-projeto col-span-12 bg-gradient-primary-c rounded-2xl">
+        <article className="sticky top-[7rem] card-projeto col-span-12 bg-gradient-primary-c rounded-2xl">
             <div className="p-[2rem] flex flex-col gap-6 lg:gap-[2.5rem] rounded-lg lg:p-[4rem]">
                 <div className="flex flex-col gap-[0.5rem] justify-between pb-[.5rem] border-b border-white-10 lg:flex-row">
                     <h3 className="content-title-h3 text-gray-200 uppercase">{projeto.nome}</h3>

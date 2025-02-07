@@ -126,6 +126,14 @@ main {
   z-index: 1;
 }
 
+html {
+  font-size: 13px;
+  
+  @media screen and (min-width: 768px) {
+      font-size: clamp(12px, 0.83vw, 16px);
+  }
+}
+
 // Base
 @import 'assets/scss/base/animations';
 @import 'assets/scss/base/helpers';
