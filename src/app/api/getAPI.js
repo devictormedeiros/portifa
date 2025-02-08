@@ -2,7 +2,7 @@ async function getAPI(routes) {
   try {
     // realiza a requisição para o endpoint do Wordpress API e um await para aguardar a respostav
     const response = await fetch(
-      `${'https://devictormedeiros.com/portifa-wp/wp-json' + routes}`
+      `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL + routes}`
     );
 
     // se o response não for ok, lança(throw) uma exceção com a mensagem de erro
