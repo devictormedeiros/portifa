@@ -193,10 +193,11 @@ module.exports = withMT({
           fontSize: "8.75rem",
           lineHeight: "8.75rem",
           fontWeight: "700",
+          textTransform: "uppercase",
           "@media (max-width: 48rem)":{
             fontSize: "2.5rem",
             lineHeight: "2.5rem",
-            fontWeight: "500",
+            fontWeight: "700",
           }
         },
         ".motion-2": {

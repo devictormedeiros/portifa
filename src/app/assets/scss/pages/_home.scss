@@ -1,11 +1,9 @@
 
-.sec-intro {
-    
+.sec-bg-home {
+    background: linear-gradient(180.07deg, rgba(168, 161, 150, 0.03) 0.06%, rgba(255, 166, 0, 0) 19.26%, rgba(255, 166, 0, 0.03) 48.17%)
 }
 
 .sec-call {
-    background: linear-gradient(180.07deg, rgba(168, 161, 150, 0.03) 0.06%, rgba(255, 166, 0, 0) 19.26%, rgba(255, 166, 0, 0.03) 48.17%);
-
     .motion-2 {
         animation-name: scaleAnimation;
         animation-duration: 1ms;
