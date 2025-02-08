@@ -15,7 +15,7 @@ const HomePage = ({ data }) => {
     <>
       {data?.introducao && <Intro data={data.introducao} />}
       <Header logo={data?.logo_principal || null} />
-      <main className="main-home flex flex-wrap gap-y-[5rem] md:gap-y-[8.75rem] relative z-[1]">
+      <main className="main-home flex flex-wrap relative z-[1]">
         {data?.sobre && <Sobre data={data?.sobre || null} />}
         {data?.highlight && <Call data={data?.highlight || null} />}
         <Projetos />

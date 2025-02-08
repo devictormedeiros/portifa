@@ -46,7 +46,7 @@ const TextAnimate = ({ frases }) => {
     return () => clearTimeout(timeout);
   }, [text, isDeleting, letterIndex, currentFrasesIndex, frases]);
 
-  return <span>{text}</span>;
+  return <span className="uppercase">{text}</span>;
 };
 
 export default memo(TextAnimate);

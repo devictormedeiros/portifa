@@ -127,14 +127,18 @@ html {
   scrollbar-color: var(--primary) transparent;
   scrollbar-width: thin;
   font-size: 16px;
-   
-  @media screen and (min-width: 768px) {
-      font-size: clamp(16px, 0.83vw, 16px);
-  }
-}
 
-.bg-section{
-  
+  @media screen and (min-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: 1280px) {
+      font-size: 14px;
+  }
+
+  @media screen and (min-width: 1800px) {
+      font-size: 16px;
+  }
 }
 
 main {

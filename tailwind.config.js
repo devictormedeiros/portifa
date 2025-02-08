@@ -15,11 +15,11 @@ module.exports = withMT({
       padding: "1.5rem"
     },
     screens: {
-      sm: '40rem',
-      md: '48rem',
-      lg: '64rem',
-      xl: '80rem',
-      '2xl': '96rem',
+      sm: '640px',
+      md: '768px',
+      lg: '1024px',
+      xl: '1280px',
+      '2xl': '1320px',
     },
     extend: {
       colors: {

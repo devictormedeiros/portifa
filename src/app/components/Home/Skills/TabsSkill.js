@@ -12,8 +12,8 @@ const TabsSkill = ({ skills, title }) => {
 
     return (
         <Accordion title={title}>
-            <Tabs value={activeTab} className="tabs-skill flex flex-col gap-8 lg:gap-12">
-                <TabsHeader className="bg-transparent flex gap-6 lg:gap-10">
+            <Tabs value={activeTab} className="tabs-skill flex flex-col gap-8 md:gap-12">
+                <TabsHeader className="bg-transparent flex gap-6 md:gap-10">
                     {skills.map(({ ano, titulo }, index) => (
                         <Tab
                             key={index}

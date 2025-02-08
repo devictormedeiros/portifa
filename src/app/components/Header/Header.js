@@ -51,7 +51,7 @@ const Header = ({ logo }) => {
           <div className="col-span-6 hidden md:block">
             <Nav data={itemslink} />
           </div>
-          <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-12 gap-x-6">
+          <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-12 gap-x-[2rem]">
             <label className="switch-darkmode">
               <input type="checkbox" />
               <span className="slider-darkmode"></span>
