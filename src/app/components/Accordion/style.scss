@@ -9,6 +9,10 @@
   }
 
   .accordion-header {
+    margin-bottom: 3rem;
+    @media screen and (max-width: 48rem) {
+      margin-bottom: 2rem;
+    }
     button.accordion-toggle {
       .accordion-icon {
         transition: transform 0.5s ease-in-out;
@@ -23,10 +27,7 @@
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
       visibility 0.5s ease-out;
     .accordion-header {
-      margin-bottom: 3rem;
-      @media screen and (max-width: 48rem) {
-        margin-bottom: 2rem;
-      }
+
       button.accordion-toggle {
         .accordion-icon {
           transform: rotate(180deg);

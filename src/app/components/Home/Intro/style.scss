@@ -12,31 +12,37 @@ section.sec-intro {
   &:after {
     content: "";
     display: block;
-    width: 27.375rem;
-    height: 27.375rem;
-    display: flex;
-    background-image: url("data:image/svg+xml,%3Csvg width='436' height='436' viewBox='0 0 436 436' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d_21_4)'%3E%3Cpath d='M218 428C336.189 428 432 332.189 432 214C432 95.8111 336.189 0 218 0C99.8111 0 4 95.8111 4 214C4 332.189 99.8111 428 218 428Z' fill='url(%23paint0_radial_21_4)' shape-rendering='crispEdges'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_21_4' x='0' y='0' width='436' height='436' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='4'/%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_21_4'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_21_4' result='shape'/%3E%3C/filter%3E%3CradialGradient id='paint0_radial_21_4' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(218 214) rotate(90) scale(214)'%3E%3Cstop stop-color='%23FFA600' stop-opacity='0.1'/%3E%3Cstop offset='1' stop-color='%23FFA600' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E%0A");
-    position: fixed;
+    width: 12.5rem;
+    max-width: 25%;
+    height: 12.5rem;
+    max-height: 100%;
+    background-color: var(--primary);
     border-radius: 100%;
-    top: -15.6875rem;
+    background-size: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    filter: blur(31.25rem);
     z-index: -1;
-    right: -17.875rem;
   }
   &:before {
     content: "";
     display: block;
-    width: 27.375rem;
-    height: 27.375rem;
-    display: flex;
-    background-image: url("data:image/svg+xml,%3Csvg width='436' height='436' viewBox='0 0 436 436' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg filter='url(%23filter0_d_21_4)'%3E%3Cpath d='M218 428C336.189 428 432 332.189 432 214C432 95.8111 336.189 0 218 0C99.8111 0 4 95.8111 4 214C4 332.189 99.8111 428 218 428Z' fill='url(%23paint0_radial_21_4)' shape-rendering='crispEdges'/%3E%3C/g%3E%3Cdefs%3E%3Cfilter id='filter0_d_21_4' x='0' y='0' width='436' height='436' filterUnits='userSpaceOnUse' color-interpolation-filters='sRGB'%3E%3CfeFlood flood-opacity='0' result='BackgroundImageFix'/%3E%3CfeColorMatrix in='SourceAlpha' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0' result='hardAlpha'/%3E%3CfeOffset dy='4'/%3E%3CfeGaussianBlur stdDeviation='2'/%3E%3CfeComposite in2='hardAlpha' operator='out'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0'/%3E%3CfeBlend mode='normal' in2='BackgroundImageFix' result='effect1_dropShadow_21_4'/%3E%3CfeBlend mode='normal' in='SourceGraphic' in2='effect1_dropShadow_21_4' result='shape'/%3E%3C/filter%3E%3CradialGradient id='paint0_radial_21_4' cx='0' cy='0' r='1' gradientUnits='userSpaceOnUse' gradientTransform='translate(218 214) rotate(90) scale(214)'%3E%3Cstop stop-color='%23FFA600' stop-opacity='0.1'/%3E%3Cstop offset='1' stop-color='%23FFA600' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3C/svg%3E%0A");
-    position: fixed;
+    width: 12.5rem;
+    max-width: 25%;
+    height: 12.5rem;
+    max-height: 100%;
     border-radius: 100%;
+    background-color: var(--primary);
+    position: absolute;
+    top: 0;
+    left: 0;
+    filter: blur(31.25rem);
     z-index: -1;
-    left: -14.8125rem;
-    bottom: -1.0625rem;
   }
   > .container-text {
-    min-height: calc(100vh - 5rem);
+    min-height: 100vh;
+    min-height: 100svh;
     padding-top: 5rem;
     padding-bottom: 5rem;
     display: flex;

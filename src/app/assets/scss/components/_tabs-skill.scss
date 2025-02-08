@@ -17,7 +17,7 @@
         ul {
             @apply pb-2;
         }   
-        @media screen and (max-width: 1024px) {
+        @media (min-width:768px) and (max-width: 1024px) {
 
             ul {
                 @apply px-[1.5rem] pb-0;

@@ -33,7 +33,7 @@ const TabsSkill = ({ skills, title }) => {
                     }}
                 >
                     {skills.map((skill, index) => (
-                        <TabPanel className="px-0" key={index} value={index}>
+                        <TabPanel className="px-0 pb-0" key={index} value={index}>
                             <CardSkill {...skill} />
                         </TabPanel>
                     ))}
