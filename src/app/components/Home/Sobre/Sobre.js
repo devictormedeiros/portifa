@@ -3,7 +3,7 @@ import { memo } from "react";
 import Image from "next/image";
 const Sobre = ({ data }) => {
   return (
-    <section className="sec-sobre g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem] bg-[#000]">
+    <section className="sec-sobre g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]">
       <div className="container">
         <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
           <div className="text col-span-12 md:col-span-7">

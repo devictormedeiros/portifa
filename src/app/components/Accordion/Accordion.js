@@ -21,7 +21,7 @@ const Accordion = ({ title, children }) => {
       <div className="container">
           <div className="accordion-header">
             <button
-              className="accordion-toggle flex items-center justify-between w-full py-4 text-gray-200 uppercase border-b border-white-10"
+              className="accordion-toggle flex items-center justify-between w-full py-4 md:pt-0 pb-4 text-gray-200 uppercase border-b border-white-10"
               aria-expanded={accordion}
               onClick={toggleAccordion}
             >

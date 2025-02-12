@@ -7,7 +7,7 @@ const Intro = ({ data }) => {
   const texto_introducao = data?.texto_introducao || "";
 
   return (
-    <section className="sec-intro overflow-hidden">
+    <section className="sec-intro overflow-hidden  bg-gray-900">
       <div className="container-text">
         <div className="text container">
           <h1 className="content-title-h1 text-gray-200">

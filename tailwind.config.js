@@ -93,8 +93,8 @@ module.exports = withMT({
           lineHeight: "6.875rem",
           fontWeight: "700",
           "@media (max-width: 48rem)":{
-            fontSize: "2rem",
-            lineHeight: "2.25rem",
+            fontSize: "2.75rem",
+            lineHeight: "3rem",
             fontWeight: "800",
           }
         },
@@ -211,9 +211,9 @@ module.exports = withMT({
           }
         },
         ".menu-section": {
-          fontSize: "0.875rem",
-          lineHeight: "1.75rem",
-          fontWeight: "500",
+          fontSize: "12px",
+          lineHeight: "16px",
+          fontWeight: "400",
         },
         ".button-md": {
           fontSize: "1rem",

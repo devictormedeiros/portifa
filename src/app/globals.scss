@@ -15,6 +15,9 @@
 @import 'assets/scss/pages/_home';
 
 :root {
+  --primary: #fff;
+  --primary-light: #fff;
+
   --black-5: #0000000d;
   --black-10: #0000001a;
   --black-20: #00000033;
@@ -67,7 +70,7 @@
   );
   --gray-gradient-d: linear-gradient(109.79deg, #e4e4e4 0%, #f4f4f4 101.78%);
 
-  --primary: #fff;
+
   --gradient-primary-a: radial-gradient(
     50% 50% at 50% 50%,
     rgba(255, 166, 0, 0.1) 0%,
@@ -98,6 +101,13 @@
     rgba(238, 238, 238, 0) 19.26%,
     rgba(238, 238, 238, 0.6) 48.17%
   );
+
+  --image-fade-dark: linear-gradient(180deg, #0D0D0D 12.67%, rgba(13, 13, 13, 0.60) 41.63%, rgba(13, 13, 13, 0.60) 71.33%, #0D0D0D 100%);
+  --image-fade-white: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.30) 25.08%, rgba(255, 255, 255, 0.30) 75.4%, #FFF 100%);
+  --header-height: 68px;
+  @media (max-width: 768px){
+    --header-height: 56px;
+  }
 }
 
 body.dark {
@@ -115,19 +125,19 @@ body.dark {
   --gradient-primary-d: var(--gradient-primary-h);
   --gradient-gray-a: var(--gradient-gray-c);
   --gradient-gray-b: var(--gradient-gray-d);
+  --primary: var(--primary-light);
 }
 
 a:hover {
   text-decoration: none !important;
 }
 
-
 html {
   scroll-behavior: auto;
   scrollbar-color: var(--primary) transparent;
   scrollbar-width: thin;
   font-size: 16px;
-
+  font-family: "Roboto Flex", serif;
   @media screen and (min-width: 768px) {
     font-size: 12px;
   }
@@ -139,12 +149,17 @@ html {
   @media screen and (min-width: 1800px) {
       font-size: 16px;
   }
+
+  body{
+    font-family: "Roboto Flex", serif;
+  }
 }
 
 main {
   background-color: var(--gray-900);
   z-index: 1;
-  padding-bottom: 10rem;
+  padding-bottom: 11.5rem;
+  
   @media (max-width: 768px) {
     padding-bottom: 4rem;
   }

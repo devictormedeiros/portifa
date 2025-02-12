@@ -15,21 +15,26 @@ const HomePage = ({ data }) => {
   return (
     <>
       {data?.introducao && <Intro data={data.introducao} />}
-      <Header logo={data?.logo_principal || null} />
+    
       <main className="main-home flex flex-wrap relative z-[1]">
+      <Header logo={data?.logo_principal || null} />
         {data?.sobre && <Sobre data={data?.sobre || null} />}
-        <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.75rem] md:gap-y-[8.75rem]">
+        <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.highlight && <Call data={data?.highlight || null} />}
           <Projetos />
-          {data?.highlight && <Skills data={data?.tabs} />}
+          <section className="grid flex-wrap gap-y-[10rem]">
+          {data?.tabs && <Skills data={data?.tabs} />}
           {data?.tecnologias_atuacoes && (
             <Tecnologias data={data?.tecnologias_atuacoes || null} />
           )}
           {data?.recomendacoes && (
           <Recomendacoes data={data.recomendacoes} />
           )}
+             </section>
         </div>
+        {data?.texto_scroll && (
         <ScrollingTexts data={data?.texto_scroll || null}/>
+        )}
         {data?.tecnologias_atuacoes && (
           <Contato
             data={data?.secao_contato || null}

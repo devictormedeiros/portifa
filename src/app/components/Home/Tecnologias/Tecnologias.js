@@ -12,14 +12,14 @@ const Tecnologias = ({ data }) => {
             <ul className="grid grid-cols-12 gap-y-6">
               {accordion.itens?.map((items, index) => {
                 return (
-                  <li key={index} className="grid grid-cols-12 col-span-12 py-3 md:gap-y-0 gap-y-4 rounded items-center py-0">
+                  <li key={index} className="grid grid-cols-12 col-span-12 md:gap-y-0 gap-y-4 rounded items-center py-0">
                     <div className="md:col-span-3 col-span-12 flex items-center gap-3">
                       {items?.icone && (
                         <div className="tec-icon">
                           <Image
                             src={items?.icone.url}
                             alt="Descrição da imagem"
-                            className="img-fluid"
+                            className="img-fluid contain"
                             width={34}
                             height={34}
                           />

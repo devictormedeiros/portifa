@@ -118,6 +118,7 @@ export default function Styleguide({ styleguide }) {
 
     const solidColor = {
       "--primary": styleguide?.primary || null,
+      "--primary-light": styleguide?.primary_light || null,
     };
 
     const mergedStyles = { ...solidColor, ...gradients };

@@ -4,6 +4,7 @@
 
 section.sec-intro {
   position: relative;
+  
   & + .sticky-header {
     .container-text {
       position: relative;
@@ -20,29 +21,26 @@ section.sec-intro {
     border-radius: 100%;
     background-size: 100%;
     position: absolute;
-    top: 0;
-    right: 0;
     filter: blur(31.25rem);
-    z-index: -1;
+    z-index: 1;
+    animation: effect-intro 20s ease-in-out infinite;
   }
   &:before {
     content: "";
     display: block;
-    width: 12.5rem;
     max-width: 25%;
     height: 12.5rem;
     max-height: 100%;
     border-radius: 100%;
     background-color: var(--primary);
     position: absolute;
-    top: 0;
-    left: 0;
     filter: blur(31.25rem);
-    z-index: -1;
+    z-index: 1;
+    animation: effect-intro 12s ease-in-out infinite;
+    
   }
   > .container-text {
-    min-height: 100vh;
-    min-height: 100svh;
+    min-height: calc(100vh - var(--header-height));
     padding-top: 5rem;
     padding-bottom: 5rem;
     display: flex;
@@ -51,7 +49,7 @@ section.sec-intro {
   }
   .text {
     position: fixed;
-    z-index: -1;
+    z-index: 0;
     left: 0;
     right: 0;
     margin: auto;
@@ -70,26 +68,17 @@ section.sec-intro {
   }
 
   @media screen and (min-width: 768px) {
-    > .container-text {
-      min-height: calc(100vh - 5.5rem);
-    }
 
     &:before {
       width: 100rem;
       height: 100rem;
-      background-repeat: no-repeat;
-      background-size: contain;
-      left: -53%;
-      top: -25%;
+      left: -36%;
     }
 
     &:after {
       width: 74.875rem;
       height: 74.875rem;
-      background-repeat: no-repeat;
-      background-size: contain;
-      top: -66%;
-      right: -30%;
+      right: -36%;
     }
   }
 }
@@ -103,5 +92,22 @@ section.sec-intro {
   }
   100% {
     opacity: 0;
+  }
+}
+@keyframes effect-intro {
+  0% {
+    top: -60%;
+  }
+  50% {
+    top: 100%;
+  }
+  55% {
+    top: 95%;
+  }
+  60% {
+    top: 100%;
+  }
+  100% {
+    top: -60%;
   }
 }

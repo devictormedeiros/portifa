@@ -13,12 +13,12 @@ const TabsSkill = ({ skills, title }) => {
     return (
         <Accordion title={title}>
             <Tabs value={activeTab} className="tabs-skill flex flex-col gap-8 md:gap-12">
-                <TabsHeader className="bg-transparent flex gap-6 md:gap-10">
+                <TabsHeader className="bg-transparent flex gap-6 md:gap-10 md:pb-0 md:py-0">
                     {skills.map(({ ano, titulo }, index) => (
                         <Tab
                             key={index}
-                            value={index} // Usando o índice como valor único
-                            className={`w-auto md:min-w-[190px] whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-lg duration-300 hover:bg-primary hover:text-gray-900${activeTab === index ? " bg-primary text-gray-900" : ""}`}
+                            value={index}
+                            className={`w-auto md:min-w-[190px] whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-lg duration-300 hover:bg-primary hover:text-gray-900 ${activeTab === index ? "bg-primary text-gray-900" : ""}`}
                             onClick={() => setActiveTab(index)}
                         >
                             <strong>{ano}</strong> - {titulo}
@@ -33,7 +33,7 @@ const TabsSkill = ({ skills, title }) => {
                     }}
                 >
                     {skills.map((skill, index) => (
-                        <TabPanel className="px-0 pb-0" key={index} value={index}>
+                        <TabPanel className="px-0 py-0" key={index} value={index}>
                             <CardSkill {...skill} />
                         </TabPanel>
                     ))}

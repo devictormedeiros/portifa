@@ -21,11 +21,11 @@ const DrawerMenu = ({ data }) => {
       <Button
         onClick={handleOpen}
         variant="gradient"
-        className="flex items-center gap-2 px-0"
+        className="flex items-center gap-2 px-0 py-0 bg-transparent"
       >
         <svg
           width="28"
-          height="24"
+          height="18"
           viewBox="0 0 33 24"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

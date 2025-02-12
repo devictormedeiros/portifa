@@ -35,9 +35,9 @@ const Header = ({ logo }) => {
   return (
     <header
       ref={headerRef}
-      className={`bg-black text-white ${isHeaderSticky ? "sticky-header" : ""}`}
+      className={`text-white ${isHeaderSticky ? "sticky-header" : ""}`}
     >
-      <div className="mx-auto px-6 md:px-10 py-4 md:max-w-[102.75rem]">
+      <div className="mx-auto px-6 md:px-10">
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
             <Link className="logo" href="/">
