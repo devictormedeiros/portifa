@@ -45,9 +45,9 @@ const Recomendacoes = ({data}) => {
         <Accordion title={data.titulo}>
             <div className="overflow flex gap-6 items-start shadow-right md:gap-[3rem]">
                 {data.cards.map((item, index) => (
-                    <article key={index} className="card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl md:min-w-[30rem]">
+                    <article key={index} className="card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl overflow-hidden md:min-w-[30rem]">
                         <figure className="relative aspect-[16/9]">
-                            <Image className="rounded-lg w-full h-full object-cover" src={item.imagem.url} alt="Nome do autor" fill />
+                            <Image className="w-full h-full object-cover" src={item.imagem.url} alt="Nome do autor" fill />
                         </figure>
                         <div className="p-6">
                             <p className="content-text text-white-70 pb-6 border-b border-white-10 italic">{item.texto}</p>
