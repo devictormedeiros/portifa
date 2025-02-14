@@ -43,7 +43,7 @@ const Recomendacoes = ({data}) => {
     return (
         <section className={`sec-recomendacoes g-col-12`}>
         <Accordion title={data.titulo}>
-            <div className="overflow flex gap-6 items-start shadow-right md:gap-[3rem]">
+            <div className="flex gap-6 items-start shadow-right md:gap-[3rem]">
                 {data.cards.map((item, index) => (
                     <article key={index} className="card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl overflow-hidden md:min-w-[30rem]">
                         <figure className="relative aspect-[16/9]">

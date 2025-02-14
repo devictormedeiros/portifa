@@ -43,14 +43,7 @@ const TabsSkill = ({ skills, title }) => {
                 
             >
                 <TabsHeader 
-                    className="bg-transparent flex gap-6 md:gap-10 md:pb-0 md:py-0 overflow-x-auto cursor-grab active:cursor-grabbing"
-                    ref={containerRef}
-                    onMouseDown={startDragging}
-                    onMouseUp={stopDragging}
-                    onMouseLeave={stopDragging}
-                    onTouchStart={startDragging}
-                    onTouchMove={onDragging}
-                    onTouchEnd={stopDragging}
+                    className="bg-transparent flex gap-6 md:gap-10 md:pb-0 md:py-0 overflow-x-auto md:overflow-x-[inherit] cursor-grab active:cursor-grabbing"
                 >
                     {skills.map(({ ano, titulo }, index) => (
                         <Tab
@@ -69,6 +62,7 @@ const TabsSkill = ({ skills, title }) => {
                         mount: { y: 0 },
                         unmount: { y: 250 },
                     }}
+                    className="px-6 md:px-0"
                 >
                     {skills.map((skill, index) => (
                         <TabPanel className="px-0 py-0" key={index} value={index}>

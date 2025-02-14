@@ -12,14 +12,10 @@ module.exports = withMT({
   theme: {
     container: {
       center: true,
-      padding: "1.5rem"
-    },
-    screens: {
-      sm: '640px',
-      md: '768px',
-      lg: '1024px',
-      xl: '1280px',
-      '2xl': '1320px',
+      padding: "1.5rem",
+      screens: {
+        'md': '82.5rem',
+      },
     },
     extend: {
       colors: {

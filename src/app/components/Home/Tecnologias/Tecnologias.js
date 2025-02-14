@@ -9,7 +9,7 @@ const Tecnologias = ({ data }) => {
       {data?.map((accordion, index) => {
         return (
           <Accordion key={index} title={accordion.titulo}>
-            <ul className="grid grid-cols-12 gap-y-6">
+            <ul className="grid grid-cols-12 gap-y-6 px-6 md:px-0">
               {accordion.itens?.map((items, index) => {
                 return (
                   <li key={index} className="grid grid-cols-12 col-span-12 md:gap-y-0 gap-y-4 rounded items-center py-0">
