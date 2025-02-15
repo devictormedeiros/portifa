@@ -7,11 +7,7 @@
 
 .tabs-skill {
     > nav {
-        @apply relative shadow-right;
-        
-        ul {
-            @apply pb-2;
-        }   
+        @apply relative shadow-right;  
 
         @media screen and (max-width: 768px) {
             ul {

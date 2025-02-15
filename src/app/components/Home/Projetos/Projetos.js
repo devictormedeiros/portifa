@@ -19,7 +19,7 @@ const Projetos = () => {
             technologies: ["html", "css", "js", "react"]
         },
         {
-            id: 1,
+            id: 3,
             nome: "Lorem ipsum dolor sit amet",
             descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
             img: "/images/projeto.png",
@@ -33,7 +33,9 @@ const Projetos = () => {
             <div className="container">
                 <div className="grid grid-cols-12 gap-0 md:gap-y-[7.25rem]">
                     {projetos.map((projeto) => (
-                        <CardProjeto key={projeto.id} projeto={projeto} />
+                        <div className="sticky top-[5rem] lg:top-[7rem] col-span-12 h-[80vh] flex items-center justify-center" key={projeto.id}>
+                            <CardProjeto projeto={projeto} />
+                        </div>
                     ))}
                 </div>
             </div>

@@ -11,3 +11,17 @@
         animation-timeline: view();
     }
 }
+
+.sec-recomendacoes {
+    @media screen and (max-width: 768px) {
+        .card-recomendations {
+            &:first-child {
+                margin-left: 1.5rem;
+            }
+    
+            &:last-child {
+                margin-right: 1.5rem;
+            }
+        }
+    }
+}

@@ -1,49 +1,52 @@
 import Image from "next/image";
 import Accordion from "../../Accordion/Accordion";
+import { useRef, useState } from "react";
 
 const Recomendacoes = ({data}) => {
-    let recomendations = [
-        {
-            id: 1,
-            image: "/images/recomendations/image.png",
-            text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.”",
-            name: "Nome do autor",
-            empresa: "Empresa",
-        },
-        {
-            id: 2,
-            image: "/images/recomendations/image.png",
-            text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.”",
-            name: "Nome do autor",
-            empresa: "Empresa",
-        },
-        {
-            id: 3,
-            image: "/images/recomendations/image.png",
-            text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.”",
-            name: "Nome do autor",
-            empresa: "Empresa",
-        },
-        {
-            id: 4,
-            image: "/images/recomendations/image.png",
-            text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.”",
-            name: "Nome do autor",
-            empresa: "Empresa",
-        },
-        {
-            id: 5,
-            image: "/images/recomendations/image.png",
-            text: "“Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.”",
-            name: "Nome do autor",
-            empresa: "Empresa",
-        }
-    ];
+    const containerRef = useRef(null);
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [scrollLeft, setScrollLeft] = useState(0);
+    const isMobile = window.innerWidth <= 768;
+
+    const startDragging = (e) => {
+        if(isMobile) return;
+        setIsDragging(true);
+        e.preventDefault();
+        const pageX = e.touches ? e.touches[0].pageX : e.pageX;
+        setStartX(pageX - (containerRef.current?.scrollLeft || 0));
+        setScrollLeft(containerRef.current?.scrollLeft || 0);
+        console.log("startDragging", pageX, startX, scrollLeft);
+    }
+
+    const onDragging = (e) => {
+        if(isMobile) return;
+        if (!isDragging || !containerRef.current) return;
+        e.preventDefault();
+        const pageX = e.touches ? e.touches[0].pageX : e.pageX;
+        const walk = (pageX - startX) * 1.5;
+        containerRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const stopDragging = () => {
+        if(isMobile) return;
+        setIsDragging(false);
+    }
 
     return (
         <section className={`sec-recomendacoes g-col-12`}>
         <Accordion title={data.titulo}>
-            <div className="flex gap-6 items-start shadow-right md:gap-[3rem]">
+            <div 
+                className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-grab active:cursor-grabbing"
+                ref={containerRef}
+                onMouseDown={startDragging}
+                onMouseMove={onDragging}
+                onMouseUp={stopDragging}
+                onMouseLeave={stopDragging}
+                onTouchStart={startDragging}
+                onTouchMove={onDragging}
+                onTouchEnd={stopDragging}
+            >
                 {data.cards.map((item, index) => (
                     <article key={index} className="card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl overflow-hidden md:min-w-[30rem]">
                         <figure className="relative aspect-[16/9]">

@@ -6,9 +6,15 @@
     overflow: hidden;
     transition: max-height 0.5s ease-out, opacity 0.5s ease-out,
     visibility 0.5s ease-out;
-    margin-top: 3rem;
-    @media screen and (max-width: 768px) {
+
+    .accordion-content {
       margin-top: 2rem;
+    }
+    
+    @media screen and (min-width: 768px) {
+      .accordion-content {
+        margin-top: 3rem;
+      }
     }
   }
 
@@ -16,7 +22,7 @@
     
     button.accordion-toggle {
       .accordion-icon {
-        transition: transform 0.5s ease-in-out;
+        transition: transform 0.3s ease-in-out;
       }
     }
   }
