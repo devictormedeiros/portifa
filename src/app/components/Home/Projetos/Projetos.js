@@ -1,4 +1,7 @@
 import CardProjeto from "./CardProjeto";
+import gsap from "gsap";
+import { useGsap } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Projetos = () => {
     let projetos = [
@@ -28,14 +31,33 @@ const Projetos = () => {
         },
     ]
 
+    useGsap(() => {
+        const pinned = gsap.utils.toArray('.pinned');
+
+        pinned.forEach((section, i, sections) => {
+            let endScalePoint = 20;
+
+            gsap.fromTo(section, {scale: 1}, {
+                scale: 0.5,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top top",
+                    end: endScalePoint,
+                    scrub: 1
+                }
+            })
+        });
+    }, [ScrollTrigger]);
+
     return (
         <section className="sec-projetos g-col-12">
             <div className="container">
                 <div className="grid grid-cols-12 gap-0 md:gap-y-[7.25rem]">
-                    {projetos.map((projeto) => (
-                        <div className="sticky top-[5rem] lg:top-[7rem] col-span-12 h-[80vh] flex items-center justify-center" key={projeto.id}>
+                    {projetos.map((projeto, i) => (
+                        <article className={`sticky top-[5rem] lg:top-[7rem] col-span-12 h-[80vh] flex items-center justify-center ${!projetos[i + 1] ? 'scroll' : 'pinned'}`} key={projeto.id}>
                             <CardProjeto projeto={projeto} />
-                        </div>
+                        </article>
                     ))}
                 </div>
             </div>
