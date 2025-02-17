@@ -6,14 +6,13 @@
     row-gap: 5rem;
   }
   .accordion {
-    width: 100%;
-    &:not(.open),
-    &:not(.sec-visible) {
+    &:not(.open), .accordion-content ul:not(.sec-visible){
       .progress-bar .progress-bar-percent {
         width: 0 !important;
         transition: width 0.5s ease-out 0.2s;
       }
     }
+
     .accordion-body {
       .accordion-content {
         .tec-icon {

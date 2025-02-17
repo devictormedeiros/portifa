@@ -13,17 +13,16 @@
         scrollbar-width: none; /* Firefox */
     }  
     > nav {
-        @apply overflow relative shadow-right;
+        @apply relative shadow-right;  
 
-        ul {
-            @apply pb-2;
-        }   
-        @media (min-width:768px) and (max-width: 1024px) {
-
+        @media screen and (max-width: 768px) {
             ul {
-                @apply px-[1.5rem] pb-0;
-                -ms-overflow-style: none; /* IE e Edge */
-                scrollbar-width: none; /* Firefox */
+                li {
+
+                    &:last-child {
+                        @apply me-6;
+                    }
+                }
             }
         }
     }
