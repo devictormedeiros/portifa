@@ -15,7 +15,7 @@ const AccordionCustom = ({ title, children }) => {
   return (
 
 <>
-<ScrollAnimation className="block w-full" animateIn='bounceInRight' animateOnce={true} duration={1}>
+<ScrollAnimation className="block w-full" animateIn='fadeInRight' animateOnce={true} duration={2}>
     <Accordion open={open} className={`accordion w-full mb-0 px-0 ${open ? "open" : 0}`}>
       <div className="container">
         <div className="accordion-header">

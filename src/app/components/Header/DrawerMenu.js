@@ -1,103 +1,129 @@
-import React from "react";
-import {
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
-import { useState } from "react";
-import { FaX } from "react-icons/fa6";
+"use client";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(!open);
-  const customStyles = {
-    base: {
-      backdrop: { backgroundColor: "var(--black-70)" },
-    },
+  const buttonRef = useRef(null);
+  const [position, setPosition] = useState({
+    x: "50%",
+    y: "50%",
+    width: 0,
+    height: 0,
+  });
+
+  // Captura a posição do botão antes de abrir o menu
+  const updateButtonPosition = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+        width: rect.width,
+        height: rect.height,
+      });
+    }
   };
+
+  // Função que atualiza a posição e abre o menu
+  const toggleMenu = () => {
+    updateButtonPosition(); // Captura a posição ANTES de mudar o estado
+    setTimeout(() => setOpen(!open), 0); // Pequeno delay para garantir atualização antes da animação
+  };
+
   return (
     <>
-      <Button
-        onClick={handleOpen}
-        variant="gradient"
-        className="flex items-center gap-2 px-0 py-0 bg-transparent"
+      <button
+        ref={buttonRef}
+        onClick={toggleMenu}
+        className="z-50 flex items-center justify-center bg-gray-800 rounded-full shadow-lg transition-transform duration-300"
       >
         <svg
-          width="28"
-          height="18"
-          viewBox="0 0 33 24"
+          width="27"
+          height="20"
+          viewBox="0 0 27 20"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M0 1.84615C0 0.826551 0.619913 0 1.38462 0H30.9231C31.6878 0 32.3077 0.826551 32.3077 1.84615C32.3077 2.86576 31.6878 3.69231 30.9231 3.69231H1.38462C0.619913 3.69231 0 2.86576 0 1.84615Z"
+            d="M0.0770264 1.53846C0.0770264 0.688793 0.593621 0 1.23087 0H25.8463C26.4835 0 27.0001 0.688793 27.0001 1.53846C27.0001 2.38813 26.4835 3.07692 25.8463 3.07692H1.23087C0.593621 3.07692 0.0770264 2.38813 0.0770264 1.53846Z"
             fill="#EDEDED"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M0 12C0 10.9804 0.619913 10.1538 1.38462 10.1538H30.9231C31.6878 10.1538 32.3077 10.9804 32.3077 12C32.3077 13.0196 31.6878 13.8461 30.9231 13.8461H1.38462C0.619913 13.8461 0 13.0196 0 12Z"
+            d="M0.0769043 9.9994C0.0769043 9.14973 0.593499 8.46094 1.23075 8.46094H25.8461C26.4834 8.46094 27 9.14973 27 9.9994C27 10.8491 26.4834 11.5379 25.8461 11.5379H1.23075C0.593499 11.5379 0.0769043 10.8491 0.0769043 9.9994Z"
             fill="#EDEDED"
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
-            d="M0 22.1539C0 21.1343 0.619913 20.3077 1.38462 20.3077H30.9231C31.6878 20.3077 32.3077 21.1343 32.3077 22.1539C32.3077 23.1735 31.6878 24 30.9231 24H1.38462C0.619913 24 0 23.1735 0 22.1539Z"
+            d="M0.0769043 18.4613C0.0769043 17.6116 0.593499 16.9229 1.23075 16.9229H25.8461C26.4834 16.9229 27 17.6116 27 18.4613C27 19.311 26.4834 19.9998 25.8461 19.9998H1.23075C0.593499 19.9998 0.0769043 19.311 0.0769043 18.4613Z"
             fill="#EDEDED"
           />
         </svg>
-      </Button>
+      </button>
 
-      <Dialog
-        open={open}
-        size="xxl"
-        handler={handleOpen}
-        className="menu-hamburger w-full bg-black-70 backdrop-blur-[6px] items-center flex justify-center"
-      >
-        <DialogBody>
-          <Button onClick={handleOpen} className="flex items-center gap-2 px-0 bg-transparent">
-            <svg
-              width="27"
-              height="28"
-              viewBox="0 0 27 28"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            key={open ? "menu-open" : "menu-closed"}
+            initial={{
+              opacity: 0,
+              x: position.x,
+              y: position.y,
+              width: position.width,
+              height: position.height,
+            }}
+            animate={{
+              opacity: 1,
+              x: "0%",
+              y: "0%",
+              width: "100vw",
+              height: "100vh",
+            }}
+            exit={{
+              opacity: 0,
+              x: position.x,
+              y: position.y,
+              width: position.width,
+              height: position.height,
+            }}
+            transition={{ duration: 0.5, ease: "easeInOut" }}
+            className="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-40 backdrop-blur-md"
+          >
+            <button
+              onClick={toggleMenu}
+              className="absolute top-10 right-10 text-white text-7xl z-10"
             >
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M1.71259 25.9602C0.95768 25.2052 0.804686 24.1343 1.37087 23.5681L23.2411 1.69787C23.8073 1.13169 24.8782 1.28468 25.6331 2.0396C26.3881 2.79451 26.5411 3.86547 25.9749 4.43165L4.10465 26.3019C3.53846 26.8681 2.4675 26.7151 1.71259 25.9602Z"
-                fill="#EDEDED"
-              />
-              <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
-                d="M25.365 25.9602C26.12 25.2052 26.273 24.1343 25.7068 23.5681L3.83654 1.69787C3.27036 1.13169 2.1994 1.28468 1.44449 2.0396C0.689578 2.79451 0.536582 3.86547 1.10277 4.43165L22.973 26.3019C23.5392 26.8681 24.6101 26.7151 25.365 25.9602Z"
-                fill="#EDEDED"
-              />
-            </svg>
-          </Button>
-          <nav>
-            <ul className="w-full text-center">
-              {data?.map((item) => {
-                return (
-                  <li key={item.id}>
+              &times;
+            </button>
+
+            <nav className="text-center">
+              <ul className="space-y-6 text-white text-2xl uppercase font-bold">
+                {data?.map((item, index) => (
+                  <motion.li
+                    key={item.id}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 20 }}
+                    transition={{ duration: 1, delay: index * 0.1 }}
+                  >
                     <a
                       href={item.url}
                       className="content-title-h2 text-gray-200 hover:text-white-100 hover:underline uppercase mb-10 block"
                     >
                       {item.title}
                     </a>
-                  </li>
-                );
-              })}
-            </ul>
-          </nav>
-        </DialogBody>
-      </Dialog>
+                  </motion.li>
+                ))}
+              </ul>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 };

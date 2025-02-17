@@ -22,7 +22,7 @@ const HomePage = ({ data }) => {
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.highlight && <Call data={data?.highlight || null} />}
             <Projetos />
-            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
+            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem] overflow-x-hidden">
               {data?.tabs && (
                 <Skills data={data?.tabs} />
               )}
