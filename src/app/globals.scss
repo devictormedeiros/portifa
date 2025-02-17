@@ -134,7 +134,7 @@ a:hover {
 
 html {
   scroll-behavior: auto;
-  scrollbar-color: var(--primary) transparent;
+  scrollbar-color: var(--primary) var(--gray-900);
   scrollbar-width: thin;
   font-size: 16px;
   font-family: "Roboto Flex", serif;
@@ -174,48 +174,4 @@ main {
   max-width: 100%;
   height: auto;
 }
-
-.loader {
-  width: 0.0625rem;
-  height: 0.0625rem;
-  background: rgba(white, 0.9);
-  border-radius: 50%;
-  animation: loading-page 0.75s infinite;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-}
-
-.loader-label {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 1.75rem;
-  color: black;
-  text-align: center;
-  font-weight: bold;
-  span {
-    font-size: 0.75rem;
-    letter-spacing: 0.0625rem;
-  }
-}
-
-@keyframes loading-page {
-  0% {
-    opacity: 0;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 1;
-  }
-  95% {
-    transform: scale(130);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1);
-  }
-}
-
 

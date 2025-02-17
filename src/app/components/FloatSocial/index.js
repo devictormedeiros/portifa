@@ -18,10 +18,14 @@ import {
 } from "react-icons/fa6";
 import { memo } from "react";
 import "./style.scss";
+import { useSticky } from "../../context/StickyContext";
 const FloatSocial = ({ data }) => {
+
+  const { isHeaderSticky } = useSticky(); 
   return (
+
     <>
-      <div className="fixed md:bottom-[6rem] bottom-[8rem] right-3 md:right-0 z-[9999]">
+      <div className={`${!isHeaderSticky ? "opacity-0": "opacity-100"} transition-opacity duration-700 fixed md:bottom-[6rem] bottom-[8rem] right-3 md:right-5 z-[9999]`}>
         <SpeedDial>
           <SpeedDialHandler>
             <IconButton size="lg" className="rounded-full bg-primary btn-float-social">

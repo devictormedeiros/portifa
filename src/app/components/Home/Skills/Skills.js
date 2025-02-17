@@ -4,7 +4,7 @@ const Skills = ({ data }) => {
     return (
         <>
             {data.map(({ titulo, itens, index }) => (
-                <TabsSkill key={index} title={titulo} skills={itens} />
+                <TabsSkill key={titulo} title={titulo} skills={itens} />
             ))}
         </>
     );

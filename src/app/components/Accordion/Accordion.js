@@ -1,54 +1,60 @@
+import React, { useState } from "react";
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionBody,
+} from "@material-tailwind/react";
+import ScrollAnimation from 'react-animate-on-scroll';
 import "./style.scss";
-import { useState } from "react";
-import ObserverHtml from "../../hooks/ObserverHtml";
 
-const Accordion = ({ title, children }) => {
-  const [accordion, setAccordion] = useState(true);
+const AccordionCustom = ({ title, children }) => {
+  const [open, setOpen] = useState(true);
 
-  const toggleAccordion = () => {
-    setAccordion((prev) => !prev);
-  };
-
-  const { isVisible, targetRef } = ObserverHtml({ threshold: 0.5 });
+  const handleOpen = () => setOpen(!open);
 
   return (
-    <section
-      ref={targetRef}
-      className={`accordion ${accordion ? "open" : ""} ${
-        isVisible ? "sec-visible" : ""
-      }`}
-    >
+
+<>
+<ScrollAnimation className="block w-full" animateIn='bounceInRight' animateOnce={true} duration={1}>
+    <Accordion open={open} className="accordion mb-0 px-4">
       <div className="container">
-          <div className="accordion-header">
-            <button
-              className="accordion-toggle flex items-center justify-between w-full py-4 md:pt-0 pb-4 text-gray-200 uppercase border-b border-white-10"
-              aria-expanded={accordion}
-              onClick={toggleAccordion}
+        <div className="accordion-header">
+          <AccordionHeader
+            onClick={handleOpen}
+            className={`accordion-toggle flex items-center justify-between w-full py-4 md:pt-0 pb-4 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 transition-colors`}
+          >
+            <span className="accordion-title content-title-h2">{title}</span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className={`accordion-icon transition-transform duration-300 ${
+                open ? "rotate-180" : ""
+              }`}
             >
-              <span className="accordion-title content-title-h2">{title}</span>
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className="accordion-icon transition-transform duration-300"
-              >
-                <path
-                  d="M5 9L12 16L19 9"
-                  stroke="#DEDEDE"
-                  strokeWidth="2"
-                  strokeLinecap="square"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className={`accordion-body ${accordion ? "accordion-open" : ""}`}>
-            <div className="accordion-content">{children}</div>
-          </div>
+              <path
+                d="M5 9L12 16L19 9"
+                stroke="#DEDEDE"
+                strokeWidth="2"
+                strokeLinecap="square"
+              />
+            </svg>
+          </AccordionHeader>
+        </div>
+        <AccordionBody
+          className={`accordion-body ${
+            open ? "accordion-open" : ""
+          } mt-10 md:mt-12 pt-0 text-base font-normal text-gray-400`}
+        >
+          <div className="accordion-content">{children}</div>
+        </AccordionBody>
       </div>
-    </section>
+    </Accordion>
+    </ScrollAnimation>
+    </>
   );
 };
 
-export default Accordion;
+export default AccordionCustom;

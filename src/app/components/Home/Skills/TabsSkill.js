@@ -16,7 +16,7 @@ const TabsSkill = ({ skills, title }) => {
                 <TabsHeader className="bg-transparent flex gap-6 md:gap-10 md:pb-0 md:py-0">
                     {skills.map(({ ano, titulo }, index) => (
                         <Tab
-                            key={index}
+                            key={`${ano}-${titulo}`}
                             value={index}
                             className={`w-auto md:min-w-[190px] whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-lg duration-300 hover:bg-primary hover:text-gray-900 ${activeTab === index ? "bg-primary text-gray-900" : ""}`}
                             onClick={() => setActiveTab(index)}

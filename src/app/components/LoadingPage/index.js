@@ -1,30 +1,35 @@
-import "./style.scss";
+"use client";
+import { useState, useEffect } from "react";
+import "./style.scss"; // Importa os estilos
 
 const LoadingPage = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [bgFull, setBgFull] = useState(false);
+
+  useEffect(() => {
+    const body = document.body;
+
+    // Observa quando o atributo "data-page-load" muda
+    const observer = new MutationObserver(() => {
+      const pageLoad = body.getAttribute("data-page-load") === "true";
+      setIsLoading(pageLoad);
+
+      if (!pageLoad) {
+        setTimeout(() => setBgFull(true), 500); // 🔥 O fundo sobe depois de 0.5s
+      }
+    });
+
+    observer.observe(body, { attributes: true, attributeFilter: ["data-page-load"] });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="fixed loading-page h-lvh w-lvw flex items-center justify-center z-[999] bg-black-100">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 100 100"
-        preserveAspectRatio="xMidYMid"
-        width="200"
-        height="200"
-        style={{ shapeRendering: "auto", display: "block" }}
-      >
-        <g>
-          <circle style={{ fill: "var(--primary)" }} r="16" cy="26" cx="50">
-            <animate
-              values="26;74;26"
-              keyTimes="0;0.5;1"
-              keySplines="0.45 0 0.9 0.55;0 0.45 0.55 0.9"
-              calcMode="spline"
-              repeatCount="indefinite"
-              dur="1s"
-              attributeName="cy"
-            />
-          </circle>
-        </g>
-      </svg>
+    <div className={`loading-screen ${!isLoading && bgFull ? "hide" : ""}`}>
+      <div className="loading-content">
+        <img src="https://asiaxp.co/images/logo.svg" data-preload="" className="loading-logo" />
+      </div>
+      <div className={`loading-bg ${!isLoading ? "expand" : ""}`}></div>
     </div>
   );
 };

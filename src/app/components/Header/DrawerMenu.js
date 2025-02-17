@@ -58,7 +58,7 @@ const DrawerMenu = ({ data }) => {
         className="menu-hamburger w-full bg-black-70 backdrop-blur-[6px] items-center flex justify-center"
       >
         <DialogBody>
-          <Button onClick={handleOpen} className="flex items-center gap-2 px-0">
+          <Button onClick={handleOpen} className="flex items-center gap-2 px-0 bg-transparent">
             <svg
               width="27"
               height="28"

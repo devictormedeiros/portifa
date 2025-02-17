@@ -32,8 +32,8 @@ const Projetos = () => {
         <section className="sec-projetos g-col-12">
             <div className="container">
                 <div className="grid grid-cols-12 gap-0 md:gap-y-[7.25rem]">
-                    {projetos.map((projeto) => (
-                        <CardProjeto key={projeto.id} projeto={projeto} />
+                    {projetos.map((projeto, index) => (
+                        <CardProjeto key={index} projeto={projeto} />
                     ))}
                 </div>
             </div>

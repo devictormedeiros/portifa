@@ -16,13 +16,13 @@ const HomePage = ({ data }) => {
     <>
       {data?.introducao && <Intro data={data.introducao} />}
     
-      <main className="main-home flex flex-wrap relative z-[1]">
       <Header logo={data?.logo_principal || null} />
+      <main className="main-home flex flex-wrap relative z-[1]">
         {data?.sobre && <Sobre data={data?.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.highlight && <Call data={data?.highlight || null} />}
           <Projetos />
-          <section className="grid flex-wrap gap-y-[10rem]">
+          <section className="grid flex-wrap gap-y-[8rem]">
           {data?.tabs && <Skills data={data?.tabs} />}
           {data?.tecnologias_atuacoes && (
             <Tecnologias data={data?.tecnologias_atuacoes || null} />

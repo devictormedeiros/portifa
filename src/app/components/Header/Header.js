@@ -5,31 +5,18 @@ import "./style.scss";
 import Link from "next/link";
 import DrawerMenu from "./DrawerMenu";
 import getPosts from "../../api/getAPI";
+import { useSticky } from "../../context/StickyContext";
 const Header = ({ logo }) => {
-  const [isHeaderSticky, setIsHeaderSticky] = useState(false);
-  const headerRef = useRef(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (headerRef.current) {
-        const headerTop = headerRef.current.getBoundingClientRect().top;
-        setIsHeaderSticky(headerTop === 0);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
 
   const [itemslink, setItemsLink] = useState([]);
+
   useEffect(() => {
-    const fecthItemsLinks = async () => {
+    const fetchItemsLinks = async () => {
       const data = await getPosts("/menus/menu-principal");
       setItemsLink(data);
     };
-    fecthItemsLinks();
+    fetchItemsLinks();
   }, []);
 
   return (
@@ -44,7 +31,7 @@ const Header = ({ logo }) => {
               {logo ? (
                 <img src={logo.url} title={logo.title} alt={logo.description} />
               ) : (
-                <span>Logo</span> // Exibe um texto ou elemento alternativo
+                <span>Logo</span>
               )}
             </Link>
           </div>
@@ -57,7 +44,7 @@ const Header = ({ logo }) => {
               <span className="slider-darkmode"></span>
             </label>
             <div className="menu-hamburguer">
-              <DrawerMenu data={itemslink}/>
+              <DrawerMenu data={itemslink} />
             </div>
           </div>
         </div>

@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { getAcfOptions } from "./api/getAcfOptions";
 import LoadingPage from "./components/LoadingPage";
 import Styleguide from "./hooks/Styleguide";
+import "animate.css/animate.compat.css";
+import { StickyProvider } from "./context/StickyContext";
 
 export default function Page() {
   const [dataOption, setDataOptions] = useState(null);
@@ -26,11 +28,14 @@ export default function Page() {
   }, []);
 
   return (
-    <>
-      {dataOption?.styleguide && (
-        <Styleguide styleguide={dataOption.styleguide} />
-      )}
-      {isLoading === false ? <HomePage data={dataOption} /> : <LoadingPage />}
-    </>
+    <body data-page-load={isLoading.toString()} className={`antialiased text-white-100 bg-gray-900`}>
+      <LoadingPage />
+      <StickyProvider>
+        {dataOption?.styleguide && (
+          <Styleguide styleguide={dataOption.styleguide} />
+        )}
+      <HomePage data={dataOption} />
+      </StickyProvider>
+    </body>
   );
 }
