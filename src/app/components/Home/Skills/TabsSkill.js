@@ -60,7 +60,7 @@ const TabsSkill = ({ skills, title }) => {
                         <Tab
                             key={`${ano}-${titulo}`}
                             value={index}
-                            className={`w-auto md:min-w-[190px] whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-lg duration-500 ${!isDragging ? "hover:bg-primary hover:text-gray-900" : "cursor-grab active:cursor-grabbing"} ${activeTab === index ? "bg-primary text-gray-900" : ""}`}
+                            className={`w-auto md:min-w-[190px] whitespace-nowrap py-2 px-4 text-gray-200 bg-gray-700 rounded-lg duration-500 ${!isDragging ? "hover:bg-primary hover:text-gray-900" : "cursor-grab active:cursor-grabbing"} ${activeTab === index ? "bg-primary text-gray-900" : ""} ${index === 0 ? "ms-6 md:ms-0" : ""}`}
                             onClick={() => !isDragging && setActiveTab(index)}
                         >
                             <strong>{ano}</strong> - {titulo}
@@ -76,7 +76,7 @@ const TabsSkill = ({ skills, title }) => {
                     className="md:px-0"
                 >
                     {skills.map((skill, index) => (
-                        <TabPanel className="px-0 py-0" key={index} value={index}>
+                        <TabPanel className="px-6 py-0 md:px-0" key={index} value={index}>
                             <CardSkill {...skill} />
                         </TabPanel>
                     ))}

@@ -1,6 +1,5 @@
 import CardProjeto from "./CardProjeto";
 import gsap from "gsap";
-import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect } from "react";
 
@@ -34,6 +33,7 @@ const Projetos = () => {
 
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
+        
         let pinneds = gsap.utils.toArray(".pinned");
 
         pinneds.forEach((pinned, index) => {
@@ -49,7 +49,6 @@ const Projetos = () => {
                     scrub: true,
                     toggleActions: "play none none reverse",
                 }
-    
             });
         });
     }, []);

@@ -21,7 +21,7 @@ const AccordionCustom = ({ title, children }) => {
         <div className="accordion-header">
           <AccordionHeader
             onClick={handleOpen}
-            className={`accordion-toggle flex items-center justify-between w-full py-4 md:pt-0 pb-4 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 transition-colors`}
+            className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 transition-colors`}
           >
             <span className="accordion-title content-title-h2">{title}</span>
             <svg
@@ -43,13 +43,15 @@ const AccordionCustom = ({ title, children }) => {
             </svg>
           </AccordionHeader>
         </div>
-        <AccordionBody
-          className={`accordion-body ${
-            open ? "accordion-open" : ""
-          } mt-10 md:mt-12 pt-0 text-base font-normal text-gray-400`}
-        >
-          <div className="accordion-content">{children}</div>
-        </AccordionBody>
+        <div className="mx-[-1.5rem] md:mx-0">
+          <AccordionBody
+            className={`accordion-body ${
+              open ? "accordion-open" : ""
+            } mt-8 md:mt-12 pt-0 text-base font-normal text-gray-400`}
+          >
+            <div className="accordion-content">{children}</div>
+          </AccordionBody>
+        </div>
       </div>
     </Accordion>
     </ScrollAnimation>
