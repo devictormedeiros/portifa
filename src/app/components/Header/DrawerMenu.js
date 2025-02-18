@@ -28,7 +28,10 @@ const DrawerMenu = ({ data }) => {
   // Função que atualiza a posição e abre o menu
   const toggleMenu = () => {
     updateButtonPosition(); // Captura a posição ANTES de mudar o estado
-    setTimeout(() => setOpen(!open), 0); // Pequeno delay para garantir atualização antes da animação
+    setTimeout(() => {
+      setOpen(!open)
+    }, 1);
+     // Pequeno delay para garantir atualização antes da animação
   };
 
   return (
@@ -36,10 +39,10 @@ const DrawerMenu = ({ data }) => {
       <button
         ref={buttonRef}
         onClick={toggleMenu}
-        className="z-50 flex items-center justify-center bg-gray-800 rounded-full shadow-lg transition-transform duration-300"
+        className="flex items-center justify-center hover:bg-primary rounded-full duration-300 w-10 h-10"
       >
         <svg
-          width="27"
+          width="20"
           height="20"
           viewBox="0 0 27 20"
           fill="none"
@@ -50,12 +53,15 @@ const DrawerMenu = ({ data }) => {
             clipRule="evenodd"
             d="M0.0770264 1.53846C0.0770264 0.688793 0.593621 0 1.23087 0H25.8463C26.4835 0 27.0001 0.688793 27.0001 1.53846C27.0001 2.38813 26.4835 3.07692 25.8463 3.07692H1.23087C0.593621 3.07692 0.0770264 2.38813 0.0770264 1.53846Z"
             fill="#EDEDED"
+            
           />
           <path
             fillRule="evenodd"
             clipRule="evenodd"
             d="M0.0769043 9.9994C0.0769043 9.14973 0.593499 8.46094 1.23075 8.46094H25.8461C26.4834 8.46094 27 9.14973 27 9.9994C27 10.8491 26.4834 11.5379 25.8461 11.5379H1.23075C0.593499 11.5379 0.0769043 10.8491 0.0769043 9.9994Z"
             fill="#EDEDED"
+            className="path-hamburguer-animate"
+            strokeWidth={"10px"}
           />
           <path
             fillRule="evenodd"
@@ -92,7 +98,7 @@ const DrawerMenu = ({ data }) => {
               height: position.height,
             }}
             transition={{ duration: 0.5, ease: "easeInOut" }}
-            className="fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-40 backdrop-blur-md"
+            className={`fixed inset-0 bg-gray-900 bg-opacity-90 flex items-center justify-center z-40 bg-primary ${open ? "menu-open" : ""}`}
           >
             <button
               onClick={toggleMenu}
@@ -104,20 +110,15 @@ const DrawerMenu = ({ data }) => {
             <nav className="text-center">
               <ul className="space-y-6 text-white text-2xl uppercase font-bold">
                 {data?.map((item, index) => (
-                  <motion.li
-                    key={item.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 20 }}
-                    transition={{ duration: 1, delay: index * 0.1 }}
-                  >
+                  <li key={index}>
                     <a
                       href={item.url}
                       className="content-title-h2 text-gray-200 hover:text-white-100 hover:underline uppercase mb-10 block"
+                      
                     >
                       {item.title}
                     </a>
-                  </motion.li>
+                  </li>
                 ))}
               </ul>
             </nav>

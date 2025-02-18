@@ -16,6 +16,8 @@
 @import 'assets/scss/pages/_home';
 
 :root {
+  color-scheme: light dark;
+
   --primary: #fff;
   --primary-light: #fff;
 
@@ -105,6 +107,7 @@
 
   --image-fade-dark: linear-gradient(180deg, #0D0D0D 12.67%, rgba(13, 13, 13, 0.60) 41.63%, rgba(13, 13, 13, 0.60) 71.33%, #0D0D0D 100%);
   --image-fade-white: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.30) 25.08%, rgba(255, 255, 255, 0.30) 75.4%, #FFF 100%);
+  
   --header-height: 68px;
   @media (max-width: 768px){
     --header-height: 56px;

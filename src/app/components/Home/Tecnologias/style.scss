@@ -27,7 +27,8 @@
           background: var(--gradient-primary-b);
           border-radius: 5rem;
           height: 0.75rem;
-          transition: width 1.2s ease-out;
+          transition: width 1.5s ease-in;
+          transition-delay: 0.2s;
           @media (max-width: 48rem) {
             height: 0.625rem;
           }
@@ -36,19 +37,4 @@
     }
   }
 }
-.menu-item {
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease-out forwards;
-}
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}

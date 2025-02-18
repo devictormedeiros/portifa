@@ -8,14 +8,13 @@ const LoadingPage = () => {
 
   useEffect(() => {
     const body = document.body;
-
     // Observa quando o atributo "data-page-load" muda
     const observer = new MutationObserver(() => {
       const pageLoad = body.getAttribute("data-page-load") === "true";
       setIsLoading(pageLoad);
 
       if (!pageLoad) {
-        setTimeout(() => setBgFull(true), 500); // 🔥 O fundo sobe depois de 0.5s
+        setTimeout(() => setBgFull(true), 300); // O fundo sobe depois de 0.3s
       }
     });
 

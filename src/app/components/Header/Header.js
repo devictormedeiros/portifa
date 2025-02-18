@@ -11,6 +11,11 @@ const Header = ({ logo }) => {
 
   const [itemslink, setItemsLink] = useState([]);
 
+  const [darkMode, setDarkMode] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
   useEffect(() => {
     const fetchItemsLinks = async () => {
       const data = await getPosts("/menus/menu-principal");
@@ -39,8 +44,8 @@ const Header = ({ logo }) => {
             <Nav data={itemslink} />
           </div>
           <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-12 gap-x-[2rem]">
-            <label className="switch-darkmode">
-              <input type="checkbox" />
+            <label className={`switch-darkmode`}>
+              <input type="checkbox" onChange={() => setDarkMode((prev) => !prev)}/>
               <span className="slider-darkmode"></span>
             </label>
             <div className="menu-hamburguer">

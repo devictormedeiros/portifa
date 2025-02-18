@@ -89,7 +89,7 @@ header {
         width: 0.875rem;
         border-radius: 50%;
         left: 12%;
-        bottom: 15%;
+        bottom: 20%;
         box-shadow: inset 0.5rem -0.25rem 0rem 0rem #000;
         background: var(--background);
         transition: 0.5s;
@@ -110,7 +110,28 @@ header {
 }
 
 .menu-hamburguer {
-
+  > button{
+    transition: all 0.5s;
+  }
+  .path-hamburguer-animate{
+    transform: scaleX(0.5);
+    transition: transform .2s ease-in-out;
+    transition-delay: .1s;
+  }
+  &:hover{
+    svg, svg *{
+      fill: #000;
+      .path-hamburguer-animate{
+        transform: scaleX(1);
+      }
+    }
+  }
+  ul li {
+    opacity: 0;
+    animation-name: slideUp;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
   .leading-relaxed {
     height: 100%;
     width: 100%;
@@ -127,5 +148,23 @@ header {
         top: 6%;
       }
     }
+  }
+}
+
+/* Loop SCSS para criar delays automáticos */
+@for $i from 1 through 10 {
+  .menu-open ul li:nth-child(#{$i}) {
+    animation-delay: #{$i * 0.5}s;
+  }
+}
+
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

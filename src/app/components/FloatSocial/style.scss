@@ -1,3 +1,9 @@
-.btn-float-social{
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+.float-social{
+    .button-float-social{
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        svg{
+            stroke-width: 3px;
+            stroke: var(--gray-200);
+        }
+    }
 }

@@ -17,7 +17,7 @@ const Sobre = ({ data }) => {
               />
 
             </ScrollAnimation>
-            <ScrollAnimation className="image col-span-12 md:col-span-5" animateIn="zoomIn" animateOnce={true} duration={2}>
+            <ScrollAnimation className="image col-span-12 md:col-span-5" animateIn="fadeIn" animateOnce={true} duration={2}>
               <img
                 src={data?.imagem.url}
                 title={data?.imagem.title}
