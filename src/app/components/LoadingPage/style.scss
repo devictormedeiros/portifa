@@ -33,17 +33,17 @@
 
 .loading-screen.hide {
   transform: translateY(-100%);
-  transition: transform 0.5s ease-in-out 1.8s;
+  transition: transform 0.8s ease-in-out 1.8s;
   .loading-logo{
     transform: translateY(0%);
-    animation:slide-down 0.5s ease-in-out forwards 1.4s;
+    animation:slide-down 0.8s ease-in-out forwards 1.5s;
   }
 }
 
 .loading-logo {
-  width: 150px;
+  width: 100px;
   transform: translateY(100%);
-  animation: slide-up 0.5s ease-in-out forwards;
+  animation: slide-up 0.8s ease-in-out forwards;
 }
 
 @keyframes slide-up {

@@ -1,8 +1,8 @@
 "use client"; // Necessário para usar hooks no diretório app
-import Header from "../components/Header/Header";
-import Sobre from "../components/Home/Sobre/Sobre";
-import Intro from "../components/Home/Intro/Intro";
-import Tecnologias from "../components/Home/Tecnologias/Tecnologias";
+import Header from "../components/Header";
+import Sobre from "../components/Home/Sobre";
+import Intro from "../components/Home/Intro";
+import Tecnologias from "../components/Home/Tecnologias";
 import Contato from "../components/Contato/Contato";
 import FloatSocial from "../components/FloatSocial";
 import Footer from "../components/Footer";
