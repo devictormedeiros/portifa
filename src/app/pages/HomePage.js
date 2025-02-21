@@ -11,7 +11,41 @@ import Call from "../components/Home/Call/Call";
 import Skills from "../components/Home/Skills/Skills";
 import Recomendacoes from "../components/Home/Recomendacoes/Recomendacoes";
 import ScrollingTexts from "../components/Home/ScrollText/ScrollText";
+import { useEffect, useState } from "react";
 const HomePage = ({ data }) => {
+  const [dataProjetcs, setDataProjects] = useState(null);
+
+  useEffect(() => {
+    setDataProjects(
+      [
+        {
+            id: 1,
+            nome: "Lorem ipsum dolor sit amet",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
+            img: "/images/projeto.png",
+            link: "https://github.com",
+            technologies: ["html", "css", "js", "react"]
+        },
+        {
+            id: 2,
+            nome: "Lorem ipsum dolor sit amet",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
+            img: "/images/projeto.png",
+            link: "https://github.com",
+            technologies: ["html", "css", "js", "react"]
+        },
+        {
+            id: 3,
+            nome: "Lorem ipsum dolor sit amet",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
+            img: "/images/projeto.png",
+            link: "https://github.com",
+            technologies: ["html", "css", "js", "react"]
+        },
+    ]
+    );
+  }, [data]);
+
   return (
     <>
       {data?.introducao && <Intro data={data.introducao} />}
@@ -21,7 +55,7 @@ const HomePage = ({ data }) => {
         {data?.sobre && <Sobre data={data?.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.highlight && <Call data={data?.highlight || null} />}
-            <Projetos />
+            {dataProjetcs && <Projetos data={dataProjetcs} />}
             <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem] overflow-x-hidden">
               {data?.tabs && (
                 <Skills data={data?.tabs} />
