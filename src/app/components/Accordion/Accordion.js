@@ -21,7 +21,7 @@ const AccordionCustom = ({ title, children }) => {
         <div className="accordion-header">
           <AccordionHeader
             onClick={handleOpen}
-            className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 transition-colors`}
+            className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10`}
           >
             <span className="accordion-title content-title-h2">{title}</span>
             <svg

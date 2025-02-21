@@ -6,7 +6,7 @@ import LoadingPage from "./components/LoadingPage";
 import Styleguide from "./hooks/Styleguide";
 import "animate.css/animate.compat.css";
 import { StickyProvider } from "./context/StickyContext";
-
+import CustomCursor from "./components/CustomCursor";
 export default function Page() {
   const [dataOption, setDataOptions] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +29,7 @@ export default function Page() {
 
   return (
     <body data-page-load={isLoading.toString()} className={`antialiased text-white-100 bg-gray-900`}>
+      <CustomCursor/>
       <LoadingPage />
       <StickyProvider>
         {dataOption?.styleguide && (

@@ -16,9 +16,8 @@
 @import 'assets/scss/pages/_home';
 
 :root {
-  color-scheme: light dark;
-
   --primary: #fff;
+  --primary-rgb: rgba(78,201,176,1);
   --primary-light: #fff;
 
   --black-5: #0000000d;
@@ -137,7 +136,7 @@ a:hover {
 }
 
 html {
-  scroll-behavior: auto;
+  scroll-behavior: smooth;
   scrollbar-color: var(--primary) var(--gray-900);
   scrollbar-width: thin;
   font-size: 16px;
