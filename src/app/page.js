@@ -28,7 +28,7 @@ export default function Page() {
   }, []);
 
   return (
-    <body data-page-load={isLoading.toString()} className={`antialiased text-white-100 bg-gray-900`}>
+    <body data-page-load={isLoading.toString()} className={`antialiased text-white-100`}>
       <CustomCursor/>
       <LoadingPage />
       <StickyProvider>

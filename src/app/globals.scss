@@ -108,7 +108,7 @@
   --image-fade-white: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.30) 25.08%, rgba(255, 255, 255, 0.30) 75.4%, #FFF 100%);
   
   --header-height: 68px;
-  @media (max-width: 768px){
+  @media (max-width: 48rem){
     --header-height: 56px;
   }
 }
@@ -139,10 +139,10 @@ html {
   scroll-behavior: smooth;
   scrollbar-color: var(--primary) var(--gray-900);
   scrollbar-width: thin;
-  font-size: 16px;
+  font-size: 1rem;
   font-family: "Roboto Flex", serif;
 
-  @media screen and (min-width: 769px) {
+  @media screen and (min-width: 48.0625rem) {
     font-size: clamp(10px, 0.83vw, 16px);
   }
 
@@ -156,7 +156,7 @@ main {
   z-index: 1;
   padding-bottom: 11.5rem;
   
-  @media (max-width: 768px) {
+  @media (max-width: 48rem) {
     padding-bottom: 4rem;
   }
   &.main-home {

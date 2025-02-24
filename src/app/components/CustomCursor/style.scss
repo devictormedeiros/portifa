@@ -4,8 +4,8 @@ body{
 }
 .custom-cursor {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.8);
   pointer-events: none;
@@ -17,8 +17,8 @@ body{
 }
 
 .custom-cursor.hovered {
-  width: 30px;
-  height: 30px;
+  width: 1.875rem;
+  height: 1.875rem;
   background: none; /* Remove a bolinha branca ao animar */
   transform: translate(-50%, -50%) scale(1);
   display: flex;
@@ -30,8 +30,8 @@ body{
 /* Rastro do cursor */
 .cursor-trail {
   position: fixed;
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
   // background-color: rgba(255, 255, 255, 1);
   pointer-events: none;

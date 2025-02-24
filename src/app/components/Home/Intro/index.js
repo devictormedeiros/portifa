@@ -1,7 +1,7 @@
 "use client";
 import TextAnimate from "../../TextAnimate";
 import "./style.scss";
-import { memo, useState } from "react";
+import { memo } from "react";
 
 const Intro = ({ data }) => {
   const frases = data?.destaque_introducao?.map((item) => item.destaque) || [];

@@ -207,8 +207,8 @@ module.exports = withMT({
           }
         },
         ".menu-section": {
-          fontSize: "12px",
-          lineHeight: "16px",
+          fontSize: "0.75rem",
+          lineHeight: "1rem",
           fontWeight: "400",
         },
         ".button-md": {

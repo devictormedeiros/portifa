@@ -61,7 +61,7 @@ const DrawerMenu = ({ data }) => {
             d="M0.0769043 9.9994C0.0769043 9.14973 0.593499 8.46094 1.23075 8.46094H25.8461C26.4834 8.46094 27 9.14973 27 9.9994C27 10.8491 26.4834 11.5379 25.8461 11.5379H1.23075C0.593499 11.5379 0.0769043 10.8491 0.0769043 9.9994Z"
             fill="#EDEDED"
             className="path-hamburguer-animate"
-            strokeWidth={"10px"}
+            strokeWidth={"0.625rem"}
           />
           <path
             fillRule="evenodd"
