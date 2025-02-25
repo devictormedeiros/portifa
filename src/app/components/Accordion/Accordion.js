@@ -8,7 +8,7 @@ import ScrollAnimation from 'react-animate-on-scroll';
 import "./style.scss";
 
 const AccordionCustom = ({ title, children }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(!open);
 

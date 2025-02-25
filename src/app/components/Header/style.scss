@@ -107,69 +107,117 @@ header {
       }
     }
   }
-  .drawer-menu {
-    background: var(--gradient-primary-c);
-  }
 }
 
 .menu-hamburguer {
   > button{
     transition: all 0.3s ease-in-out;
+    z-index: 1001;
+    position: relative;
+    .icon-hamburguer {
+      width: 20px;
+      height: 15px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+    
+      span {
+        width: 100%;
+        height: 4px;
+        background: #ffffff;
+        border-radius: 4px;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        transform-origin: left center;
+    
+        &:nth-child(1) {
+          top: 0;
+        }
+    
+        &:nth-child(2) {
+          top: 50%;
+        }
+    
+        &:nth-child(3) {
+          top: 100%;
+        }
+      }
+    
+      &.open {
+        span {
+          &:nth-child(1) {
+            transform: rotate(45deg);
+            top: 0px;
+            left: 0px;
+          }
+    
+          &:nth-child(2) {
+            width: 0%;
+            opacity: 0;
+          }
+    
+          &:nth-child(3) {
+            transform: rotate(-45deg);
+            top: 14px;
+            left: 0px;
+          }
+        }
+      }
+    }
+    &:hover{
+      svg, svg *{
+        @media (min-width: 48rem) {
+          fill: var(--gray-900);
+        }
+        .path-hamburguer-animate{
+          transform: scaleX(1);
+        }
+      }
+    }
   }
   .path-hamburguer-animate{
     transform: scaleX(0.5);
     transition: transform .2s ease-in-out;
     transition-delay: .1s;
   }
-  &:hover{
-    svg, svg *{
-      @media (min-width: 48rem) {
-        fill: var(--gray-900);
-      }
-      .path-hamburguer-animate{
-        transform: scaleX(1);
+  nav {
+    transition: all 1s ease-out;
+    background: var(--primary);
+    height: 100vh;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    border-radius: 8px;
+    transition-delay: 900ms;
+    ul li {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+    }
+
+    &.nav-open {
+      transition-delay: 0s;
+      ul li {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
-  }
-  ul li {
-    opacity: 0;
-    animation-name: slideUp;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-  }
-  .leading-relaxed {
-    height: 100%;
-    width: 100%;
-    align-items: center;
-    display: flex;
-    justify-content: center;
-    button {
-      position: absolute !important;
-      right: 10%;
-      top: 10%;
-      padding: 0;
-      @media (max-width: 48rem) {
-        right: 6%;
-        top: 6%;
-      }
+    &:not(.nav-open) {
+      transition-delay: .8s;
     }
   }
 }
 
 /* Loop SCSS para criar delays automáticos */
 @for $i from 1 through 10 {
-  .menu-open ul li:nth-child(#{$i}) {
-    animation-delay: #{$i * 0.5}s;
+  nav{
+    &.nav-open ul li:nth-child(#{$i}) {
+      transition-delay: #{.5s + ($i * 0.2s)}; // Inicia após 4s e adiciona 0.2s por item
+    }
   }
 }
 
-@keyframes slideUp {
-  0% {
-    opacity: 0;
-    transform: translateY(1.25rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
