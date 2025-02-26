@@ -34,7 +34,7 @@ const Projetos = ({data}) => {
     return (
         <section className="sec-projetos g-col-12">
             <div className="container">
-                <div className="grid grid-cols-12 gap-0 md:gap-y-[7.25rem]">
+                <div className="grid grid-cols-12 gap-y-[1.5rem] lg:gap-y-[7.25rem]">
                     {data.map((projeto, i) => (
                         <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 h-[80vh] flex items-center justify-center pinned" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
