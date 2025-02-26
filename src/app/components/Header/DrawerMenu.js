@@ -3,28 +3,30 @@ import { useState, useRef } from "react";
 
 const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);
-  const [origin, setOrigin] = useState("top right"); // Origem padrão
   const buttonRef = useRef(null);
+  const navRef = useRef(null);
 
   const toggleMenu = () => {
-    if (buttonRef.current) {
+    if (buttonRef.current && navRef.current) {
+      // Captura a posição atual do botão no momento do clique
       const { left, top, width, height } =
         buttonRef.current.getBoundingClientRect();
-      const x = left + width / 2; // Ponto central X
-      const y = top + height / 2; // Ponto central Y
+      const x = left + width / 2;
+      const y = top + height / 2;
 
-      // Define a origem diretamente antes de abrir
-      setOrigin(`${x}px ${y}px`);
+      // Define a origem da transformação com base na posição atual do botão
+      navRef.current.style.transformOrigin = `${x}px ${y}px`;
 
-      setTimeout(() => {
-        setOpen((prev) => !prev);
-      }, 10);
+      setTimeout (() => {
+        // Alterna o estado do menu
+      setOpen((prevOpen) => !prevOpen);
+      }, 200);
     }
   };
 
   return (
     <>
-      {/* Botão Hamburguer */}
+      {/* Botão Hambúrguer */}
       <button
         ref={buttonRef}
         onClick={toggleMenu}
@@ -39,9 +41,7 @@ const DrawerMenu = ({ data }) => {
 
       {/* Menu Overlay */}
       <nav
-        style={{
-          transformOrigin: origin, // Aplicando inline
-        }}
+        ref={navRef}
         className={`fixed text-white flex items-center justify-center transform z-40 ${
           open
             ? "nav-open"

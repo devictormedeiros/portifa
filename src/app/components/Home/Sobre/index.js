@@ -1,8 +1,6 @@
-import DistortedImage from "@/app/components/DistortedImage";
 import "./style.scss";
 import { memo } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
-import { delay } from "framer-motion";
 const Sobre = ({ data }) => {
   return (
     <section className="sec-sobre g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]">
@@ -20,7 +18,8 @@ const Sobre = ({ data }) => {
 
             </ScrollAnimation>
             <ScrollAnimation className="image col-span-12 md:col-span-5" animateIn="fadeIn" animateOnce={true} duration={3} delay={700}>
-              <DistortedImage title={data?.imagem.title} imgSrc={data?.imagem.url} alt={data?.imagem.description} />
+              <img src={data?.imagem.url} alt={data?.imagem.description} title={data?.imagem.title} className="distorted-image" />
+
             </ScrollAnimation>
         </div>
       </div>

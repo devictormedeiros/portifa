@@ -62,47 +62,47 @@ header {
     position: relative;
     display: inline-block;
     width: 3rem;
-    height: 1.125rem;
+    height: 18px;
     opacity: 1;
-    transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-out;
     input[type="checkbox"] {
       opacity: 0;
       width: 0;
       height: 0;
     }
     .slider-darkmode {
-      --background: var(--white-100);
       position: absolute;
       cursor: pointer;
       top: 0;
       left: 0;
       right: 0;
       bottom: 0;
-      height: 1.125rem;
-      background-color: var(--background);
+      height: 18px;
+      background-color: var(--white-100);
       transition: 0.5s;
       border-radius: 1.875rem;
+      transition: all 0.5s ease-out;
       &:before {
         position: absolute;
         content: "";
-        height: 0.875rem;
-        width: 0.875rem;
+        height: 14px;
+        width: 1.125rem;
         border-radius: 50%;
         left: 12%;
         bottom: 14%;
-        box-shadow: inset 0.5rem -0.25rem 0rem 0rem var(--gray-900);
-        background: var(--background);
-        transition: 0.5s;
+        box-shadow: inset 0.4rem -0.20rem 0rem 0rem var(--gray-900);
+        background: var(--white-100);
+        transition: all 0.5s ease-out;
         @media (max-width: 48rem) {
           bottom: 10%;
         }
       }
     }
     input:checked + .slider-darkmode {
-      background-color: var(--white-100);
+      background-color: var(--primary);
       &:before {
         transform: translateX(100%);
-        box-shadow: inset 0.9375rem -0.25rem 0rem 0.9375rem var(--gray-900);
+        box-shadow: inset 0.9375rem -0.25rem 0rem 0.9375rem var(--white-100);
         left: 30%;
       }
     }
@@ -115,8 +115,8 @@ header {
     z-index: 1001;
     position: relative;
     .icon-hamburguer {
-      width: 20px;
-      height: 15px;
+      width: 26px;
+      height: 18px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -127,7 +127,7 @@ header {
     
       span {
         width: 100%;
-        height: 4px;
+        height: 2px;
         background: #ffffff;
         border-radius: 4px;
         transition: all 0.3s ease-in-out;
@@ -162,7 +162,7 @@ header {
     
           &:nth-child(3) {
             transform: rotate(-45deg);
-            top: 14px;
+            top: 18px;
             left: 0px;
           }
         }
@@ -185,29 +185,33 @@ header {
     transition-delay: .1s;
   }
   nav {
-    transition: all 1s ease-out;
+    transition-duration: 1s;
+    transition-property: all;
+    transition-timing-function: forwards;
     background: var(--primary);
     height: 100vh;
     width: 100vw;
     top: 0;
     left: 0;
-    border-radius: 8px;
-    transition-delay: 900ms;
+    // border-radius: 100%;
+    animation: closeMenu 1s linear .5s;
     ul li {
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity .8s ease-in-out, transform .8s ease-in-out;
+      transition: opacity .5s ease-in-out, transform .5s ease-in-out;
     }
 
     &.nav-open {
       transition-delay: 0s;
+      border-radius: 0%;
+      animation: openMenu 1s linear 0s;
       ul li {
         opacity: 1;
         transform: translateY(0);
       }
     }
     &:not(.nav-open) {
-      transition-delay: .8s;
+      transition-delay: .5s;
     }
   }
 }
@@ -216,8 +220,30 @@ header {
 @for $i from 1 through 10 {
   nav{
     &.nav-open ul li:nth-child(#{$i}) {
-      transition-delay: #{.5s + ($i * 0.2s)}; // Inicia após 4s e adiciona 0.2s por item
+      transition-delay: #{.3s + ($i * 0.2s)}; // Inicia após 4s e adiciona 0.2s por item
     }
   }
 }
 
+@keyframes openMenu {
+  0%{
+    border-radius: 50%;
+  }
+  30%{
+    border-radius: 30%;
+  }
+  50% {
+   border-radius: 0;
+  }
+}
+@keyframes closeMenu {
+  0%{
+    border-radius: 0%;
+  }
+  50% {
+    border-radius: 30%;
+   }
+   100% {
+    border-radius: 100%;
+   }
+}
