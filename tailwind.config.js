@@ -197,11 +197,11 @@ module.exports = withMT({
           }
         },
         ".motion-2": {
-          fontSize: "4rem",
+          fontSize: "9.375rem",
           lineHeight: "5.9375rem",
           fontWeight: "700",
           "@media (max-width: 48rem)":{
-            fontSize: "1.5rem",
+            fontSize: "2.5rem",
             lineHeight: "2.5rem",
             fontWeight: "800",
           }

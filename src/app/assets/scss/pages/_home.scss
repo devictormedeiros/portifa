@@ -4,11 +4,8 @@
 }
 
 .sec-call {
-    .motion-2 {
-        animation-name: scaleAnimation;
-        animation-duration: 1ms;
-        animation-direction: alternate;
-        animation-timeline: view();
+    > div {
+        overflow-y: hidden;
     }
 }
 

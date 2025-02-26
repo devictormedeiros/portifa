@@ -12,7 +12,7 @@ export default function ScrollingTexts({data}) {
     
     gsap.to(
       textTop.current, 
-      {
+        {
         scrollTrigger: {
           trigger: section.current,
           start: 'top 75%',
