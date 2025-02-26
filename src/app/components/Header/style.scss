@@ -14,6 +14,8 @@ header {
     border-top-left-radius: 0;
     padding: 0.75rem 0;
     margin-top: -0.0625rem;
+    background-color: var(--black-70);
+    backdrop-filter: blur(4px);
   }
   .logo {
     img {
@@ -44,11 +46,12 @@ header {
     }
   }
   &.sticky-header {
-    background-color: transparent;
+    // background-color: transparent;
     position: sticky;
     bottom: auto;
     top: 0;
     padding-top: 1rem;
+    
     nav.menu-principal ul li a {
       opacity: 0;
       transform: translateY(-1.25rem);
@@ -127,8 +130,8 @@ header {
     
       span {
         width: 100%;
-        height: 2px;
-        background: #ffffff;
+        height: 2.5px;
+        background: var(--white-100);
         border-radius: 4px;
         transition: all 0.3s ease-in-out;
         position: absolute;
@@ -169,13 +172,8 @@ header {
       }
     }
     &:hover{
-      svg, svg *{
-        @media (min-width: 48rem) {
-          fill: var(--gray-900);
-        }
-        .path-hamburguer-animate{
-          transform: scaleX(1);
-        }
+      .path-hamburguer-animate{
+        transform: scaleX(1);
       }
     }
   }
@@ -194,7 +192,7 @@ header {
     top: 0;
     left: 0;
     // border-radius: 100%;
-    animation: closeMenu 1s linear .5s;
+    animation: closeMenu 0.8s linear .5s;
     ul li {
       opacity: 0;
       transform: translateY(20px);
@@ -204,7 +202,7 @@ header {
     &.nav-open {
       transition-delay: 0s;
       border-radius: 0%;
-      animation: openMenu 1s linear 0s;
+      animation: openMenu 0.8s linear 0s;
       ul li {
         opacity: 1;
         transform: translateY(0);
@@ -241,9 +239,12 @@ header {
     border-radius: 0%;
   }
   50% {
+    border-radius: 20%;
+   }
+   75% {
     border-radius: 30%;
    }
    100% {
-    border-radius: 100%;
+    border-radius: 50%;
    }
 }

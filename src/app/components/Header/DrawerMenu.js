@@ -34,7 +34,7 @@ const DrawerMenu = ({ data }) => {
       >
         <div className={`icon-hamburguer ${open ? "open" : ""}`}>
           <span></span>
-          <span></span>
+          <span className="path-hamburguer-animate"></span>
           <span></span>
         </div>
       </button>
