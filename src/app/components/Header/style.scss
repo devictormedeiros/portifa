@@ -4,7 +4,6 @@ header {
   border-top-right-radius: 1.5rem;
   border-top-left-radius: 1.5rem;
   z-index: 98;
-  background: var(--gray-900);
   width: 100%;
   padding: 0.5rem 0;
   transition: all 0.5s ease;
@@ -62,6 +61,7 @@ header {
     bottom: auto;
     top: 0;
     padding-top: 1rem;
+    background: var(--gray-900);
 
     nav.menu-principal ul li a {
       opacity: 0;
