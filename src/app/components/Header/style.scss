@@ -203,7 +203,7 @@ header {
     top: 0;
     left: 0;
     transform: scale(0);
-    animation: open-menu 0.2s ease;
+    animation: open-menu 1s ease;
     ul li {
       opacity: 0;
       transform: translateY(20px);
@@ -213,7 +213,7 @@ header {
     &.nav-open {
       transition-delay: 0s;
       transform: scale(1);
-      animation: close-menu 0.2s ease;
+      animation: close-menu 1s ease;
       ul li {
         opacity: 1;
         transform: translateY(0);
