@@ -220,17 +220,7 @@ header {
       }
     }
     &:not(.nav-open) {
-      transition-delay: 0.6@keyframes toggle-menu {
-        0%{
-
-        }
-        50%{
-
-        }
-        100%{
-
-        }
-      }s;
+      transition-delay: 0.6s;
     }
   }
 }
