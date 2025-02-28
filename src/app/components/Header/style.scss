@@ -8,6 +8,7 @@ header {
   padding: 0.5rem 0;
   transition: all 0.5s ease;
   height: var(--header-height);
+  background: var(--gray-900);
   @media (max-width: 48rem) {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
@@ -61,7 +62,7 @@ header {
     bottom: auto;
     top: 0;
     padding-top: 1rem;
-    background: var(--gray-900);
+    background: transparent;
 
     nav.menu-principal ul li a {
       opacity: 0;
