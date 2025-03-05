@@ -25,7 +25,7 @@ const FloatSocial = ({ data }) => {
   return (
 
     <>
-      <div className={`${!isHeaderSticky ? "opacity-0 invisible z-[-99]": "opacity-100 w-auto visible"} float-social transition duration-500 fixed md:bottom-[3rem] bottom-[8rem] right-3 md:right-5 z-[39]`}>
+      <div className={`${!isHeaderSticky ? "opacity-0 invisible z-[-99]": "opacity-100 w-auto visible"} float-social transition duration-500 fixed bottom-[1.5rem] right-[1.5rem] md:right-[2.5rem] z-[39]`}>
         <SpeedDial>
           <SpeedDialHandler>
             <IconButton size="lg" className="rounded-full bg-gray-700 button-float-social">

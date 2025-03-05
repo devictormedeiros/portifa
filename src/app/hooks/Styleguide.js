@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 
 export default function Styleguide({ styleguide }) {
+  const [cssVariables, setCssVariables] = useState("");
+
   useEffect(() => {
     if (!styleguide) return;
 
@@ -124,12 +126,15 @@ export default function Styleguide({ styleguide }) {
 
     const mergedStyles = { ...solidColor, ...gradients };
 
-    Object.entries(mergedStyles).forEach(([key, value]) => {
-      if (value) {
-        document.documentElement.style.setProperty(key, value);
-      }
-    });
+    const cssVars = Object.entries(mergedStyles)
+      .filter(([_, value]) => value)
+      .map(([key, value]) => `${key}: ${value};`)
+      .join("\n");
+
+    setCssVariables(cssVars);
   }, [styleguide]);
 
-  return null;
+  return (
+     <style>{`:root {\n${cssVariables}\n}`}</style>
+  );
 }

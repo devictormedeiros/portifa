@@ -24,11 +24,10 @@ const LoadingPage = () => {
   }, []);
 
   return (
-    <div className={`loading-screen ${!isLoading && bgFull ? "hide" : ""}`}>
+    <div className={`loading-screen ${!isLoading ? "expand" : ""}  ${!isLoading && bgFull ? "hide" : ""}`}>
       <div className="loading-content">
         <img src="https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/02/Logo.svg" data-preload="" className="loading-logo" />
       </div>
-      <div className={`loading-bg ${!isLoading ? "expand" : ""}`}></div>
     </div>
   );
 };

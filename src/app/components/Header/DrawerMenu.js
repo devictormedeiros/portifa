@@ -5,7 +5,7 @@ const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
   const navRef = useRef(null);
-  const [position, setPosition] = useState({ top: 0});
+  const [position, setPosition] = useState({ top: 0 });
 
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
@@ -19,9 +19,7 @@ const DrawerMenu = ({ data }) => {
 
         // Atualiza o estado apenas se a posição mudou
         setPosition((prevPosition) => {
-          if (
-            prevPosition.top !== newPosition.top
-          ) {
+          if (prevPosition.top !== newPosition.top) {
             return newPosition;
           }
           return prevPosition;
@@ -62,21 +60,22 @@ const DrawerMenu = ({ data }) => {
       {/* Botão Hambúrguer */}
       <button
         ref={buttonRef}
-        onClick={toggleMenu}
+       
         className="fixed z-50 flex items-center justify-center md:hover:bg-primary rounded-full duration-300 w-12 h-12"
       >
-        <div className={`icon-hamburguer ${open ? "open" : ""}`}>
+        <label className={`burger`} htmlFor="burger">
+          <input type="checkbox" id="burger" checked={open} onChange={toggleMenu}/>
           <span></span>
           <span className="path-hamburguer-animate"></span>
           <span></span>
-        </div>
+        </label>
       </button>
-
+      <div
+        className={`bg-nav ${open ? "nav-open" : ""}`}
+      ></div>
       {/* Menu Overlay */}
       <nav
         ref={navRef}
-        style={{ transformOrigin: `calc(100% - 2.5rem - 26px) calc(${position.top.toFixed(2)}px + 20px)` }}
-
         className={`fixed text-white flex items-center justify-center z-40 ${
           open ? "nav-open" : ""
         }`}

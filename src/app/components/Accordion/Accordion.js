@@ -7,6 +7,11 @@ import {
 import ScrollAnimation from 'react-animate-on-scroll';
 import "./style.scss";
 
+const accordionAnimation = {
+  mount: { opacity: 1 },
+  unmount: { opacity: 0 },
+};
+
 const AccordionCustom = ({ title, children }) => {
   const [open, setOpen] = useState(false);
 
@@ -30,7 +35,7 @@ const AccordionCustom = ({ title, children }) => {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className={`accordion-icon transition-transform duration-300 ${
+              className={`accordion-icon transition-transform duration-400 ${
                 open ? "rotate-180" : ""
               }`}
             >

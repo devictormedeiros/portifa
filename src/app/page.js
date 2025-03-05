@@ -29,12 +29,13 @@ export default function Page() {
 
   return (
     <body data-page-load={isLoading.toString()} className={`antialiased text-white-100`}>
+              {dataOption?.styleguide && (
+          <Styleguide styleguide={dataOption.styleguide} />
+        )}
       <CustomCursor/>
       <LoadingPage />
       <StickyProvider>
-        {dataOption?.styleguide && (
-          <Styleguide styleguide={dataOption.styleguide} />
-        )}
+
       <HomePage data={dataOption} />
       </StickyProvider>
     </body>

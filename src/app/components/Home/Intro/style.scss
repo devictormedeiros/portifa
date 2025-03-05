@@ -5,15 +5,9 @@
 body{
   &[data-page-load="false"]{
     section.sec-intro{
+      margin-bottom: calc(-1 * var(--header-height));
       h1{
         opacity: 1;
-      }
-    }
-  }
-  &[data-page-load="true"]{
-    section.sec-intro{
-      h1{
-        opacity: 0;
       }
     }
   }
@@ -22,7 +16,8 @@ body{
 
 section.sec-intro {
   position: relative;
-  margin-bottom: calc(-1 * var(--header-height));
+  margin-bottom: 0;
+  transition: margin-bottom 1.8s linear 0.1s;
   & + .sticky-header {
     .container-text {
       position: relative;
@@ -72,7 +67,8 @@ section.sec-intro {
     right: 0;
     margin: auto;
     h1{
-      transition: opacity 10s ease 2.5s;
+      opacity: 0;
+      transition: opacity 3s linear 0.3s;
     }
     span {
       display: block;

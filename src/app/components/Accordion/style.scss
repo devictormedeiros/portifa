@@ -1,4 +1,13 @@
 .accordion {
+  .overflow-hidden{
+    opacity: 0;
+    transition:opacity 1s linear;
+  }
+  &.open{
+    .overflow-hidden{
+      opacity: 1;
+    }
+  }
   .accordion-header{
     button{
       span.ml-4{
