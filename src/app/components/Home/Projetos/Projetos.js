@@ -15,7 +15,7 @@ const Projetos = ({data}) => {
             }
 
             gsap.to(pinned, {    
-                scale: "0.85",
+                scale: "0.6",
                 scrollTrigger: {
                     trigger: pinned,
                     start: `top 0`,
@@ -32,9 +32,9 @@ const Projetos = ({data}) => {
     , [data]);
 
     return (
-        <section className="sec-projetos g-col-12">
-            <div className="container">
-                <div className="grid grid-cols-12 gap-y-[1.5rem] lg:gap-y-[7.25rem]">
+        <section className="sec-projetos g-col-12 md:h-[400vh]">
+            <div className="container h-full">
+                <div className="grid grid-cols-12 gap-y-[1.5rem] lg:gap-y-[7.25rem] h-full">
                     {data.map((projeto, i) => (
                         <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 h-[80vh] flex items-center justify-center pinned" key={projeto.id}>
                             <CardProjeto projeto={projeto} />

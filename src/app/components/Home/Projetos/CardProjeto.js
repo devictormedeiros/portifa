@@ -1,4 +1,8 @@
 import Image from "next/image";
+import Html from "../../Icons/Html";
+import Css from "../../Icons/Css";
+import Js from "../../Icons/Js";
+import ReactIcon from "../../Icons/React";
 
 const CardProjeto = ({ projeto }) => {
     return (
@@ -8,9 +12,12 @@ const CardProjeto = ({ projeto }) => {
                     <h3 className="content-title-h3 text-gray-200 uppercase">{projeto.nome}</h3>
                     <div className="flex items-center gap-[1.25rem] md:gap-6">
                     {projeto.technologies.map((tech, index) => (
-                        <div className="flex cursor-pointer" key={index}>
-                            <Image  className="max-w-[1rem] w-full h-full md:max-w-6" src={`/icons/${tech}.svg`} alt="Tecnologia X" width={25} height={25}/>
-                        </div>
+                        <a href="/" className="flex cursor-pointer group" key={index} title={tech}>
+                            {tech === "html" && <Html />}
+                            {tech === "css" && <Css />}
+                            {tech === "js" && <Js />}
+                            {tech === "react" && <ReactIcon />}
+                        </a>
                     ))}
                     </div>
                 </div>
