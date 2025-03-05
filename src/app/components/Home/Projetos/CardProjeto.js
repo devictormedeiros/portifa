@@ -6,7 +6,7 @@ import ReactIcon from "../../Icons/React";
 
 const CardProjeto = ({ projeto }) => {
     return (
-        <article className="card-projeto bg-gradient-primary-c rounded-2xl md:mx-0">
+        <div className="card-projeto bg-gradient-primary-c rounded-2xl md:mx-0">
             <div className="p-[2rem] flex flex-col gap-6 md:gap-[2.5rem] rounded-lg md:p-[4rem]">
                 <div className="flex flex-col gap-[0.5rem] justify-between pb-[.5rem] border-b border-white-10 md:flex-row">
                     <h3 className="content-title-h3 text-gray-200 uppercase">{projeto.nome}</h3>
@@ -32,7 +32,7 @@ const CardProjeto = ({ projeto }) => {
                     </div>
                 </div>
             </div>
-        </article>
+        </div>
     )
 }
 
