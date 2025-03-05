@@ -13,7 +13,9 @@ body{
   transition: transform 0.5s ease-out, background-color .3s ease-in-out;
   z-index: 9999;
   mix-blend-mode: difference;
-
+  @media (max-width: 768px) {
+    display: none;
+  }
 }
 
 .custom-cursor.hovered {
