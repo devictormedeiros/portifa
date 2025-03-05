@@ -5,55 +5,25 @@ const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
   const navRef = useRef(null);
-  const [position, setPosition] = useState({ top: 0 });
 
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   useEffect(() => {
-    const updatePosition = () => {
-      if (buttonRef.current) {
-        const rect = buttonRef.current.getBoundingClientRect();
-        const newPosition = { top: rect.top };
-
-        // Atualiza o estado apenas se a posição mudou
-        setPosition((prevPosition) => {
-          if (prevPosition.top !== newPosition.top) {
-            return newPosition;
-          }
-          return prevPosition;
-        });
-      }
-    };
-
-    // Observador de redimensionamento
-    const resizeObserver = new ResizeObserver(updatePosition);
-    if (buttonRef.current) {
-      resizeObserver.observe(buttonRef.current);
+    if (open) {
+      document.documentElement.style.overflow = "hidden";
+      document.body.style.overflow = "hidden";
+    } else {
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
     }
 
-    // Observador de interseção (detecta movimento na tela)
-    const intersectionObserver = new IntersectionObserver(
-      () => updatePosition(),
-      { root: null, rootMargin: "0px", threshold: 0.1 }
-    );
-    if (buttonRef.current) {
-      intersectionObserver.observe(buttonRef.current);
-    }
-
-    // Adiciona eventos para atualizar posição ao rolar a tela ou mover o mouse
-    window.addEventListener("mousemove", updatePosition);
-    window.addEventListener("scroll", updatePosition);
-
-    // Cleanup
     return () => {
-      resizeObserver.disconnect();
-      intersectionObserver.disconnect();
-      window.removeEventListener("mousemove", updatePosition);
-      window.removeEventListener("scroll", updatePosition);
+      document.documentElement.style.overflow = "";
     };
-  }, []);
+
+  }, [open]);
 
   return (
     <>

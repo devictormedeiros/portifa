@@ -215,13 +215,15 @@ header {
   }
   
   nav {
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s ease, height 0.4s ease;
     top: 0;
     bottom: 0;
     margin: auto;
     left: 0;
-    width: 100%;
     opacity: 0;
+    width: 100vw;
+    height: 0;
+    overflow: hidden;
     ul {
       position: relative;
       z-index: 2;
@@ -234,6 +236,8 @@ header {
 
     &.nav-open {
       opacity: 1;
+      z-index: 1;
+      height: 100vh;
       ul li {
         opacity: 1;
         transform: translateY(0);
@@ -245,7 +249,6 @@ header {
     position: absolute;
     top: 0;
     bottom: 0;
-    margin: auto;
     left: 0;
     right: 0;
     border-radius: 100%;
@@ -257,6 +260,9 @@ header {
       height: 20px;
       transform: scale(180);
       transition: transform 0.7s ease-out;
+      @media (max-width: 48rem) {
+        transform: scale(100);
+      }
     }
   }
 }

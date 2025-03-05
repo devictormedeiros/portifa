@@ -140,7 +140,9 @@ html {
   scrollbar-width: thin;
   font-size: 1rem;
   font-family: "Roboto Flex", serif;
-
+  @media (max-width:768px) {
+    overflow-x: scroll;
+  }
   @media screen and (min-width: 48.0625rem) {
     font-size: clamp(10px, 0.83vw, 16px);
   }
