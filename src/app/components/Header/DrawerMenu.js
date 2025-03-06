@@ -31,7 +31,7 @@ const DrawerMenu = ({ data }) => {
       <button
         ref={buttonRef}
        
-        className="fixed z-50 flex items-center justify-center md:hover:bg-primary rounded-full duration-300"
+        className="fixed z-50 flex items-center justify-center md:hover:bg-primary rounded-full duration-300 w-9 h-9"
       >
         <label className={`burger`} htmlFor="burger">
           <input type="checkbox" id="burger" checked={open} onChange={toggleMenu}/>
