@@ -21,7 +21,7 @@ header {
       display: block;
       width: 100%;
       height: 100%;
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(0.25rem);
       position: absolute;
       transition: background 0.1s;
       top: 0;
@@ -75,66 +75,6 @@ header {
       opacity: 0;
     }
   }
-  .switch-darkmode {
-    font-size: 1.0625rem;
-    position: relative;
-    display: inline-block;
-    width: 3rem;
-    height: 18px;
-    opacity: 1;
-    transition: all 0.5s ease-out;
-    input[type="checkbox"] {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    &:hover {
-      .slider-darkmode {
-        background-color: var(--primary);
-        &:before {
-          background-color: var(--primary);
-        }
-      }
-    }
-    .slider-darkmode {
-      position: absolute;
-      cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 18px;
-      background-color: var(--white-100);
-      transition: 0.5s;
-      border-radius: 1.875rem;
-      transition: all 0.5s ease-out;
-      &:before {
-        position: absolute;
-        content: "";
-        height: 14px;
-        width: 1.125rem;
-        border-radius: 50%;
-        left: 12%;
-        bottom: 14%;
-        box-shadow: inset 0.4rem -0.2rem 0rem 0rem var(--gray-900);
-        background: var(--white-100);
-        transition: all 0.5s ease-out;
-        @media (max-width: 48rem) {
-          bottom: 10%;
-        }
-      }
-    }
-    input:checked + .slider-darkmode {
-      &:hover {
-        background-color: var(--white-100);
-      }
-      &:before {
-        transform: translateX(100%);
-        box-shadow: inset 0.9375rem -0.25rem 0rem 0.9375rem var(--primary);
-        left: 30%;
-      }
-    }
-  }
 }
 
 .menu-hamburguer {
@@ -146,8 +86,8 @@ header {
 
     .burger {
       position: relative;
-      width: 26px;
-      height: 18px;
+      width: 1.625rem;
+      height: 1.125rem;
       background: transparent;
       cursor: pointer;
       display: block;
@@ -156,8 +96,8 @@ header {
         &:checked{
           & ~ span:nth-of-type(1) {
             transform: rotate(45deg);
-            top: -2px;
-            left: 3px;
+            top: -0.125rem;
+            left: 0.1875rem;
           }
       
           & ~ span:nth-of-type(2) {
@@ -167,8 +107,8 @@ header {
       
           & ~ span:nth-of-type(3) {
             transform: rotate(-45deg);
-            top: 17px;
-            left: 3px;
+            top: 1.0625rem;
+            left: 0.1875rem;
           }
         }
       }
@@ -180,16 +120,16 @@ header {
       span {
         display: block;
         position: absolute;
-        height: 2px;
+        height: 0.125rem;
         width: 100%;
         background: var(--white-100);
-        border-radius: 9px;
+        border-radius: 0.5625rem;
         opacity: 1;
         left: 0;
         transform: rotate(0deg);
         transition: 0.25s ease-in-out;
         &:nth-of-type(1) {
-          top: 0px;
+          top: 0rem;
           transform-origin: left center;
         }
     
@@ -229,7 +169,7 @@ header {
       z-index: 2;
       li {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(1.25rem);
         transition: opacity 0.7s linear, transform 0.7s linear;
       }
     }
@@ -256,8 +196,8 @@ header {
     transition: transform 0.7s ease-out 0.1s;
     transform: scale(0);
     &.nav-open{
-      width: 20px;
-      height: 20px;
+      width: 1.25rem;
+      height: 1.25rem;
       transform: scale(180);
       transition: transform 0.7s ease-out;
       @media (max-width: 48rem) {

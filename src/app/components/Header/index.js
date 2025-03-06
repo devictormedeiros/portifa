@@ -6,6 +6,7 @@ import Link from "next/link";
 import DrawerMenu from "./DrawerMenu";
 import getPosts from "../../api/getAPI";
 import { useSticky } from "../../context/StickyContext";
+import SwitchDarkmode from "./SwitchDarkmode";
 const Header = ({ logo }) => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
 
@@ -44,10 +45,7 @@ const Header = ({ logo }) => {
             <Nav data={itemslink} />
           </div>
           <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-12 gap-x-[2rem]">
-            <label className={`switch-darkmode`}>
-              <input type="checkbox" onChange={() => setDarkMode((prev) => !prev)}/>
-              <span className="slider-darkmode"></span>
-            </label>
+            <SwitchDarkmode/>
             <div className="menu-hamburguer">
               <DrawerMenu data={itemslink} />
             </div>

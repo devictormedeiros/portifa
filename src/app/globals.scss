@@ -15,6 +15,7 @@
 @import 'assets/scss/pages/_home';
 
 :root {
+  color-scheme: light dark;
   --primary: #fff;
   --primary-rgb: rgba(78,201,176,1);
   --primary-light: #fff;
@@ -106,9 +107,9 @@
   --image-fade-dark: linear-gradient(180deg, #0D0D0D 12.67%, rgba(13, 13, 13, 0.60) 41.63%, rgba(13, 13, 13, 0.60) 71.33%, #0D0D0D 100%);
   --image-fade-white: linear-gradient(180deg, #FFF 0%, rgba(255, 255, 255, 0.30) 25.08%, rgba(255, 255, 255, 0.30) 75.4%, #FFF 100%);
   
-  --header-height: 68px;
+  --header-height: 4.25rem;
   @media (max-width: 48rem){
-    --header-height: 72px;
+    --header-height: 4.5rem;
   }
 }
 
@@ -130,6 +131,7 @@ body.dark {
   --primary: var(--primary-light);
 }
 
+
 a:hover {
   text-decoration: none !important;
 }
@@ -140,12 +142,10 @@ html {
   scrollbar-width: thin;
   font-size: 1rem;
   font-family: "Roboto Flex", serif;
-  @media (max-width:768px) {
+  @media (max-width:48rem) {
     overflow-x: scroll;
   }
-  @media screen and (min-width: 48.0625rem) {
-    font-size: clamp(10px, 0.83vw, 16px);
-  }
+
 
   body{
     font-family: "Roboto Flex", serif;
