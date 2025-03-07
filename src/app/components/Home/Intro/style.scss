@@ -17,7 +17,7 @@ body{
 section.sec-intro {
   position: relative;
   margin-bottom: 0;
-  transition: margin-bottom 1.8s linear 0.1s;
+  transition: margin-bottom 1.8s linear 0.3s;
   & + .sticky-header {
     .container-text {
       position: relative;
@@ -69,17 +69,23 @@ section.sec-intro {
       opacity: 0;
       transition: opacity 3s linear 0.3s;
     }
-    span {
+    .text-animate {
+      min-height: 110px;
       display: block;
-      color: var(--primary);
-      position: relative;
-      &:after {
-        content: "|";
-        display: inline-block;
-        @apply content-title-h1;
-        margin-left: 0.625rem;
-        animation: write 2s infinite;
+      span{
+        display: block;
+        color: var(--primary);
+        position: relative;
+        min-height: 110px;
+        &:after {
+          content: "|";
+          display: inline-block;
+          @apply content-title-h1;
+          margin-left: 0.625rem;
+          animation: write 2s infinite;
+        }
       }
+      
     }
   }
 

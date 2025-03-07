@@ -26,7 +26,7 @@ const TextAnimate = ({ frases }) => {
           setLetterIndex(letterIndex + 1);
 
           if (letterIndex + 1 === currentFrase.length) {
-            setTimeout(() => setIsDeleting(true), 1000);
+            setTimeout(() => setIsDeleting(true), 500);
           }
         } else {
           setText(currentFrase.substring(0, letterIndex - 1));
@@ -40,13 +40,13 @@ const TextAnimate = ({ frases }) => {
           }
         }
       },
-      isDeleting ? 100 : 200
+      isDeleting ? 80 : 150
     );
 
     return () => clearTimeout(timeout);
   }, [text, isDeleting, letterIndex, currentFrasesIndex, frases]);
 
-  return <span className="uppercase">{text}</span>;
+  return <span className="uppercase content-title-h1">{text}</span>;
 };
 
 export default memo(TextAnimate);

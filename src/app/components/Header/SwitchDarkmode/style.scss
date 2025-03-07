@@ -1,8 +1,8 @@
 /* From Uiverse.io by catraco */ 
 .switch-darkmode{
-    $dark-sky: var(--gray-700);
+    $dark-sky: var(--gray-100);
     $moon: #ffd365;
-    $light-sky: var(--gray-700);;
+    $light-sky: var(--gray-100);;
     $sun: #ffed89;
   
     display: inline-block;
@@ -60,7 +60,7 @@
       top: 0;
       height: 100%;
       padding: 0.2em;
-      fill: $moon;
+      fill: var(--gray-700);
       transition: 0.5s;
     }
   
@@ -70,7 +70,7 @@
       top: 0;
       height: 100%;
       padding: 0.2em;
-      fill: $sun;
+      fill: var(--gray-700);
       transition: 0.5s;
       opacity: 0;
     }
