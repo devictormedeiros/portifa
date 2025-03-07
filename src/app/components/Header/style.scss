@@ -193,7 +193,7 @@ header {
     height: 0;
     border-radius: 50%;
     z-index: 1;
-    transition: transform 2s ease-out 6s, width 0.7s ease-out 0.2s, height 0.7s ease-out 0.2s;
+    transition: transform 2s ease-out 0.2s, width 0.7s ease-out 0.2s, height 0.7s ease-out 0.2s;
     transform: translate(-50%, -50%) scale(0);
   
     &.nav-open {
