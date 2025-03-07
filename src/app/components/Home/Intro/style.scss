@@ -50,10 +50,9 @@ section.sec-intro {
     filter: blur(31.25rem);
     z-index: 1;
     animation: effect-intro 12s ease-in-out infinite;
-    
   }
   > .container-text {
-    min-height: 100vh;
+    min-height: 100dvh;
     padding-top: 5rem;
     padding-bottom: 5rem;
     display: flex;
