@@ -27,11 +27,11 @@ const Projetos = ({data}) => {
                 }
     
                 gsap.to(pinned, {    
-                    scale: "0.8",
+                    //scale: isMobile ? "0.4" : "0.8",
                     scrollTrigger: {
                         trigger: pinned,
-                        start: isMobile ? `top 10%` : `top 0`,
-                        end: isMobile ? `bottom 90%` : `bottom -30%`,
+                        start: isMobile ? `top top` : `top 0`,
+                        end: isMobile ? `bottom -40%` : `bottom -50%`,
                         scrub: true,
                         toggleActions: "play none none reverse",
                     }
@@ -46,11 +46,11 @@ const Projetos = ({data}) => {
     , [data]);
 
     return (
-        <section className="sec-projetos h-[400vh]">
-            <div className="container h-full">
+        <section className="sec-projetos h-[320vh] lg:h-[400vh]">
+            <div className="container md:h-full relative">
                 <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
-                    {data.map((projeto, i) => (
-                        <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 flex items-center justify-center h-[100vh] md:h-[80vh] pinned" key={projeto.id}>
+                    {data.map((projeto) => (
+                        <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 flex items-center justify-center h-[100vh] md:h-[80vh] pinned duration-300" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
                         </article>
                     ))}
