@@ -19,7 +19,7 @@ const Projetos = ({data}) => {
             reduceMotion: "(prefers-reduced-motion: reduce)",
           },
           (context) => {
-            let { isDesktop, isMobile, reduceMotion } = context.conditions;
+            let { isMobile } = context.conditions;
 
             pinneds.forEach((pinned, index) => {
                 if(!pinneds[index + 1]) {
@@ -27,7 +27,7 @@ const Projetos = ({data}) => {
                 }
     
                 gsap.to(pinned, {    
-                    //scale: isMobile ? "0.4" : "0.8",
+                    scale: isMobile ? "0.4" : "0.8",
                     scrollTrigger: {
                         trigger: pinned,
                         start: isMobile ? `top top` : `top 0`,
@@ -50,7 +50,7 @@ const Projetos = ({data}) => {
             <div className="container md:h-full relative">
                 <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
                     {data.map((projeto) => (
-                        <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 flex items-center justify-center h-[100vh] md:h-[80vh] pinned duration-300" key={projeto.id}>
+                        <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 flex items-center justify-center h-[100vh] md:h-[80vh] pinned duration-300 ease-in-out" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
                         </article>
                     ))}

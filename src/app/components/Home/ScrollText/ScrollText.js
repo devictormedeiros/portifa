@@ -60,7 +60,7 @@ export default function ScrollingTexts({data}) {
       <div className="overflow-hidden flex justify-end">
         <div
           ref={textBottom}
-          className="relative whitespace-nowrap motion w-fit duration-300"
+          className="relative whitespace-nowrap motion w-fit duration-300 ease-in-out"
         >
           {data.texto_inferior}
         </div>

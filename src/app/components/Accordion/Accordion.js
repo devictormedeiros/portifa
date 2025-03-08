@@ -52,7 +52,7 @@ const AccordionCustom = ({ title, children }) => {
           <AccordionBody
             className={`accordion-body ${
               open ? "accordion-open" : ""
-            } mt-8 md:mt-12 pt-0 text-base font-normal text-gray-400`}
+            } mt-6 md:mt-12 pt-0 text-base font-normal text-gray-400`}
           >
             <div className="accordion-content">{children}</div>
           </AccordionBody>
