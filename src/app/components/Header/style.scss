@@ -197,11 +197,14 @@ header {
     transform: translate(-50%, -50%) scale(0);
   
     &.nav-open {
-      width: 300vw;
-      height: 300vh;
+      width: 220vw;
+      height: 220vw;
       transform: translate(-50%, -50%) scale(1);
       transition: transform 0.7s ease-out 0.1s, width 0.7s ease-out 0.1s, height 0.7s ease-out 0.1s;
-      
+      @media (max-width:768px) {
+        width: 220vh;
+        height: 220vh;
+      }
     }
   }
   

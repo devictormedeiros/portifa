@@ -9,11 +9,11 @@
     position: relative;
     border-radius: 5em;
     cursor: pointer;
-    width: 3rem;
-    height: 1.125rem;
+    width: 2.4rem;
+    height: 1.25rem;
     overflow: hidden;
-    transition: all 0.5s;
-  
+    transition: all .3s;
+    margin-top: 0.2rem;
     .back {
       background-color: $dark-sky;
       position: absolute;
@@ -56,22 +56,21 @@
   
     .moon {
       position: absolute;
-      left: 0;
       top: 0;
       height: 100%;
-      padding: 0.2em;
+      padding: .15em;
       fill: var(--gray-700);
-      transition: 0.5s;
+      transition: .3s;
     }
   
     .sun {
       position: absolute;
-      left: 0.75rem;
       top: 0;
       height: 100%;
-      padding: 0.2em;
+      padding: .15em;
       fill: var(--gray-700);
-      transition: 0.5s;
+      transition: .3s;
+      left: -0.15rem;
       opacity: 0;
     }
   }

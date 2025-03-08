@@ -38,10 +38,10 @@ const AnimatedText = ({ text, onComplete }) => {
       {
         opacity: 1,
         y: 0,
-        stagger: 0.1,
-        duration: 0.8,
+        stagger: 0.01,
+        duration: 1.2,
         ease: "power3.out",
-        delay: 1.2,
+        delay: 0.8,
         onComplete: onComplete, // Chama a função após a animação terminar
       }
     );

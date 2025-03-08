@@ -40,7 +40,7 @@ const TextAnimate = ({ frases }) => {
           }
         }
       },
-      isDeleting ? 80 : 150
+      isDeleting ? 50 : 70
     );
 
     return () => clearTimeout(timeout);
