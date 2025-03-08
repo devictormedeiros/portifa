@@ -70,7 +70,6 @@ const Intro = ({ data }) => {
         <div className="text container">
           <h1 className="content-title-h1 text-gray-200">
             <AnimatedText text={texto_introducao} onComplete={() => setShowTextAnimate(true)} />
-            
           </h1>
           {frases && (
           <div className="text-animate">
