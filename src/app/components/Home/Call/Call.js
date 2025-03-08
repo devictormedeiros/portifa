@@ -52,7 +52,7 @@ const Call = ({data}) => {
             <div className="w-full flex justify-center items-center h-[100vh] sticky top-0 overflow-x-hidden">
                 <p className="motion-2 text-white text-center uppercase max-w-[77.5rem] w-full">
                     {("PROJETOS")?.split("").map((char, index) => (
-                        <span key={index} className="inline-block">
+                        <span key={index} className="inline-block duration-300">
                         {char === " " ? "\u00A0" : char}
                         </span>
                     ))}

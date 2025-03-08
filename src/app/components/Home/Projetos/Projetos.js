@@ -9,21 +9,35 @@ const Projetos = ({data}) => {
         
         let pinneds = gsap.utils.toArray(".pinned");
 
-        pinneds.forEach((pinned, index) => {
-            if(!pinneds[index + 1]) {
-                return;
-            }
+        let mm = gsap.matchMedia(),
+        breakPoint = 1024;
 
-            gsap.to(pinned, {    
-                scale: "0.85",
-                scrollTrigger: {
-                    trigger: pinned,
-                    start: `top 0`,
-                    scrub: true,
-                    toggleActions: "play none none reverse",
+        mm.add({
+            // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
+            isDesktop: `(min-width: ${breakPoint}px)`,
+            isMobile: `(max-width: ${breakPoint - 1}px)`,
+            reduceMotion: "(prefers-reduced-motion: reduce)",
+          },
+          (context) => {
+            let { isMobile } = context.conditions;
+
+            pinneds.forEach((pinned, index) => {
+                if(!pinneds[index + 1]) {
+                    return;
                 }
+    
+                gsap.to(pinned, {    
+                    scale: isMobile ? "0.4" : "0.8",
+                    scrollTrigger: {
+                        trigger: pinned,
+                        start: isMobile ? `top top` : `top 0`,
+                        end: isMobile ? `bottom -40%` : `bottom -50%`,
+                        scrub: true,
+                        toggleActions: "play none none reverse",
+                    }
+                });
             });
-        });
+          })
     }, []);
 
     useEffect(() => {
@@ -32,11 +46,11 @@ const Projetos = ({data}) => {
     , [data]);
 
     return (
-        <section className="sec-projetos g-col-12">
-            <div className="container">
-                <div className="grid grid-cols-12 gap-y-[1.5rem] lg:gap-y-[7.25rem]">
-                    {data.map((projeto, i) => (
-                        <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 h-[80vh] flex items-center justify-center pinned" key={projeto.id}>
+        <section className="sec-projetos h-[320vh] lg:h-[400vh]">
+            <div className="container md:h-full relative">
+                <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
+                    {data.map((projeto) => (
+                        <article className="sticky top-[5rem] lg:top-[7rem] col-span-12 flex items-center justify-center h-[100vh] md:h-[80vh] pinned duration-300 ease-in-out" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
                         </article>
                     ))}
