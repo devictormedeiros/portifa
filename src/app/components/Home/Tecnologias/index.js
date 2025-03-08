@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Accordion from "../../Accordion/Accordion";
 import "./style.scss";
-import { useEffect, memo } from "react";
+import { memo } from "react";
 import ObserverHtml from "../../../hooks/ObserverHtml";
 
 const Tecnologias = ({ data }) => {

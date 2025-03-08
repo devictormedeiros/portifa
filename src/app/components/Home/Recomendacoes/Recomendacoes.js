@@ -7,31 +7,26 @@ const Recomendacoes = ({data}) => {
     const [isDragging, setIsDragging] = useState(false);
     const [startX, setStartX] = useState(0);
     const [scrollLeft, setScrollLeft] = useState(0);
-    const isMobile = window.innerWidth <= 768;
 
     const startDragging = (e) => {
-        if(isMobile) return;
         setIsDragging(true);
         e.preventDefault();
         const pageX = e.touches ? e.touches[0].pageX : e.pageX;
-        setStartX(pageX - (containerRef.current?.scrollLeft || 0));
+        setStartX(pageX);
         setScrollLeft(containerRef.current?.scrollLeft || 0);
-        console.log("startDragging", pageX, startX, scrollLeft);
-    }
-
+    };
+    
     const onDragging = (e) => {
-        if(isMobile) return;
         if (!isDragging || !containerRef.current) return;
         e.preventDefault();
         const pageX = e.touches ? e.touches[0].pageX : e.pageX;
         const walk = (pageX - startX) * 1.5;
         containerRef.current.scrollLeft = scrollLeft - walk;
     };
-
+    
     const stopDragging = () => {
-        if(isMobile) return;
         setIsDragging(false);
-    }
+    };  
 
     return (
         <section className={`sec-recomendacoes g-col-12`}>

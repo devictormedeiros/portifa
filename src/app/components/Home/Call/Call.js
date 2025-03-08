@@ -31,7 +31,7 @@ const Call = ({data}) => {
             scrollTrigger: {
                 trigger: textRef.current,
                 start: "top 80%", // Quando 80% do elemento entrar na tela
-                end: "bottom 100%", // Opcional: define um ponto final
+                end: "bottom 80%", // Opcional: define um ponto final
                 scrub: true, // Se quiser que a animação acompanhe o scroll, use `true`
               },
           }
@@ -48,7 +48,7 @@ const Call = ({data}) => {
     , [data]);
 
     return (
-        <section ref={textRef} className="sec-call md:h-[300vh]">  
+        <section ref={textRef} className="sec-call h-[300vh]">  
             <div className="w-full flex justify-center items-center h-[100vh] sticky top-0 overflow-x-hidden">
                 <p className="motion-2 text-white text-center uppercase max-w-[77.5rem] w-full">
                     {("PROJETOS")?.split("").map((char, index) => (
