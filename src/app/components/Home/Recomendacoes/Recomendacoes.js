@@ -30,7 +30,7 @@ const Recomendacoes = ({data}) => {
 
     return (
         <section className={`sec-recomendacoes g-col-12`}>
-        <Accordion title={data.titulo}>
+            <Accordion title={data.titulo}>
             <div 
                 className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-grab active:cursor-grabbing"
                 ref={containerRef}
@@ -56,7 +56,7 @@ const Recomendacoes = ({data}) => {
                     </article>
                 ))}
             </div>
-        </Accordion>
+            </Accordion>
         </section>
     )
 }
