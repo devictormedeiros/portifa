@@ -44,7 +44,7 @@ const Header = ({ logo }) => {
           <div className="col-span-6 hidden md:block">
             <Nav data={itemslink} />
           </div>
-          <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-12 gap-x-[2rem]">
+          <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-[2rem] gap-x-[1.25rem]">
             <SwitchDarkmode/>
             <div className="menu-hamburguer">
               <DrawerMenu data={itemslink} />

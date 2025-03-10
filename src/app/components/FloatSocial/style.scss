@@ -6,4 +6,15 @@
             stroke: var(--gray-200);
         }
     }
+    .button-float-social + div{
+        button{
+            border: none !important;
+            background: var(--gray-700);
+            &:hover{
+                svg, svg *{
+                    fill: var(--primary);
+                }
+            }
+        }
+    }
 }

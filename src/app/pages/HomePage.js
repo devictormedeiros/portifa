@@ -14,6 +14,7 @@ import ScrollingTexts from "../components/Home/ScrollText/ScrollText";
 import { useEffect, useState } from "react";
 const HomePage = ({ data }) => {
   const [dataProjetcs, setDataProjects] = useState(null);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   useEffect(() => {
     setDataProjects(
@@ -45,6 +46,49 @@ const HomePage = ({ data }) => {
     ]
     );
   }, [data]);
+
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if (!scrollEnabled) {
+        event.preventDefault(); // Impede que o usuário interfira no scroll durante a animação
+        return;
+      }
+      if (window.innerWidth <= 768) return;
+
+      const introSection = document.querySelector(".sec-intro");
+      const sectionSobre = document.querySelector(".sec-sobre");
+
+      if (!introSection || !sectionSobre) return;
+
+      const scrollPosition = window.scrollY;
+      const introHeight = introSection.offsetHeight;
+
+      if (scrollPosition < introHeight && event.deltaY > 0) {
+        // Scroll para baixo na sec-intro → vai para sec-sobre
+        event.preventDefault();
+        setScrollEnabled(false);
+        sectionSobre.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+          setScrollEnabled(true);
+        }, 3500);
+      } else if (scrollPosition >= introHeight && event.deltaY < 0) {
+        // Scroll para cima na sec-sobre → volta para sec-intro
+        event.preventDefault();
+        setScrollEnabled(false);
+        introSection.scrollIntoView({ behavior: "smooth" });
+        setTimeout(() => {
+          setScrollEnabled(true);
+        }, 500);
+      }
+    };
+
+    window.addEventListener("wheel", handleScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [scrollEnabled]);
 
   return (
     <>
