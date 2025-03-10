@@ -27,7 +27,7 @@ const CardProjeto = ({ projeto }) => {
                         <Image className="rounded-lg w-full h-full object-cover" src={projeto.img} alt="Descrição da imagem" fill/>
                     </figure>
                     <div className="flex flex-col gap-6 flex-1">
-                        <p className="content-text text-white-70 line-clamp-3 md:line-clamp-none">{projeto.descricao}</p>
+                        <p className="content-text text-white-70 md:line-clamp-none">{projeto.descricao}</p>
                         <a href={projeto.link} className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary">Ver projeto</a>
                     </div>
                 </div>
