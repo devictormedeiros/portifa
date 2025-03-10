@@ -20,7 +20,7 @@ const Sobre = ({ data }) => {
               />
 
             </ScrollAnimation>
-            <ScrollAnimation className="image col-span-12 md:col-span-5" animateIn="fadeIn" duration={2.5} delay={window.innerWidth < 768 ? 0 : 2500} animateOnce={window.innerWidth < 768 ? true :  false}>
+            <ScrollAnimation className="image col-span-12 md:col-span-5" animateIn="fadeIn" duration={2} delay={window.innerWidth < 768 ? 0 : 500} animateOnce={window.innerWidth < 768 ? true :  false}>
               <img src={data?.imagem.url} alt={data?.imagem.description} title={data?.imagem.title} className="distorted-image" />
 
             </ScrollAnimation>
