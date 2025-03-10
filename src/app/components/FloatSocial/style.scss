@@ -11,8 +11,9 @@
             border: none !important;
             background: var(--gray-700);
             &:hover{
+                background: var(--primary);
                 svg, svg *{
-                    fill: var(--primary);
+                    fill: var(--gray-700);
                 }
             }
         }
