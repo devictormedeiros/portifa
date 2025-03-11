@@ -18,7 +18,10 @@ const LoadingPage = () => {
       }
     });
 
-    observer.observe(body, { attributes: true, attributeFilter: ["data-page-load"] });
+    observer.observe(body, {
+      attributes: true,
+      attributeFilter: ["data-page-load"],
+    });
 
     return () => observer.disconnect();
   }, []);
@@ -26,7 +29,14 @@ const LoadingPage = () => {
   return (
     <div className={`loading-screen ${!isLoading ? "expand" : ""}  ${!isLoading && bgFull ? "hide" : ""}`}>
       <div className="loading-content">
-        <img src="https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/02/Logo.svg" data-preload="" className="loading-logo" />
+        <div className="flex flex-wrap flex-col items-center gap-2">
+          <img
+            src="https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/02/Logo.svg"
+            data-preload=""
+            className="loading-logo"
+          />
+          <div className="icon-loading"></div>
+        </div>
       </div>
     </div>
   );
