@@ -10,11 +10,19 @@
 }
 
 .sec-recomendacoes {
-    @media screen and (max-width: 48rem) {
+    @media screen and (max-width: 768px) {
         .card-recomendations {    
             &:last-child {
                 margin-right: 1.5rem;
             }
+        }
+    }
+}
+
+.sec-projetos {
+    @media screen and (max-width: 767px) {
+        .card-projeto-container {
+            height: calc(100vh - 60px);
         }
     }
 }
