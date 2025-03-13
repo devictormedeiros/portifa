@@ -46,7 +46,7 @@ const Projetos = ({data}) => {
     , [data]);
 
     return (
-        <section className="sec-projetos h-[450vh] h-[400vh]">
+        <section className="sec-projetos" style={{"height" : `${(data.length * 100) + 120}vh`}}>
             <div className="container h-full relative">
                 <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
                     {data.map((projeto) => (
