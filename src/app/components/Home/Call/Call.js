@@ -3,60 +3,82 @@ import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Call = ({data}) => {
-    const textRef = useRef(null);
+    const videoRef = useRef(null);
 
-    useEffect(() => {
-        if ( !textRef.current ) return;
-        
-        gsap.registerPlugin(ScrollTrigger);
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
 
-        const letters = textRef.current.querySelectorAll("span");
+    let src = video.currentSrc || video.src;
 
-        gsap.fromTo(
-          letters,
-          {
-            scale: 2,
-            x: () => `${(gsap.utils.random(-800, 700))/16}rem`, // Aumenta a dispersão horizontal
-            y: () => `${(gsap.utils.random(-800, 500))/16}rem`,
-            rotation: () => gsap.utils.random(-400, 400),
-          },
-          {
-            scale: 1,
-            x: 0,
-            y: 0,
-            rotation: 0,
-            duration: 1.5,
-            stagger: 0.05,
-            ease: "back.out(2)",    
-            scrollTrigger: {
-                trigger: textRef.current,
-                start: "top 80%", // Quando 80% do elemento entrar na tela
-                end: "bottom 80%", // Opcional: define um ponto final
-                scrub: true, // Se quiser que a animação acompanhe o scroll, use `true`
-              },
-          }
-        );
+    gsap.registerPlugin(ScrollTrigger);
 
-        return () => {
-            gsap.killTweensOf(letters)
-        }
-    }, []);
+    /* Ativar o vídeo no iOS */
+    const once = (el, event, fn, opts) => {
+      const onceFn = function (e) {
+        el.removeEventListener(event, onceFn);
+        fn.apply(this, arguments);
+      };
+      el.addEventListener(event, onceFn, opts);
+      return onceFn;
+    };
 
-    useEffect(() => {
-        ScrollTrigger.refresh();
-    }
-    , [data]);
+    once(document.documentElement, "touchstart", () => {
+      video.play();
+      video.pause();
+    });
+
+    /* Scroll Control com GSAP */
+    let tl = gsap.timeline({
+      defaults: { duration: 1 },
+      scrollTrigger: {
+        trigger: "#container",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+    once(video, "loadedmetadata", () => {
+      tl.fromTo(
+        video,
+        { currentTime: 0 },
+        { currentTime: video.duration || 1 }
+      );
+    });
+
+    /* Melhorar carregamento do vídeo */
+    const preloadVideo = () => {
+      if (window["fetch"]) {
+        fetch(src)
+          .then((response) => response.blob())
+          .then((blob) => {
+            const blobURL = URL.createObjectURL(blob);
+            const currentTime = video.currentTime;
+
+            once(document.documentElement, "touchstart", () => {
+              video.play();
+              video.pause();
+            });
+
+            video.setAttribute("src", blobURL);
+            video.currentTime = currentTime + 0.01;
+          });
+      }
+    };
+
+    const preloadTimeout = setTimeout(preloadVideo, 1000);
+
+    return () => {
+      clearTimeout(preloadTimeout);
+      if (tl) tl.kill();
+    };
+  }, []);
 
     return (
-        <section ref={textRef} className="sec-call h-[300vh]">  
-            <div className="w-full flex justify-center items-center h-[100vh] sticky top-0 overflow-x-hidden">
-                <p className="motion-2 text-white text-center uppercase max-w-[77.5rem] w-full">
-                    {("PROJETOS")?.split("").map((char, index) => (
-                        <span key={index} className="inline-block duration-300">
-                        {char === " " ? "\u00A0" : char}
-                        </span>
-                    ))}
-                </p>
+        <section className="sec-call h-[300vh]">  
+            <div className="w-full flex justify-center items-center overflow-x-hidden sticky top-0">
+
             </div>
         </section>
     )

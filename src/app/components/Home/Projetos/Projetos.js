@@ -7,7 +7,7 @@ const Projetos = ({data}) => {
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         
-        let pinneds = gsap.utils.toArray(".pinned");
+        let pinneds = gsap.utils.toArray(".pinned .card-projeto ");
 
         let mm = gsap.matchMedia(),
         breakPoint = 1024;
@@ -46,11 +46,11 @@ const Projetos = ({data}) => {
     , [data]);
 
     return (
-        <section className="sec-projetos h-[450vh] h-[400vh]">
+        <section className="sec-projetos" style={{"height" : `${(data.length * 100) + 120}vh`}}>
             <div className="container h-full relative">
                 <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
                     {data.map((projeto) => (
-                        <article className="sticky top-0 col-span-12 flex items-center justify-center h-[100vh] pinned duration-300" key={projeto.id}>
+                        <article className="card-projeto-container sticky top-[3.75rem] col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 md:top-0" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
                         </article>
                     ))}
