@@ -50,45 +50,57 @@ const HomePage = ({ data }) => {
   useEffect(() => {
     const handleScroll = (event) => {
       if (!scrollEnabled) {
-        event.preventDefault(); // Impede que o usuário interfira no scroll durante a animação
+        event.preventDefault();
         return;
       }
-      if (window.innerWidth <= 768) return;
-
+      if (window.innerWidth <= 768) return; // Mantém o scroll normal no mobile
+  
       const introSection = document.querySelector(".sec-intro");
       const sectionSobre = document.querySelector(".sec-sobre");
-
+  
       if (!introSection || !sectionSobre) return;
-
+  
       const scrollPosition = window.scrollY;
+      const introTop = introSection.offsetTop;
       const introHeight = introSection.offsetHeight;
-
-      if (scrollPosition < introHeight && event.deltaY > 0) {
+      const sobreTop = sectionSobre.offsetTop;
+      const sobreHeight = sectionSobre.offsetHeight;
+  
+      // Verifica se o usuário está dentro das seções desejadas (sec-intro ou sec-sobre)
+      const isInsideIntro = scrollPosition >= introTop && scrollPosition < introTop + introHeight;
+      const isInsideSobre = scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
+  
+      // Se o usuário não estiver dentro dessas seções, não executa nada
+      if (!isInsideIntro && !isInsideSobre) return;
+  
+      if (isInsideIntro && event.deltaY > 0) {
         // Scroll para baixo na sec-intro → vai para sec-sobre
         event.preventDefault();
         setScrollEnabled(false);
         sectionSobre.scrollIntoView({ behavior: "smooth" });
-
+  
         setTimeout(() => {
           setScrollEnabled(true);
         }, 3500);
-      } else if (scrollPosition >= introHeight && event.deltaY < 0) {
+      } else if (isInsideSobre && event.deltaY < 0) {
         // Scroll para cima na sec-sobre → volta para sec-intro
         event.preventDefault();
         setScrollEnabled(false);
         introSection.scrollIntoView({ behavior: "smooth" });
+  
         setTimeout(() => {
           setScrollEnabled(true);
         }, 500);
       }
     };
-
+  
     window.addEventListener("wheel", handleScroll, { passive: false });
-
+  
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [scrollEnabled]);
+  
 
   return (
     <>
@@ -100,7 +112,7 @@ const HomePage = ({ data }) => {
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.highlight && <Call data={data?.highlight || null} />}
             {dataProjetcs && <Projetos data={dataProjetcs} />}
-            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem] overflow-x-hidden">
+            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
               {data?.tabs && (
                 <Skills data={data?.tabs} />
               )}
