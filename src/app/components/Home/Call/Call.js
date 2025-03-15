@@ -1,87 +1,80 @@
-import gsap from "gsap";
-import { useEffect, useRef } from "react";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+'use client';
 
-const Call = ({data}) => {
-    const videoRef = useRef(null);
+import { useEffect, useRef } from 'react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
+
+const Call = () => {
+  const canvasRef = useRef(null);
+  const images = useRef([]);
+  const airpods = useRef({ frame: 0 });
+  const frameCount = 147;
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
+    const canvas = canvasRef.current;
+    const context = canvas.getContext('2d');
+    canvas.width = 1158;
+    canvas.height = 770;
 
-    let src = video.currentSrc || video.src;
+    const currentFrame = (index) => (
+      `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(index + 1).toString().padStart(4, '0')}.jpg`
+    );
 
-    gsap.registerPlugin(ScrollTrigger);
+    for (let i = 0; i < frameCount; i++) {
+      const img = new Image();
+      img.src = currentFrame(i);
+      console.log(currentFrame(i));
+      images.current.push(img);
+    }
 
-    /* Ativar o vídeo no iOS */
-    const once = (el, event, fn, opts) => {
-      const onceFn = function (e) {
-        el.removeEventListener(event, onceFn);
-        fn.apply(this, arguments);
-      };
-      el.addEventListener(event, onceFn, opts);
-      return onceFn;
-    };
-
-    once(document.documentElement, "touchstart", () => {
-      video.play();
-      video.pause();
-    });
-
-    /* Scroll Control com GSAP */
-    let tl = gsap.timeline({
-      defaults: { duration: 1 },
+    gsap.to(airpods.current, {
+      frame: frameCount - 1,
+      snap: 'frame',
+      ease: 'none',
       scrollTrigger: {
-        trigger: "#container",
-        start: "top top",
-        end: "bottom bottom",
-        scrub: true,
+        scrub: 0.5,
       },
+      onUpdate: render,
     });
 
-    once(video, "loadedmetadata", () => {
-      tl.fromTo(
-        video,
-        { currentTime: 0 },
-        { currentTime: video.duration || 1 }
-      );
-    });
+    images.current[0].onload = render;
 
-    /* Melhorar carregamento do vídeo */
-    const preloadVideo = () => {
-      if (window["fetch"]) {
-        fetch(src)
-          .then((response) => response.blob())
-          .then((blob) => {
-            const blobURL = URL.createObjectURL(blob);
-            const currentTime = video.currentTime;
-
-            once(document.documentElement, "touchstart", () => {
-              video.play();
-              video.pause();
-            });
-
-            video.setAttribute("src", blobURL);
-            video.currentTime = currentTime + 0.01;
-          });
-      }
-    };
-
-    const preloadTimeout = setTimeout(preloadVideo, 1000);
-
-    return () => {
-      clearTimeout(preloadTimeout);
-      if (tl) tl.kill();
-    };
+    function render() {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.drawImage(images.current[airpods.current.frame], 0, 0);
+    }
   }, []);
 
-    return (
-        <section className="sec-call h-[300vh]">  
-            <div className="w-full flex justify-center items-center overflow-x-hidden sticky top-0">
-
+  return (
+    <section className='sec-call bg-[#000]'>
+      <div className='container'>
+        <div className='flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]'>
+          <div className='sec-call-text text col-span-12 md:col-span-4'>
+            <div className='h-screen flex items-center'>
+              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
             </div>
-        </section>
-    )
-}
+            <div className='h-screen flex items-center'>
+              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
+            </div>
+            <div className='h-screen flex items-center'>
+              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
+            </div>
+            <div className='h-screen flex items-center'>
+              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
+            </div>
+          </div>
+          <div className='sec-call-image image col-span-12 md:col-span-8'>
+            <canvas
+              ref={canvasRef}
+              className="sticky left-1/2 top-[2.1875rem] max-w-full h-screen max-h-screen object-cover object-right lg:object-contain"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default Call;

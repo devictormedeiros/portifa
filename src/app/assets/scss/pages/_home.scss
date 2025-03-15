@@ -4,8 +4,19 @@
 }
 
 .sec-call {
-    > div {
-        overflow-y: hidden;
+    @media screen and (max-width: 768px) {
+        > div {
+            .sec-call-text {
+                z-index: 10;
+            }
+
+            .sec-call-image {
+                position: sticky;
+                top: 0;
+                width: 100vw;
+                margin: 0 -1.5rem;
+            }
+        }
     }
 }
 
@@ -22,7 +33,7 @@
 .sec-projetos {
     @media screen and (max-width: 767px) {
         .card-projeto-container {
-            height: calc(100vh - 60px);
+            height: calc(100vh - 3.75rem);
         }
     }
 }

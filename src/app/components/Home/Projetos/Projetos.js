@@ -30,7 +30,7 @@ const Projetos = ({data}) => {
                     scale: "0.8",
                     scrollTrigger: {
                         trigger: pinned,
-                        start: isMobile ? `top 10%` : `top 0`,
+                        start: isMobile ? `top 7rem` : `top 0`,
                         end: isMobile ? `bottom -40%` : `bottom -50%`,
                         scrub: true,
                         toggleActions: "play none none reverse",
@@ -50,7 +50,7 @@ const Projetos = ({data}) => {
             <div className="container h-full relative">
                 <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
                     {data.map((projeto) => (
-                        <article className="card-projeto-container sticky top-[3.75rem] col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 md:top-0" key={projeto.id}>
+                        <article className="card-projeto-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 top-0 pt-[3.75rem]" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
                         </article>
                     ))}
