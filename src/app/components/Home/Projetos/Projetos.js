@@ -42,8 +42,7 @@ const Projetos = ({data}) => {
 
     useEffect(() => {
         ScrollTrigger.refresh();
-    }
-    , [data]);
+    }, [data]);
 
     return (
         <section className="sec-projetos" style={{"height" : `${(data.length * 100) + 120}vh`}}>
