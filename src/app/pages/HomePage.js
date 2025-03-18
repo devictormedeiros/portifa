@@ -12,11 +12,13 @@ import Skills from "../components/Home/Skills/Skills";
 import Recomendacoes from "../components/Home/Recomendacoes/Recomendacoes";
 import ScrollingTexts from "../components/Home/ScrollText/ScrollText";
 import { useEffect, useState } from "react";
+import Archive from "./Archive";
 const HomePage = ({ data }) => {
   const [dataProjetcs, setDataProjects] = useState(null);
   const [scrollEnabled, setScrollEnabled] = useState(true);
 
   useEffect(() => {
+    console.log(data);
     setDataProjects(
       [
         {
@@ -124,17 +126,16 @@ const HomePage = ({ data }) => {
               )}
             </section>
         </div>
-        {data?.texto_scroll && (
-          <ScrollingTexts data={data?.texto_scroll || null}/>
-        )}
-        {data?.tecnologias_atuacoes && (
+        <Archive/>
+        {data?.secao_contato && (
           <Contato
+            scrollText={data?.texto_scroll || null}
             data={data?.secao_contato || null}
             dataForm={data?.configuracao_do_formulario || null}
           />
         )}
       </main>
-      {data?.tecnologias_atuacoes && <FloatSocial data={data?.secao_contato} />}
+      {data?.secao_contato && <FloatSocial data={data?.secao_contato} />}
       <Footer />
     </>
   );

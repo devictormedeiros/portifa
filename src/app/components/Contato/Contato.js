@@ -14,7 +14,7 @@ import {
   FaInstagram,
 } from "react-icons/fa6";
 import ScrollingText from "../Home/ScrollText/ScrollText";
-const Contato = ({ data, dataForm }) => {
+const Contato = ({ data, dataForm, scrollText }) => {
   const {
     register,
     handleSubmit,
@@ -61,7 +61,7 @@ const Contato = ({ data, dataForm }) => {
 
   return (
     <>
-      {data?.texto_scroll && <ScrollingText data={data?.texto_scroll} />}
+      {scrollText && <ScrollingText data={scrollText} />}
 
       <section className="sec-contato md:mb-9 mb-0 g-col-12">
         <div className="container">
