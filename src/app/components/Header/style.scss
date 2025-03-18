@@ -71,6 +71,7 @@ header {
       transform: translateY(-1.25rem);
     }
     .switch-darkmode {
+      visibility: hidden;
       opacity: 0;
     }
   }
