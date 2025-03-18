@@ -47,9 +47,9 @@ const Projetos = ({data}) => {
     return (
         <section className="sec-projetos" style={{"height" : `${(data.length * 100) + 120}vh`}}>
             <div className="container h-full relative">
-                <div className="grid grid-cols-12 md:gap-y-[7.25rem] h-full">
+                <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
                     {data.map((projeto) => (
-                        <article className="card-projeto-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 top-0 pt-[3.75rem]" key={projeto.id}>
+                        <article className="card-projeto-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 top-[3.75rem] lg:top-0" key={projeto.id}>
                             <CardProjeto projeto={projeto} />
                         </article>
                     ))}
