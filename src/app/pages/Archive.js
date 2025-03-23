@@ -44,8 +44,8 @@ const Archive = () => {
             </h2>
 
             <div className="flex items-center gap-8 relative self-stretch w-full overflow-x-auto">
-              {technologies.map((tech) => (
-                <button className="bg-white-10 menu-section text-gray-200 flex items-center py-2 px-6 rounded-3xl gap-x-2 flex-none"><img src={tech.icon}/>{tech.name}</button>
+              {technologies.map((tech, index) => (
+                <button key={index} className="bg-white-10 menu-section text-gray-200 flex items-center py-2 px-6 rounded-3xl gap-x-2 flex-none"><img src={tech.icon}/>{tech.name}</button>
               ))}
             </div>
           </div>
