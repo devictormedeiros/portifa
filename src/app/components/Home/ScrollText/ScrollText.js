@@ -45,7 +45,7 @@ export default function ScrollingTexts({data}) {
   , [data]);
 
   return (
-    <section ref={section} className="relative flex flex-col justify-center overflow-hidden gap-[0.25rem] md:pt-[13.72rem] md:pb-[8.58rem] pt-[6rem] pb-[4rem]">
+    <section ref={section} className="relative flex flex-col justify-center overflow-hidden gap-[0.25rem] md:pt-[10rem] md:pb-[8.58rem] pt-[6rem] pb-[4rem]">
       {/* Texto superior */}
       <div className="overflow-hidden flex justify-start">
         <div
