@@ -1,43 +1,142 @@
-"use client"; // Necessário para usar hooks no diretório app
-import HomePage from "./pages/HomePage";
-import { useState, useEffect } from "react";
-import { getAcfOptions } from "./api/getAcfOptions";
-import LoadingPage from "./components/LoadingPage";
-import Styleguide from "./hooks/Styleguide";
-import "animate.css/animate.compat.css";
-import { StickyProvider } from "./context/StickyContext";
-import CustomCursor from "./components/CustomCursor";
-export default function Page() {
-  const [dataOption, setDataOptions] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-  // Fetch dos dados ao montar o componente
+"use client";
+import Header from "./components/Header";
+import Sobre from "./components/Home/Sobre";
+import Intro from "./components/Home/Intro";
+import Tecnologias from "./components/Home/Tecnologias";
+import Contato from "./components/Contato/Contato";
+import Footer from "./components/Footer";
+import Projetos from "./components/Home/Projetos/Projetos";
+import Call from "./components/Home/Call/Call";
+import Skills from "./components/Home/Skills/Skills";
+import Recomendacoes from "./components/Home/Recomendacoes/Recomendacoes";
+import { useDataOptions } from "./context/DataOptionsContext";
+import { useEffect, useState } from "react";
+
+const HomePage = () => {
+  const [dataProjetcs, setDataProjects] = useState(null);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
+  const { dataOption: data, isLoading } = useDataOptions();
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const options = await getAcfOptions();
-        setDataOptions(options);
+    console.log(data);
+    setDataProjects(
+      [
+        {
+            id: 1,
+            nome: "Lorem ipsum dolor sit amet",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
+            img: "/images/projeto.png",
+            link: "https://github.com",
+            technologies: ["html", "css", "js", "react"]
+        },
+        {
+            id: 2,
+            nome: "Lorem ipsum dolor sit amet",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
+            img: "/images/projeto.png",
+            link: "https://github.com",
+            technologies: ["html", "css", "js", "react"]
+        },
+        {
+            id: 3,
+            nome: "Lorem ipsum dolor sit amet",
+            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
+            img: "/images/projeto.png",
+            link: "https://github.com",
+            technologies: ["html", "css", "js", "react"]
+        },
+    ]
+    );
+  }, [data]);
+
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if (!scrollEnabled) {
+        event.preventDefault();
+        return;
+      }
+      if (window.innerWidth <= 768) return; // Mantém o scroll normal no mobile
+  
+      const introSection = document.querySelector(".sec-intro");
+      const sectionSobre = document.querySelector(".sec-sobre");
+  
+      if (!introSection || !sectionSobre) return;
+  
+      const scrollPosition = window.scrollY;
+      const introTop = introSection.offsetTop;
+      const introHeight = introSection.offsetHeight;
+      const sobreTop = sectionSobre.offsetTop;
+      const sobreHeight = sectionSobre.offsetHeight;
+  
+      // Verifica se o usuário está dentro das seções desejadas (sec-intro ou sec-sobre)
+      const isInsideIntro = scrollPosition >= introTop && scrollPosition < introTop + introHeight;
+      const isInsideSobre = scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
+  
+      // Se o usuário não estiver dentro dessas seções, não executa nada
+      if (!isInsideIntro && !isInsideSobre) return;
+  
+      if (isInsideIntro && event.deltaY > 0) {
+        // Scroll para baixo na sec-intro → vai para sec-sobre
+        event.preventDefault();
+        setScrollEnabled(false);
+        sectionSobre.scrollIntoView({ behavior: "smooth" });
+  
         setTimeout(() => {
-          setIsLoading(false);
-        }, 3000);
-      } catch (error) {
-        console.error("Erro ao buscar dados: ", error);
+          setScrollEnabled(true);
+        }, 3500);
+      } else if (isInsideSobre && event.deltaY < 0) {
+        // Scroll para cima na sec-sobre → volta para sec-intro
+        event.preventDefault();
+        setScrollEnabled(false);
+        introSection.scrollIntoView({ behavior: "smooth" });
+  
+        setTimeout(() => {
+          setScrollEnabled(true);
+        }, 500);
       }
     };
-
-    fetchData();
-  }, []);
+  
+    window.addEventListener("wheel", handleScroll, { passive: false });
+  
+    return () => {
+      window.removeEventListener("wheel", handleScroll);
+    };
+  }, [scrollEnabled]);
+  
 
   return (
-    <body data-page-load={isLoading.toString()} className={`antialiased text-white-100`}>
-              {dataOption?.styleguide && (
-          <Styleguide styleguide={dataOption.styleguide} />
-        )}
-      <CustomCursor/>
-      <LoadingPage />
-      <StickyProvider>
+    <>
+      {data?.introducao && <Intro data={data.introducao} />}
 
-      <HomePage data={dataOption} />
-      </StickyProvider>
-    </body>
+      <Header logo={data?.logo_principal || null} />
+      <main className="main-home flex flex-wrap relative z-[1]">
+        {data?.sobre && <Sobre data={data?.sobre || null} />}
+        <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
+          {data?.highlight && <Call data={data?.highlight || null} />}
+            {dataProjetcs && <Projetos data={dataProjetcs} />}
+            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
+              {data?.tabs && (
+                <Skills data={data?.tabs} />
+              )}
+              {data?.tecnologias_atuacoes && (
+                <Tecnologias data={data?.tecnologias_atuacoes || null} />
+              )}
+              {data?.recomendacoes && (
+                <Recomendacoes data={data.recomendacoes} />
+              )}
+            </section>
+        </div>
+        {data?.secao_contato && (
+          <Contato
+            scrollText={data?.texto_scroll || null}
+            data={data?.secao_contato || null}
+            dataForm={data?.configuracao_do_formulario || null}
+          />
+        )}
+      </main>
+     
+
+    </>
   );
-}
+};
+
+export default HomePage;

@@ -1,16 +1,40 @@
+"use client";
 import "./globals.scss";
+import "animate.css/animate.compat.css";
+import { StickyProvider } from "./context/StickyContext";
+import { DataOptionsProvider, useDataOptions } from "./context/DataOptionsContext";
+import LoadingPage from "./components/LoadingPage";
+import Styleguide from "./hooks/Styleguide";
+import CustomCursor from "./components/CustomCursor";
+import FloatSocial from "./components/FloatSocial";
+import Footer from "./components/Footer";
 
-// Metadata para o layout
-export const metadata = {
-  title: "Portifa - Victor Medeiros",
-  description: "Site para portifólio",
-};
+// Componente auxiliar para aplicar o styleguide e loading
+function LayoutWrapper({ children }) {
+  const { dataOption, isLoading } = useDataOptions();
 
-// Componente RootLayout
+  return (
+    <body data-page-load={isLoading.toString()} className="antialiased text-white-100">
+      {dataOption?.styleguide && <Styleguide styleguide={dataOption.styleguide} />}
+      <CustomCursor />
+      <LoadingPage />
+      <StickyProvider>
+        {children}
+        {dataOption?.secao_contato && <FloatSocial data={dataOption?.secao_contato} />}
+      </StickyProvider>
+    </body>
+  );
+}
+
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
-        {children}
+      <DataOptionsProvider>
+        <LayoutWrapper>{children}
+        <Footer />
+        </LayoutWrapper>
+        
+      </DataOptionsProvider>
     </html>
   );
 }

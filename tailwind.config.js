@@ -33,6 +33,7 @@ module.exports = withMT({
           100: "var(--black-100)",
         },
         white: {
+          5: "var(--white-5)",
           10: "var(--white-10)",
           20: "var(--white-20)",
           30: "var(--white-30)",
