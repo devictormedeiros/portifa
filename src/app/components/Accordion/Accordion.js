@@ -13,7 +13,7 @@ const accordionAnimation = {
 };
 
 const AccordionCustom = ({ title, children }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const inputRef = useRef(null);
 
   const handleOpen = () => {
@@ -50,7 +50,8 @@ const AccordionCustom = ({ title, children }) => {
                 </svg>
               </AccordionHeader>
             </div>
-            <div className={`duration-1000 mx-[-1.5rem] md:mx-0`} style={{height: open ? inputRef.current.clientHeight : 0 }}>
+            <div className={`duration-1000 mx-[-1.5rem] md:mx-0`} style={{ height: open && inputRef.current ? inputRef.current.clientHeight : 0 }}
+>
               <AccordionBody
                 ref={inputRef}
                 className={`accordion-body ${
