@@ -2,11 +2,14 @@ body:has(main.main-archive) {
   header {
     position: fixed;
     transform: translateY(-100%);
-    transition: transform 1.8s ease-out 0.25s;
+    transition: transform 1.8s ease-out 0.3s;
   }
   .archive-container {
-    transition: transform 1.8s ease-out ;
-    transform: translateY(100%);
+    transition: transform 1.8s ease-out 0.3s;
+    transform: translateY(calc(100vh - 450px + 3rem));
+    @media (max-width:768px) {
+      transform: translateY(calc(100vh - 360px + 3rem));
+    }
   }
 
   &[data-page-load="false"] {
