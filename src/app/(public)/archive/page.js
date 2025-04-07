@@ -7,6 +7,7 @@ import Header from "@/app/components/Header";
 import "./style.scss";
 const Archive = () => {
   const { dataOption } = useDataOptions();
+  console.log(dataOption);
   const technologies = [
     { id: 1, name: "Nome Tecnologia", icon: "/images/vector.svg" },
     { id: 2, name: "Nome Tecnologia", icon: "/images/vector.svg" },
@@ -80,8 +81,11 @@ const Archive = () => {
         <section className="flex flex-col w-full items-center">
           <div className="relative w-full h-[360px] md:h-[450px]">
             <div
-              className="w-full h-[360px] md:h-[450px] bg-[url(/images/image.png)] bg-cover bg-center"
+              className={`w-full h-[360px] md:h-[450px] bg-cover bg-center`}
               aria-hidden="true"
+              style={{
+                backgroundImage: `url(${dataOption?.archive?.cabecalho.background.url})`
+              }}
             />
             <div
               className="absolute inset-0 w-full h-full [background:linear-gradient(180deg,rgba(13,13,13,1)_0%,rgba(13,13,13,0.6)_33%,rgba(13,13,13,0.6)_67%,rgba(13,13,13,1)_100%)]"
@@ -92,7 +96,7 @@ const Archive = () => {
         <div className="archive-container w-full mt-[-3rem]">
           <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
             <div className="flex flex-col gap-6 w-full p-0">
-              <h2 className="content-title-h2 text-gray-200 ">PROJETOS</h2>
+              <h2 className="content-title-h2 text-gray-200 ">{dataOption?.archive?.cabecalho.titulo}</h2>
 
               <div
                 ref={scrollRef}
@@ -111,12 +115,7 @@ const Archive = () => {
             </div>
 
             <p className="relative self-stretch text-white-70">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              faucibus, tortor id cursus scelerisque, quam.Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit. Nulla faucibus, tortor id
-              cursus scelerisque, quam.Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla faucibus, tortor id cursus scelerisque,
-              quam.
+            {dataOption?.archive?.cabecalho.descricao}
             </p>
           </section>
           <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">

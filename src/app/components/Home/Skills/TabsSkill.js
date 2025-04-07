@@ -53,7 +53,7 @@ const TabsSkill = ({ skills, title }) => {
                 >
                     {skills.map(({ ano, titulo }, index) => (
                         <Tab
-                            key={`${ano}-${titulo}`}
+                            key={crypto.randomUUID()}
                             value={index}
                             className={`w-auto md:min-w-[11.875rem] whitespace-nowrap rounded-lg py-2 px-4 text-gray-200 bg-gray-700 duration-500 ${!isDragging ? "hover:bg-primary hover:text-gray-900" : "cursor-grab active:cursor-grabbing"} ${activeTab === index ? "bg-primary text-gray-900" : ""} ${index === 0 ? "ms-6 md:ms-0" : ""}`}
                             onClick={() => !isDragging && setActiveTab(index)}

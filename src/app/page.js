@@ -17,7 +17,7 @@ const HomePage = () => {
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const { dataOption: data, isLoading } = useDataOptions();
   useEffect(() => {
-    console.log(data);
+   
     setDataProjects(
       [
         {
@@ -105,23 +105,23 @@ const HomePage = () => {
 
   return (
     <>
-      {data?.introducao && <Intro data={data.introducao} />}
+      {data?.home.introducao && <Intro data={data.home.introducao} />}
 
       <Header logo={data?.logo_principal || null} />
       <main className="main-home flex flex-wrap relative z-[1]">
-        {data?.sobre && <Sobre data={data?.sobre || null} />}
+        {data?.home.sobre && <Sobre data={data?.home.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
-          {data?.highlight && <Call data={data?.highlight || null} />}
+          {data?.home.highlight && <Call data={data?.home.highlight || null} />}
             {dataProjetcs && <Projetos data={dataProjetcs} />}
             <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
-              {data?.tabs && (
-                <Skills data={data?.tabs} />
+              {data?.home.tabs && (
+                <Skills data={data?.home.tabs} />
               )}
-              {data?.tecnologias_atuacoes && (
-                <Tecnologias data={data?.tecnologias_atuacoes || null} />
+              {data?.home.tecnologias_atuacoes && (
+                <Tecnologias data={data?.home.tecnologias_atuacoes || null} />
               )}
-              {data?.recomendacoes && (
-                <Recomendacoes data={data.recomendacoes} />
+              {data?.home.recomendacoes && (
+                <Recomendacoes data={data.home.recomendacoes} />
               )}
             </section>
         </div>
