@@ -3,7 +3,7 @@ import getAPI from "./getAPI";
 export const getAcfOptions = async () => {
   try {
     // Faz a requisição específica para o endpoint do ACF
-    const data = await getAPI("/acf/v2/options");
+    const data = await getAPI("/acf/v3/options/options");
 
     // Retorna apenas os dados necessários ou trata o retorno
     return data && data.acf ? data.acf : null;;

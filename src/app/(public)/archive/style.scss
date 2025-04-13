@@ -36,6 +36,14 @@ body:has(main.main-archive) {
       var(--black-100) 77px,
       var(--black-100) 100%
     );
+    button{
+      .img-tech{
+        width: 22px;
+        height: auto;
+        object-fit: contain;
+        aspect-ratio: 1;
+      }
+    }
   }
   .scroll-drag {
     overflow-x: auto;

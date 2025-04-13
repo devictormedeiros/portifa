@@ -4,7 +4,6 @@ import Sobre from "./components/Home/Sobre";
 import Intro from "./components/Home/Intro";
 import Tecnologias from "./components/Home/Tecnologias";
 import Contato from "./components/Contato/Contato";
-import Footer from "./components/Footer";
 import Projetos from "./components/Home/Projetos/Projetos";
 import Call from "./components/Home/Call/Call";
 import Skills from "./components/Home/Skills/Skills";
