@@ -1,15 +1,23 @@
 "use client";
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
 import Contato from "@/app/components/Contato/Contato";
 import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
+
 const Archive = () => {
   const { dataOption } = useDataOptions();
   const { projects, technologies } = useProjects();
-  console.log(technologies);
+  const [selectedTech, setSelectedTech] = useState(null);
+
+  const filteredProjects = selectedTech
+    ? projects.filter((project) =>
+      project.tecnologias?.includes(selectedTech)
+    )
+    : projects;
+
   const scrollRef = useRef(null);
 
   useEffect(() => {
@@ -87,24 +95,27 @@ const Archive = () => {
                 ref={scrollRef}
                 className="scroll-drag flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories"
               >
-                {technologies.map((tech, index) => (
-                  <button
-                    key={index}
-                    className="bg-white-10 hover:bg-primary hover:text-gray-900 menu-section text-gray-200 flex items-center py-2 px-6 rounded-3xl gap-x-2 flex-none duration-500"
-                  >
-                    {tech.acf?.tecnologias?.icone?.link && (
-                      <img
-                        className="img-tech"
-                        src={
-                          tech.acf?.tecnologias?.icone?.link ||
-                          "/images/placeholder.svg"
-                        }
-                        alt={tech.name}
-                      />
-                    )}
-                    {tech.name}
-                  </button>
-                ))}
+                {technologies.map((tech) => {
+                  const isActive = selectedTech === tech.id;
+                  return (
+                    <button
+                      key={tech.id}
+                      onClick={() => setSelectedTech(isActive ? null : tech.id)}
+                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 ${isActive ? "bg-primary text-gray-900" : "bg-white-10 text-gray-200"
+                        }`}
+                    >
+                      {tech.acf?.tecnologias?.icone?.link && (
+                        <img
+                          src={tech.acf.tecnologias.icone.link}
+                          className="img-tech w-5"
+                          alt={tech.name}
+                        />
+                      )}
+                      {tech.name}
+                    </button>
+                  );
+                })}
+
               </div>
             </div>
 
@@ -114,7 +125,7 @@ const Archive = () => {
           </section>
           <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-              {projects.map((project, index) => {
+              {filteredProjects.map((project, index) => {
                 const imageUrl =
                   project._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
 
