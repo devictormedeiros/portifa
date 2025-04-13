@@ -68,7 +68,7 @@ const Call = () => {
           <div className='sec-call-image image col-span-12 md:col-span-8'>
             <canvas
               ref={canvasRef}
-              className="sticky left-1/2 top-[2.1875rem] max-w-full h-screen max-h-screen object-cover object-right lg:object-contain"
+              className="sticky left-1/2 top-[2.1875rem] max-w-full h-screen max-h-screen object-contain object-right"
             />
           </div>
         </div>
