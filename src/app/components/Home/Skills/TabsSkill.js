@@ -42,7 +42,7 @@ const TabsSkill = ({ skills, title }) => {
             >
                 <TabsHeader 
                     ref={containerRef}
-                    className="bg-transparent flex gap-6 md:gap-10 p-0 duration-300 overflow-x-hidden cursor-grab active:cursor-grabbing rounded-[0]"
+                    className="bg-transparent flex gap-6 md:gap-10 p-0 duration-300 overflow-x-hidden cursor-horizontal rounded-[0]"
                     onMouseDown={startDragging}
                     onMouseMove={onDragging}
                     onMouseUp={stopDragging}

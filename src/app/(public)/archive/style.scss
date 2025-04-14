@@ -56,11 +56,6 @@ body:has(main.main-archive) {
     display: none; /* Chrome, Safari */
   }
   .scroll-drag {
-    cursor: grab;
     user-select: none;
-  }
-
-  .scroll-drag.dragging {
-    cursor: grabbing;
   }
 }

@@ -8,12 +8,10 @@
     display: inline-block;
     position: relative;
     border-radius: 5em;
-    cursor: pointer;
     width: 2.4rem;
     height: 20px;
     overflow: hidden;
     transition: all .3s;
-    // margin-top: 0.2rem;
     .back {
       background-color: $dark-sky;
       position: absolute;

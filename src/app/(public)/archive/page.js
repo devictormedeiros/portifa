@@ -13,9 +13,7 @@ const Archive = () => {
   const [selectedTech, setSelectedTech] = useState(null);
 
   const filteredProjects = selectedTech
-    ? projects.filter((project) =>
-      project.tecnologias?.includes(selectedTech)
-    )
+    ? projects.filter((project) => project.tecnologias?.includes(selectedTech))
     : projects;
 
   const scrollRef = useRef(null);
@@ -93,7 +91,9 @@ const Archive = () => {
 
               <div
                 ref={scrollRef}
-                className="scroll-drag flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories"
+                className={`${
+                  technologies.length > 6 ? "cursor-horizontal" : ""
+                } flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories`}
               >
                 {technologies.map((tech) => {
                   const isActive = selectedTech === tech.id;
@@ -101,8 +101,11 @@ const Archive = () => {
                     <button
                       key={tech.id}
                       onClick={() => setSelectedTech(isActive ? null : tech.id)}
-                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 ${isActive ? "bg-primary text-gray-900" : "bg-white-10 text-gray-200"
-                        }`}
+                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 ${
+                        isActive
+                          ? "bg-primary text-gray-900"
+                          : "bg-white-10 text-gray-200"
+                      }`}
                     >
                       {tech.acf?.tecnologias?.icone?.link && (
                         <img
@@ -115,7 +118,6 @@ const Archive = () => {
                     </button>
                   );
                 })}
-
               </div>
             </div>
 
@@ -134,55 +136,62 @@ const Archive = () => {
                     key={`project-${index}`}
                     className="flex flex-col project-card"
                   >
-                    <div className="w-full h-[230px] rounded-t-2xl">
-                      <img
-                        className="w-full h-full object-cover rounded-t-2xl"
-                        alt="Imagem do projeto"
-                        src={imageUrl || "https://placehold.co/600x400"}
-                      />
-                    </div>
-                    <div className="flex flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
-                      <div className="flex flex-col items-start gap-3">
-                        <div className="flex flex-col items-start gap-[3.75px]">
-                          <h3 className="mt-[-0.94px] content-title-h5  text-gray-200">
-                            {project.title?.rendered || "Sem título"}
-                          </h3>
-                        </div>
-                        {project.tecnologias?.length > 0 && (
-                          <div className="flex items-center gap-4">
-                            {project.tecnologias.map((techId, techIndex) => {
-                              const tech = technologies.find(
-                                (t) => t.id === techId
-                              );
-                              const iconUrl =
-                                tech?.acf?.tecnologias?.icone?.link;
-
-                              return iconUrl ? (
-                                <img
-                                  key={`tech-${techIndex}`}
-                                  className="w-6 img-tech"
-                                  alt={tech?.name || "Tecnologia"}
-                                  src={iconUrl}
-                                />
-                              ) : (
-                                <span
-                                  key={`tech-${techIndex}`}
-                                  className="text-white-70 text-sm"
-                                >
-                                  {tech?.name}
-                                </span>
-                              );
-                            })}
-                          </div>
-                        )}
+                    <a
+                      href={project.link || "#"}
+                      className="block w-full h-full"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <div className="w-full h-[230px] rounded-t-2xl">
+                        <img
+                          className="w-full h-full object-cover rounded-t-2xl"
+                          alt="Imagem do projeto"
+                          src={imageUrl || "https://placehold.co/600x400"}
+                        />
                       </div>
-                      <p className="w-full text-white-70 feed-excerpt">
-                        {(project.excerpt?.rendered || "")
-                          .replace(/<[^>]+>/g, "") // remove tags HTML
-                          .slice(0, 120) // limita os caracteres
-                          .trim() + "..."}
-                      </p>
-                    </div>
+                      <div className="flex flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
+                        <div className="flex flex-col items-start gap-3">
+                          <div className="flex flex-col items-start gap-[3.75px]">
+                            <h3 className="mt-[-0.94px] content-title-h5  text-gray-200">
+                              {project.title?.rendered || "Sem título"}
+                            </h3>
+                          </div>
+                          {project.tecnologias?.length > 0 && (
+                            <div className="flex items-center gap-4">
+                              {project.tecnologias.map((techId, techIndex) => {
+                                const tech = technologies.find(
+                                  (t) => t.id === techId
+                                );
+                                const iconUrl =
+                                  tech?.acf?.tecnologias?.icone?.link;
+
+                                return iconUrl ? (
+                                  <img
+                                    key={`tech-${techIndex}`}
+                                    className="w-6 img-tech"
+                                    alt={tech?.name || "Tecnologia"}
+                                    src={iconUrl}
+                                  />
+                                ) : (
+                                  <span
+                                    key={`tech-${techIndex}`}
+                                    className="text-white-70 text-sm"
+                                  >
+                                    {tech?.name}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          )}
+                        </div>
+                        <p className="w-full text-white-70 feed-excerpt">
+                          {(project.excerpt?.rendered || "")
+                            .replace(/<[^>]+>/g, "") // remove tags HTML
+                            .slice(0, 120) // limita os caracteres
+                            .trim() + "..."}
+                        </p>
+                      </div>
+                    </a>
                   </article>
                 );
               })}

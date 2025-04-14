@@ -1,48 +1,38 @@
 
-body{
-    cursor: none;
-}
-.custom-cursor {
-  position: fixed;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.8);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  transition: transform 0.5s ease-out, background-color .3s ease-in-out;
-  z-index: 9999;
-  mix-blend-mode: difference;
-  @media (max-width: 768px) {
-    display: none;
-  }
+body, body *{
+    cursor: none !important;
 }
 
-.custom-cursor.hovered {
-  width: 1.875rem;
-  height: 1.875rem;
-  background: none; /* Remove a bolinha branca ao animar */
-  transform: translate(-50%, -50%) scale(1);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: none !important;
-}
-
-/* Rastro do cursor */
-.cursor-trail {
-  position: fixed;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-radius: 50%;
-  // background-color: rgba(255, 255, 255, 1);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 9998;
-  transition: opacity 0.3s ease-out, transform 0.2s ease-out;
-}
-
+  .custom-cursor {
+    position: fixed;
+    width: 32px;
+    height: 32px;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    // mix-blend-mode: difference;
+    transition: opacity 0.2s ease, transform 0.1s ease;
   
-  .cursor-pointer{
-    cursor: none;
+    &.scrolling {
+      opacity: 0.5;
+    }
+  
+    &.cursor-default {
+      background-image: url("/images/cursors/cursor-default.svg");
+    }
+  
+    &.cursor-link {
+      background-image: url("/images/cursors/cursor-link.svg");
+    }
+  
+    &.cursor-expand {
+      background-image: url("/images/cursors/cursor-expand.svg");
+    }
+  
+    &.cursor-scroll {
+      background-image: url("/images/cursors/cursor-scroll.svg");
+    }
   }
+  
