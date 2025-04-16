@@ -3,6 +3,7 @@ import "./globals.scss";
 import "animate.css/animate.compat.css";
 import { StickyProvider } from "./context/StickyContext";
 import { DataOptionsProvider, useDataOptions } from "./context/DataOptionsContext";
+import { ProjectsProvider } from "./context/ProjectsContext"; // ajuste o caminho
 import LoadingPage from "./components/LoadingPage";
 import Styleguide from "./hooks/Styleguide";
 import CustomCursor from "./components/CustomCursor";
@@ -29,12 +30,13 @@ function LayoutWrapper({ children }) {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
+      <ProjectsProvider>
       <DataOptionsProvider>
         <LayoutWrapper>{children}
         <Footer />
         </LayoutWrapper>
-        
       </DataOptionsProvider>
+      </ProjectsProvider>
     </html>
   );
 }

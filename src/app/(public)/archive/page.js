@@ -1,21 +1,20 @@
 "use client";
 import React from "react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
 import Contato from "@/app/components/Contato/Contato";
 import Header from "@/app/components/Header";
+import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
+
 const Archive = () => {
   const { dataOption } = useDataOptions();
-  const technologies = [
-    { id: 1, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-    { id: 2, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-    { id: 3, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-    { id: 4, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-    { id: 5, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-    { id: 6, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-    { id: 7, name: "Nome Tecnologia", icon: "/images/vector.svg" },
-  ];
+  const { projects, technologies } = useProjects();
+  const [selectedTech, setSelectedTech] = useState(null);
+
+  const filteredProjects = selectedTech
+    ? projects.filter((project) => project.tecnologias?.includes(selectedTech))
+    : projects;
 
   const scrollRef = useRef(null);
 
@@ -63,15 +62,6 @@ const Archive = () => {
     };
   }, []);
 
-  // Project data array
-  const projects = Array(15).fill({
-    title: "LOREM IPSUM DOLOR",
-    image: "/images/image-15.png",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla faucibus, tortor id cursus scelerisque, quam.Lorem ipsum dolor amet [...]",
-    icons: Array(4).fill("images/frame-13563.svg"),
-  });
-
   return (
     <>
       <Header logo={dataOption?.logo_principal || null} />
@@ -80,8 +70,11 @@ const Archive = () => {
         <section className="flex flex-col w-full items-center">
           <div className="relative w-full h-[360px] md:h-[450px]">
             <div
-              className="w-full h-[360px] md:h-[450px] bg-[url(/images/image.png)] bg-cover bg-center"
+              className={`w-full h-[360px] md:h-[450px] bg-cover bg-center`}
               aria-hidden="true"
+              style={{
+                backgroundImage: `url(${dataOption?.archive?.cabecalho.background.url})`,
+              }}
             />
             <div
               className="absolute inset-0 w-full h-full [background:linear-gradient(180deg,rgba(13,13,13,1)_0%,rgba(13,13,13,0.6)_33%,rgba(13,13,13,0.6)_67%,rgba(13,13,13,1)_100%)]"
@@ -92,82 +85,117 @@ const Archive = () => {
         <div className="archive-container w-full mt-[-3rem]">
           <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
             <div className="flex flex-col gap-6 w-full p-0">
-              <h2 className="content-title-h2 text-gray-200 ">PROJETOS</h2>
+              <h2 className="content-title-h2 text-gray-200 ">
+                {dataOption?.archive?.cabecalho.titulo}
+              </h2>
 
               <div
                 ref={scrollRef}
-                className="scroll-drag flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories"
+                className={`${
+                  technologies.length > 6 ? "cursor-horizontal" : ""
+                } flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories`}
               >
-                {technologies.map((tech, index) => (
-                  <button
-                    key={index}
-                    className="bg-white-10 hover:bg-primary hover:text-gray-900 menu-section text-gray-200 flex items-center py-2 px-6 rounded-3xl gap-x-2 flex-none duration-500"
-                  >
-                    <img src={tech.icon} />
-                    {tech.name}
-                  </button>
-                ))}
+                {technologies.map((tech) => {
+                  const isActive = selectedTech === tech.id;
+                  return (
+                    <button
+                      key={tech.id}
+                      onClick={() => setSelectedTech(isActive ? null : tech.id)}
+                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 ${
+                        isActive
+                          ? "bg-primary text-gray-900"
+                          : "bg-white-10 text-gray-200"
+                      }`}
+                    >
+                      {tech.acf?.tecnologias?.icone?.link && (
+                        <img
+                          src={tech.acf.tecnologias.icone.link}
+                          className="img-tech w-5"
+                          alt={tech.name}
+                        />
+                      )}
+                      {tech.name}
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             <p className="relative self-stretch text-white-70">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla
-              faucibus, tortor id cursus scelerisque, quam.Lorem ipsum dolor sit
-              amet, consectetur adipiscing elit. Nulla faucibus, tortor id
-              cursus scelerisque, quam.Lorem ipsum dolor sit amet, consectetur
-              adipiscing elit. Nulla faucibus, tortor id cursus scelerisque,
-              quam.
+              {dataOption?.archive?.cabecalho.descricao}
             </p>
           </section>
           <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">
-            {[0, 1, 2, 3, 4].map((rowIndex) => (
-              <div
-                key={`row-${rowIndex}`}
-                className="grid grid-cols-1 md:grid-cols-3 gap-12"
-              >
-                {projects
-                  .slice(rowIndex * 3, rowIndex * 3 + 3)
-                  .map((project, index) => (
-                    <article
-                      key={`project-${rowIndex}-${index}`}
-                      className="flex flex-col overflow-hidden border-none bg-transparent"
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+              {filteredProjects.map((project, index) => {
+                const imageUrl =
+                  project._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+
+                return (
+                  <article
+                    key={`project-${index}`}
+                    className="flex flex-col project-card"
+                  >
+                    <a
+                      href={project.link || "#"}
+                      className="block w-full h-full"
+                      target="_blank"
+                      rel="noopener noreferrer"
                     >
-                      <div className="relative w-full h-[230px] rounded-t-2xl overflow-hidden">
+                      <div className="w-full h-[230px] rounded-t-2xl">
                         <img
-                          className="absolute w-full h-full object-cover"
-                          alt="Project thumbnail"
-                          src={project.image}
+                          className="w-full h-full object-cover rounded-t-2xl"
+                          alt="Imagem do projeto"
+                          src={imageUrl || "https://placehold.co/600x400"}
                         />
                       </div>
-
                       <div className="flex flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
-                        <div className="flex flex-col items-start gap-3 w-full">
-                          <div className="flex flex-col items-start gap-[3.75px] w-full">
-                            <h3 className="w-full mt-[-0.94px] content-title-h5  text-gray-200">
-                              {project.title}
+                        <div className="flex flex-col items-start gap-3">
+                          <div className="flex flex-col items-start gap-[3.75px]">
+                            <h3 className="mt-[-0.94px] content-title-h5  text-gray-200">
+                              {project.title?.rendered || "Sem título"}
                             </h3>
                           </div>
+                          {project.tecnologias?.length > 0 && (
+                            <div className="flex items-center gap-4">
+                              {project.tecnologias.map((techId, techIndex) => {
+                                const tech = technologies.find(
+                                  (t) => t.id === techId
+                                );
+                                const iconUrl =
+                                  tech?.acf?.tecnologias?.icone?.link;
 
-                          <div className="flex items-center gap-4">
-                            {project.icons.map((icon, iconIndex) => (
-                              <img
-                                key={`icon-${iconIndex}`}
-                                className="w-7"
-                                alt="Category icon"
-                                src={icon}
-                              />
-                            ))}
-                          </div>
+                                return iconUrl ? (
+                                  <img
+                                    key={`tech-${techIndex}`}
+                                    className="w-6 img-tech"
+                                    alt={tech?.name || "Tecnologia"}
+                                    src={iconUrl}
+                                  />
+                                ) : (
+                                  <span
+                                    key={`tech-${techIndex}`}
+                                    className="text-white-70 text-sm"
+                                  >
+                                    {tech?.name}
+                                  </span>
+                                );
+                              })}
+                            </div>
+                          )}
                         </div>
-
                         <p className="w-full text-white-70 feed-excerpt">
-                          {project.description}
+                          {(project.excerpt?.rendered || "")
+                            .replace(/<[^>]+>/g, "") // remove tags HTML
+                            .slice(0, 120) // limita os caracteres
+                            .trim() + "..."}
                         </p>
                       </div>
-                    </article>
-                  ))}
-              </div>
-            ))}
+                    </a>
+                  </article>
+                );
+              })}
+            </div>
           </section>
         </div>
         {dataOption && dataOption.secao_contato && (

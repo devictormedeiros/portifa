@@ -6,33 +6,35 @@ import "./style.scss";
 const CustomCursor = () => {
   const [positions, setPositions] = useState({ x: 0, y: 0 });
   const [isScrolling, setIsScrolling] = useState(false);
-  const [isHoveringScrollHorizontal, setIsHoveringScrollHorizontal] = useState(false);
+  const [cursorType, setCursorType] = useState("default");
 
   useEffect(() => {
-    // Atualiza a posição do cursor
     const handleMouseMove = (e) => {
       setPositions({ x: e.clientX, y: e.clientY });
     };
 
-    // Detecta quando o cursor está sobre um elemento com classe "scroll-horizontal"
     const handleMouseOver = (e) => {
-      if (e.target.closest(".scroll-horizontal")) {
-        setIsHoveringScrollHorizontal(true);
+      if (e.target.closest(".cursor-expand")) {
+        setCursorType("expand");
+      } else if (e.target.closest(".cursor-horizontal")) {
+        setCursorType("scroll");
+      } else if (e.target.closest("a, button")) {
+        setCursorType("link");
+      } else {
+        setCursorType("default");
       }
     };
+    
 
-    const handleMouseOut = (e) => {
-      if (e.target.closest(".scroll-horizontal")) {
-        setIsHoveringScrollHorizontal(false);
-      }
+    const handleMouseOut = () => {
+      setCursorType("default");
     };
 
-    // Detecta scroll vertical na página inteira
     let scrollTimeout;
     const handleScroll = () => {
       setIsScrolling(true);
       clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => setIsScrolling(false), 300); // Remove após 300ms sem scroll
+      scrollTimeout = setTimeout(() => setIsScrolling(false), 300);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -50,7 +52,7 @@ const CustomCursor = () => {
 
   return (
     <div
-      className={`custom-cursor ${isScrolling ? "scrolling" : ""} ${isHoveringScrollHorizontal ? "scroll-horizontal" : ""}`}
+      className={`custom-cursor cursor-${cursorType} ${isScrolling ? "scrolling" : ""}`}
       style={{
         left: positions.x,
         top: positions.y,
