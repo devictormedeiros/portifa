@@ -80,12 +80,8 @@
   );
   --gradient-primary-b: linear-gradient(90deg, #191919 0%, #fff 100%);
   --gradient-primary-c: linear-gradient(109.79deg, #272522 0%, #131313 101.78%);
-  --gradient-primary-d: linear-gradient(
-    180.07deg,
-    rgba(255, 166, 0, 0.03) 0.06%,
-    rgba(255, 166, 0, 0) 19.26%,
-    rgba(255, 166, 0, 0.03) 48.17%
-  );
+  --gradient-primary-d: linear-gradient(180.07deg, rgba(255, 166, 0, 0.03) 0.06%, rgba(255, 166, 0, 0) 19.26%, rgba(255, 166, 0, 0.03) 48.17%);
+
   --gradient-primary-e: radial-gradient(
     50% 50% at 50% 50%,
     rgba(192, 192, 192, 0.5) 0%,
@@ -171,4 +167,11 @@ main {
 .img-fluid {
   max-width: 100%;
   height: auto;
+}
+
+// Gradients::after
+@layer components {
+  .gradient-main-d {
+    background: var(--gradient-primary-d);
+  }
 }

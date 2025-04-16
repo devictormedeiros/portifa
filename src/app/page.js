@@ -133,8 +133,6 @@ const HomePage = () => {
           />
         )}
       </main>
-     
-
     </>
   );
 };
