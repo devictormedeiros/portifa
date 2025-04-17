@@ -7,9 +7,10 @@ import { useDataOptions } from "@/app/context/DataOptionsContext";
 
 import Header from "@/app/components/Header";
 
+import SectionMoreProjects from "@/app/components/Single/SectionMoreProjects";
 import Contato from "@/app/components/Contato/Contato";
-import MoreProjects from "@/app/components/Single/MoreProjects";
-import ImageDefault from "@/app/components/Single/ImageDefault";
+import SectionImageDefault from "@/app/components/Single/SectionImageDefault";
+
 
 const Single = () => {
   const { dataOption } = useDataOptions();
@@ -86,10 +87,9 @@ const Single = () => {
     <>
       <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
-        <ImageDefault data={project} />
+        <SectionImageDefault data={project} />
 
-        <div className="single-container relative mt-[-3rem]">
-          <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
+        <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container mt-[-3rem]">
             <div className="w-full flex flex-col gap-[1.5rem] pb-[3rem] border-b border-[#FFFFFF33] lg:flex-row lg:items-end lg:gap-[5rem]">
               <div className="lg:min-w-[41.125rem]">
                 <small className="content-text-bold text-white-70">
@@ -178,9 +178,8 @@ const Single = () => {
                 aspectos e experiências dos habitantes ao sistema.
               </p>
           </section>
-        </div>
 
-        <MoreProjects data={moreProjects}/>
+        <SectionMoreProjects data={moreProjects}/>
         
         {dataOption && dataOption.secao_contato && (
           <Contato

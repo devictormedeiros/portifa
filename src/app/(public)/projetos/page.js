@@ -6,6 +6,7 @@ import Contato from "@/app/components/Contato/Contato";
 import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
+import Link from "next/link";
 
 const Archive = () => {
   const { dataOption } = useDataOptions();
@@ -63,7 +64,7 @@ const Archive = () => {
   }, []);
 
   return (
-    <>  
+    <>
       <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
         {/* Content Wrapper Section */}
@@ -136,12 +137,7 @@ const Archive = () => {
                     key={`project-${index}`}
                     className="flex flex-col project-card"
                   >
-                    <a
-                      href={project.link || "#"}
-                      className="block w-full h-full"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
+                    <Link href={`/projetos/${project.slug}`} className="block w-full h-full">
                       <div className="w-full h-[230px] rounded-t-2xl">
                         <img
                           className="w-full h-full object-cover rounded-t-2xl"
@@ -191,7 +187,7 @@ const Archive = () => {
                             .trim() + "..."}
                         </p>
                       </div>
-                    </a>
+                    </Link>
                   </article>
                 );
               })}

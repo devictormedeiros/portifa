@@ -1,4 +1,4 @@
-const ImageDefault = ({data}) => {
+const SectionImageDefault = ({data}) => {
     return (
         <section className="section-single-main flex flex-col w-full items-center">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
@@ -9,7 +9,7 @@ const ImageDefault = ({data}) => {
               <img
                 className="w-full h-full flex object-cover"
                 alt="Imaem Destacada"
-                src={data.image}
+                src={data?._embedded['wp:featuredmedia'][0].source_url}
               />
             </div>
             <div
@@ -21,4 +21,4 @@ const ImageDefault = ({data}) => {
     )
 }
 
-export default ImageDefault;
+export default SectionImageDefault;

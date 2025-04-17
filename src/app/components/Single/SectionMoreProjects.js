@@ -3,7 +3,7 @@ import HeadingDefault from "@/app/components/Headings/HeadingDefault";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 
-const MoreProjects = ({data}) => {
+const SectionMoreProjects = ({data}) => {
     const responsive = {
         superLargeDesktop: {
             // the naming can be any, depends on you.
@@ -95,4 +95,4 @@ const MoreProjects = ({data}) => {
     )
 }
 
-export default MoreProjects;
+export default SectionMoreProjects;

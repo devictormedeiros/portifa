@@ -1,0 +1,64 @@
+.section-content {
+    > .gutenberg-content {
+        h2 {
+            @apply content-title-h2;
+        }
+
+        h3 {
+            @apply content-title-h3;
+        }
+
+        h4 {
+            @apply content-title-h4;
+        }
+
+        h5 {
+            @apply content-title-h5;
+        }
+
+        h6 {
+            @apply content-title-h6;
+        }
+
+        h2, h3, h4, h5, h6 {
+            margin-top: 4rem;
+        }
+        
+        > * {
+            &:not(:last-child) {
+                margin-bottom: 2.25rem;
+            }
+        }
+
+        blockquote {
+            p {
+                @apply content-title-h3;
+                margin-block: 4rem;
+            }
+        }
+    }
+
+    @media screen and (min-width: 1024px) {
+        > .gutenberg-content {
+            h2, h3, h4, h5, h6 {
+                margin-top: 7.5rem;
+            }
+        }
+    }
+}
+
+.section-more-projects {
+    .react-multi-carousel-dot-list {
+        .react-multi-carousel-dot {
+            button {
+                @apply bg-white-40 duration-300 me-[1rem];
+            }
+
+            &.react-multi-carousel-dot--active {
+                button {
+                    @apply border-gray-200 bg-gray-200;
+                }
+            }
+        }
+    }
+}
