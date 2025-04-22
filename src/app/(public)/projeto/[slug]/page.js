@@ -18,6 +18,7 @@ const ProjetoPage = () => {
     if (projects.length > 0 && params.slug) {
       const project = projects.find(p => p.slug === params.slug);
       setCurrentProject(project);
+      console.log(typeof project.acf['more-projects']);
     }
   }, [projects, params.slug]);
 
@@ -166,6 +167,38 @@ const ProjetoPage = () => {
               <h2 className="content-title-h2 text-gray-200 uppercase">
                 Mais Projetos
               </h2>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+              {currentProject.acf?.['more-projects'] && Object.entries(currentProject.acf['more-projects']).map(([key, project]) => (
+                <div key={project.ID} className="bg-white-10 rounded-lg overflow-hidden">
+                  <div className="relative h-48">
+                    <img
+                      src={project._embedded?.['wp:featuredmedia']?.[0]?.source_url || "/images/image.png"}
+                      alt={project.post_title}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h3 className="text-gray-200 text-lg font-semibold mb-2">
+                      {project.post_title}
+                    </h3>
+                    <div className="text-white-70 text-sm">
+                      {project.post_excerpt && (
+                        <div dangerouslySetInnerHTML={{ __html: project.post_excerpt }} />
+                      )}
+                    </div>
+                    {project.acf?.link && (
+                      <a
+                        href={project.acf.link.url}
+                        target={project.acf.link.target}
+                        className="mt-4 inline-block text-primary hover:text-primary-dark"
+                      >
+                        Ver projeto →
+                      </a>
+                    )}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
