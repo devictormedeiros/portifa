@@ -5,8 +5,8 @@ body, body *{
 
   .custom-cursor {
     position: fixed;
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     pointer-events: none;
     z-index: 9999;
     transform: translate(-50%, -50%);
@@ -14,25 +14,32 @@ body, body *{
     background-repeat: no-repeat;
     // mix-blend-mode: difference;
     transition: opacity 0.2s ease, transform 0.1s ease;
-  
+    color: var(--white); 
     &.scrolling {
       opacity: 0.5;
     }
   
     &.cursor-default {
       background-image: url("/images/cursors/cursor-default.svg");
+      color: var(--white); // Essa cor será aplicada ao currentColor no SVG
     }
   
     &.cursor-link {
       background-image: url("/images/cursors/cursor-link.svg");
+      width: 64px;
+      height: 64px;
     }
   
     &.cursor-expand {
       background-image: url("/images/cursors/cursor-expand.svg");
+      width: 64px;
+      height: 64px;
     }
   
     &.cursor-scroll {
       background-image: url("/images/cursors/cursor-scroll.svg");
+      width: 64px;
+      height: 64px;
     }
   }
   

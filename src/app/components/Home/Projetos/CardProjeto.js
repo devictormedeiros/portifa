@@ -3,6 +3,7 @@ import Html from "../../Icons/Html";
 import Css from "../../Icons/Css";
 import Js from "../../Icons/Js";
 import ReactIcon from "../../Icons/React";
+import Link from 'next/link';
 
 const CardProjeto = ({ projeto }) => {
     return (
@@ -28,7 +29,12 @@ const CardProjeto = ({ projeto }) => {
                     </figure>
                     <div className="flex flex-col gap-6 flex-1">
                         <p className="content-text text-white-70 md:line-clamp-none">{projeto.descricao}</p>
-                        <a href={projeto.link} className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary">Ver projeto</a>
+                        <Link 
+                            href={`/projeto/${projeto.slug}`} 
+                            className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary"
+                        >
+                            Ver projeto
+                        </Link>
                     </div>
                 </div>
             </div>
