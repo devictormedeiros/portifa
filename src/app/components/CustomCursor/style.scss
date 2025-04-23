@@ -1,45 +1,65 @@
-
 body, body *{
     cursor: none !important;
 }
+.custom-cursor {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  // mix-blend-mode: difference;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  color: var(--primary);
+  &.scrolling {
+    opacity: 0.5;
+  }
 
-  .custom-cursor {
-    position: fixed;
+  &.cursor-default {
+    background-image: url("/images/cursors/cursor-default.svg");
     width: 40px;
     height: 40px;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    background-size: contain;
-    background-repeat: no-repeat;
-    // mix-blend-mode: difference;
-    transition: opacity 0.2s ease, transform 0.1s ease;
-    color: var(--white); 
-    &.scrolling {
-      opacity: 0.5;
-    }
+  }
+
+  &.cursor-link {
+    background-image: url("/images/cursors/cursor-link.svg");
+    width: 64px;
+    height: 64px;
+  }
+
+  &.cursor-expand {
+    background-image: url("/images/cursors/cursor-expand.svg");
+    width: 64px;
+    height: 64px;
+  }
+
+  &.cursor-scroll {
+    background-image: url("/images/cursors/cursor-scroll.svg");
+    width: 64px;
+    height: 64px;
+  }
+}
   
+body.dark{
+  .custom-cursor {
+    color: var(--primary);
+
     &.cursor-default {
-      background-image: url("/images/cursors/cursor-default.svg");
-      color: var(--white); // Essa cor será aplicada ao currentColor no SVG
+      background-image: url("/images/cursors/cursor-default-dark.svg");
     }
   
     &.cursor-link {
-      background-image: url("/images/cursors/cursor-link.svg");
-      width: 64px;
-      height: 64px;
+      background-image: url("/images/cursors/cursor-link-dark.svg");
     }
   
     &.cursor-expand {
-      background-image: url("/images/cursors/cursor-expand.svg");
-      width: 64px;
-      height: 64px;
+      background-image: url("/images/cursors/cursor-expand-dark.svg");
     }
   
     &.cursor-scroll {
-      background-image: url("/images/cursors/cursor-scroll.svg");
-      width: 64px;
-      height: 64px;
+      background-image: url("/images/cursors/cursor-scroll-dark.svg");
     }
   }
-  
+}
