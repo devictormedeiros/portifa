@@ -7,6 +7,7 @@ import Contato from "@/app/components/Contato/Contato";
 import "./style.scss";
 import Header from "@/app/components/Header";
 import { useParams } from "next/navigation";
+import Link from "next/link";
 
 const ProjetoPage = () => {
   const { dataOption } = useDataOptions();
@@ -162,16 +163,16 @@ const ProjetoPage = () => {
           </section>
         </div>
 
-        <section className="bg-gradient-primary-d pt-[5rem] lg:pt-[7.5rem]">
-          <div className="container">
-            <div className="py-4 antialiased font-sans text-xl text-left font-semibold leading-snug select-none transition-colors flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10">
-              <h2 className="content-title-h2 text-gray-200 uppercase">
-                Mais Projetos
-              </h2>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
-              {currentProject.acf?.['more-projects'] && 
-                Object.values(currentProject.acf['more-projects'])
+        {currentProject.acf?.['more-projects'] && Object.values(currentProject.acf['more-projects']).length > 0 && (
+          <section className="bg-gradient-primary-d pt-[5rem] lg:pt-[7.5rem]">
+            <div className="container">
+              <div className="py-4 antialiased font-sans text-xl text-left font-semibold leading-snug select-none transition-colors flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10">
+                <h2 className="content-title-h2 text-gray-200 uppercase">
+                  Mais Projetos
+                </h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+                {Object.values(currentProject.acf['more-projects'])
                   .map(project => project.ID)
                   .map(projectId => projects.find(p => p.id === projectId))
                   .filter(Boolean)
@@ -193,21 +194,21 @@ const ProjetoPage = () => {
                             <div dangerouslySetInnerHTML={{ __html: project.excerpt.rendered }} />
                           )}
                         </div>
-                        {project.acf?.link && (
-                          <a
-                            href={project.acf.link.url}
-                            target={project.acf.link.target}
+                        {project.slug && (
+                          <Link
+                            href={`/projeto/${project.slug}`}
                             className="mt-4 inline-block text-primary hover:text-primary-dark"
                           >
                             Ver projeto →
-                          </a>
+                          </Link>
                         )}
                       </div>
                     </div>
                   ))}
+              </div>
             </div>
-          </div>
-        </section>
+          </section>
+        )}
       </main>
     </>
   );
