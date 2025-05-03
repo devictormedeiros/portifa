@@ -3,8 +3,8 @@ body, body *{
 }
 .custom-cursor {
   position: fixed;
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -19,26 +19,26 @@ body, body *{
 
   &.cursor-default {
     background-image: url("/images/cursors/cursor-default.svg");
-    width: 40px;
-    height: 40px;
+    width: 2.5rem;
+    height: 2.5rem;
   }
 
   &.cursor-link {
     background-image: url("/images/cursors/cursor-link.svg");
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
   }
 
   &.cursor-expand {
     background-image: url("/images/cursors/cursor-expand.svg");
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
   }
 
   &.cursor-scroll {
     background-image: url("/images/cursors/cursor-scroll.svg");
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
   }
 }
   

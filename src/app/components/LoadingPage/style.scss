@@ -23,15 +23,15 @@ body[data-page-load="true"] {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    row-gap: 8px;
+    row-gap: 0.5rem;
 
     > div {
       animation: slide-up 0.8s ease-in-out;
       .loading-logo {
-        width: 160px;
+        width: 10rem;
         object-fit: contain;
-        @media (max-width: 768px) {
-          width: 104px;
+        @media (max-width: 48rem) {
+          width: 6.5rem;
         }
       }
     }
@@ -68,13 +68,13 @@ body[data-page-load="true"] {
 }
 
 .icon-loading {
-  --icon-loading-size: 56px;
+  --icon-loading-size: 3.5rem;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 56px;
-  width: 56px;
+  height: 3.5rem;
+  width: 3.5rem;
   animation: rotateLoading 1s linear infinite;
   opacity: 0;
   transition: opacity 0.2s ease;

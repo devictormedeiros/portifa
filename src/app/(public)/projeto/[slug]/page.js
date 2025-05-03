@@ -86,7 +86,7 @@ const ProjetoPage = () => {
         <section className="flex flex-col w-full items-center">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
             <div
-              className="w-full h-[360px] md:h-[450px] bg-cover bg-center"
+              className="w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center"
               style={{
                 backgroundImage: `url(${currentProject._embedded?.["wp:featuredmedia"]?.[0]?.source_url || "/images/image.png"})`
               }}
@@ -137,7 +137,7 @@ const ProjetoPage = () => {
                         <img 
                           src={tech.acf.tecnologias.icone.link} 
                           alt={tech.name} 
-                          className="w-[19px] h-[20px]"
+                          className="w-[1.1875rem] h-[1.25rem]"
                         />
                       )}
                       {tech.name}
