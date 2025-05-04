@@ -84,11 +84,11 @@ header {
     transition: all 0.3s ease-in-out;
     z-index: 1001;
     position: relative;
-    @media (min-width: 768px) {
+    @media (min-width: 48rem) {
       &:after{
         content: "";
-        width: 40px;
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         display: block;
         position: absolute;
         top: 0;
@@ -222,7 +222,7 @@ header {
       height: 220vw;
       transform: translate(-50%, -50%) scale(1);
       transition: transform 0.7s ease-out 0.1s, width 0.7s ease-out 0.1s, height 0.7s ease-out 0.1s;
-      @media (max-width:768px) {
+      @media (max-width:48rem) {
         width: 220vh;
         height: 220vh;
       }

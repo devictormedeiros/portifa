@@ -18,13 +18,12 @@ const CustomCursor = () => {
         setCursorType("expand");
       } else if (e.target.closest(".cursor-horizontal")) {
         setCursorType("scroll");
-      } else if (e.target.closest("a, button")) {
+      } else if (e.target.closest("a, button, .cursor-link")) {
         setCursorType("link");
       } else {
         setCursorType("default");
       }
     };
-    
 
     const handleMouseOut = () => {
       setCursorType("default");

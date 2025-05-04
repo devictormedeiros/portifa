@@ -6,9 +6,9 @@ body:has(main.main-archive) {
   }
   .archive-container {
     transition: transform 1.8s ease-out 0.3s;
-    transform: translateY(calc(100vh - 450px + 3rem));
-    @media (max-width:768px) {
-      transform: translateY(calc(100vh - 360px + 3rem));
+    transform: translateY(calc(100vh - 28.125rem + 3rem));
+    @media (max-width:48rem) {
+      transform: translateY(calc(100vh - 22.5rem + 3rem));
     }
   }
 
@@ -26,19 +26,19 @@ body:has(main.main-archive) {
       to left,
       transparent 0,
       transparent 0,
-      var(--black-100) 77px,
+      var(--black-100) 4.8125rem,
       var(--black-100) 100%
     );
     mask-image: linear-gradient(
       to left,
       transparent 0,
       transparent 0,
-      var(--black-100) 77px,
+      var(--black-100) 4.8125rem,
       var(--black-100) 100%
     );
     button{
       .img-tech{
-        width: 22px;
+        width: 1.375rem;
         height: auto;
         object-fit: contain;
         aspect-ratio: 1;

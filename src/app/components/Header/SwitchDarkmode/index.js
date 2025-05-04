@@ -17,7 +17,7 @@ const SwitchDarkmode = () => {
   }, [checked]);
 
   return (
-    <label className="switch-darkmode">
+    <label className="switch-darkmode cursor-link">
       <input
         type="checkbox"
         className="checkbox"

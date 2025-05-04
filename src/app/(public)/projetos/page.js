@@ -69,9 +69,9 @@ const Archive = () => {
       <main className="main-archive">
         {/* Content Wrapper Section */}
         <section className="flex flex-col w-full items-center">
-          <div className="relative w-full h-[360px] md:h-[450px]">
+          <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
             <div
-              className={`w-full h-[360px] md:h-[450px] bg-cover bg-center`}
+              className={`w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center`}
               aria-hidden="true"
               style={{
                 backgroundImage: `url(${dataOption?.archive?.cabecalho.background.url})`,
@@ -137,8 +137,11 @@ const Archive = () => {
                     key={`project-${index}`}
                     className="flex flex-col project-card"
                   >
-                    <Link href={`/projetos/${project.slug}`} className="block w-full h-full">
-                      <div className="w-full h-[230px] rounded-t-2xl">
+                    <Link
+                      href={`/projeto/${project.slug}`}
+                      className="block w-full h-full"
+                    >
+                      <div className="w-full h-[14.375rem] rounded-t-2xl">
                         <img
                           className="w-full h-full object-cover rounded-t-2xl"
                           alt="Imagem do projeto"
@@ -147,8 +150,8 @@ const Archive = () => {
                       </div>
                       <div className="flex flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
                         <div className="flex flex-col items-start gap-3">
-                          <div className="flex flex-col items-start gap-[3.75px]">
-                            <h3 className="mt-[-0.94px] content-title-h5  text-gray-200">
+                          <div className="flex flex-col items-start gap-[0.2344rem]">
+                            <h3 className="mt-[-0.0587rem] content-title-h5  text-gray-200">
                               {project.title?.rendered || "Sem título"}
                             </h3>
                           </div>

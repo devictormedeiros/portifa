@@ -71,13 +71,13 @@ section.sec-intro {
       transition: opacity 3s linear 0.3s;
     }
     .text-animate {
-      min-height: 110px;
+      min-height: 6.875rem;
       display: block;
       span{
         display: block;
         color: var(--primary);
         position: relative;
-        min-height: 110px;
+        min-height: 6.875rem;
         &:after {
           content: "|";
           display: inline-block;

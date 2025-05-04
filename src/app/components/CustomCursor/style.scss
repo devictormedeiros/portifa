@@ -1,38 +1,65 @@
-
 body, body *{
     cursor: none !important;
 }
+.custom-cursor {
+  position: fixed;
+  width: 2.5rem;
+  height: 2.5rem;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  background-size: contain;
+  background-repeat: no-repeat;
+  // mix-blend-mode: difference;
+  transition: opacity 0.2s ease, transform 0.1s ease;
+  color: var(--primary);
+  &.scrolling {
+    opacity: 0.5;
+  }
 
+  &.cursor-default {
+    background-image: url("/images/cursors/cursor-default.svg");
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  &.cursor-link {
+    background-image: url("/images/cursors/cursor-link.svg");
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &.cursor-expand {
+    background-image: url("/images/cursors/cursor-expand.svg");
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &.cursor-scroll {
+    background-image: url("/images/cursors/cursor-scroll.svg");
+    width: 4rem;
+    height: 4rem;
+  }
+}
+  
+body.dark{
   .custom-cursor {
-    position: fixed;
-    width: 32px;
-    height: 32px;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    background-size: contain;
-    background-repeat: no-repeat;
-    // mix-blend-mode: difference;
-    transition: opacity 0.2s ease, transform 0.1s ease;
-  
-    &.scrolling {
-      opacity: 0.5;
-    }
-  
+    color: var(--primary);
+
     &.cursor-default {
-      background-image: url("/images/cursors/cursor-default.svg");
+      background-image: url("/images/cursors/cursor-default-dark.svg");
     }
   
     &.cursor-link {
-      background-image: url("/images/cursors/cursor-link.svg");
+      background-image: url("/images/cursors/cursor-link-dark.svg");
     }
   
     &.cursor-expand {
-      background-image: url("/images/cursors/cursor-expand.svg");
+      background-image: url("/images/cursors/cursor-expand-dark.svg");
     }
   
     &.cursor-scroll {
-      background-image: url("/images/cursors/cursor-scroll.svg");
+      background-image: url("/images/cursors/cursor-scroll-dark.svg");
     }
   }
-  
+}
