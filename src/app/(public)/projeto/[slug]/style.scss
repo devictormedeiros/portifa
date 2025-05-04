@@ -1,2 +1,18 @@
 @import '@wordpress/block-library/build-style/style.css';
 @import '@wordpress/block-library/build-style/theme.css';
+
+.section-more-projects {
+    .react-multi-carousel-dot-list {
+        .react-multi-carousel-dot {
+            button {
+                @apply bg-white-40 duration-300 me-[1rem];
+            }
+
+            &.react-multi-carousel-dot--active {
+                button {
+                    @apply border-gray-200 bg-gray-200;
+                }
+            }
+        }
+    }
+}
