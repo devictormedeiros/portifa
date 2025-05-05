@@ -43,6 +43,11 @@ body:has(main.main-archive) {
         object-fit: contain;
         aspect-ratio: 1;
       }
+      &.btn-active,&:hover{
+        .img-tech{
+          filter: invert(100%);
+        }
+      }
     }
   }
   .scroll-drag {
@@ -57,5 +62,14 @@ body:has(main.main-archive) {
   }
   .scroll-drag {
     user-select: none;
+  }
+  .archive-container{
+    .project-card{
+      background-color: transparent;
+      transition: all 0.3s;
+      &:hover{
+        background-color: var(--white-10);
+      }
+    }
   }
 }

@@ -13,6 +13,10 @@ body, body *{
   // mix-blend-mode: difference;
   transition: opacity 0.2s ease, transform 0.1s ease;
   color: var(--primary);
+
+  @media (max-width:768px){
+    display: none;
+  }
   &.scrolling {
     opacity: 0.5;
   }

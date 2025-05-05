@@ -7,12 +7,13 @@ import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
 import Link from 'next/link';
+import { useSearchParams } from "next/navigation";
 
 const Archive = () => {
   const { dataOption } = useDataOptions();
   const { projects, technologies } = useProjects();
+  const searchParams = useSearchParams();
   const [selectedTech, setSelectedTech] = useState(null);
-
   const filteredProjects = selectedTech
     ? projects.filter((project) => project.tecnologias?.includes(selectedTech))
     : projects;
@@ -63,6 +64,17 @@ const Archive = () => {
     };
   }, []);
 
+    // Aplica filtro se ?t=slug estiver presente
+    useEffect(() => {
+      const techSlug = searchParams.get("t");
+      if (techSlug && technologies.length > 0) {
+        const tech = technologies.find((t) => t.slug === techSlug);
+        if (tech) {
+          setSelectedTech(tech.id);
+        }
+      }
+    }, [searchParams, technologies]);
+
   return (
     <>
       <Header logo={dataOption?.logo_principal || null} />
@@ -102,16 +114,16 @@ const Archive = () => {
                     <button
                       key={tech.id}
                       onClick={() => setSelectedTech(isActive ? null : tech.id)}
-                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 ${
+                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 hover:bg-gray-200 hover:text-gray-700 min-w-[max-content] ${
                         isActive
-                          ? "bg-primary text-gray-900"
-                          : "bg-white-10 text-gray-200"
+                          ? "bg-primary text-gray-900 btn-active order-0"
+                          : "bg-white-10 text-gray-200 order-1"
                       }`}
                     >
                       {tech.acf?.tecnologias?.icone?.link && (
                         <img
                           src={tech.acf.tecnologias.icone.link}
-                          className="img-tech w-5"
+                          className={`img-tech w-5`}
                           alt={tech.name}
                         />
                       )}
@@ -135,7 +147,7 @@ const Archive = () => {
                 return (
                   <article
                     key={`project-${index}`}
-                    className="flex flex-col project-card"
+                    className="flex flex-col project-card rounded-2xl"
                   >
                     <Link
                       href={`/projeto/${project.slug}`}
