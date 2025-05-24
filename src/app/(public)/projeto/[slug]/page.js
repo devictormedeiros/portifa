@@ -82,7 +82,7 @@ const ProjetoPage = () => {
   return (
     <>
       <Header logo={dataOption?.logo_principal || null} />
-      <main className="main-archive">
+      <main className="main-single">
         <section className="flex flex-col w-full items-center">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
             <div
