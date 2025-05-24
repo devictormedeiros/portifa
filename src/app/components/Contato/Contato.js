@@ -170,7 +170,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
                   <div className="consent-box flex items-center gap-5 w-full md:w-3/4 pr-4">
                     <input
                       type="checkbox"
-                      className={`rounded ${errors.consent && "input-error"}`}
+                      className={`rounded cursor-link ${errors.consent && "input-error"}`}
                       {...register("consent", { required: true })}
                     />
                     <label

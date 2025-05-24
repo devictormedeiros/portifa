@@ -6,9 +6,9 @@ body:has(main.main-archive) {
   }
   .archive-container {
     transition: transform 1.8s ease-out 0.3s;
-    transform: translateY(calc(100vh - 28.125rem + 3rem));
+    transform: translateY(3rem);
     @media (max-width:48rem) {
-      transform: translateY(calc(100vh - 22.5rem + 3rem));
+      transform: translateY(3rem);
     }
   }
 
