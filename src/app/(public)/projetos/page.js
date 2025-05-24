@@ -1,6 +1,4 @@
 "use client";
-export const dynamic = "force-dynamic";
-
 import React from "react";
 import { useRef, useEffect, useState } from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
@@ -9,12 +7,11 @@ import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
 import Link from 'next/link';
-import { useSearchParams } from "next/navigation";
+
 
 const Archive = () => {
   const { dataOption } = useDataOptions();
   const { projects, technologies } = useProjects();
-  const searchParams = useSearchParams();
   const [selectedTech, setSelectedTech] = useState(null);
   const filteredProjects = selectedTech
     ? projects.filter((project) => project.tecnologias?.includes(selectedTech))
@@ -68,14 +65,15 @@ const Archive = () => {
 
     // Aplica filtro se ?t=slug estiver presente
     useEffect(() => {
-      const techSlug = searchParams.get("t");
+      const params = new URLSearchParams(window.location.search);
+      const techSlug = params.get("t");
       if (techSlug && technologies.length > 0) {
         const tech = technologies.find((t) => t.slug === techSlug);
         if (tech) {
           setSelectedTech(tech.id);
         }
       }
-    }, [searchParams, technologies]);
+    }, [technologies]);
 
   return (
     <>
@@ -118,8 +116,8 @@ const Archive = () => {
                       onClick={() => setSelectedTech(isActive ? null : tech.id)}
                       className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 hover:bg-gray-200 hover:text-gray-700 min-w-[max-content] ${
                         isActive
-                          ? "bg-primary text-gray-900 btn-active order-0"
-                          : "bg-white-10 text-gray-200 order-1"
+                          ? "bg-primary text-gray-900 btn-active"
+                          : "bg-white-10 text-gray-200"
                       }`}
                     >
                       {tech.acf?.tecnologias?.icone?.link && (
