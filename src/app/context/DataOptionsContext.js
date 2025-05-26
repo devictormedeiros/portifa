@@ -15,7 +15,7 @@ export const DataOptionsProvider = ({ children }) => {
         setDataOption(options);
         setTimeout(() => {
           setIsLoading(false);
-        }, 3000);
+        }, 700);
       } catch (error) {
         console.error("Erro ao buscar opções ACF:", error);
       }
