@@ -54,6 +54,9 @@ body[data-page-load="true"] {
     }
     &.hide {
       height: 0;
+      .icon-loading{
+        visibility: hidden !important;
+      }
       .loading-logo {
         animation: slide-down 0.5s ease-in-out forwards 0.12s;
       }
@@ -75,8 +78,9 @@ body[data-page-load="true"] {
   justify-content: center;
   height: 3.5rem;
   width: 3.5rem;
-  animation: rotateLoading 1s linear infinite;
-  opacity: 0;
+  visibility: hidden;
+  animation: rotateLoading 1s linear infinite, fadeInLoading 1s ease 2s forwards;
+
   transition: opacity 0.2s ease;
   &:before,
   &:after {
@@ -85,6 +89,7 @@ body[data-page-load="true"] {
     width: 25%;
     border-radius: 50%;
     background-color: var(--white-70);
+
   }
   &:before {
     animation: translateLoadingBefore calc(1s * 1.25) ease-in-out infinite;
@@ -140,5 +145,15 @@ body[data-page-load="true"] {
   }
   to {
     transform: translateY(-100%);
+  }
+}
+
+@keyframes fadeInLoading {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
   }
 }
