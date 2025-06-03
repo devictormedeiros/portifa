@@ -1,5 +1,3 @@
-import { getCachedData, setCachedData } from '../utils/cache';
-
 async function getAPI(routes) {
   try {
     // Realiza a requisição para o endpoint do Wordpress API
