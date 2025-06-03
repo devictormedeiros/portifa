@@ -31,7 +31,8 @@ const ProjetoPage = () => {
           if (!$(slider).hasClass('slick-initialized')) {
             $(slider).slick({
               autoplay: true,
-              autoplaySpeed: 3000,
+              autoplaySpeed: 6000,
+              speed: 3000,
               dots: true,
               arrows: true,
               fade: true,
