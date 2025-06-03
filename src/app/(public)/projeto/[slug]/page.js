@@ -9,12 +9,44 @@ import Header from "@/app/components/Header";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 
+
 const ProjetoPage = () => {
   const { dataOption } = useDataOptions();
   const { projects, technologies } = useProjects();
   const [currentProject, setCurrentProject] = useState(null);
   const scrollRef = useRef(null);
   const params = useParams();
+
+  useEffect(() => {
+    if (!currentProject) return;
+  
+    const timeout = setTimeout(() => {
+      const setupSlider = async () => {
+        const $ = (await import("jquery")).default;
+        await import("slick-carousel");
+  
+        const sliders = document.querySelectorAll('.wp-block-gallery.slider');
+        console.log("Sliders encontrados:", sliders);
+        sliders.forEach(slider => {
+          if (!$(slider).hasClass('slick-initialized')) {
+            $(slider).slick({
+              autoplay: true,
+              autoplaySpeed: 3000,
+              dots: true,
+              arrows: true,
+              fade: true,
+              cssEase: 'linear'
+            });
+          }
+        });
+      };
+  
+      setupSlider();
+    }, 500); // tempo pra garantir que HTML já foi injetado
+  
+    return () => clearTimeout(timeout);
+  }, [currentProject]);
+  
 
   useEffect(() => {
     if (projects.length > 0 && params.slug) {
