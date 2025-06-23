@@ -187,6 +187,8 @@ header {
     overflow: hidden;
     height: 100vh;
     pointer-events: none;
+    display: flex;
+    flex-direction: column;
     ul {
       position: relative;
       z-index: 2;
