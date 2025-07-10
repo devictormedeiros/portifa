@@ -34,7 +34,7 @@ const TabsSkill = ({ skills, title }) => {
         setIsDragging(false);
     };    
 
-    return (
+    return skills?.length > 0 && (
         <Accordion title={title}>
             <Tabs 
                 value={activeTab} 
@@ -51,7 +51,7 @@ const TabsSkill = ({ skills, title }) => {
                     onTouchMove={onDragging}
                     onTouchEnd={stopDragging}
                 >
-                    {skills.map(({ ano, titulo }, index) => (
+                    {skills?.map(({ ano, titulo }, index) => (
                         <Tab
                             key={crypto.randomUUID()}
                             value={index}
@@ -70,7 +70,7 @@ const TabsSkill = ({ skills, title }) => {
                     }}
                     className="md:px-0"
                 >
-                    {skills.map((skill, index) => (
+                    {skills?.map((skill, index) => (
                         <TabPanel className="duration-[1500ms] ease-in-out px-6 py-0 md:px-0" key={index} value={index}>
                             <CardSkill {...skill} />
                         </TabPanel>

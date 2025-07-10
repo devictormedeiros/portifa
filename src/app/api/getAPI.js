@@ -5,9 +5,13 @@ async function getAPI(routes) {
       `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL + routes}`
     );
 
-    // Se o response não for ok, lança uma exceção com a mensagem de erro
+    // Se o response não for ok, redireciona para 404
     if (!response.ok) {
-      throw new Error(`Erro na requisição: ${response.status}`);
+      // Verifica se já não está na página 404 para evitar loop
+      if (window.location.pathname !== '/404') {
+        window.location.href = '/404';
+      }
+      return null;
     }
 
     // Se o response for ok, retorna os dados em formato JSON
@@ -16,7 +20,11 @@ async function getAPI(routes) {
     
   } catch (error) {
     console.error("Erro ao se conectar com o WP REST", error);
-    throw error;
+    // Verifica se já não está na página 404 para evitar loop
+    if (window.location.pathname !== '/404') {
+      window.location.href = '/404';
+    }
+    return null;
   }
 }
 

@@ -45,6 +45,8 @@ const HomePage = () => {
         },
     ]
     );
+
+    console.log(data);
   }, [data]);
 
   useEffect(() => {
@@ -110,7 +112,7 @@ const HomePage = () => {
       <main className="main-home flex flex-wrap relative z-[1]">
         {data?.home.sobre && <Sobre data={data?.home.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
-          {data?.home.highlight && <Call data={data?.home.highlight || null} />}
+          {data?.home?.scroll && <Call data={data?.home?.scroll || null} />}
             {dataProjetcs && <Projetos data={dataProjetcs} />}
             <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
               {data?.home.tabs && (
