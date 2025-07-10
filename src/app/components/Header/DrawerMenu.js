@@ -49,7 +49,7 @@ const DrawerMenu = ({ data }) => {
       {/* Menu Overlay */}
       <nav
         ref={navRef}
-        className={`fixed text-white flex items-center justify-center z-40 ${
+        className={`fixed text-white flex items-center flex-col gap-5 justify-center z-40 ${
           open ? "nav-open" : ""
         }`}
       >

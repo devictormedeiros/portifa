@@ -5,7 +5,7 @@ import "./style.scss"; // Importa os estilos
 const LoadingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [bgFull, setBgFull] = useState(false);
-
+  const [showIcon, setShowIcon] = useState(false);
   useEffect(() => {
     const body = document.body;
     // Observa quando o atributo "data-page-load" muda
@@ -15,6 +15,7 @@ const LoadingPage = () => {
 
       if (!pageLoad) {
         setTimeout(() => setBgFull(true), 300); // O fundo sobe depois de 0.3s
+        setTimeout(() => setShowIcon(true), 2000); // O icon aparece depois de 2s
       }
     });
 
@@ -35,7 +36,9 @@ const LoadingPage = () => {
             data-preload=""
             className="loading-logo"
           />
-          <div className="icon-loading"></div>
+          <div
+            className={`icon-loading ${showIcon ? "visible" : "invisible"}`}
+          ></div>
         </div>
       </div>
     </div>
