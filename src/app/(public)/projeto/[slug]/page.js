@@ -8,6 +8,7 @@ import "./style.scss";
 import Header from "@/app/components/Header";
 import { useParams } from "next/navigation";
 import SectionMoreProjoects from "@/app/components/Single/SectionMoreProjects";
+import Link from "next/link";
 
 const ProjetoPage = () => {
   const { dataOption } = useDataOptions();
@@ -50,7 +51,6 @@ const ProjetoPage = () => {
     if (projects.length > 0 && params.slug) {
       const project = projects.find((p) => p.slug === params.slug);
       setCurrentProject(project);
-      console.log(typeof project.acf["more-projects"]);
     }
   }, [projects, params.slug]);
 
@@ -146,7 +146,7 @@ const ProjetoPage = () => {
                     {currentProject.title?.rendered || "Sem título"}
                   </h1>
                   {currentProject.link && (
-                    <a
+                    <Link
                       href={currentProject.link}
                       className="text-gray-200 bg-white-10 hover:bg-primary menu-section flex items-center py-2 px-4 rounded-3xl gap-x-2 flex-none duration-500"
                       target="_blank"
@@ -165,7 +165,7 @@ const ProjetoPage = () => {
                         />
                       </svg>
                       Acessar
-                    </a>
+                    </Link>
                   )}
                 </div>
                 <div
