@@ -14,7 +14,7 @@ const Call = ({ data }) => {
 
   useEffect(() => {
     if (frameCount === 0) return;
-    
+
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     canvas.width = 1158;
@@ -71,8 +71,14 @@ const Call = ({ data }) => {
 
   return (
     data?.frames?.length > 0 && (
-      <section className="sec-call bg-[#000]">
-        <div className="container">
+      <section className="sec-call bg-[#000] relative">
+        <div className="sec-call-image image absolute top-0 w-auto lg:max-w-[50vw] lg:right-0 h-full aspect-square">
+          <canvas
+            ref={canvasRef}
+            className="sticky top-0 left-1/2 max-w-full h-screen max-h-screen object-cover object-center lg:object-right w-full aspect-square"
+          />
+        </div>
+        <div className="container relative z-20">
           <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
             <div className="sec-call-text text col-span-12 md:col-span-4">
               {data?.items?.length > 0 &&
@@ -83,12 +89,6 @@ const Call = ({ data }) => {
                     </h2>
                   </div>
                 ))}
-            </div>
-            <div className="sec-call-image image col-span-12 md:col-span-8">
-              <canvas
-                ref={canvasRef}
-                className="sticky left-1/2 top-[2.1875rem] max-w-full h-screen max-h-screen object-contain object-right"
-              />
             </div>
           </div>
         </div>
