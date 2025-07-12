@@ -11,7 +11,7 @@ import SectionMoreProjoects from "@/app/components/Single/SectionMoreProjects";
 import Link from "next/link";
 
 const ProjetoPage = () => {
-  const { dataOption } = useDataOptions();
+  const { dataOption: data } = useDataOptions();
   const { projects, technologies } = useProjects();
   const [currentProject, setCurrentProject] = useState(null);
   const scrollRef = useRef(null);
@@ -113,7 +113,7 @@ const ProjetoPage = () => {
 
   return (
     <>
-      <Header logo={dataOption?.logo_principal || null} />
+      <Header logo={data?.logo_principal || null} />
       <main className="main-single">
         <section className="flex flex-col w-full items-center">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
@@ -153,14 +153,14 @@ const ProjetoPage = () => {
                       rel="noopener noreferrer"
                     >
                       <svg
-                        width="15"
-                        height="16"
-                        viewBox="0 0 15 16"
+                        width="12"
+                        height="12"
+                        viewBox="0 0 12 12"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
                       >
                         <path
-                          d="M9.75 15.5C9.94891 15.5 10.1397 15.421 10.2803 15.2803C10.421 15.1397 10.5 14.9489 10.5 14.75C10.5 14.5511 10.421 14.3603 10.2803 14.2197C10.1397 14.079 9.94891 14 9.75 14H3.5C2.96957 14 2.46086 13.7893 2.08579 13.4142C1.71071 13.0391 1.5 12.5304 1.5 12V4C1.5 3.46957 1.71071 2.96086 2.08579 2.58579C2.46086 2.21071 2.96957 2 3.5 2H9.75C9.94891 2 10.1397 1.92098 10.2803 1.78033C10.421 1.63968 10.5 1.44891 10.5 1.25C10.5 1.05109 10.421 0.860322 10.2803 0.71967C10.1397 0.579018 9.94891 0.5 9.75 0.5H3.5C2.57174 0.5 1.6815 0.868749 1.02513 1.52513C0.368749 2.1815 0 3.07174 0 4V12C0 12.9283 0.368749 13.8185 1.02513 14.4749C1.6815 15.1313 2.57174 15.5 3.5 15.5H9.75Z"
+                          d="M7.8 12C7.95913 12 8.11174 11.9368 8.22426 11.8243C8.33679 11.7117 8.4 11.5591 8.4 11.4C8.4 11.2409 8.33679 11.0883 8.22426 10.9757C8.11174 10.8632 7.95913 10.8 7.8 10.8H2.8C2.37565 10.8 1.96869 10.6314 1.66863 10.3314C1.36857 10.0313 1.2 9.62435 1.2 9.2V2.8C1.2 2.37565 1.36857 1.96869 1.66863 1.66863C1.96869 1.36857 2.37565 1.2 2.8 1.2H7.8C7.95913 1.2 8.11174 1.13679 8.22426 1.02426C8.33679 0.911742 8.4 0.75913 8.4 0.6C8.4 0.44087 8.33679 0.288258 8.22426 0.175736C8.11174 0.063214 7.95913 0 7.8 0H2.8C2.05739 0 1.3452 0.294999 0.820101 0.820101C0.294999 1.3452 0 2.05739 0 2.8V9.2C0 9.94261 0.294999 10.6548 0.820101 11.1799C1.3452 11.705 2.05739 12 2.8 12H7.8ZM8.5928 2.9592C8.65068 2.90571 8.71853 2.86415 8.79248 2.8369C8.86642 2.80964 8.94501 2.79721 9.02376 2.80033C9.10251 2.80345 9.17987 2.82206 9.25143 2.85508C9.32298 2.8881 9.38733 2.9349 9.4408 2.9928L11.8408 5.5928C11.9432 5.70366 12.0001 5.84906 12.0001 6C12.0001 6.15094 11.9432 6.29634 11.8408 6.4072L9.4408 9.0072C9.3327 9.124 9.18262 9.19308 9.02359 9.19923C8.86456 9.20538 8.7096 9.1481 8.5928 9.04C8.476 8.9319 8.40693 8.78182 8.40077 8.62279C8.39462 8.46376 8.4519 8.3088 8.56 8.192L10.0304 6.5992H3.8C3.64087 6.5992 3.48826 6.53599 3.37574 6.42346C3.26321 6.31094 3.2 6.15833 3.2 5.9992C3.2 5.84007 3.26321 5.68746 3.37574 5.57494C3.48826 5.46241 3.64087 5.3992 3.8 5.3992H10.0296L8.5592 3.8064C8.50571 3.74852 8.46415 3.68067 8.4369 3.60672C8.40964 3.53278 8.39721 3.45419 8.40033 3.37544C8.40345 3.29669 8.42206 3.21933 8.45508 3.14777C8.4881 3.07622 8.5349 3.01267 8.5928 2.9592Z"
                           fill="#DEDEDE"
                         />
                       </svg>
@@ -211,7 +211,17 @@ const ProjetoPage = () => {
           </section>
         </div>
 
-        <SectionMoreProjoects moreProjects={currentProject?.acf["more-projects"]} technologies={technologies} projects={projects}/>
+        <SectionMoreProjoects
+          moreProjects={currentProject?.acf["more-projects"]}
+          technologies={technologies}
+          projects={projects}
+        />
+
+        <Contato
+          scrollText={data?.texto_scroll || null}
+          data={data?.secao_contato || null}
+          dataForm={data?.configuracao_do_formulario || null}
+        />
       </main>
     </>
   );

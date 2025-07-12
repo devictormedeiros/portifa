@@ -36,7 +36,7 @@ const SectionMoreProjoects = ({
                 Ver todos
             </Link>
           </div>
-          <Slider {...settings} className="mx-[-0.75rem]">
+          <Slider {...settings} className="mx-[-0.75rem] cursor-horizontal">
             {Object.values(moreProjects)
               .map((project) => project.ID)
               .map((projectId) => projects.find((p) => p.id === projectId))

@@ -12,40 +12,8 @@ import { useDataOptions } from "./context/DataOptionsContext";
 import { useEffect, useState } from "react";
 
 const HomePage = () => {
-  const [dataProjetcs, setDataProjects] = useState(null);
   const [scrollEnabled, setScrollEnabled] = useState(true);
-  const { dataOption: data, isLoading } = useDataOptions();
-  useEffect(() => {
-   
-    setDataProjects(
-      [
-        {
-            id: 1,
-            nome: "Lorem ipsum dolor sit amet",
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
-            img: "/images/projeto.png",
-            link: "https://github.com",
-            technologies: ["html", "css", "js", "react"]
-        },
-        {
-            id: 2,
-            nome: "Lorem ipsum dolor sit amet",
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
-            img: "/images/projeto.png",
-            link: "https://github.com",
-            technologies: ["html", "css", "js", "react"]
-        },
-        {
-            id: 3,
-            nome: "Lorem ipsum dolor sit amet",
-            descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non diam sit amet enim euismod blandit luctus lacinia lorem. Vestibulum ultricies est turpis, ut pulvinar lorem tempor a. Fusce eros nisl, molestie id sapien in, aliquam consequat enim. Nam id ipsum ultricies ex vulputate condimentum.  ",
-            img: "/images/projeto.png",
-            link: "https://github.com",
-            technologies: ["html", "css", "js", "react"]
-        },
-    ]
-    );
-  }, [data]);
+  const { dataOption: data } = useDataOptions();
 
   useEffect(() => {
     const handleScroll = (event) => {
