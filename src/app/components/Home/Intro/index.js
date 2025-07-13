@@ -1,11 +1,32 @@
 "use client";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
 import TextAnimate from "../../TextAnimate";
 import "./style.scss";
 
 const AnimatedText = ({ text, onComplete }) => {
   const textRef = useRef(null);
+
+  const startAnimation = useCallback(() => {
+    if (!textRef.current || !textRef.current.children?.length) return;
+
+
+    const letters = textRef.current.children;
+
+    gsap.fromTo(
+      letters,
+      { opacity: 0, y: 20 },
+      {
+        opacity: 1,
+        y: 0,
+        stagger: 0.01,
+        duration: 1.2,
+        ease: "power3.out",
+        delay: 0.8,
+        onComplete: onComplete, // Chama a função após a animação terminar
+      }
+    );
+  }, [onComplete]);
 
   useEffect(() => {
     const checkPageLoad = () => document.body.getAttribute("data-page-load") === "false";
@@ -25,27 +46,8 @@ const AnimatedText = ({ text, onComplete }) => {
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [startAnimation]);
 
-  const startAnimation = () => {
-    if (!textRef.current) return;
-
-    const letters = textRef.current.children;
-
-    gsap.fromTo(
-      letters,
-      { opacity: 0, y: 20 },
-      {
-        opacity: 1,
-        y: 0,
-        stagger: 0.01,
-        duration: 1.2,
-        ease: "power3.out",
-        delay: 0.8,
-        onComplete: onComplete, // Chama a função após a animação terminar
-      }
-    );
-  };
 
   return (
     <span ref={textRef} style={{ display: "inline-block", whiteSpace: "pre-wrap" }}>

@@ -1,79 +1,99 @@
-'use client';
+"use client";
 
-import { useEffect, useRef } from 'react';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Call = () => {
+const Call = ({ data }) => {
   const canvasRef = useRef(null);
   const images = useRef([]);
   const airpods = useRef({ frame: 0 });
-  const frameCount = 147;
+  const frameCount = data?.frames?.length || 0;
 
   useEffect(() => {
+    if (frameCount === 0) return;
+
     const canvas = canvasRef.current;
-    const context = canvas.getContext('2d');
+    const context = canvas.getContext("2d");
     canvas.width = 1158;
     canvas.height = 770;
 
-    const currentFrame = (index) => (
-      `https://www.apple.com/105/media/us/airpods-pro/2019/1299e2f5_9206_4470_b28e_08307a42f19b/anim/sequence/large/01-hero-lightpass/${(index + 1).toString().padStart(4, '0')}.jpg`
-    );
+    const loadImages = async () => {
+      const loadImage = (src) =>
+        new Promise((resolve) => {
+          const img = new Image();
+          img.src = src;
+          img.onload = () => resolve(img);
+        });
 
-    for (let i = 0; i < frameCount; i++) {
-      const img = new Image();
-      img.src = currentFrame(i);
-      console.log(currentFrame(i));
-      images.current.push(img);
-    }
+      const loadedImages = await Promise.all(
+        data.frames.map((frame) => loadImage(frame.image))
+      );
 
-    gsap.to(airpods.current, {
-      frame: frameCount - 1,
-      snap: 'frame',
-      ease: 'none',
-      scrollTrigger: {
-        scrub: 0.5,
-      },
-      onUpdate: render,
-    });
+      images.current = loadedImages;
 
-    images.current[0].onload = render;
+      // Primeiro render
+      render();
 
-    function render() {
+      // Animação com ScrollTrigger
+      const tween = gsap.to(airpods.current, {
+        frame: frameCount - 1,
+        snap: "frame",
+        ease: "none",
+        scrollTrigger: {
+          scrub: 0.5,
+          trigger: canvas,
+          start: "top top",
+          end: "bottom+=3000 top",
+        },
+        onUpdate: render,
+      });
+
+      // Cleanup
+      return () => {
+        tween.kill();
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+      };
+    };
+
+    const render = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
-      context.drawImage(images.current[airpods.current.frame], 0, 0);
-    }
-  }, []);
+      const frame = images.current[airpods.current.frame];
+      if (frame) {
+        context.drawImage(frame, 0, 0);
+      }
+    };
+
+    loadImages();
+  }, [data, frameCount]);
 
   return (
-    <section className='sec-call bg-[#000]'>
-      <div className='container'>
-        <div className='flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]'>
-          <div className='sec-call-text text col-span-12 md:col-span-4'>
-            <div className='h-screen flex items-center'>
-              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
+    data?.frames?.length > 0 && (
+      <section className="sec-call bg-[#000] relative">
+        <div className="sec-call-image image absolute top-0 w-auto lg:max-w-[50vw] lg:right-0 h-full aspect-square">
+          <canvas
+            ref={canvasRef}
+            className="sticky top-0 left-1/2 max-w-full h-screen max-h-screen object-cover object-center lg:object-right w-full aspect-square"
+          />
+        </div>
+        <div className="container relative z-20">
+          <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
+            <div className="sec-call-text text col-span-12 md:col-span-4">
+              {data?.items?.length > 0 &&
+                data.items.map((item, index) => (
+                  <div key={index} className="h-screen flex items-center">
+                    <h2 className="content-title-h2 text-gray-200 uppercase">
+                      {item.text}
+                    </h2>
+                  </div>
+                ))}
             </div>
-            <div className='h-screen flex items-center'>
-              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
-            </div>
-            <div className='h-screen flex items-center'>
-              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
-            </div>
-            <div className='h-screen flex items-center'>
-              <h2 className='content-title-h2 text-gray-200 uppercase'>Text</h2>
-            </div>
-          </div>
-          <div className='sec-call-image image col-span-12 md:col-span-8'>
-            <canvas
-              ref={canvasRef}
-              className="sticky left-1/2 top-[2.1875rem] max-w-full h-screen max-h-screen object-contain object-right"
-            />
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    )
   );
 };
 

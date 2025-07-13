@@ -43,7 +43,6 @@ const Recomendacoes = ({data}) => {
                 onTouchEnd={stopDragging}
             >
                 {Array.isArray(data?.cards) && data.cards.map((item, index) => (
-
                     <article key={index} className={`card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl overflow-hidden md:min-w-[30rem]${index === 0 ? " ms-6 md:ms-0" : ""}`}>
                         <figure className="relative aspect-[16/9]">
                             <Image className="w-full h-full object-cover" src={item.imagem.url} alt="Nome do autor" fill />

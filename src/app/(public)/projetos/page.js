@@ -149,7 +149,7 @@ const Archive = () => {
                     key={`project-${index}`}
                     className="flex flex-col project-card rounded-2xl"
                   >
-                    <a
+                    <Link
                       href={`/projeto/${project.slug}`}
                       className="block w-full h-full"
                     >
@@ -202,7 +202,7 @@ const Archive = () => {
                             .trim() + "..."}
                         </p>
                       </div>
-                    </a>
+                    </Link>
                   </article>
                 );
               })}
