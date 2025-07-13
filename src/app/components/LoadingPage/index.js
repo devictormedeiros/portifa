@@ -33,8 +33,8 @@ const LoadingPage = () => {
         <div className="flex flex-wrap flex-col items-center gap-2">
           <img
             src="https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/02/Logo.svg"
-            data-preload=""
             className="loading-logo"
+            alt="Logo Portifa"
           />
           <div
             className={`icon-loading ${showIcon ? "visible" : "invisible"}`}

@@ -80,7 +80,7 @@ const Archive = () => {
       <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
         {/* Content Wrapper Section */}
-        <section className="flex flex-col w-full items-center">
+        <section className="flex flex-col w-full items-center header-projetcs">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
             <div
               className={`w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center`}
@@ -149,7 +149,8 @@ const Archive = () => {
                     key={`project-${index}`}
                     className="flex flex-col project-card rounded-2xl"
                   >
-                    <Link
+                    <a 
+                      title={project.title?.rendered || "Sem título"}
                       href={`/projeto/${project.slug}`}
                       className="block w-full h-full"
                     >
@@ -202,7 +203,7 @@ const Archive = () => {
                             .trim() + "..."}
                         </p>
                       </div>
-                    </Link>
+                    </a>
                   </article>
                 );
               })}

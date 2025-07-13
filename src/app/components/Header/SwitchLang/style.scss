@@ -1,27 +1,22 @@
-header{
-  &:not(.sticky-header){
-    .select-lang{
-      border-top: 0;
-      .options-lang{
-        top: -100%;
+body:has(.main-home){
+  .select-lang{
+    border-top: 0;
+    .options-lang{
+      top: -100%;
+      border-bottom: 0;
+      border-top: 1px solid var(--white-40);
+      li{
+        border-top: 1px solid var(--white-20);
         border-bottom: 0;
-        border-top: 1px solid var(--white-40);
-        li{
-          border-top: 1px solid var(--white-20);
-          border-bottom: 0;
-        }
       }
     }
   }
+}
+header{
   &.sticky-header{
     .select-lang{
       opacity: 0;
       visibility: hidden;
-    }
-  }
-  .menu-hamburguer{
-    .nav-open{
-
     }
   }
 }
@@ -33,13 +28,14 @@ header{
     border-radius: 1px;
     padding: 8px;
     cursor: pointer;
-    background: var(--black-80);
+    background: transparent;
     font-size: 10px;
     &.open{
         border-bottom: 0;
         border-bottom-right-radius: 0;
         border-bottom-left-radius: 0;
         border: 1px solid var(--white-40);
+        background: var(--black-80);
         .options-lang {
             max-height: 500px;
             opacity: 1;
