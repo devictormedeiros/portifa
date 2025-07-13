@@ -14,8 +14,9 @@ header {
     border-top-left-radius: 0;
     padding: 0.75rem 0;
     margin-top: -0.0625rem;
-    background-color: transparent;
 
+    &.sticky-header {
+      background-color: transparent;
     &:before {
       content: "";
       display: block;
@@ -27,6 +28,7 @@ header {
       top: 0;
       z-index: -1;
     }
+  }
   }
   .logo {
     img {
