@@ -6,9 +6,6 @@ body{
   &[data-page-load="false"]{
     section.sec-intro{
       margin-bottom: calc(-1 * var(--header-height));
-      h1{
-        opacity: 1;
-      }
     }
   }
 }
@@ -66,15 +63,15 @@ section.sec-intro {
     right: 0;
     margin: auto;
     overflow: hidden;
-    h1{
+    .animated-letter {
       opacity: 0;
-      transition: opacity 3s linear 0.3s;
+      visibility: hidden;
+      display: inline-block;
     }
     .text-animate {
       min-height: 6.875rem;
       display: block;
       span{
-        display: block;
         color: var(--primary);
         position: relative;
         min-height: 6.875rem;

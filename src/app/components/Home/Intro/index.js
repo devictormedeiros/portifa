@@ -1,37 +1,54 @@
 "use client";
-import { memo, useEffect, useRef, useState, useCallback } from "react";
+import { memo, useEffect, useRef, useState, useCallback, useMemo } from "react";
 import { gsap } from "gsap";
 import TextAnimate from "../../TextAnimate";
 import "./style.scss";
 
 const AnimatedText = ({ text, onComplete }) => {
   const textRef = useRef(null);
+  const hasAnimated = useRef(false);
 
   const startAnimation = useCallback(() => {
-    if (!textRef.current || !textRef.current.children?.length) return;
+    if (!textRef.current || hasAnimated.current) return;
+    hasAnimated.current = true;
 
+    // Limpa qualquer conteúdo inicial
+    textRef.current.innerHTML = "";
 
-    const letters = textRef.current.children;
+    const letters = text.split("");
+
+    const spans = letters.map((char) => {
+      const span = document.createElement("span");
+      span.className = "animated-letter";
+      span.style.display = "inline-block";
+      span.style.opacity = "0";
+      span.style.visibility = "hidden";
+      span.style.minWidth = char === " " ? "0.3em" : "auto";
+      span.textContent = char === " " ? "\u00A0" : char;
+      return span;
+    });
+
+    // Insere todos os spans no DOM
+    spans.forEach((span) => textRef.current.appendChild(span));
 
     gsap.fromTo(
-      letters,
-      { opacity: 0, y: 20 },
+      spans,
+      { y: 20, autoAlpha: 0 },
       {
-        opacity: 1,
         y: 0,
-        stagger: 0.01,
-        duration: 1.2,
-        ease: "power3.out",
+        autoAlpha: 1,
+        stagger: 0.03,
         delay: 0.8,
-        onComplete: onComplete, // Chama a função após a animação terminar
+        duration: 1,
+        ease: "power3.out",
+        onComplete,
       }
     );
-  }, [onComplete]);
+  }, [text, onComplete]);
 
   useEffect(() => {
     const checkPageLoad = () => document.body.getAttribute("data-page-load") === "false";
 
-    // Aguarda o body ter page-load="false"
     const observer = new MutationObserver(() => {
       if (checkPageLoad()) {
         startAnimation();
@@ -48,17 +65,16 @@ const AnimatedText = ({ text, onComplete }) => {
     return () => observer.disconnect();
   }, [startAnimation]);
 
-
   return (
-    <span ref={textRef} style={{ display: "inline-block", whiteSpace: "pre-wrap" }}>
-      {text.split("").map((char, i) => (
-        <span key={i} style={{ display: "inline-block", minWidth: char === " " ? "0.3em" : "auto" }}>
-          {char === " " ? "\u00A0" : char}
-        </span>
-      ))}
-    </span>
+    <span
+      ref={textRef}
+      style={{ display: "inline-block", whiteSpace: "pre-wrap" }}
+    />
   );
 };
+
+
+
 
 const Intro = ({ data }) => {
   const [showTextAnimate, setShowTextAnimate] = useState(false);
