@@ -53,6 +53,18 @@ header{
     width: 20px;
     margin-right: 8px;
     vertical-align: middle;
+    #flag-lang-pt{
+      background-image: url('/images/flags/pt.svg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    #flag-lang-en{
+      background-image: url('/images/flags/en.svg');
+      background-size: 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
   }
   .option-selected-lang {
     display: flex;

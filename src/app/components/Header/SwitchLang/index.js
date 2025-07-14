@@ -61,8 +61,8 @@ export default function SwitchLang({ onChange }) {
       tabIndex={0}
     >
       <div className="option-selected-lang">
-        <img src={selected.flag_url} alt={selected.name} />
-        {selected.slug.toUpperCase()}
+        <img id={`flag-lang-${selected.slug}`} src={`/images/flags/${selected.slug}.svg`} alt={selected.name} />
+        <span>{selected.slug.toUpperCase()}</span>
       </div>
       <ul className="options-lang">
         {languages
