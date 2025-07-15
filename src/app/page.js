@@ -22,31 +22,33 @@ const HomePage = () => {
         return;
       }
       if (window.innerWidth <= 768) return; // Mantém o scroll normal no mobile
-  
+
       const introSection = document.querySelector(".sec-intro");
       const sectionSobre = document.querySelector(".sec-sobre");
-  
+
       if (!introSection || !sectionSobre) return;
-  
+
       const scrollPosition = window.scrollY;
       const introTop = introSection.offsetTop;
       const introHeight = introSection.offsetHeight;
       const sobreTop = sectionSobre.offsetTop;
       const sobreHeight = sectionSobre.offsetHeight;
-  
+
       // Verifica se o usuário está dentro das seções desejadas (sec-intro ou sec-sobre)
-      const isInsideIntro = scrollPosition >= introTop && scrollPosition < introTop + introHeight;
-      const isInsideSobre = scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
-  
+      const isInsideIntro =
+        scrollPosition >= introTop && scrollPosition < introTop + introHeight;
+      const isInsideSobre =
+        scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
+
       // Se o usuário não estiver dentro dessas seções, não executa nada
       if (!isInsideIntro && !isInsideSobre) return;
-  
+
       if (isInsideIntro && event.deltaY > 0) {
         // Scroll para baixo na sec-intro → vai para sec-sobre
         event.preventDefault();
         setScrollEnabled(false);
         sectionSobre.scrollIntoView({ behavior: "smooth" });
-  
+
         setTimeout(() => {
           setScrollEnabled(true);
         }, 3500);
@@ -55,20 +57,20 @@ const HomePage = () => {
         event.preventDefault();
         setScrollEnabled(false);
         introSection.scrollIntoView({ behavior: "smooth" });
-  
+
         setTimeout(() => {
           setScrollEnabled(true);
         }, 500);
       }
     };
-  
+
     window.addEventListener("wheel", handleScroll, { passive: false });
-  
+
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
   }, [scrollEnabled]);
-  
+
   return (
     <>
       {data?.home.introducao && <Intro data={data.home.introducao} />}
@@ -78,19 +80,19 @@ const HomePage = () => {
         {data?.home.sobre && <Sobre data={data?.home.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.home?.scroll && <Call data={data?.home?.scroll || null} />}
-            {/* {dataProjetcs && <Projetos data={dataProjetcs} />} */}
-            {data?.home.projetos && (<Projetos data={data?.home?.projetos || null} />)}
-            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
-              {data?.home.tabs && (
-                <Skills data={data?.home.tabs} />
-              )}
-              {data?.home.tecnologias_atuacoes && (
-                <Tecnologias data={data?.home.tecnologias_atuacoes || null} />
-              )}
-              {data?.home.recomendacoes && (
-                <Recomendacoes data={data.home.recomendacoes} />
-              )}
-            </section>
+          {/* {dataProjetcs && <Projetos data={dataProjetcs} />} */}
+          {data?.home.projetos && (
+            <Projetos data={data?.home?.projetos || null} />
+          )}
+          <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
+            {data?.home.tabs && <Skills data={data?.home.tabs} />}
+            {data?.home.tecnologias_atuacoes && (
+              <Tecnologias data={data?.home.tecnologias_atuacoes || null} />
+            )}
+            {data?.home.recomendacoes && (
+              <Recomendacoes data={data.home.recomendacoes} />
+            )}
+          </section>
         </div>
         {data?.secao_contato && (
           <Contato

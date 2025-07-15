@@ -33,7 +33,7 @@ const SectionMoreProjoects = ({
               Mais Projetos
             </h2>
             <Link href={"/projetos"} className="content-title-h6 capitalize">
-                Ver todos
+              Ver todos
             </Link>
           </div>
           <Slider {...settings} className="mx-[-0.75rem] cursor-horizontal">

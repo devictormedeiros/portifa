@@ -1,6 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from "react";
 
-const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = '0px' }) => {
+const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = "0px" }) => {
   const [isVisible, setIsVisible] = useState(false);
   const targetRef = useRef(null);
 
@@ -8,7 +8,7 @@ const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = '0px' }) => {
     const currentTarget = targetRef.current;
     if (!currentTarget) return;
 
-    if (!('IntersectionObserver' in window)) {
+    if (!("IntersectionObserver" in window)) {
       console.warn("IntersectionObserver não é suportado neste navegador.");
       return;
     }

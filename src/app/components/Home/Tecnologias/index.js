@@ -14,18 +14,18 @@ const Tecnologias = ({ data }) => {
       setIsAnimated(true);
     }
   }, [isVisible, isAnimated]);
-  
+
   return (
     <section ref={targetRef} className="sec-tecnologias g-col-12">
       {data?.map((accordion, index) => {
-
         return (
           <Accordion key={index} title={accordion.titulo}>
-            <ul
-              className={`grid grid-cols-12 gap-y-6 px-6 md:px-0`}
-            >
+            <ul className={`grid grid-cols-12 gap-y-6 px-6 md:px-0`}>
               {accordion.itens?.map((items, idx) => (
-                <li key={idx} className="grid grid-cols-12 col-span-12 md:gap-y-0 gap-y-4 rounded items-center py-0">
+                <li
+                  key={idx}
+                  className="grid grid-cols-12 col-span-12 md:gap-y-0 gap-y-4 rounded items-center py-0"
+                >
                   <div className="md:col-span-3 col-span-12 flex items-center gap-3">
                     {items?.icone && (
                       <div className="tec-icon">
@@ -39,17 +39,17 @@ const Tecnologias = ({ data }) => {
                       </div>
                     )}
                     <div className="tec-text">
-                      <p className="content-title-h6 text-white-70">{items.nome}</p>
+                      <p className="content-title-h6 text-white-70">
+                        {items.nome}
+                      </p>
                     </div>
                   </div>
                   <div className="md:col-span-9 col-span-12">
                     <div className="progress-bar bg-gray-700 block w-full">
-                    <span
+                      <span
                         className="progress-bar-percent block"
                         style={{
-                          width: isAnimated
-                            ? `${items.nivel || 0}%`
-                            : "0%",
+                          width: isAnimated ? `${items.nivel || 0}%` : "0%",
                         }}
                       ></span>
                     </div>

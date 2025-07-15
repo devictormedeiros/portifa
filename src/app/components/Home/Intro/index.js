@@ -47,7 +47,8 @@ const AnimatedText = ({ text, onComplete }) => {
   }, [text, onComplete]);
 
   useEffect(() => {
-    const checkPageLoad = () => document.body.getAttribute("data-page-load") === "false";
+    const checkPageLoad = () =>
+      document.body.getAttribute("data-page-load") === "false";
 
     const observer = new MutationObserver(() => {
       if (checkPageLoad()) {
@@ -57,7 +58,10 @@ const AnimatedText = ({ text, onComplete }) => {
     });
 
     if (!checkPageLoad()) {
-      observer.observe(document.body, { attributes: true, attributeFilter: ["data-page-load"] });
+      observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["data-page-load"],
+      });
     } else {
       startAnimation();
     }
@@ -73,9 +77,6 @@ const AnimatedText = ({ text, onComplete }) => {
   );
 };
 
-
-
-
 const Intro = ({ data }) => {
   const [showTextAnimate, setShowTextAnimate] = useState(false);
 
@@ -85,16 +86,21 @@ const Intro = ({ data }) => {
   return (
     <section className="sec-intro overflow-hidden bg-gray-900">
       <div className="container-text">
-        <div className="text container">
+        <div
+          className="text container"
+          style={{ "--font-intro": `${(data?.font_percent ?? 100) / 100}` }}
+        >
           <h1 className="content-title-h1 text-gray-200">
-            <AnimatedText text={texto_introducao} onComplete={() => setShowTextAnimate(true)} />
+            <AnimatedText
+              text={texto_introducao}
+              onComplete={() => setShowTextAnimate(true)}
+            />
           </h1>
           {frases && (
-          <div className="text-animate">
-          {showTextAnimate && <TextAnimate frases={frases} />}
-          </div>
+            <div className="text-animate">
+              {showTextAnimate && <TextAnimate frases={frases} />}
+            </div>
           )}
-
         </div>
       </div>
     </section>

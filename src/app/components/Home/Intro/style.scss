@@ -1,15 +1,16 @@
 // .sec-intro:has(+ .sticky-header) .container-text .text {
 //   opacity: 0;
 // }
-
-body{
-  &[data-page-load="false"]{
-    section.sec-intro{
+:root {
+  --font-intro: 1;
+}
+body {
+  &[data-page-load="false"] {
+    section.sec-intro {
       margin-bottom: calc(-1 * var(--header-height));
     }
   }
 }
-
 
 section.sec-intro {
   position: relative;
@@ -63,6 +64,10 @@ section.sec-intro {
     right: 0;
     margin: auto;
     overflow: hidden;
+    span {
+      font-size: calc(6.25rem * var(--font-intro));
+      line-height: calc(6.25rem * var(--font-intro));
+    }
     .animated-letter {
       opacity: 0;
       visibility: hidden;
@@ -71,24 +76,22 @@ section.sec-intro {
     .text-animate {
       min-height: 6.875rem;
       display: block;
-      span{
+      span {
         color: var(--primary);
         position: relative;
-        min-height: 6.875rem;
+        min-height: calc(6.25rem * var(--font-intro));
         &:after {
           content: "|";
           display: inline-block;
-          @apply content-title-h1;
+          font-size: calc(6.25rem * var(--font-intro));
           margin-left: 0.625rem;
           animation: write 2s infinite;
         }
       }
-      
     }
   }
 
   @media screen and (min-width: 48rem) {
-
     &:before {
       width: 100rem;
       height: 100rem;
@@ -132,5 +135,3 @@ section.sec-intro {
     top: -60%;
   }
 }
-
-

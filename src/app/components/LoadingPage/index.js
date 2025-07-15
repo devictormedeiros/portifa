@@ -28,7 +28,11 @@ const LoadingPage = () => {
   }, []);
 
   return (
-    <div className={`loading-screen ${!isLoading ? "expand" : ""}  ${!isLoading && bgFull ? "hide" : ""}`}>
+    <div
+      className={`loading-screen ${!isLoading ? "expand" : ""}  ${
+        !isLoading && bgFull ? "hide" : ""
+      }`}
+    >
       <div className="loading-content">
         <div className="flex flex-wrap flex-col items-center gap-2">
           <img

@@ -21,31 +21,31 @@ const DrawerMenu = ({ data }) => {
         document.documentElement.style.overflowX = ""; // Remove completamente o overflow
         document.body.style.overflowX = "hidden"; // Mantém apenas o overflow-x ocultando a rolagem horizontal
       }, 1000);
-  
+
       return () => clearTimeout(timeout); // Cancela o timeout caso `open` mude antes dos 3s
     }
   }, [open]);
-  
-  
 
   return (
     <>
       {/* Botão Hambúrguer */}
       <button
         ref={buttonRef}
-       
         className="fixed z-50 flex items-center justify-center"
       >
         <label className={`burger`} htmlFor="burger">
-          <input type="checkbox" id="burger" checked={open} onChange={toggleMenu}/>
+          <input
+            type="checkbox"
+            id="burger"
+            checked={open}
+            onChange={toggleMenu}
+          />
           <span></span>
           <span className="path-hamburguer-animate"></span>
           <span></span>
         </label>
       </button>
-      <div
-        className={`bg-nav ${open ? "nav-open" : ""}`}
-      ></div>
+      <div className={`bg-nav ${open ? "nav-open" : ""}`}></div>
       {/* Menu Overlay */}
       <nav
         ref={navRef}

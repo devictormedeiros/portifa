@@ -54,7 +54,7 @@ body[data-page-load="true"] {
     }
     &.hide {
       height: 0;
-      .icon-loading{
+      .icon-loading {
         visibility: hidden !important;
       }
       .loading-logo {
@@ -89,7 +89,6 @@ body[data-page-load="true"] {
     width: 25%;
     border-radius: 50%;
     background-color: var(--white-70);
-
   }
   &:before {
     animation: translateLoadingBefore calc(1s * 1.25) ease-in-out infinite;

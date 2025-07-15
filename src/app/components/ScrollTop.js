@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import { usePathname } from 'next/navigation';
+import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function ScrollToTop() {
   const pathname = usePathname();
@@ -17,10 +17,10 @@ export default function ScrollToTop() {
       }, 0);
     };
 
-    window.addEventListener('popstate', onPopState);
+    window.addEventListener("popstate", onPopState);
 
     return () => {
-      window.removeEventListener('popstate', onPopState);
+      window.removeEventListener("popstate", onPopState);
     };
   }, [pathname]);
 

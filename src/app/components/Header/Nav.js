@@ -1,8 +1,6 @@
 "use client";
 import { memo } from "react";
 const Nav = ({ data }) => {
-
-
   return (
     <nav className="menu-principal">
       <ul className="flex justify-center space-x-4 w-full">

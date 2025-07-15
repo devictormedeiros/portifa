@@ -121,7 +121,7 @@ export default function Styleguide({ styleguide }) {
     const solidColor = {
       "--primary": styleguide?.primary || null,
       "--primary-light": styleguide?.primary_light || null,
-      "--primary-rgb": "rgba(78,201,176,1)"|| null,
+      "--primary-rgb": "rgba(78,201,176,1)" || null,
     };
 
     const mergedStyles = { ...solidColor, ...gradients };
@@ -134,7 +134,5 @@ export default function Styleguide({ styleguide }) {
     setCssVariables(cssVars);
   }, [styleguide]);
 
-  return (
-     <style>{`:root {\n${cssVariables}\n}`}</style>
-  );
+  return <style>{`:root {\n${cssVariables}\n}`}</style>;
 }
