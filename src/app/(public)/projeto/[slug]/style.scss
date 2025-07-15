@@ -33,6 +33,11 @@ body:has(main.main-single) {
       .slick-slide {
         padding: 0 10px;
         transition: transform 0.3s ease;
+
+        img {
+          aspect-ratio: 16/9;
+          @apply w-full h-auto rounded-[0.2075rem] lg:rounded-[0.5rem];
+        }
       }
     
       .slick-list {
@@ -48,8 +53,8 @@ body:has(main.main-single) {
         backdrop-filter: blur(6px);
         border: none;
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         font-size: 0;
         cursor: pointer;
         transition: background 0.3s ease;

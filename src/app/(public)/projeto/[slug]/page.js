@@ -29,12 +29,12 @@ const ProjetoPage = () => {
         sliders.forEach((slider) => {
           if (!$(slider).hasClass("slick-initialized")) {
             $(slider).slick({
-              autoplay: true,
+              /* autoplay: true, */
               autoplaySpeed: 6000,
-              speed: 3000,
+              /* speed: 1000, */
               dots: true,
               arrows: true,
-              fade: true,
+              fade: false,
               cssEase: "linear",
             });
           }
@@ -42,7 +42,7 @@ const ProjetoPage = () => {
       };
 
       setupSlider();
-    }, 500); // tempo pra garantir que HTML já foi injetado
+    }, 2000); // tempo pra garantir que HTML já foi injetado
 
     return () => clearTimeout(timeout);
   }, [currentProject]);
@@ -173,19 +173,21 @@ const ProjetoPage = () => {
                   className="scroll-drag flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories w-full lg:max-w-[41.125rem] lg:gap-4"
                 >
                   {projectTechnologies.map((tech) => (
-                    <div
+                    <Link
                       key={tech.id}
-                      className="border border-white-70 text-white-70 menu-section flex items-center py-[0.375rem] px-4 rounded-3xl gap-x-2 flex-none"
+                      href={`/projetos?t=${tech.slug}`}
+                      className="border border-white-70 text-white-70 menu-section flex items-center py-[0.375rem] px-4 rounded-3xl duration-300 gap-x-2 flex-none group hover:bg-white-70 hover:text-gray-700"
+                      title={tech.name}
                     >
                       {tech.acf?.tecnologias?.icone?.link && (
                         <img
                           src={tech.acf.tecnologias.icone.link}
                           alt={tech.name}
-                          className="w-[1.1875rem] h-[1.25rem]"
+                          className="group-hover:invert duration-300 w-[1.1875rem] h-[1.25rem]"
                         />
                       )}
                       {tech.name}
-                    </div>
+                    </Link>
                   ))}
                 </div>
               </div>
@@ -203,7 +205,7 @@ const ProjetoPage = () => {
 
           <section className="w-full mb-[5rem] lg:mb-[7.5rem] w-full max-w-[59.5rem] mx-auto px-6 pt-[3rem]">
             <div
-              className="content-text text-white-70"
+              className="text-white-70 gutenberg overflow-x-visible"
               dangerouslySetInnerHTML={{
                 __html: currentProject.content?.rendered || "",
               }}
