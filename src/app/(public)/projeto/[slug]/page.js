@@ -29,7 +29,7 @@ const ProjetoPage = () => {
         sliders.forEach((slider) => {
           if (!$(slider).hasClass("slick-initialized")) {
             $(slider).slick({
-              autoplay: true,
+              /* autoplay: true, */
               autoplaySpeed: 6000,
               /* speed: 1000, */
               dots: true,
@@ -42,7 +42,7 @@ const ProjetoPage = () => {
       };
 
       setupSlider();
-    }, 500); // tempo pra garantir que HTML já foi injetado
+    }, 2000); // tempo pra garantir que HTML já foi injetado
 
     return () => clearTimeout(timeout);
   }, [currentProject]);
