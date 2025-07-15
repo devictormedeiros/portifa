@@ -1,15 +1,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 // Base
+@import "assets/scss/base/types";
 @import "assets/scss/base/animations";
 @import "assets/scss/base/helpers";
 @import "assets/scss/base/container";
+@import "assets/scss/base/gradients";
 
 // Components
 @import "assets/scss/components/_cards";
 @import "assets/scss/components/_tabs-skill";
+@import "assets/scss/components/_gutenberg";
 
 // Pages
 @import "assets/scss/pages/_home";

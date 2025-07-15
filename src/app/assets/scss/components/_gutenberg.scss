@@ -1,0 +1,58 @@
+.gutenberg {
+  > p {
+    @apply content-text mb-[1rem] lg:mb-6;
+  }
+
+  > .wp-block-image {
+    @apply my-[2.5rem];
+  }
+
+  > h1,
+  > h2,
+  > h3,
+  > h4,
+  > h5,
+  > h6 {
+    @apply mb-[1rem] mt-[2rem] lg:mb-6 lg:mt-[2.5rem];
+  }
+
+  > h1 {
+    @apply content-title-h1;
+  }
+
+  > h2 {
+    @apply content-title-h2;
+  }
+
+  > h3 {
+    @apply content-title-h3;
+  }
+
+  > h4 {
+    @apply content-title-h4;
+  }
+
+  > h5 {
+    @apply content-title-h5;
+  }
+
+  > h6 {
+    @apply content-title-h6;
+  }
+
+  > .wp-block-list {
+    @apply list-disc my-[1.875rem] lg:my-[2.5rem] ps-[2.5rem] lg:ps-[3.75rem];
+
+    > li {
+        @apply content-text;
+    }
+  }
+
+  > .wp-block-quote {
+    @apply my-[2rem] border-s-[0.625rem] border-primary lg:my-[2.5rem];
+
+    > p {
+        @apply text-white-70 content-title-h3 uppercase;
+    }
+  }
+}
