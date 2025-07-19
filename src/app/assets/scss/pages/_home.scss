@@ -30,11 +30,11 @@
     }
 }
 
-.sec-projetos {
+.sec-projects {
     @media screen and (max-width: 767px) {
         height: inherit !important;
         
-        .card-projeto-container {
+        .project-card-container {
             height: calc(100vh - 3.75rem);
         }
     }
