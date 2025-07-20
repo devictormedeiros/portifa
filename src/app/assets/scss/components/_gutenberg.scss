@@ -90,6 +90,10 @@
     right: 50%;
     margin-left: -50vw;
     margin-right: -50vw;
+
+    img {
+      @apply w-full object-cover;
+    }
   }
 
   // Visibilidade
