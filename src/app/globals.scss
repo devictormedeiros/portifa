@@ -153,11 +153,27 @@ html {
   scroll-behavior: smooth;
   scrollbar-color: var(--primary) var(--gray-900);
   scrollbar-width: thin;
-  font-size: 1rem;
   font-family: "Roboto Flex", serif;
-  // @media (max-width:48rem) {
-  //   overflow-x: scroll;
-  // }
+
+  @media screen and (min-width: 1386px) {
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: 1643px) {
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: 1921px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 2461px) {
+    font-size: 17px;
+  }
+
+  @media screen and (min-width: 3741px) {
+    font-size: 18px;
+  }
 
   body {
     font-family: "Roboto Flex", serif;
@@ -195,7 +211,7 @@ body:has(.main-archive, .main-single) {
 
 .slick-slider {
   .slick-dots {
-    @apply bottom-[-3.875rem];
+    @apply bottom-[-2.5625rem] lg:bottom-[-3.0625rem];
 
     > li {
       button:before {
