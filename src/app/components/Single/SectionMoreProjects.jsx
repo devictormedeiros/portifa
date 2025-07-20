@@ -26,7 +26,7 @@ const SectionMoreProjoects = ({
   };
   return (
     moreProjects?.length > 0 && (
-      <section className="bg-gradient-primary-d pt-[5rem] pb-[8.75rem] lg:pt-[7.5rem]">
+      <section className="pt-[5rem] pb-[8.75rem] lg:pt-[7.5rem]">
         <div className="container">
           <div className="py-4 antialiased font-sans text-xl text-left font-semibold leading-snug select-none transition-colors flex items-center justify-between w-full mb-[2rem] pb-[1rem] pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 lg:mb-[2.5rem]">
             <h2 className="content-title-h2 text-gray-200 uppercase">
@@ -36,7 +36,7 @@ const SectionMoreProjoects = ({
                 Ver todos
             </Link>
           </div>
-          <Slider {...settings} className="mx-[-0.75rem] cursor-horizontal">
+          <Slider {...settings} className="mx-[-1.5rem] cursor-horizontal lg:mx-0">
             {Object.values(moreProjects)
               .map((project) => project.ID)
               .map((projectId) => projects.find((p) => p.id === projectId))

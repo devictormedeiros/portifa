@@ -28,9 +28,11 @@ const ProjetoPage = () => {
         const sliders = document.querySelectorAll(".wp-block-gallery.slider");
         sliders.forEach((slider) => {
           if (!$(slider).hasClass("slick-initialized")) {
+            const isAutoPlay = slider.classList.contains("autoplay");
+
             $(slider).slick({
-              /* autoplay: true, */
-              autoplaySpeed: 6000,
+              autoplay: isAutoPlay,
+              autoplaySpeed: 3000,
               /* speed: 1000, */
               dots: true,
               arrows: true,
@@ -212,18 +214,19 @@ const ProjetoPage = () => {
             />
           </section>
         </div>
+        <div className="bg-gradient-primary-d ">
+          <SectionMoreProjoects
+            moreProjects={currentProject?.acf["more-projects"]}
+            technologies={technologies}
+            projects={projects}
+          />
 
-        <SectionMoreProjoects
-          moreProjects={currentProject?.acf["more-projects"]}
-          technologies={technologies}
-          projects={projects}
-        />
-
-        <Contato
-          scrollText={data?.texto_scroll || null}
-          data={data?.secao_contato || null}
-          dataForm={data?.configuracao_do_formulario || null}
-        />
+          <Contato
+            scrollText={data?.texto_scroll || null}
+            data={data?.secao_contato || null}
+            dataForm={data?.configuracao_do_formulario || null}
+          />
+        </div>
       </main>
     </>
   );

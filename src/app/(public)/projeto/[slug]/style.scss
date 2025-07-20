@@ -35,7 +35,6 @@ body:has(main.main-single) {
         transition: transform 0.3s ease;
 
         img {
-          aspect-ratio: 16/9;
           @apply w-full h-auto rounded-[0.2075rem] lg:rounded-[0.5rem];
         }
       }
