@@ -4,6 +4,7 @@ import "./style.scss";
 import { memo } from "react";
 import { useEffect, useState } from "react";
 import ObserverHtml from "../../../hooks/ObserverHtml";
+import IconsLib from "../../Icons";
 
 const Tecnologias = ({ data }) => {
   const [isAnimated, setIsAnimated] = useState(false);
@@ -27,17 +28,21 @@ const Tecnologias = ({ data }) => {
                   className="grid grid-cols-12 col-span-12 md:gap-y-0 gap-y-4 rounded items-center py-0"
                 >
                   <div className="md:col-span-3 col-span-12 flex items-center gap-3">
-                    {items?.icone && (
+                    {items?.icon_custom ? (
                       <div className="tec-icon">
                         <Image
-                          src={items?.icone.url}
+                          src={items?.icon_custom}
                           alt="Descrição da imagem"
                           className="img-fluid contain"
                           width={34}
                           height={34}
                         />
                       </div>
-                    )}
+                    ) : items?.icone ? (
+                      <div className="img-tech">
+                        <IconsLib name={items?.icone} />
+                      </div>
+                    ) : null}
                     <div className="tec-text">
                       <p className="content-title-h6 text-white-70">
                         {items.nome}

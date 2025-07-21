@@ -10,7 +10,7 @@ const Projetos = ({ data }) => {
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    let pinneds = gsap.utils.toArray(".pinned .card-projeto");
+    let pinneds = gsap.utils.toArray(".pinned .project-card");
     let mm = gsap.matchMedia(),
       breakPoint = 1024;
 
@@ -50,7 +50,7 @@ const Projetos = ({ data }) => {
 
   return (
     <section
-      className="sec-projetos"
+      className="sec-projects"
       style={{ height: `${data.length * 100 + 120}vh` }}
     >
       <div className="container h-full relative">

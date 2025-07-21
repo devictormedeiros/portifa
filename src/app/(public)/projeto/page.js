@@ -6,7 +6,7 @@ export default function ProjetoRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    router.push('/projetos'); // ou para onde você quiser redirecionar
+    router.push('/projetos');
   }, [router]);
 
   return null;

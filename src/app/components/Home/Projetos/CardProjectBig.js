@@ -1,10 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
+import IconsLib from "../../Icons";
 
 const CardProjectBig = ({ project, technologies }) => {
   return (
-    <article className="card-projeto-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 top-[3.75rem] lg:top-0">
-      <div className="card-projeto bg-gradient-primary-c rounded-2xl md:mx-0">
+    <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 top-[3.75rem] lg:top-0">
+      <div className="project-card bg-gradient-primary-c rounded-2xl md:mx-0">
         <div className="p-[2rem] flex flex-col gap-6 md:gap-[2.5rem] rounded-lg md:p-[4rem]">
           <div className="flex flex-col gap-[0.5rem] justify-between pb-[.5rem] border-b border-white-10 md:flex-row">
             <h3 className="content-title-h3 text-gray-200 uppercase">
@@ -14,15 +15,12 @@ const CardProjectBig = ({ project, technologies }) => {
               <div className="flex items-center gap-[1.25rem] md:gap-6">
                 {project?.tecnologias?.map((techId, techIndex) => {
                   const tech = technologies.find((t) => t.id === techId);
-                  const iconUrl = tech?.acf?.tecnologias?.icone?.link;
+                  const iconSlug = tech?.acf?.tecnologias?.icone;
 
-                  return iconUrl ? (
-                    <img
-                      key={`tech-${techIndex}`}
-                      className="w-6 img-tech"
-                      alt={tech?.name || "Tecnologia"}
-                      src={iconUrl}
-                    />
+                  return iconSlug ? (
+                    <div className="img-tech">
+                      <IconsLib name={tech.acf?.tecnologias?.icone} />
+                    </div>
                   ) : (
                     <span
                       key={`tech-${techIndex}`}

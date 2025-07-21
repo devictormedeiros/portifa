@@ -7,6 +7,7 @@ import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
 import Link from 'next/link';
+import IconsLib from "@/app/components/Icons";
 
 
 const Archive = () => {
@@ -80,7 +81,7 @@ const Archive = () => {
       <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
         {/* Content Wrapper Section */}
-        <section className="flex flex-col w-full items-center header-projetcs">
+        <section className="flex flex-col w-full items-center header-projects">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
             <div
               className={`w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center`}
@@ -106,7 +107,7 @@ const Archive = () => {
                 ref={scrollRef}
                 className={`${
                   technologies.length > 6 ? "cursor-horizontal" : ""
-                } flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories`}
+                } flex items-center gap-8 lg:gap-4 relative self-stretch w-full overflow-x-auto list-categories`}
               >
                 {technologies.map((tech) => {
                   const isActive = selectedTech === tech.id;
@@ -114,18 +115,16 @@ const Archive = () => {
                     <button
                       key={tech.id}
                       onClick={() => setSelectedTech(isActive ? null : tech.id)}
-                      className={`menu-section flex items-center gap-2 py-2 px-6 rounded-3xl duration-300 hover:bg-gray-200 hover:text-gray-700 min-w-[max-content] ${
+                      className={`pill-category menu-section flex items-center gap-x-2   py-2 px-4 rounded-3xl duration-300 hover:bg-gray-200  hover:text-gray-700 min-w-[max-content] ${
                         isActive
-                          ? "bg-primary text-gray-900 btn-active"
+                          ? "bg-gray-200 text-gray-700 pill-category-active"
                           : "bg-white-10 text-gray-200"
                       }`}
                     >
-                      {tech.acf?.tecnologias?.icone?.link && (
-                        <img
-                          src={tech.acf.tecnologias.icone.link}
-                          className={`img-tech w-5`}
-                          alt={tech.name}
-                        />
+                      {tech.acf?.tecnologias?.icone && (
+                        <div className="img-tech">
+                          <IconsLib name={tech.acf?.tecnologias?.icone}/>
+                        </div>
                       )}
                       {tech.name}
                     </button>
@@ -174,16 +173,13 @@ const Archive = () => {
                                 const tech = technologies.find(
                                   (t) => t.id === techId
                                 );
-                                const iconUrl =
-                                  tech?.acf?.tecnologias?.icone?.link;
+                                const iconSlug =
+                                  tech?.acf?.tecnologias?.icone;
 
-                                return iconUrl ? (
-                                  <img
-                                    key={`tech-${techIndex}`}
-                                    className="w-6 img-tech"
-                                    alt={tech?.name || "Tecnologia"}
-                                    src={iconUrl}
-                                  />
+                                return iconSlug ? (
+                                 <div className="img-tech">
+                                  <IconsLib  key={`tech-${techIndex}`} name={iconSlug}/>
+                                 </div>
                                 ) : (
                                   <span
                                     key={`tech-${techIndex}`}
