@@ -25,14 +25,9 @@ export default function ScrollingTexts({ data }) {
     gsap.to(textBottom.current, {
       scrollTrigger: {
         trigger: section.current,
-<<<<<<< HEAD
-        start: "top 75%",
-        scrub: true,
-=======
         start: window.innerWidth > 992 ? "top 75%" : "top 95%",
         scrub: true,
         /* markers: true, */
->>>>>>> refactor/1207
       },
       x: "30%",
       duration: 5,
