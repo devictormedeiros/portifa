@@ -9,6 +9,7 @@ import Header from "@/app/components/Header";
 import { useParams } from "next/navigation";
 import SectionMoreProjoects from "@/app/components/Single/SectionMoreProjects";
 import Link from "next/link";
+import IconsLib from "@/app/components/Icons";
 
 const ProjetoPage = () => {
   const { dataOption: data } = useDataOptions();
@@ -115,7 +116,7 @@ const ProjetoPage = () => {
     <>
       <Header logo={data?.logo_principal || null} />
       <main className="main-single">
-        <section className="flex flex-col w-full items-center  header-projetcs">
+        <section className="flex flex-col w-full items-center  header-projects">
           <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
             <div
               className="w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center"
@@ -173,21 +174,19 @@ const ProjetoPage = () => {
                   className="scroll-drag flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories w-full lg:max-w-[41.125rem] lg:gap-4"
                 >
                   {projectTechnologies.map((tech) => (
-                    <Link
+                    <a
                       key={tech.id}
                       href={`/projetos?t=${tech.slug}`}
-                      className="border border-white-70 text-white-70 menu-section flex items-center py-[0.375rem] px-4 rounded-3xl duration-300 gap-x-2 flex-none group hover:bg-white-70 hover:text-gray-700"
+                      className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group hover:bg-gray-200 hover:text-gray-700 bg-white-10 text-gray-200 "
                       title={tech.name}
                     >
-                      {tech.acf?.tecnologias?.icone?.link && (
-                        <img
-                          src={tech.acf.tecnologias.icone.link}
-                          alt={tech.name}
-                          className="group-hover:invert duration-300 w-[1.1875rem] h-[1.25rem]"
-                        />
+                      {tech.acf?.tecnologias?.icone && (
+                        <div className="img-tech">
+                          <IconsLib name={tech.acf?.tecnologias?.icone}/>
+                        </div>
                       )}
                       {tech.name}
-                    </Link>
+                    </a>
                   ))}
                 </div>
               </div>

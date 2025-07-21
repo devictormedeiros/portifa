@@ -17,6 +17,8 @@
         svg,
         svg * {
           transition: all 0.3s ease-in-out;
+          width: 2rem;
+          height: 2rem;
         }
         &:hover {
           color: var(--primary);

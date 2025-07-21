@@ -1,6 +1,39 @@
-.card-projeto {
+.project-card {
     background: var(--gradient-primary-c);
     box-shadow: 0px -10px 20px 0px #00000099;
+}
+.header-projects{
+    .img-tech{
+        width: 1.25rem;
+    }
+}
+
+.img-tech{
+    svg, svg *{
+        width: 1.5rem;
+        height: auto;
+        fill: var(--white-50);
+    }
+    &:hover{
+        svg, svg *{
+            fill: var(--white-100);
+        }
+    
+    }
+}
+
+.pill-tech{
+    svg, svg *{
+        width: 1.5rem;
+        height: auto;
+        fill: var(--white-50);
+    }
+    &:hover{
+        svg, svg *{
+            fill: var(--white-100);
+        }
+    
+    }
 }
 
 .card-skills,

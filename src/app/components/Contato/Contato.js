@@ -4,6 +4,7 @@ import { useState, useRef } from "react";
 import emailjs from "emailjs-com";
 import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
+import IconsLib from "../Icons";
 
 import {
   FaLinkedinIn,
@@ -80,7 +81,8 @@ const Contato = ({ data, dataForm, scrollText }) => {
                     href={data?.whatsapp}
                     className="social-media-icon flex items-center gap-2"
                   >
-                    <FaWhatsapp className="h-8 w-8" />
+                    {/* <FaWhatsapp className="h-8 w-8" /> */}
+                    <IconsLib name={"whats"} />
                   </a>
                 )}
                 {data?.instagram && (
@@ -89,7 +91,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
                     href={data?.instagram}
                     className="social-media-icon flex items-center gap-2"
                   >
-                    <FaInstagram className="h-8 w-8" />
+                    <IconsLib name={"insta"} />
                   </a>
                 )}
                 {data?.facebook && (
@@ -98,12 +100,13 @@ const Contato = ({ data, dataForm, scrollText }) => {
                     href={data?.facebook}
                     className="social-media-icon flex items-center gap-2"
                   >
-                    <FaFacebookF className="h-8 w-8" />
+                    {/* <FaFacebookF className="h-8 w-8" /> */}
+                    <IconsLib name={"facebook"} />
                   </a>
                 )}
                 {data?.linkedin && (
                   <a target="_blank" href={data?.linkedin}>
-                    <FaLinkedinIn className="h-8 w-8" />
+                     <IconsLib name={"linkedin"} />
                   </a>
                 )}
                 {data?.behance && (
@@ -112,7 +115,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
                     href={data?.behance}
                     className="social-media-icon flex items-center gap-2"
                   >
-                    <FaBehance className="h-8 w-8" />
+                     <IconsLib name={"behance"} />
                   </a>
                 )}
                 {data?.github && (
@@ -121,7 +124,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
                     href={data?.github}
                     className="social-media-icon flex items-center gap-2"
                   >
-                    <FaGithub className="h-8 w-8" />
+                    <IconsLib name={"github"} />
                   </a>
                 )}
                 <a

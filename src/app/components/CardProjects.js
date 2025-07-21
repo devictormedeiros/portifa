@@ -1,8 +1,9 @@
 import Link from "next/link";
+import IconsLib from "@/app/components/Icons";
 
 const CardProject = ({ project, technologies }) => (
   <article className="flex flex-col project-card rounded-[0.625rem] overflow-hidden lg:rounded-[1rem]">
-    <Link href={`/projeto/${project.slug}`} className="block w-full h-full">
+    <a href={`/projeto/${project.slug}`} className="block w-full h-full">
       <div className="w-full h-[14.375rem]">
         <img
           src={
@@ -25,15 +26,13 @@ const CardProject = ({ project, technologies }) => (
             <div className="flex items-center gap-4">
               {project.tecnologias.map((techId, techIndex) => {
                 const tech = technologies.find((t) => t.id === techId);
-                const iconUrl = tech?.acf?.tecnologias?.icone?.link;
+                const iconSlug = tech?.acf?.tecnologias?.icone;
 
-                return iconUrl ? (
-                  <img
-                    key={`tech-${techIndex}`}
-                    className="w-6 img-tech"
-                    alt={tech?.name || "Tecnologia"}
-                    src={iconUrl}
-                  />
+                return iconSlug ? (
+                  <div className="img-tech">
+                    <IconsLib  key={`tech-${techIndex}`} name={iconSlug}/>
+                    </div>
+                  
                 ) : (
                   <span
                     key={`tech-${techIndex}`}
@@ -53,7 +52,7 @@ const CardProject = ({ project, technologies }) => (
             .trim() + "..."}
         </p>
       </div>
-    </Link>
+    </a>
   </article>
 );
 
