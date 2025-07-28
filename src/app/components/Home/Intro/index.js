@@ -90,7 +90,7 @@ const Intro = ({ data }) => {
           className="text container"
           style={{ "--font-intro-desktop": `${(data?.font_percent_desktop ?? 100) / 100}`,  "--font-intro-mobile": `${(data?.font_percent_mobile ?? 100) / 100}` }}
         >
-          <h1 className="text-gray-200">
+          <h1 className="text-gray-200 text-left">
             <AnimatedText
               text={texto_introducao}
               onComplete={() => setShowTextAnimate(true)}

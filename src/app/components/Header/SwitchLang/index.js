@@ -57,12 +57,12 @@ export default function SwitchLang({ onChange }) {
 
   return (
     <div
-      className={`select-lang ${isOpen ? "open" : ""}`}
+      className={`select-lang cursor-link ${isOpen ? "open" : ""}`}
       ref={selectRef}
       onClick={() => setIsOpen(!isOpen)}
       tabIndex={0}
     >
-      <div className="option-selected-lang">
+      <div className="option-lang-selected">
         <img
           id={`flag-lang-${selected.slug}`}
           src={`/images/flags/${selected.slug}.svg`}
@@ -75,8 +75,8 @@ export default function SwitchLang({ onChange }) {
           .filter((lang) => lang.slug !== selected.slug)
           .map((lang) => (
             <li key={lang.slug} onClick={() => handleSelect(lang)}>
-              <img src={lang.flag_url} alt={lang.name} />
-              {lang.slug.toUpperCase()}
+              <img  id={`flag-lang-${lang.slug}`} src={`/images/flags/${lang.slug}.svg`} alt={lang.name} />
+              <span>{lang.slug.toUpperCase()}</span>
             </li>
           ))}
       </ul>

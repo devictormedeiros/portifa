@@ -57,6 +57,12 @@ header {
       }
     }
   }
+  &:has(.nav-open){
+    .logo{
+      z-index: 10;
+    }
+
+  }
   &.sticky-header {
     border-radius: 0 !important;
     position: sticky;
@@ -74,10 +80,11 @@ header {
       opacity: 0;
       transform: translateY(-1.25rem);
     }
-    .switch-darkmode {
-      visibility: hidden;
-      opacity: 0;
-      visibility: hidden;
+    &:has(.nav-open){
+      position: fixed;
+      .logo{
+        z-index: 10;
+      }
     }
   }
 }

@@ -6,19 +6,12 @@ import Link from "next/link";
 import DrawerMenu from "./DrawerMenu";
 import getPosts from "../../api/getAPI";
 import { useSticky } from "../../context/StickyContext";
-import SwitchDarkmode from "./SwitchDarkmode";
 import SwitchLang from "./SwitchLang";
 
 const Header = ({ logo }) => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
 
   const [itemslink, setItemsLink] = useState([]);
-
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    document.documentElement.classList.toggle("dark", darkMode);
-  }, [darkMode]);
 
   useEffect(() => {
     const fetchItemsLinks = async () => {
@@ -48,7 +41,6 @@ const Header = ({ logo }) => {
             <Nav data={itemslink} />
           </div>
           <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-[2rem] gap-x-[1.25rem]">
-            {/* <SwitchDarkmode /> */}
             <SwitchLang />
             <div className="menu-hamburguer">
               <DrawerMenu data={itemslink} />
