@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import "./style.scss"; // Importa os estilos
+import LogoPrincipal from "../Icons/Logos/LogoPrincipal";
 
 const LoadingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -35,11 +36,7 @@ const LoadingPage = () => {
     >
       <div className="loading-content">
         <div className="flex flex-wrap flex-col items-center gap-2">
-          <img
-            src="https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/02/Logo.svg"
-            className="loading-logo"
-            alt="Logo Portifa"
-          />
+          <LogoPrincipal/>
           <div
             className={`icon-loading ${showIcon ? "visible" : "invisible"}`}
           ></div>

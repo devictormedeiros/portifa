@@ -81,27 +81,67 @@ const Intro = ({ data }) => {
   const [showTextAnimate, setShowTextAnimate] = useState(false);
 
   const frases = data?.destaque_introducao?.map((item) => item.destaque) || [];
-  const texto_introducao = data?.texto_introducao || "";
+  const layout_intro = data?.layout || "";
+  const texto_intro = data?.texto_introducao || "";
+  const video_intro_desktop = data?.video || "";
+  const video_intro_mobile = data?.video_mobile || "";
 
   return (
     <section className="sec-intro overflow-hidden bg-gray-900">
       <div className="container-text">
-        <div
-          className="text container"
-          style={{ "--font-intro-desktop": `${(data?.font_percent_desktop ?? 100) / 100}`,  "--font-intro-mobile": `${(data?.font_percent_mobile ?? 100) / 100}` }}
-        >
-          <h1 className="text-gray-200 text-left">
-            <AnimatedText
-              text={texto_introducao}
-              onComplete={() => setShowTextAnimate(true)}
-            />
-          </h1>
-          {frases && (
-            <div className="text-animate">
-              {showTextAnimate && <TextAnimate frases={frases} />}
-            </div>
-          )}
-        </div>
+        {layout_intro === "video" ? (
+          <>
+            {video_intro_desktop && (
+              <video
+                src={video_intro_desktop}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="hidden md:block w-full h-full object-cover"
+              >
+                Seu navegador não suporta o elemento <code>video</code>.
+              </video>
+            )}
+
+            {video_intro_mobile && (
+              <video
+                src={video_intro_mobile}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="block md:hidden w-full h-full object-cover"
+              >
+                Seu navegador não suporta o elemento <code>video</code>.
+              </video>
+            )}
+          </>
+        ) : (
+          <div
+            className="text container"
+            style={{
+              "--font-intro-desktop": `${
+                (data?.font_percent_desktop ?? 100) / 100
+              }`,
+              "--font-intro-mobile": `${
+                (data?.font_percent_mobile ?? 100) / 100
+              }`,
+            }}
+          >
+            <h1 className="text-gray-200 text-left">
+              <AnimatedText
+                text={texto_intro}
+                onComplete={() => setShowTextAnimate(true)}
+              />
+            </h1>
+            {frases && (
+              <div className="text-animate">
+                {showTextAnimate && <TextAnimate frases={frases} />}
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </section>
   );

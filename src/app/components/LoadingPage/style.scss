@@ -27,8 +27,10 @@ body[data-page-load="true"] {
 
     > div {
       animation: slide-up 0.8s ease-in-out;
-      .loading-logo {
+      svg {
         width: 10rem;
+        height: auto;
+        max-width: 100%;
         object-fit: contain;
         @media (max-width: 48rem) {
           width: 6.5rem;
@@ -57,7 +59,7 @@ body[data-page-load="true"] {
       .icon-loading {
         visibility: hidden !important;
       }
-      .loading-logo {
+      svg {
         animation: slide-down 0.5s ease-in-out forwards 0.12s;
       }
     }
