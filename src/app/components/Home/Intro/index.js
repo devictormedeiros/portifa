@@ -83,22 +83,40 @@ const Intro = ({ data }) => {
   const frases = data?.destaque_introducao?.map((item) => item.destaque) || [];
   const layout_intro = data?.layout || "";
   const texto_intro = data?.texto_introducao || "";
-  const video_intro = data?.video || "";
+  const video_intro_desktop = data?.video || "";
+  const video_intro_mobile = data?.video_mobile || "";
 
   return (
     <section className="sec-intro overflow-hidden bg-gray-900">
       <div className="container-text">
         {layout_intro === "video" ? (
-          <video
-            src={video_intro}
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full"
-          >
-            Seu navegador não suporta o elemento <code>video</code>.
-          </video>
+          <>
+            {video_intro_desktop && (
+              <video
+                src={video_intro_desktop}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="hidden md:block w-full h-full object-cover"
+              >
+                Seu navegador não suporta o elemento <code>video</code>.
+              </video>
+            )}
+
+            {video_intro_mobile && (
+              <video
+                src={video_intro_mobile}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="block md:hidden w-full h-full object-cover"
+              >
+                Seu navegador não suporta o elemento <code>video</code>.
+              </video>
+            )}
+          </>
         ) : (
           <div
             className="text container"
