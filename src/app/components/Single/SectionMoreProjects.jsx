@@ -7,6 +7,10 @@ const SectionMoreProjoects = ({
   technologies,
   projects,
 }) => {
+  const onLinkMouseDown = (e) => {
+    e.preventDefault();
+  };
+  
   const settings = {
     dots: true,
     arrows: false,
@@ -32,11 +36,18 @@ const SectionMoreProjoects = ({
             <h2 className="content-title-h2 text-gray-200 uppercase">
               Mais Projetos
             </h2>
-            <Link href={"/projetos"} className="content-title-h6 capitalize">
+            <Link
+              href={"/projetos"}
+              className="content-title-h6 capitalize"
+              onMouseDown={onLinkMouseDown}
+            >
               Ver todos
             </Link>
           </div>
-          <Slider {...settings} className="mx-[-1.5rem] cursor-horizontal lg:mx-0">
+          <Slider
+            {...settings}
+            className="mx-[-1.5rem] cursor-horizontal lg:mx-0"
+          >
             {Object.values(moreProjects)
               .map((project) => project.ID)
               .map((projectId) => projects.find((p) => p.id === projectId))
