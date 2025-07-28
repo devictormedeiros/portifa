@@ -150,7 +150,7 @@ const Archive = () => {
                     <a
                       title={project.title?.rendered || "Sem título"}
                       href={`/projeto/${project.slug}`}
-                      className="block w-full h-full"
+                      className="flex flex-col flex-wrap w-full h-full"
                     >
                       <div className="w-full h-[14.375rem] rounded-t-2xl">
                         <img
@@ -159,7 +159,7 @@ const Archive = () => {
                           src={imageUrl || "https://placehold.co/600x400"}
                         />
                       </div>
-                      <div className="flex flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
+                      <div className="flex flex-1 flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
                         <div className="flex flex-col items-start gap-3">
                           <div className="flex flex-col items-start gap-[0.2344rem]">
                             <h3 className="mt-[-0.0587rem] content-title-h5  text-gray-200">
