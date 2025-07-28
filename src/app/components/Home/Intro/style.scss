@@ -59,6 +59,15 @@ section.sec-intro {
     align-items: center;
     flex-wrap: wrap;
   }
+  video{
+    position: fixed;
+    z-index: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    overflow: hidden;
+    object-fit: cover;
+  }
   .text {
     position: fixed;
     z-index: 0;
