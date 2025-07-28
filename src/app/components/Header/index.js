@@ -1,5 +1,5 @@
 "use client"; // Necessário para usar hooks no diretório app
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, memo } from "react";
 import Nav from "./Nav";
 import "./style.scss";
 import Link from "next/link";
@@ -7,8 +7,9 @@ import DrawerMenu from "./DrawerMenu";
 import getPosts from "../../api/getAPI";
 import { useSticky } from "../../context/StickyContext";
 import SwitchLang from "./SwitchLang";
+import LogoPrincipal from "../Icons/Logos/LogoPrincipal";
 
-const Header = ({ logo }) => {
+const Header = () => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
 
   const [itemslink, setItemsLink] = useState([]);
@@ -30,11 +31,7 @@ const Header = ({ logo }) => {
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
             <Link className="logo" href="/">
-              {logo ? (
-                <img src={logo.url} title={logo.title} alt={logo.description} />
-              ) : (
-                <span>Logo</span>
-              )}
+              <LogoPrincipal/>
             </Link>
           </div>
           <div className="col-span-6 hidden md:block">

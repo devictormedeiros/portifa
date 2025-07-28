@@ -58,7 +58,7 @@ const DrawerMenu = ({ data }) => {
             <li key={index}>
               <a
                 href={item.url}
-                className="content-title-h2 text-gray-200 hover:text-white-100 hover:underline uppercase mb-10 block"
+                className="content-title-h2 text-gray-700 hover:text-white-100 hover:underline uppercase mb-10 block"
               >
                 {item.title}
               </a>

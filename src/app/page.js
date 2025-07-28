@@ -75,7 +75,7 @@ const HomePage = () => {
     <>
       {data?.home.introducao && <Intro data={data.home.introducao} />}
 
-      <Header logo={data?.logo_principal || null} />
+      <Header />
       <main className="main-home flex flex-wrap relative z-[1]">
         {data?.home.sobre && <Sobre data={data?.home.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
