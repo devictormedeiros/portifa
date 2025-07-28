@@ -32,8 +32,8 @@ header {
   }
   .logo {
     svg {
-      max-height: 2.25rem;
-      max-width: 2.25rem;
+      max-height: 3rem;
+      max-width: 3rem;
       object-fit: contain;
       @media (max-width: 48rem) {
         width: 100%;
