@@ -74,9 +74,41 @@
     }
   }
 
-  > .wp-block-gallery {
-    @apply mt-6 lg:mt-10;
+  .slider {
+    @apply mt-8 lg:mt-10;
     margin-bottom: 3rem !important;
+
+    .slick-slide {
+      padding: 0 0.625rem;
+      transition: transform 0.3s ease;
+
+      img {
+        @apply h-auto rounded-[0.2075rem] lg:rounded-[0.5rem];
+
+        width: 100% !important;
+      }
+    }
+
+    .slick-arrow {
+      background-color: transparent;
+      padding: 0;
+
+      &.slick-prev {
+        @apply left-[-1.375rem] md:left-[-2.5rem];
+
+        &::before {
+          content: url("data:image/svg+xml,%3Csvg width='16' height='25' viewBox='0 0 16 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M13.4531 0.93225L16 3.2352L5.12566 12.8263L16 22.6578L13.4212 24.9323L-5.30409e-07 12.7979L13.4531 0.93225Z' fill='white' fill-opacity='0.4'/%3E%3C/svg%3E%0A");
+        }
+      }
+
+      &.slick-next {
+        @apply right-[-1.375rem] md:right-[-2.5rem];
+
+        &::before {
+          content: url("data:image/svg+xml,%3Csvg width='16' height='25' viewBox='0 0 16 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5469 24.9323L5.26621e-09 22.6293L10.8743 13.0382L8.54253e-07 3.20675L2.57876 0.93225L16 13.0666L2.5469 24.9323Z' fill='white' fill-opacity='0.7'/%3E%3C/svg%3E%0A");
+        }
+      }
+    }
 
     @media screen and (min-width: 992px) {
       margin-bottom: 5rem !important;

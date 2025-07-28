@@ -213,7 +213,7 @@ const ProjetoPage = () => {
             />
           </section>
         </div>
-        <div className="bg-gradient-primary-d ">
+        <div className="bg-gradient-primary-d">
           <SectionMoreProjoects
             moreProjects={currentProject?.acf["more-projects"]}
             technologies={technologies}
