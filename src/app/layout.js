@@ -2,7 +2,6 @@ import "./globals.scss";
 import "animate.css/animate.compat.css";
 import { ProjectsProvider } from "./context/ProjectsContext";
 import { DataOptionsProvider } from "./context/DataOptionsContext";
-import Footer from "./components/Footer";
 import LayoutWrapper from "./components/LayoutWrapper";
 import { Metadata } from "next";
 
@@ -65,12 +64,11 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="root">
       <ProjectsProvider>
         <DataOptionsProvider>
           <LayoutWrapper>
             {children}
-            <Footer />
           </LayoutWrapper>
         </DataOptionsProvider>
       </ProjectsProvider>
