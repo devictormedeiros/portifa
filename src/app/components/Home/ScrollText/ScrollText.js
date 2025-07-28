@@ -12,26 +12,26 @@ export default function ScrollingTexts({ data }) {
 
     gsap.to(textTop.current, {
       scrollTrigger: {
-        trigger: section.current,
-        start: window.innerWidth > 992 ? "top 75%" : "top 95%",
+        trigger: ".root",
+        start: "top 0",
         scrub: true,
-        /* markers: true, */
+        markers: true,
       },
-      x: "-30%",
+      x: "-50%",
       duration: 5,
-      ease: "none",
+      /* ease: "none", */
     });
 
     gsap.to(textBottom.current, {
       scrollTrigger: {
-        trigger: section.current,
-        start: window.innerWidth > 992 ? "top 75%" : "top 95%",
+        trigger: ".root",
+        start: "top 0",
         scrub: true,
-        /* markers: true, */
+        markers: true,
       },
-      x: "30%",
+      x: "50%",
       duration: 5,
-      ease: "none",
+      /* ease: "none", */
     });
   }, []);
 
@@ -50,6 +50,7 @@ export default function ScrollingTexts({ data }) {
           ref={textTop}
           className="relative whitespace-nowrap motion text-primary w-fit duration-1000 ease-out"
         >
+          {data.texto_superior} 
           {data.texto_superior}
         </div>
       </div>
@@ -60,6 +61,7 @@ export default function ScrollingTexts({ data }) {
           ref={textBottom}
           className="relative whitespace-nowrap motion w-fit duration-1000 ease-out"
         >
+          {data.texto_inferior} 
           {data.texto_inferior}
         </div>
       </div>

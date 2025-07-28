@@ -170,11 +170,7 @@ html {
 main {
   background-color: var(--gray-900);
   z-index: 1;
-  padding-bottom: 10rem;
 
-  @media (max-width: 48rem) {
-    padding-bottom: 4rem;
-  }
   &.main-home {
     > section {
       width: 100%;

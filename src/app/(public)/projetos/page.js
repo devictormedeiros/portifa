@@ -6,9 +6,8 @@ import Contato from "@/app/components/Contato/Contato";
 import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
-import Link from 'next/link';
+import Link from "next/link";
 import IconsLib from "@/app/components/Icons";
-
 
 const Archive = () => {
   const { dataOption } = useDataOptions();
@@ -64,17 +63,17 @@ const Archive = () => {
     };
   }, []);
 
-    // Aplica filtro se ?t=slug estiver presente
-    useEffect(() => {
-      const params = new URLSearchParams(window.location.search);
-      const techSlug = params.get("t");
-      if (techSlug && technologies.length > 0) {
-        const tech = technologies.find((t) => t.slug === techSlug);
-        if (tech) {
-          setSelectedTech(tech.id);
-        }
+  // Aplica filtro se ?t=slug estiver presente
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const techSlug = params.get("t");
+    if (techSlug && technologies.length > 0) {
+      const tech = technologies.find((t) => t.slug === techSlug);
+      if (tech) {
+        setSelectedTech(tech.id);
       }
-    }, [technologies]);
+    }
+  }, [technologies]);
 
   return (
     <>
@@ -123,7 +122,7 @@ const Archive = () => {
                     >
                       {tech.acf?.tecnologias?.icone && (
                         <div className="img-tech">
-                          <IconsLib name={tech.acf?.tecnologias?.icone}/>
+                          <IconsLib name={tech.acf?.tecnologias?.icone} />
                         </div>
                       )}
                       {tech.name}
@@ -148,7 +147,7 @@ const Archive = () => {
                     key={`project-${index}`}
                     className="flex flex-col project-card rounded-2xl"
                   >
-                    <a 
+                    <a
                       title={project.title?.rendered || "Sem título"}
                       href={`/projeto/${project.slug}`}
                       className="block w-full h-full"
@@ -173,13 +172,15 @@ const Archive = () => {
                                 const tech = technologies.find(
                                   (t) => t.id === techId
                                 );
-                                const iconSlug =
-                                  tech?.acf?.tecnologias?.icone;
+                                const iconSlug = tech?.acf?.tecnologias?.icone;
 
                                 return iconSlug ? (
-                                 <div className="img-tech">
-                                  <IconsLib  key={`tech-${techIndex}`} name={iconSlug}/>
-                                 </div>
+                                  <div
+                                    className="img-tech"
+                                    key={`tech-${techIndex}`}
+                                  >
+                                    <IconsLib name={iconSlug} />
+                                  </div>
                                 ) : (
                                   <span
                                     key={`tech-${techIndex}`}
@@ -189,7 +190,7 @@ const Archive = () => {
                                   </span>
                                 );
                               })}
-                            </div>      
+                            </div>
                           )}
                         </div>
                         <p className="w-full text-white-70 feed-excerpt">

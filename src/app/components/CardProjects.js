@@ -29,8 +29,8 @@ const CardProject = ({ project, technologies }) => (
                 const iconSlug = tech?.acf?.tecnologias?.icone;
 
                 return iconSlug ? (
-                  <div className="img-tech">
-                    <IconsLib  key={`tech-${techIndex}`} name={iconSlug}/>
+                  <div className="img-tech" key={`tech-${techIndex}`}>
+                    <IconsLib name={iconSlug}/>
                     </div>
                   
                 ) : (
