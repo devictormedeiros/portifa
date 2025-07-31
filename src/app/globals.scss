@@ -170,7 +170,17 @@ html {
 main {
   background-color: var(--gray-900);
   z-index: 1;
-
+  
+  &.main-404{
+    .text-404{
+      width: 100%;
+      max-width: 42.5rem;
+      margin: auto;
+    }
+    footer{
+      
+    }
+  }
   &.main-home {
     > section {
       width: 100%;
@@ -186,7 +196,7 @@ main {
 body:has(.main-archive, .main-single) {
   @media (min-width: 768px) {
     header {
-      background-color: transparent;
+      background: transparent;
     }
   }
 }
