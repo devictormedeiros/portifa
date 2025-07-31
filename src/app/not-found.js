@@ -25,7 +25,7 @@ export default function NotFound() {
     const width = isMobile ? 318 : 680;
     const height = isMobile ? 150 : 343;
     const fontSize = isMobile
-      ? "bold 8.75rem Roboto, serif"
+      ? "bold 10rem Roboto, serif"
       : "bold 24rem Roboto, serif";
 
     canvasShown.width = width;
