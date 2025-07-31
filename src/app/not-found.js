@@ -23,10 +23,10 @@ export default function NotFound() {
 
     const isMobile = window.innerWidth < 768;
     const width = isMobile ? 318 : 680;
-    const height = isMobile ? 140 : 250;
+    const height = isMobile ? 150 : 343;
     const fontSize = isMobile
       ? "bold 8.75rem Roboto, serif"
-      : "bold 18.5rem Roboto, serif";
+      : "bold 24rem Roboto, serif";
 
     canvasShown.width = width;
     canvasShown.height = height;
@@ -72,21 +72,22 @@ export default function NotFound() {
       <main className="main-404">
         <div className="flex flex-col items-center justify-center relative overflow-hidden pt-[11.25rem] px-[1.5rem] pb-[11.25rem] md:pb-[15.625rem]">
           <canvas ref={canvasRef} className="pointer-events-none z-0" />
-          <div className="text-404 text-center md:px-4 z-10 mt-[-1.5625rem]">
-            <h2 className="content-title-h2 text-white-100 mb-[1rem] md:mb-0">
+          <div className="text-404 text-center md:px-4 z-10 md:mt-[-2.75rem] mt-[-1rem]">
+            <h2 className="content-title-h2 text-white-100 mb-[1rem] md:mb-[0.5rem]">
               OPS! SINAL PERDIDO...
             </h2>
-            <div className="flex md:gap-6 gap-4 items-center flex-wrap md:justify-start justify-center">
+            <div className="flex md:gap-6 gap-5 items-center flex-wrap md:justify-start justify-center">
               <p className="content-text text-white-70 mb-0 text-center md:text-left md:flex-1">
                 A página sofreu interferência e não está disponível. <br />
                 Que tal visitar nossa home e encontrar outro conteúdo?
               </p>
-              <Link
+              <a
                 href="/"
+                title="Acessa home"
                 className="inline-block px-6 py-3 text-white-70 rounded border-white-70 border button-md uppercase md:w-auto w-full"
               >
                 Acessar home
-              </Link>
+              </a>
             </div>
           </div>
         </div>
