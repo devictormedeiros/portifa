@@ -76,7 +76,7 @@ export default function NotFound() {
             <h2 className="content-title-h2 text-white-100 mb-[1rem] md:mb-0">
               OPS! SINAL PERDIDO...
             </h2>
-            <div className="flex md:gap-6 gap-3 items-center flex-wrap md:justify-start justify-center">
+            <div className="flex md:gap-6 gap-4 items-center flex-wrap md:justify-start justify-center">
               <p className="content-text text-white-70 mb-0 text-center md:text-left md:flex-1">
                 A página sofreu interferência e não está disponível. <br />
                 Que tal visitar nossa home e encontrar outro conteúdo?
