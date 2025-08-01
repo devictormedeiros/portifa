@@ -1,17 +1,26 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import Link from "next/link";
 import Header from "./components/Header";
 import { useDataOptions } from "./context/DataOptionsContext";
-import Contato from "./components/Contato/Contato";
 import Footer from "./components/Footer";
 
 export default function NotFound() {
-  const { dataOption: data } = useDataOptions();
+  const { dataOption: data, isLoading } = useDataOptions();
+  const pagina404 = data?.pagina_404;
+  const titulo = pagina404?.titulo;
+  const texto = pagina404?.texto;
+  const link = pagina404?.link;
+  const linkCustomizado = pagina404?.link_customizado;
+  const isHome = link === "home";
+  const href = isHome ? "/" : linkCustomizado;
+  const buttonLabel = isHome ? "Acessar Home" : "Acessar";
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    if (isLoading || !data) return;
+    console.log("Data carregado no 404:", data);
+
     const canvasShown = canvasRef.current;
     if (!canvasShown) return;
 
@@ -26,7 +35,7 @@ export default function NotFound() {
     const height = isMobile ? 150 : 343;
     const fontSize = isMobile
       ? "bold 10rem Roboto, serif"
-      : "bold 24rem Roboto, serif";
+      : "bold 22rem Roboto, serif";
 
     canvasShown.width = width;
     canvasShown.height = height;
@@ -63,8 +72,10 @@ export default function NotFound() {
 
     const interval = setInterval(init, 1000 / 15);
 
-    return () => clearInterval(interval);
-  }, []);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [isLoading, data]);
 
   return (
     <>
@@ -74,19 +85,19 @@ export default function NotFound() {
           <canvas ref={canvasRef} className="pointer-events-none z-0" />
           <div className="text-404 text-center md:px-4 z-10 md:mt-[-2.75rem] mt-[-1rem]">
             <h2 className="content-title-h2 text-white-100 mb-[1rem] md:mb-[0.5rem]">
-              OPS! SINAL PERDIDO...
+              {titulo}
             </h2>
             <div className="flex md:gap-6 gap-5 items-center flex-wrap md:justify-start justify-center">
-              <p className="content-text text-white-70 mb-0 text-center md:text-left md:flex-1">
-                A página sofreu interferência e não está disponível. <br />
-                Que tal visitar nossa home e encontrar outro conteúdo?
-              </p>
+              <p
+                className="content-text text-white-70 mb-0 text-center md:text-left md:flex-1"
+                dangerouslySetInnerHTML={{ __html: texto }}
+              ></p>
               <a
-                href="/"
+                href={href}
                 title="Acessa home"
                 className="inline-block px-6 py-3 text-white-70 rounded border-white-70 border button-md uppercase md:w-auto w-full"
               >
-                Acessar home
+                {buttonLabel}
               </a>
             </div>
           </div>
