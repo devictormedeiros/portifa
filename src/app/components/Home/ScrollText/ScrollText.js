@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ScrollingTexts({ data }) {
@@ -14,8 +14,7 @@ export default function ScrollingTexts({ data }) {
       scrollTrigger: {
         trigger: ".sec-contato",
         start: "top 100%",
-        scrub: true,
-        markers: true,
+        scrub: true
       },
       x: "-50%",
       duration: 5,
@@ -26,8 +25,7 @@ export default function ScrollingTexts({ data }) {
       scrollTrigger: {
         trigger: ".sec-contato",
         start: "top 100%",
-        scrub: true,
-        markers: true,
+        scrub: true
       },
       x: "50%",
       duration: 5,
@@ -36,7 +34,9 @@ export default function ScrollingTexts({ data }) {
   }, []);
 
   useEffect(() => {
-    ScrollTrigger.refresh();
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, [3000]);
   }, [data]);
 
   return (
@@ -48,9 +48,9 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-start">
         <div
           ref={textTop}
-          className="relative whitespace-nowrap motion text-primary w-fit duration-[2s] ease-out"
+          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[3.2s] ease-out"
         >
-          {data.texto_superior} 
+          {data.texto_superior}
           {data.texto_superior}
         </div>
       </div>
@@ -59,9 +59,9 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-end">
         <div
           ref={textBottom}
-          className="relative whitespace-nowrap motion w-fit duration-[2s] ease-out"
+          className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[3.2s] ease-out"
         >
-          {data.texto_inferior} 
+          {data.texto_inferior}
           {data.texto_inferior}
         </div>
       </div>

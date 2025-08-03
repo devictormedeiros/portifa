@@ -1,11 +1,21 @@
 import Link from "next/link";
 import IconsLib from "@/app/components/Icons";
-import { useState } from "react";
 
-const CardProject = ({ project, technologies }) => {
+const CardProject = ({ project, technologies, isSwiper = false}) => {
+  const handleClick = (e) => {
+    if(isSwiper) {
+      e.preventDefault();
+    }
+  }
+
   return (
     <article className="flex flex-col project-card rounded-[0.625rem] overflow-hidden lg:rounded-[1rem] select-none">
-      <Link href={`/projeto/${project.slug}`} className="block w-full h-full">
+      <Link
+        href={`/projeto/${project.slug}`}
+        className="block w-full h-full"
+        draggable="false"
+        onClick={handleClick}
+      >
         <div className="w-full h-[14.375rem]">
           <img
             src={
