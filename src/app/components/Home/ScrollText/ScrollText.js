@@ -10,34 +10,44 @@ export default function ScrollingTexts({ data }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    gsap.to(textTop.current, {
-      scrollTrigger: {
-        trigger: ".sec-contato",
-        start: "top 100%",
-        scrub: true,
-      },
-      x: "-50%",
-      duration: 5,
-      /* ease: "none", */
+    const scrollTriggerTop = ScrollTrigger.create({
+      trigger: ".sec-contato",
+      start: "top 100%",
+      scrub: true,
+      animation: gsap.to(textTop.current, {
+        x: "-50%",
+        duration: 5,
+      }),
     });
 
-    gsap.to(textBottom.current, {
-      scrollTrigger: {
-        trigger: ".sec-contato",
-        start: "top 100%",
-        scrub: true,
-      },
-      x: "50%",
-      duration: 5,
-      /* ease: "none", */
+    const scrollTriggerBottom = ScrollTrigger.create({
+      trigger: ".sec-contato",
+      start: "top 100%",
+      scrub: true,
+      animation: gsap.to(textBottom.current, {
+        x: "50%",
+        duration: 5,
+      }),
     });
+
+    const bodyElement = document.body;
+    let res;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        if (entry.target === bodyElement) {
+          clearTimeout(res);
+
+          res = setTimeout(() => {
+            scrollTriggerTop.update();
+            scrollTriggerBottom.update();
+          }, [500]);
+        }
+      }
+    });
+
+    resizeObserver.observe(bodyElement);
   }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, [3000]);
-  }, [data]);
 
   return (
     <section

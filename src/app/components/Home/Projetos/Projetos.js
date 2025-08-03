@@ -39,6 +39,8 @@ const Projetos = ({ data }) => {
               toggleActions: "play none none reverse",
             },
           });
+
+          
         });
       },
     );
@@ -63,7 +65,7 @@ const Projetos = ({ data }) => {
               <CardProjectBig
                 project={project}
                 technologies={technologies}
-                key={`project-${index}`}
+                key={`project-big-${index}`}
               />
             ))}
         </div>

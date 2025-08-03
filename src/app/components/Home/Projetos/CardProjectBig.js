@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import IconsLib from "../../Icons";
 
 const CardProjectBig = ({ project, technologies }) => {
@@ -18,7 +17,7 @@ const CardProjectBig = ({ project, technologies }) => {
                   const iconSlug = tech?.acf?.tecnologias?.icone;
 
                   return iconSlug ? (
-                    <div className="img-tech">
+                    <div className="img-tech" key={`tech-${techIndex}`}>
                       <IconsLib name={tech.acf?.tecnologias?.icone} />
                     </div>
                   ) : (
