@@ -65,9 +65,9 @@ const SectionMoreProjoects = ({
             <h2 className="content-title-h2 text-gray-200 uppercase">
               Mais Projetos
             </h2>
-            <Link href={"/projetos"} className="content-title-h6 capitalize">
+            <a href={"/projetos"} className="content-title-h6 capitalize" title="Ver todos os projetos">
               Ver todos
-            </Link>
+            </a>
           </div>
           <Slider
             {...settings}

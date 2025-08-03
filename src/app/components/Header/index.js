@@ -30,9 +30,9 @@ const Header = () => {
       <div className="mx-auto px-6 md:px-10">
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
-            <Link className="logo" href="/">
+            <a className="logo" href="/" title="Voltar para a página inicial">
               <LogoPrincipal />
-            </Link>
+            </a>
           </div>
           <div className="col-span-6 hidden md:block">
             <Nav data={itemslink} />

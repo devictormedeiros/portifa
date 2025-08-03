@@ -14,11 +14,12 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
               {currentProject.title?.rendered || "Sem título"}
             </h1>
             {currentProject.link && (
-              <Link
+              <a
                 href={currentProject.link}
                 className="text-gray-200 bg-white-10 hover:bg-primary menu-section flex items-center py-2 px-4 rounded-3xl gap-x-2 flex-none duration-500"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Acessar projeto"
               >
                 <svg
                   width="12"
@@ -33,7 +34,7 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
                   />
                 </svg>
                 Acessar
-              </Link>
+              </a>
             )}
           </div>
           <div

@@ -53,12 +53,13 @@ const CardProjectBig = ({ project, technologies }) => {
                   .slice(0, 120) // limita os caracteres
                   .trim() + "..."}
               </p>
-              <Link
+              <a
                 href={`/projeto/${project.slug}`}
+                title={project.title?.rendered || "Sem título"}
                 className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary"
               >
                 Ver projeto
-              </Link>
+              </a>
             </div>
           </div>
         </div>
