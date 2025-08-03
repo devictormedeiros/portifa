@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ScrollingTexts({ data }) {
@@ -10,44 +10,30 @@ export default function ScrollingTexts({ data }) {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    const scrollTriggerTop = ScrollTrigger.create({
-      trigger: ".sec-contato",
-      start: "top 100%",
-      scrub: true,
-      animation: gsap.to(textTop.current, {
-        x: "-50%",
-        duration: 5,
-      }),
+    gsap.to(textTop.current, {
+      scrollTrigger: {
+        trigger: ".sec-contato",
+        start: "top 100%",
+        scrub: true,
+        markers: false,
+      },
+      x: "-50%",
+      duration: 5,
+      /* ease: "none", */
     });
 
-    const scrollTriggerBottom = ScrollTrigger.create({
-      trigger: ".sec-contato",
-      start: "top 100%",
-      scrub: true,
-      animation: gsap.to(textBottom.current, {
-        x: "50%",
-        duration: 5,
-      }),
+    gsap.to(textBottom.current, {
+      scrollTrigger: {
+        trigger: ".sec-contato",
+        start: "top 100%",
+        scrub: true,
+        markers: false,
+      },
+      x: "50%",
+      duration: 5,
+      /* ease: "none", */
     });
-
-    const bodyElement = document.body;
-    let res;
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        if (entry.target === bodyElement) {
-          clearTimeout(res);
-
-          res = setTimeout(() => {
-            scrollTriggerTop.update();
-            scrollTriggerBottom.update();
-          }, [500]);
-        }
-      }
-    });
-
-    resizeObserver.observe(bodyElement);
-  }, []);
+  }, [data]);
 
   return (
     <section
@@ -58,7 +44,7 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-start">
         <div
           ref={textTop}
-          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[3.2s] ease-out"
+          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[5s] ease-out"
         >
           {data.texto_superior}
           {data.texto_superior}

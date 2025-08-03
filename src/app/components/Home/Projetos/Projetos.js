@@ -8,46 +8,31 @@ const Projetos = ({ data }) => {
   const { projects, technologies } = useProjects();
 
   useLayoutEffect(() => {
+    if (!data?.length) return;
+
     gsap.registerPlugin(ScrollTrigger);
 
-    let pinneds = gsap.utils.toArray(".pinned .project-card");
-    let mm = gsap.matchMedia(),
-      breakPoint = 1024;
+    const ctx = gsap.context(() => {
+      const pinneds = gsap.utils.toArray(".pinned > .project-card");
 
-    mm.add(
-      {
-        // set up any number of arbitrarily-named conditions. The function below will be called when ANY of them match.
-        isDesktop: `(min-width: ${breakPoint}px)`,
-        isMobile: `(max-width: ${breakPoint - 1}px)`,
-        reduceMotion: "(prefers-reduced-motion: reduce)",
-      },
-      (context) => {
-        let { isMobile } = context.conditions;
+      pinneds?.forEach((pinned, index) => {
+        if (index === pinneds.length - 1) return;
 
-        pinneds.forEach((pinned, index) => {
-          if (!pinneds[index + 1]) {
-            return;
-          }
-
-          gsap.to(pinned, {
-            scale: "0.8",
-            scrollTrigger: {
-              trigger: pinned,
-              start: isMobile ? `top 7rem` : `top 0`,
-              end: isMobile ? `bottom -40%` : `bottom -50%`,
-              scrub: true,
-              toggleActions: "play none none reverse",
-            },
-          });
-
-          
+        gsap.to(pinned, {
+          scale: "0.8",
+          scrollTrigger: {
+            trigger: pinned,
+            start: window.innerWidth < 767 ? "top 50vh" : "top 0",
+            end: window.innerWidth < 767 ? "bottom -10%" : `bottom -70%`,
+            scrub: true,
+            markers: false,
+          },
         });
-      },
-    );
-  }, [data]);
+      });
+    });
 
-  useEffect(() => {
-    ScrollTrigger.refresh();
+    return () => ctx.revert();
+    
   }, [data]);
 
   return (
@@ -65,7 +50,7 @@ const Projetos = ({ data }) => {
               <CardProjectBig
                 project={project}
                 technologies={technologies}
-                key={`project-big-${index}`}
+                key={`project-${index}`}
               />
             ))}
         </div>
