@@ -2,12 +2,12 @@
 import { useState, useEffect, memo } from "react";
 import Nav from "./Nav";
 import "./style.scss";
-import Link from "next/link";
 import DrawerMenu from "./DrawerMenu";
 import getPosts from "../../api/getAPI";
 import { useSticky } from "../../context/StickyContext";
 import SwitchLang from "./SwitchLang";
 import LogoPrincipal from "../Icons/Logos/LogoPrincipal";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Header = () => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
@@ -20,6 +20,24 @@ const Header = () => {
       setItemsLink(data);
     };
     fetchItemsLinks();
+
+    const bodyElement = document.body;
+    let res;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        if (entry.target === bodyElement) {
+          clearTimeout(res);
+
+          res = setTimeout(() => {
+            ScrollTrigger.update();
+            console.log("ScrollTrigger atualizado")
+          }, [500]);
+        }
+      }
+    });
+
+    resizeObserver.observe(bodyElement);
   }, []);
 
   return (

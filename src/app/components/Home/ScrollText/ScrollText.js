@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useEffect, useLayoutEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 export default function ScrollingTexts({ data }) {
@@ -15,6 +15,7 @@ export default function ScrollingTexts({ data }) {
         trigger: ".sec-contato",
         start: "top 100%",
         scrub: true,
+        markers: false,
       },
       x: "-50%",
       duration: 5,
@@ -26,17 +27,12 @@ export default function ScrollingTexts({ data }) {
         trigger: ".sec-contato",
         start: "top 100%",
         scrub: true,
+        markers: false,
       },
       x: "50%",
       duration: 5,
       /* ease: "none", */
     });
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh();
-    }, [3000]);
   }, [data]);
 
   return (
@@ -48,7 +44,7 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-start">
         <div
           ref={textTop}
-          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[3.2s] ease-out"
+          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[5s] ease-out"
         >
           {data.texto_superior}
           {data.texto_superior}

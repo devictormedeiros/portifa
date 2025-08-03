@@ -1,5 +1,4 @@
 import IconsLib from "@/app/components/Icons";
-import Link from "next/link";
 
 const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
   return (
@@ -39,7 +38,7 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
           </div>
           <div
             ref={scrollRef}
-            className="scroll-drag flex items-center gap-8 relative self-stretch w-full overflow-x-auto list-categories px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0"
+            className="scroll-drag flex items-center gap-8 relative self-stretch overflow-x-auto list-categories px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0"
           >
             {projectTechnologies.map((tech) => (
               <a

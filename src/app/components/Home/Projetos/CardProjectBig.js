@@ -1,10 +1,9 @@
 import Image from "next/image";
-import Link from "next/link";
 import IconsLib from "../../Icons";
 
 const CardProjectBig = ({ project, technologies }) => {
   return (
-    <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 top-[3.75rem] lg:top-0">
+    <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0">
       <div className="project-card bg-gradient-primary-c rounded-2xl md:mx-0">
         <div className="p-[2rem] flex flex-col gap-6 md:gap-[2.5rem] rounded-lg md:p-[4rem]">
           <div className="flex flex-col gap-[0.5rem] justify-between pb-[.5rem] border-b border-white-10 md:flex-row">
@@ -18,7 +17,7 @@ const CardProjectBig = ({ project, technologies }) => {
                   const iconSlug = tech?.acf?.tecnologias?.icone;
 
                   return iconSlug ? (
-                    <div className="img-tech">
+                    <div className="img-tech" key={`tech-${techIndex}`}>
                       <IconsLib name={tech.acf?.tecnologias?.icone} />
                     </div>
                   ) : (
