@@ -36,7 +36,7 @@ const LoadingPage = () => {
     >
       <div className="loading-content">
         <div className="flex flex-wrap flex-col items-center gap-2">
-          <LogoPrincipal/>
+          <LogoPrincipal />
           <div
             className={`icon-loading ${showIcon ? "visible" : "invisible"}`}
           ></div>

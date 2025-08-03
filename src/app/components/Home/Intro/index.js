@@ -42,7 +42,7 @@ const AnimatedText = ({ text, onComplete }) => {
         duration: 1,
         ease: "power3.out",
         onComplete,
-      }
+      },
     );
   }, [text, onComplete]);
 

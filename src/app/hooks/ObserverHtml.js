@@ -21,7 +21,7 @@ const ObserverHtml = ({ threshold = 0.5, root = null, rootMargin = "0px" }) => {
         root,
         rootMargin,
         threshold,
-      }
+      },
     );
 
     observer.observe(currentTarget);

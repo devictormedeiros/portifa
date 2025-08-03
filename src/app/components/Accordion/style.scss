@@ -1,17 +1,17 @@
 .accordion {
-  .overflow-hidden{
+  .overflow-hidden {
     opacity: 0;
-    transition:opacity 1s linear;
+    transition: opacity 1s linear;
     height: auto !important;
   }
-  &.open{
-    .overflow-hidden{
+  &.open {
+    .overflow-hidden {
       opacity: 1;
     }
   }
-  .accordion-header{
-    button{
-      span.ml-4{
+  .accordion-header {
+    button {
+      span.ml-4 {
         display: none !important;
       }
     }

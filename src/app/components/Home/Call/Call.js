@@ -29,7 +29,7 @@ const Call = ({ data }) => {
         });
 
       const loadedImages = await Promise.all(
-        data.frames.map((frame) => loadImage(frame.image))
+        data.frames.map((frame) => loadImage(frame.image)),
       );
 
       images.current = loadedImages;

@@ -1,4 +1,3 @@
-
 body:has(main.main-archive) {
   header {
     position: fixed;
@@ -8,7 +7,7 @@ body:has(main.main-archive) {
   .archive-container {
     transition: transform 1.8s ease-out 0.3s;
     transform: translateY(3rem);
-    @media (max-width:48rem) {
+    @media (max-width: 48rem) {
       transform: translateY(3rem);
     }
   }
@@ -51,11 +50,11 @@ body:has(main.main-archive) {
   .scroll-drag {
     user-select: none;
   }
-  .archive-container{
-    .project-card{
+  .archive-container {
+    .project-card {
       background-color: transparent;
       transition: all 0.3s;
-      &:hover{
+      &:hover {
         background-color: var(--white-10);
       }
     }

@@ -1,29 +1,39 @@
 @layer {
-    .shadow-right {
-        -webkit-mask-image: linear-gradient(to left, transparent 0, transparent 0px, #000 77px, #000 100%);
-        mask-image: linear-gradient(to left, transparent 0, transparent 0px, #000 77px, #000 100%);
-    }
+  .shadow-right {
+    -webkit-mask-image: linear-gradient(
+      to left,
+      transparent 0,
+      transparent 0px,
+      #000 77px,
+      #000 100%
+    );
+    mask-image: linear-gradient(
+      to left,
+      transparent 0,
+      transparent 0px,
+      #000 77px,
+      #000 100%
+    );
+  }
 }
 
 .tabs-skill {
+  ul::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    scrollbar-width: none; /* Firefox */
+  }
+  > nav {
+    @apply relative shadow-right;
 
-    ul::-webkit-scrollbar {
-        display: none !important;
-        width: 0 !important;
-        scrollbar-width: none; /* Firefox */
-    }  
-    > nav {
-        @apply relative shadow-right;  
-
-        @media screen and (max-width: 48rem) {
-            ul {
-                li {
-
-                    &:last-child {
-                        @apply me-6;
-                    }
-                }
-            }
+    @media screen and (max-width: 48rem) {
+      ul {
+        li {
+          &:last-child {
+            @apply me-6;
+          }
         }
+      }
     }
+  }
 }

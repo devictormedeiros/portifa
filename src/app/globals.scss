@@ -170,16 +170,15 @@ html {
 main {
   background-color: var(--gray-900);
   z-index: 1;
-  
-  &.main-404{
-    .text-404{
+
+  &.main-404 {
+    .text-404 {
       width: 100%;
       max-width: 42.5rem;
       margin-left: auto;
       margin-right: auto;
     }
-    footer{
-      
+    footer {
     }
   }
   &.main-home {

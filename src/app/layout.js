@@ -67,9 +67,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-BR" className="root">
       <ProjectsProvider>
         <DataOptionsProvider>
-          <LayoutWrapper>
-            {children}
-          </LayoutWrapper>
+          <LayoutWrapper>{children}</LayoutWrapper>
         </DataOptionsProvider>
       </ProjectsProvider>
     </html>

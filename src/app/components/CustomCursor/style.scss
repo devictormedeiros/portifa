@@ -1,5 +1,6 @@
-body, body *{
-    cursor: none !important;
+body,
+body * {
+  cursor: none !important;
 }
 .custom-cursor {
   position: fixed;
@@ -11,10 +12,12 @@ body, body *{
   background-size: contain;
   background-repeat: no-repeat;
   // mix-blend-mode: difference;
-  transition: opacity 0.2s ease, transform 0.1s ease;
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease;
   color: var(--primary);
 
-  @media (max-width:768px){
+  @media (max-width: 768px) {
     display: none;
   }
   &.scrolling {
@@ -45,23 +48,23 @@ body, body *{
     height: 3.6rem;
   }
 }
-  
-body.dark{
+
+body.dark {
   .custom-cursor {
     color: var(--primary);
 
     &.cursor-default {
       background-image: url("/images/cursors/cursor-default-dark.svg");
     }
-  
+
     &.cursor-link {
       background-image: url("/images/cursors/cursor-link-dark.svg");
     }
-  
+
     &.cursor-expand {
       background-image: url("/images/cursors/cursor-expand-dark.svg");
     }
-  
+
     &.cursor-scroll {
       background-image: url("/images/cursors/cursor-scroll-dark.svg");
     }

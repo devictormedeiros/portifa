@@ -40,7 +40,7 @@ const Projetos = ({ data }) => {
             },
           });
         });
-      }
+      },
     );
   }, [data]);
 

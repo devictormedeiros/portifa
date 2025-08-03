@@ -75,7 +75,11 @@ export default function SwitchLang({ onChange }) {
           .filter((lang) => lang.slug !== selected.slug)
           .map((lang) => (
             <li key={lang.slug} onClick={() => handleSelect(lang)}>
-              <img  id={`flag-lang-${lang.slug}`} src={`/images/flags/${lang.slug}.svg`} alt={lang.name} />
+              <img
+                id={`flag-lang-${lang.slug}`}
+                src={`/images/flags/${lang.slug}.svg`}
+                alt={lang.name}
+              />
               <span>{lang.slug.toUpperCase()}</span>
             </li>
           ))}

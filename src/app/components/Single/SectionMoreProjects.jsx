@@ -79,7 +79,11 @@ const SectionMoreProjoects = ({
               .filter(Boolean)
               .map((project) => (
                 <div className="px-[0.75rem]" key={`project-${project.ID}`}>
-                  <CardProject project={project} technologies={technologies} isSwiper={isSwiper}/>
+                  <CardProject
+                    project={project}
+                    technologies={technologies}
+                    isSwiper={isSwiper}
+                  />
                 </div>
               ))}
           </Slider>

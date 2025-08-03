@@ -1,27 +1,27 @@
 @layer {
-    .overflow {
-        @apply overflow-x-auto;
+  .overflow {
+    @apply overflow-x-auto;
 
-        &::-webkit-scrollbar {
-            width: 0.0625rem;
-            height: 0.5rem;
-          }
-          
-          /* Track */
-          &::-webkit-scrollbar-track {
-            background: #dedede;
-            border-radius: 0.625rem;
-          }
-          
-          /* Handle */
-          &::-webkit-scrollbar-thumb {
-            background: #ffa600;
-            border-radius: 0.625rem;
-          }
-          
-          /* Handle on hover */
-          &::-webkit-scrollbar-thumb:hover {
-            background: #555;
-          }
+    &::-webkit-scrollbar {
+      width: 0.0625rem;
+      height: 0.5rem;
     }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+      background: #dedede;
+      border-radius: 0.625rem;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+      background: #ffa600;
+      border-radius: 0.625rem;
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+      background: #555;
+    }
+  }
 }

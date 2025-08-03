@@ -20,15 +20,18 @@ import { memo } from "react";
 import "./style.scss";
 import { useSticky } from "../../context/StickyContext";
 const FloatSocial = ({ data }) => {
-
-  const { isHeaderSticky } = useSticky(); 
+  const { isHeaderSticky } = useSticky();
   return (
-
     <>
-      <div className={`${!isHeaderSticky ? "opacity-0 invisible z-[-99]": "opacity-100 w-auto visible"} float-social transition duration-500 fixed bottom-[1.5rem] right-[1.5rem] md:right-[2.5rem] z-[39]`}>
+      <div
+        className={`${!isHeaderSticky ? "opacity-0 invisible z-[-99]" : "opacity-100 w-auto visible"} float-social transition duration-500 fixed bottom-[1.5rem] right-[1.5rem] md:right-[2.5rem] z-[39]`}
+      >
         <SpeedDial>
           <SpeedDialHandler>
-            <IconButton size="lg" className="rounded-full bg-gray-700 button-float-social">
+            <IconButton
+              size="lg"
+              className="rounded-full bg-gray-700 button-float-social"
+            >
               <PlusIcon className="h-5 w-5 transition-transform group-hover:rotate-45" />
             </IconButton>
           </SpeedDialHandler>

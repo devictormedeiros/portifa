@@ -44,7 +44,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
         "service_mqzb30w",
         "template_qvp80rs",
         form.current,
-        "4Uw6beMwHYhllmMdd"
+        "4Uw6beMwHYhllmMdd",
       )
       .then(
         (result) => {
@@ -57,7 +57,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
           console.log(error.text);
           setIsSuccess(false);
           setLoadingForm(false);
-        }
+        },
       );
   };
 

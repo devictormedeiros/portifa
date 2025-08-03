@@ -14,7 +14,7 @@ module.exports = withMT({
       center: true,
       padding: "1.5rem",
       screens: {
-        'md': '82.5rem',
+        md: "82.5rem",
       },
     },
     extend: {
@@ -82,130 +82,130 @@ module.exports = withMT({
     },
   },
   plugins: [
-    require('@tailwindcss/aspect-ratio'),
+    require("@tailwindcss/aspect-ratio"),
     plugin(function ({ addComponents }) {
       addComponents({
         ".content-title-h1": {
           fontSize: "6.25rem",
           lineHeight: "6.875rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "2.75rem",
             lineHeight: "3rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-title-h2": {
           fontSize: "4rem",
           lineHeight: "4.5rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "1.75rem",
             lineHeight: "2rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-title-h3": {
           fontSize: "2.25rem",
           lineHeight: "2.75rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "1.25rem",
             lineHeight: "1.5rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-title-h4": {
           fontSize: "1.75rem",
           lineHeight: "2rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "1.25rem",
             lineHeight: "1.5rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-title-h5": {
           fontSize: "1.5rem",
           lineHeight: "1.75rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "1.125rem",
             lineHeight: "1.375rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-title-h6": {
           fontSize: "1.25rem",
           lineHeight: "1.5rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "1rem",
             lineHeight: "1.25rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-text": {
           fontSize: "1.125rem",
           lineHeight: "1.75rem",
           fontWeight: "400",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "0.875rem",
             lineHeight: "1.375rem",
             fontWeight: "500",
-          }
+          },
         },
         ".content-text-bold": {
           fontSize: "1.125rem",
           lineHeight: "1.75rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "0.875rem",
             lineHeight: "1.375rem",
             fontWeight: "800",
-          }
+          },
         },
         ".content-text-italic": {
           fontSize: "1.125rem",
           lineHeight: "1.75rem",
           fontWeight: "300",
-          fontStyle:"italic",
-          "@media (max-width: 48rem)":{
+          fontStyle: "italic",
+          "@media (max-width: 48rem)": {
             fontSize: "0.875rem",
             lineHeight: "1.375rem",
             fontWeight: "500",
-          }
+          },
         },
         ".content-caption": {
           fontSize: "0.75rem",
           lineHeight: "1.25rem",
           fontWeight: "400",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "0.875rem",
             lineHeight: "1.375rem",
             fontWeight: "500",
-          }
+          },
         },
         ".motion": {
           fontSize: "8.75rem",
           lineHeight: "8.75rem",
           fontWeight: "700",
           textTransform: "uppercase",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "2.5rem",
             lineHeight: "2.5rem",
             fontWeight: "700",
-          }
+          },
         },
         ".motion-2": {
           fontSize: "9.375rem",
           lineHeight: "5.9375rem",
           fontWeight: "700",
-          "@media (max-width: 48rem)":{
+          "@media (max-width: 48rem)": {
             fontSize: "2.5rem",
             lineHeight: "2.5rem",
             fontWeight: "800",
-          }
+          },
         },
         ".menu-section": {
           fontSize: "0.75rem",

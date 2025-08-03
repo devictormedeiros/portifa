@@ -1,41 +1,40 @@
-
 .sec-bg-home {
-    background: var(--gradient-primary-d);
+  background: var(--gradient-primary-d);
 }
 
 .sec-call {
-    @media screen and (max-width: 768px) {
-        > div {
-            .sec-call-text {
-                z-index: 10;
-            }
+  @media screen and (max-width: 768px) {
+    > div {
+      .sec-call-text {
+        z-index: 10;
+      }
 
-            .sec-call-image {
-                position: sticky;
-                top: 0;
-                width: 100vw;
-                margin: 0 -1.5rem;
-            }
-        }
+      .sec-call-image {
+        position: sticky;
+        top: 0;
+        width: 100vw;
+        margin: 0 -1.5rem;
+      }
     }
+  }
 }
 
 .sec-recomendacoes {
-    @media screen and (max-width: 768px) {
-        .card-recomendations {    
-            &:last-child {
-                margin-right: 1.5rem;
-            }
-        }
+  @media screen and (max-width: 768px) {
+    .card-recomendations {
+      &:last-child {
+        margin-right: 1.5rem;
+      }
     }
+  }
 }
 
 .sec-projects {
-    @media screen and (max-width: 767px) {
-        height: inherit !important;
-        
-        .project-card-container {
-            height: calc(100vh - 3.75rem);
-        }
+  @media screen and (max-width: 767px) {
+    height: inherit !important;
+
+    .project-card-container {
+      height: calc(100vh - 3.75rem);
     }
+  }
 }

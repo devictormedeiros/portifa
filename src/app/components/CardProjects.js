@@ -1,12 +1,12 @@
 import Link from "next/link";
 import IconsLib from "@/app/components/Icons";
 
-const CardProject = ({ project, technologies, isSwiper = false}) => {
+const CardProject = ({ project, technologies, isSwiper = false }) => {
   const handleClick = (e) => {
-    if(isSwiper) {
+    if (isSwiper) {
       e.preventDefault();
     }
-  }
+  };
 
   return (
     <article className="flex flex-col project-card rounded-[0.625rem] overflow-hidden lg:rounded-[1rem] select-none">

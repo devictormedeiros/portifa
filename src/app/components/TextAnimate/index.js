@@ -35,12 +35,12 @@ const TextAnimate = ({ frases }) => {
           if (letterIndex === 0) {
             setIsDeleting(false);
             setCurrentFrasesIndex(
-              (prevIndex) => (prevIndex + 1) % frases.length
+              (prevIndex) => (prevIndex + 1) % frases.length,
             );
           }
         }
       },
-      isDeleting ? 50 : 70
+      isDeleting ? 50 : 70,
     );
 
     return () => clearTimeout(timeout);

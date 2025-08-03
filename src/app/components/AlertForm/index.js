@@ -29,7 +29,7 @@ export function AlertForm({ alertType = "information", alertText }) {
     mount: { y: 0 },
     unmount: { y: 100 },
   };
-  
+
   const selectedAlert = alerts[alertType] || alerts.information;
 
   // Esconde o alerta após 4 segundos

@@ -4,21 +4,21 @@ header {
       opacity: 0;
       visibility: hidden;
     }
-    &:has(.nav-open){
-      .select-lang{
+    &:has(.nav-open) {
+      .select-lang {
         z-index: 10;
         opacity: 1;
         visibility: visible;
       }
     }
   }
-  &:has(.nav-open){
-    .select-lang{
+  &:has(.nav-open) {
+    .select-lang {
       z-index: 10;
       opacity: 1;
       visibility: visible;
       background-color: var(--gray-800);
-      &:hover{
+      &:hover {
         .options-lang {
           background-color: var(--gray-500);
         }
@@ -29,7 +29,7 @@ header {
     }
   }
   .select-lang {
-    display: flex;;
+    display: flex;
     user-select: none;
     transition: all 0.2s;
     font-size: 0.625rem;
@@ -37,14 +37,13 @@ header {
     position: relative;
     transition: all 0.2s ease-out;
     background-color: var(--white-5);
-    &:not(.open):hover{
-        background-color: var(--gray-600);
+    &:not(.open):hover {
+      background-color: var(--gray-600);
     }
     &.open {
-      
       border-top-left-radius: 0;
       border-bottom-left-radius: 0rem;
-  
+
       .options-lang {
         opacity: 1;
         pointer-events: auto;
@@ -52,7 +51,7 @@ header {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0rem;
       }
-      &:hover{
+      &:hover {
         background-color: var(--gray-500);
         .options-lang {
           background-color: var(--gray-500);
@@ -96,7 +95,7 @@ header {
         font-size: 0.875rem;
         font-weight: 700;
         color: var(--gray-200);
-        &:first-child{
+        &:first-child {
           padding-left: 0.5rem;
         }
       }
@@ -106,5 +105,4 @@ header {
       vertical-align: middle;
     }
   }
-  
 }

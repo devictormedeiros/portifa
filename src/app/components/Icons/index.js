@@ -29,7 +29,7 @@ const IconsLib = ({ name }) => {
     facebook: IconFB,
     github: IconGithub,
     html: IconHtml,
-    id: IconID, 
+    id: IconID,
     insta: IconInsta,
     js: IconJs,
     linkedin: IconLinkedin,

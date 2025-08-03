@@ -14,7 +14,7 @@ export default function ScrollingTexts({ data }) {
       scrollTrigger: {
         trigger: ".sec-contato",
         start: "top 100%",
-        scrub: true
+        scrub: true,
       },
       x: "-50%",
       duration: 5,
@@ -25,7 +25,7 @@ export default function ScrollingTexts({ data }) {
       scrollTrigger: {
         trigger: ".sec-contato",
         start: "top 100%",
-        scrub: true
+        scrub: true,
       },
       x: "50%",
       duration: 5,

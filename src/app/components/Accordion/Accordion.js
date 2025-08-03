@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import ScrollAnimation from 'react-animate-on-scroll';
+import ScrollAnimation from "react-animate-on-scroll";
 import "./style.scss";
 
 const accordionAnimation = {
@@ -22,15 +22,26 @@ const AccordionCustom = ({ title, children }) => {
 
   return (
     <>
-      <ScrollAnimation className="block w-full" animateIn='fadeInUp' animateOnce={true} duration={1} >
-        <Accordion open={open} className={`accordion w-full mb-0 px-0 ${open ? "open" : 0}`} animate={accordionAnimation}>
+      <ScrollAnimation
+        className="block w-full"
+        animateIn="fadeInUp"
+        animateOnce={true}
+        duration={1}
+      >
+        <Accordion
+          open={open}
+          className={`accordion w-full mb-0 px-0 ${open ? "open" : 0}`}
+          animate={accordionAnimation}
+        >
           <div className="container">
             <div className="accordion-header">
               <AccordionHeader
                 onClick={handleOpen}
                 className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10  cursor-expand`}
               >
-                <span className="accordion-title content-title-h2">{title}</span>
+                <span className="accordion-title content-title-h2">
+                  {title}
+                </span>
                 <svg
                   width="24"
                   height="24"
@@ -50,8 +61,13 @@ const AccordionCustom = ({ title, children }) => {
                 </svg>
               </AccordionHeader>
             </div>
-            <div className={`duration-1000 mx-[-1.5rem] md:mx-0`} style={{ height: open && inputRef.current ? inputRef.current.clientHeight : 0 }}
->
+            <div
+              className={`duration-1000 mx-[-1.5rem] md:mx-0`}
+              style={{
+                height:
+                  open && inputRef.current ? inputRef.current.clientHeight : 0,
+              }}
+            >
               <AccordionBody
                 ref={inputRef}
                 className={`accordion-body ${

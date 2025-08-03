@@ -31,7 +31,7 @@ const Header = () => {
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
             <Link className="logo" href="/">
-              <LogoPrincipal/>
+              <LogoPrincipal />
             </Link>
           </div>
           <div className="col-span-6 hidden md:block">
