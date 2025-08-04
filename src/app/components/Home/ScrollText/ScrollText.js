@@ -6,6 +6,7 @@ export default function ScrollingTexts({ data }) {
   const section = useRef(null);
   const textTop = useRef(null);
   const textBottom = useRef(null);
+  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -20,6 +21,8 @@ export default function ScrollingTexts({ data }) {
       x: "-50%",
       duration: 5,
       /* ease: "none", */
+      overwrite: "auto",
+      immediateRender: false,
     });
 
     gsap.to(textBottom.current, {
@@ -32,6 +35,8 @@ export default function ScrollingTexts({ data }) {
       x: "50%",
       duration: 5,
       /* ease: "none", */
+      overwrite: "auto",
+      immediateRender: false,
     });
 
     const bodyElement = document.body;
@@ -43,14 +48,18 @@ export default function ScrollingTexts({ data }) {
           clearTimeout(res);
 
           res = setTimeout(() => {
-            ScrollTrigger.update();
+            ScrollTrigger.refresh();
             console.log("ScrollTrigger atualizado");
-          }, [500]);
+          }, [1000]);
         }
       }
     });
 
     resizeObserver.observe(bodyElement);
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 800);
   }, [data]);
 
   return (
@@ -62,7 +71,7 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-start">
         <div
           ref={textTop}
-          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[1s] ease-out"
+          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
           {data.texto_superior}
           {data.texto_superior}
@@ -73,7 +82,7 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-end">
         <div
           ref={textBottom}
-          className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[1s] ease-out"
+          className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
           {data.texto_inferior}
           {data.texto_inferior}
