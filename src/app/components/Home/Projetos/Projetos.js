@@ -31,8 +31,29 @@ const Projetos = ({ data }) => {
       });
     });
 
+    const bodyElement = document.body;
+    let res;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        if (entry.target === bodyElement) {
+          clearTimeout(res);
+
+          res = setTimeout(() => {
+            ScrollTrigger.refresh();
+            console.log("ScrollTrigger atualizado");
+          }, [300]);
+        }
+      }
+    });
+
+    resizeObserver.observe(bodyElement);
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 1000);
+
     return () => ctx.revert();
-    
   }, [data]);
 
   return (
