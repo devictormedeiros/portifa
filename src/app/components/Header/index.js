@@ -20,24 +20,6 @@ const Header = () => {
       setItemsLink(data);
     };
     fetchItemsLinks();
-
-    const bodyElement = document.body;
-    let res;
-
-    const resizeObserver = new ResizeObserver((entries) => {
-      for (let entry of entries) {
-        if (entry.target === bodyElement) {
-          clearTimeout(res);
-
-          res = setTimeout(() => {
-            ScrollTrigger.update();
-            console.log("ScrollTrigger atualizado")
-          }, [500]);
-        }
-      }
-    });
-
-    resizeObserver.observe(bodyElement);
   }, []);
 
   return (

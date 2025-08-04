@@ -33,6 +33,24 @@ export default function ScrollingTexts({ data }) {
       duration: 5,
       /* ease: "none", */
     });
+
+    const bodyElement = document.body;
+    let res;
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        if (entry.target === bodyElement) {
+          clearTimeout(res);
+
+          res = setTimeout(() => {
+            ScrollTrigger.update();
+            console.log("ScrollTrigger atualizado");
+          }, [500]);
+        }
+      }
+    });
+
+    resizeObserver.observe(bodyElement);
   }, [data]);
 
   return (
@@ -44,7 +62,7 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-start">
         <div
           ref={textTop}
-          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[5s] ease-out"
+          className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[1s] ease-out"
         >
           {data.texto_superior}
           {data.texto_superior}
@@ -55,7 +73,7 @@ export default function ScrollingTexts({ data }) {
       <div className="overflow-hidden flex justify-end">
         <div
           ref={textBottom}
-          className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[3.2s] ease-out"
+          className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[1s] ease-out"
         >
           {data.texto_inferior}
           {data.texto_inferior}
