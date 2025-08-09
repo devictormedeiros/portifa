@@ -29,7 +29,7 @@ const Call = ({ data }) => {
         });
 
       const loadedImages = await Promise.all(
-        data.frames.map((frame) => loadImage(frame.image)),
+        data.frames.map((frame) => loadImage(frame.image))
       );
 
       images.current = loadedImages;
@@ -71,26 +71,12 @@ const Call = ({ data }) => {
 
   return (
     data?.frames?.length > 0 && (
-      <section className="sec-call bg-[#000] relative">
-        <div className="sec-call-image image absolute top-0 w-auto lg:max-w-[50vw] lg:right-0 h-full aspect-square">
+      <section className="sec-call bg-[#000] relative h-[400vh]">
+        <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
           <canvas
             ref={canvasRef}
-            className="sticky top-0 left-1/2 max-w-full h-screen max-h-screen object-cover object-center lg:object-right w-full aspect-square"
+            className="sticky top-0 object-contain object-center w-full aspect-square h-[100vh]"
           />
-        </div>
-        <div className="container relative z-20">
-          <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
-            <div className="sec-call-text text col-span-12 md:col-span-4">
-              {data?.items?.length > 0 &&
-                data.items.map((item, index) => (
-                  <div key={index} className="h-screen flex items-center">
-                    <h2 className="content-title-h2 text-gray-200 uppercase">
-                      {item.text}
-                    </h2>
-                  </div>
-                ))}
-            </div>
-          </div>
         </div>
       </section>
     )
