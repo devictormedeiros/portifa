@@ -78,9 +78,6 @@ section.sec-intro {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    @media (max-width: 768px) {
-      align-items: center;
-    }
     span {
       font-size: calc(6.25rem * var(--font-intro-desktop));
       line-height: calc(6.25rem * var(--font-intro-desktop));
