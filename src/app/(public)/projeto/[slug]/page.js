@@ -3,7 +3,7 @@ import React from "react";
 import { useRef, useEffect, useState } from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
 import { useProjects } from "@/app/context/ProjectsContext";
-import Contato from "@/app/components/Contato/Contato";
+import Contact from "@/app/components/Contact";
 import "./style.scss";
 import Header from "@/app/components/Header";
 import { useParams } from "next/navigation";
@@ -140,7 +140,7 @@ const ProjetoPage = () => {
             projects={projects}
           />
 
-          <Contato
+          <Contact
             scrollText={data?.texto_scroll || null}
             data={data?.secao_contato || null}
             dataForm={data?.configuracao_do_formulario || null}

@@ -42,7 +42,7 @@ header {
       }
     }
   }
-  nav.menu-principal {
+  nav.main-menu {
     column-gap: 1.5rem;
     @media screen and (max-width: 48rem) {
       display: none !important;
@@ -82,7 +82,7 @@ header {
     &:before {
       background-color: var(--black-70);
     }
-    nav.menu-principal ul li a {
+    nav.main-menu ul li a {
       opacity: 0;
       transform: translateY(-1.25rem);
     }

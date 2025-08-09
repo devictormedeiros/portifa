@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import "./style.scss"; // Importa os estilos
-import LogoPrincipal from "../Icons/Logos/LogoPrincipal";
+import MainLogo from "../Icons/Logos/MainLogo";
 
 const LoadingPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -36,7 +36,7 @@ const LoadingPage = () => {
     >
       <div className="loading-content">
         <div className="flex flex-wrap flex-col items-center gap-2">
-          <LogoPrincipal />
+          <MainLogo />
           <div
             className={`icon-loading ${showIcon ? "visible" : "invisible"}`}
           ></div>

@@ -1,19 +1,19 @@
 import { useState, useEffect, memo } from "react";
 
-const TextAnimate = ({ frases }) => {
+const TextAnimate = ({ phrases }) => {
   const [text, setText] = useState("");
-  const [currentFrasesIndex, setCurrentFrasesIndex] = useState(0);
+  const [currentphrasesIndex, setCurrentphrasesIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
   const [letterIndex, setLetterIndex] = useState(0);
 
   useEffect(() => {
-    // Verifica se o array `frases` tem elementos
-    if (!frases || frases.length === 0) {
+    // Verifica se o array `phrases` tem elementos
+    if (!phrases || phrases.length === 0) {
       return;
     }
 
     // Obtém a frase atual com base no índice
-    const currentFrase = frases[currentFrasesIndex];
+    const currentFrase = phrases[currentphrasesIndex];
 
     if (!currentFrase) {
       return; // Evita erros se `currentFrase` for undefined
@@ -34,8 +34,8 @@ const TextAnimate = ({ frases }) => {
 
           if (letterIndex === 0) {
             setIsDeleting(false);
-            setCurrentFrasesIndex(
-              (prevIndex) => (prevIndex + 1) % frases.length,
+            setCurrentphrasesIndex(
+              (prevIndex) => (prevIndex + 1) % phrases.length,
             );
           }
         }
@@ -44,7 +44,7 @@ const TextAnimate = ({ frases }) => {
     );
 
     return () => clearTimeout(timeout);
-  }, [text, isDeleting, letterIndex, currentFrasesIndex, frases]);
+  }, [text, isDeleting, letterIndex, currentphrasesIndex, phrases]);
 
   return <span className="uppercase content-title-h1">{text}</span>;
 };

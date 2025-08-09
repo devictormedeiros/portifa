@@ -3,8 +3,8 @@ import Header from "./components/Header";
 import Sobre from "./components/Home/Sobre";
 import Intro from "./components/Home/Intro";
 import Tecnologias from "./components/Home/Tecnologias";
-import Contato from "./components/Contato/Contato";
-import Projetos from "./components/Home/Projetos/Projetos";
+import Contact from "./components/Contact";
+import Projects from "./components/Home/Projects";
 import Call from "./components/Home/Call/Call";
 import Skills from "./components/Home/Skills/Skills";
 import Recomendacoes from "./components/Home/Recomendacoes/Recomendacoes";
@@ -80,9 +80,8 @@ const HomePage = () => {
         {data?.home.sobre && <Sobre data={data?.home.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.home?.scroll && <Call data={data?.home?.scroll || null} />}
-          {/* {dataProjetcs && <Projetos data={dataProjetcs} />} */}
           {data?.home.projetos && (
-            <Projetos data={data?.home?.projetos || null} />
+            <Projects data={data?.home?.projetos || null} />
           )}
           <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
             {data?.home.tabs && <Skills data={data?.home.tabs} />}
@@ -95,7 +94,7 @@ const HomePage = () => {
           </section>
         </div>
         {data?.secao_contato && (
-          <Contato
+          <Contact
             scrollText={data?.texto_scroll || null}
             data={data?.secao_contato || null}
             dataForm={data?.configuracao_do_formulario || null}

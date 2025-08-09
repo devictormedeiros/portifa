@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, useLayoutEffect } from "react";
 
-const Projetos = ({ data }) => {
+const Projects = ({ data }) => {
   const { projects, technologies } = useProjects();
 
   useLayoutEffect(() => {
@@ -80,4 +80,4 @@ const Projetos = ({ data }) => {
   );
 };
 
-export default Projetos;
+export default Projects;

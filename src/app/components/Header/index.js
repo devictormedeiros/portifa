@@ -6,7 +6,7 @@ import DrawerMenu from "./DrawerMenu";
 import getPosts from "../../api/getAPI";
 import { useSticky } from "../../context/StickyContext";
 import SwitchLang from "./SwitchLang";
-import LogoPrincipal from "../Icons/Logos/LogoPrincipal";
+import MainLogo from "../Icons/Logos/MainLogo";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Header = () => {
@@ -31,7 +31,7 @@ const Header = () => {
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
             <a className="logo" href="/" title="Voltar para a página inicial">
-              <LogoPrincipal />
+              <MainLogo />
             </a>
           </div>
           <div className="col-span-6 hidden md:block">

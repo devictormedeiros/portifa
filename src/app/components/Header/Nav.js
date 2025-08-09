@@ -2,7 +2,7 @@
 import { memo } from "react";
 const Nav = ({ data }) => {
   return (
-    <nav className="menu-principal">
+    <nav className="main-menu">
       <ul className="flex justify-center space-x-4 w-full">
         {data?.map((item) => {
           return (

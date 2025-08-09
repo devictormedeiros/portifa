@@ -1,4 +1,4 @@
-const LogoPrincipal = () => {
+const MainLogo = () => {
   return (
     <svg
       width="817"
@@ -17,4 +17,4 @@ const LogoPrincipal = () => {
   );
 };
 
-export default LogoPrincipal;
+export default MainLogo;

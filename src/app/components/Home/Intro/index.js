@@ -80,7 +80,7 @@ const AnimatedText = ({ text, onComplete }) => {
 const Intro = ({ data }) => {
   const [showTextAnimate, setShowTextAnimate] = useState(false);
 
-  const frases = data?.destaque_introducao?.map((item) => item.destaque) || [];
+  const phrases = data?.destaque_introducao?.map((item) => item.destaque) || [];
   const layout_intro = data?.layout || "";
   const texto_intro = data?.texto_introducao || "";
   const video_intro_desktop = data?.video || "";
@@ -135,9 +135,9 @@ const Intro = ({ data }) => {
                 onComplete={() => setShowTextAnimate(true)}
               />
             </h1>
-            {frases && (
+            {phrases && (
               <div className="text-animate">
-                {showTextAnimate && <TextAnimate frases={frases} />}
+                {showTextAnimate && <TextAnimate phrases={phrases} />}
               </div>
             )}
           </div>

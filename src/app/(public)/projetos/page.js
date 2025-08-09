@@ -2,7 +2,7 @@
 import React from "react";
 import { useRef, useEffect, useState } from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
-import Contato from "@/app/components/Contato/Contato";
+import Contact from "@/app/components/Contact";
 import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
@@ -96,7 +96,7 @@ const Archive = () => {
           />
         </div>
         {dataOption && dataOption.secao_contato && (
-          <Contato
+          <Contact
             scrollText={dataOption.texto_scroll || null}
             data={dataOption.secao_contato}
             dataForm={dataOption.configuracao_do_formulario || null}

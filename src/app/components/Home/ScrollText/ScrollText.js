@@ -13,7 +13,7 @@ export default function ScrollingTexts({ data }) {
 
     gsap.to(textTop.current, {
       scrollTrigger: {
-        trigger: ".sec-contato",
+        trigger: ".sec-contact",
         start: "top 100%",
         scrub: true,
         markers: false,
@@ -27,7 +27,7 @@ export default function ScrollingTexts({ data }) {
 
     gsap.to(textBottom.current, {
       scrollTrigger: {
-        trigger: ".sec-contato",
+        trigger: ".sec-contact",
         start: "top 100%",
         scrub: true,
         markers: false,

@@ -51,7 +51,8 @@ section.sec-intro {
     animation: effect-intro 12s ease-in-out infinite;
   }
   > .container-text {
-    min-height: 100dvh;
+    height: 100dvh;
+
     padding-top: 5rem;
     padding-bottom: 5rem;
     display: flex;
@@ -74,6 +75,11 @@ section.sec-intro {
     right: 0;
     margin: auto;
     overflow: hidden;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     span {
       font-size: calc(6.25rem * var(--font-intro-desktop));
       line-height: calc(6.25rem * var(--font-intro-desktop));

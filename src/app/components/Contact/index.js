@@ -6,21 +6,13 @@ import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import IconsLib from "../Icons";
 
-import {
-  FaLinkedinIn,
-  FaBehance,
-  FaGithub,
-  FaWhatsapp,
-  FaFacebookF,
-  FaInstagram,
-} from "react-icons/fa6";
+
 import ScrollingText from "../Home/ScrollText/ScrollText";
 import Footer from "../Footer";
-const Contato = ({ data, dataForm, scrollText }) => {
+const Contact = ({ data, scrollText }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const handleError = (errors) => {
@@ -62,15 +54,15 @@ const Contato = ({ data, dataForm, scrollText }) => {
   };
 
   return (
-    <section className="sec-contato g-col-12">
+    <section className="sec-contact g-col-12">
       {scrollText && <ScrollingText data={scrollText} />}
       <div className="container">
-        <div className="sec-contato-header w-full">
+        <div className="sec-contact-header w-full">
           <h2 className="content-title-h2 text-gray-200 uppercase pb-4  border-white-10 border-b">
             {data?.titulo}
           </h2>
         </div>
-        <div className="sec-contato-body flex justify-between flex-wrap gap-y-12 md:gap-y-0">
+        <div className="sec-contact-body flex justify-between flex-wrap gap-y-12 md:gap-y-0">
           <div className="w-full md:w-2/6">
             <div dangerouslySetInnerHTML={{ __html: data?.texto }}></div>
             <div className="social-media flex flex-wrap gap-x-6 gap-y-7 md:gap-y-4 items-center mt-8 md:mt-10">
@@ -202,7 +194,7 @@ const Contato = ({ data, dataForm, scrollText }) => {
                 <AlertForm
                   alertType="sucess"
                   alertText={
-                    "Formulário enviado com sucesso! Entraremos em contato em breve."
+                    "Formulário enviado com sucesso! Entraremos em contact em breve."
                   }
                 />
               )}
@@ -221,4 +213,4 @@ const Contato = ({ data, dataForm, scrollText }) => {
   );
 };
 
-export default Contato;
+export default Contact;
