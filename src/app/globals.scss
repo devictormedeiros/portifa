@@ -247,3 +247,10 @@ body:has(.main-archive, .main-single) {
     }
   }
 }
+.list-categories{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

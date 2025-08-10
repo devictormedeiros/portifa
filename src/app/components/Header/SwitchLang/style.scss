@@ -47,7 +47,7 @@ header {
       .options-lang {
         opacity: 1;
         pointer-events: auto;
-        transform: translateX(calc(-100%));
+        transform: translateX(calc(-100% + 1px));
         border-top-right-radius: 0;
         border-bottom-right-radius: 0rem;
       }
