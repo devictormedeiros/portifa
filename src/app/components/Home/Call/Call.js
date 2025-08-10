@@ -17,8 +17,8 @@ const Call = ({ data }) => {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    canvas.width = 1158;
-    canvas.height = 770;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
 
     const loadImages = async () => {
       const loadImage = (src) =>
@@ -75,7 +75,7 @@ const Call = ({ data }) => {
         <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
           <canvas
             ref={canvasRef}
-            className="sticky top-0 object-contain object-center w-full aspect-square h-[100vh]"
+            className="sticky top-0 object-cover object-center w-full aspect-square h-[100vh]"
           />
         </div>
       </section>
