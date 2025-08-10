@@ -17,8 +17,8 @@ const Call = ({ data }) => {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 800;
+    canvas.height = 450;
 
     const loadImages = async () => {
       const loadImage = (src) =>
@@ -61,9 +61,28 @@ const Call = ({ data }) => {
     const render = () => {
       context.clearRect(0, 0, canvas.width, canvas.height);
       const frame = images.current[airpods.current.frame];
-      if (frame) {
-        context.drawImage(frame, 0, 0);
+      if (!frame) return;
+
+      const canvasRatio = canvas.width / canvas.height;
+      const imgRatio = frame.width / frame.height;
+
+      let drawWidth, drawHeight, offsetX, offsetY;
+
+      // COVER — mantém proporção mas sempre preenche todo o canvas
+      if (imgRatio > canvasRatio) {
+        // imagem mais "larga" → ajusta pela altura e corta nas laterais
+        drawHeight = canvas.height;
+        drawWidth = canvas.height * imgRatio;
+      } else {
+        // imagem mais "alta" → ajusta pela largura e corta no topo/baixo
+        drawWidth = canvas.width;
+        drawHeight = canvas.width / imgRatio;
       }
+
+      offsetX = (canvas.width - drawWidth) / 2;
+      offsetY = (canvas.height - drawHeight) / 2;
+
+      context.drawImage(frame, offsetX, offsetY, drawWidth, drawHeight);
     };
 
     loadImages();
