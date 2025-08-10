@@ -44,7 +44,7 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
               <a
                 key={tech.id}
                 href={`/projetos?t=${tech.slug}`}
-                className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group hover:bg-gray-200 hover:text-gray-700 bg-white-10 text-gray-200 "
+                className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group lg:hover:bg-gray-200 lg:hover:text-gray-700 bg-white-10 text-gray-200 "
                 title={tech.name}
               >
                 {tech.acf?.tecnologias?.icone && (
