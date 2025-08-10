@@ -1,154 +1,102 @@
-"use client";
-import React from "react";
-import { useRef, useEffect, useState } from "react";
-import { useDataOptions } from "@/app/context/DataOptionsContext";
-import { useProjects } from "@/app/context/ProjectsContext";
-import Contact from "@/app/components/Contact";
-import "./style.scss";
-import Header from "@/app/components/Header";
-import { useParams } from "next/navigation";
-import SectionMoreProjoects from "@/app/components/Single/SectionMoreProjects";
-import TopPage from "@/app/components/Projects/TopPage";
-import ContentProject from "@/app/components/Projects/ContentProject";
-import HeaderSingle from "@/app/components/Projects/HeaderSingle";
+import ClientProjetoPage from "./clientPage";
 
-const ProjetoPage = () => {
-  const { dataOption: data } = useDataOptions();
-  const { projects, technologies } = useProjects();
-  const [currentProject, setCurrentProject] = useState(null);
-  const scrollRef = useRef(null);
-  const params = useParams();
+// Se já usa isso no projeto, pode reutilizar seu helper:
+const WP = process.env.NEXT_PUBLIC_WORDPRESS_API_URL;
 
-  useEffect(() => {
-    if (!currentProject) return;
+// Helper: converte flags do Yoast para o formato do Next
+function mapRobots(robots) {
+  // Yoast traz strings "index"/"noindex" e "follow"/"nofollow"
+  const index = robots?.index !== "noindex";
+  const follow = robots?.follow !== "nofollow";
+  const googleBot = {
+    "max-snippet": robots?.["max-snippet"],
+    "max-image-preview": robots?.["max-image-preview"],
+    "max-video-preview": robots?.["max-video-preview"],
+  };
+  // Remove undefined
+  Object.keys(googleBot).forEach((k) => googleBot[k] === undefined && delete googleBot[k]);
+  return { index, follow, googleBot };
+}
 
-    const timeout = setTimeout(() => {
-      const setupSlider = async () => {
-        const $ = (await import("jquery")).default;
-        await import("slick-carousel");
+const FRONT_BASE = "https://localhost:3000"; // seu domínio Next
 
-        const sliders = document.querySelectorAll(".wp-block-gallery.slider");
-        sliders.forEach((slider) => {
-          if (!$(slider).hasClass("slick-initialized")) {
-            const isAutoPlay = slider.classList.contains("autoplay");
-
-            $(slider).slick({
-              autoplay: isAutoPlay,
-              autoplaySpeed: 3000,
-              /* speed: 1000, */
-              dots: true,
-              arrows: true,
-              fade: false,
-              cssEase: "linear",
-            });
-          }
-        });
-      };
-
-      setupSlider();
-    }, 2000); // tempo pra garantir que HTML já foi injetado
-
-    return () => clearTimeout(timeout);
-  }, [currentProject]);
-
-  useEffect(() => {
-    if (projects.length > 0 && params.slug) {
-      const project = projects.find((p) => p.slug === params.slug);
-      setCurrentProject(project);
-    }
-  }, [projects, params.slug]);
-
-  useEffect(() => {
-    const slider = scrollRef.current;
-    if (!slider) return;
-
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    const handleMouseDown = (e) => {
-      isDown = true;
-      slider.classList.add("dragging");
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    };
-
-    const handleMouseLeave = () => {
-      isDown = false;
-      slider.classList.remove("dragging");
-    };
-
-    const handleMouseUp = () => {
-      isDown = false;
-      slider.classList.remove("dragging");
-    };
-
-    const handleMouseMove = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5;
-      slider.scrollLeft = scrollLeft - walk;
-    };
-
-    slider.addEventListener("mousedown", handleMouseDown);
-    slider.addEventListener("mouseleave", handleMouseLeave);
-    slider.addEventListener("mouseup", handleMouseUp);
-    slider.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      slider.removeEventListener("mousedown", handleMouseDown);
-      slider.removeEventListener("mouseleave", handleMouseLeave);
-      slider.removeEventListener("mouseup", handleMouseUp);
-      slider.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
-  if (!currentProject) {
-    return <div>Projeto não encontrado</div>; // Ou uma página 404
+function replaceBaseUrl(url) {
+  if (!url) return url;
+  try {
+    const u = new URL(url);
+    return url.replace(`${u.origin}`, FRONT_BASE);
+  } catch {
+    return url;
   }
+}
+// Helper: mapeia o yoast_head_json para o objeto de metadata do Next
+function mapYoastToNextMetadata(yoast) {
+  if (!yoast) return {};
+  
 
-  // Filtra as tecnologias do projeto atual
-  const projectTechnologies = currentProject.tecnologias
-    ? technologies.filter((tech) =>
-        currentProject.tecnologias.includes(tech.id),
-      )
-    : [];
+  const title = yoast.title || yoast.og_title;
+  const description = yoast.og_description;
+  const canonical = replaceBaseUrl(yoast.og_url);
 
-  return (
-    <>
-      <Header logo={data?.logo_principal || null} />
-      <main className="main-single">
-        <TopPage
-          bgImage={
-            currentProject._embedded?.["wp:featuredmedia"]?.[0]?.source_url
-          }
-        />
-        <div className="single-container relative mt-[-3rem]">
-          <HeaderSingle
-            currentProject={currentProject}
-            projectTechnologies={projectTechnologies}
-            scrollRef={scrollRef}
-          />
+  const ogImages = Array.isArray(yoast.og_image)
+    ? yoast.og_image.map((img) => ({
+        url: img.url,
+        width: img.width,
+        height: img.height,
+        type: img.type,
+      }))
+    : undefined;
 
-          <ContentProject content={currentProject.content?.rendered} />
-        </div>
-        <div className="bg-gradient-primary-d">
-          <SectionMoreProjoects
-            moreProjects={currentProject?.acf["more-projects"]}
-            technologies={technologies}
-            projects={projects}
-          />
+  const openGraph = {
+    type: yoast.og_type || "article",
+    locale: yoast.og_locale || "pt_BR",
+    siteName: yoast.og_site_name,
+    title: yoast.og_title || title,
+    description,
+    url: canonical,
+    images: ogImages,
+  };
 
-          <Contact
-            scrollText={data?.texto_scroll || null}
-            data={data?.secao_contato || null}
-            dataForm={data?.configuracao_do_formulario || null}
-          />
-        </div>
-      </main>
-    </>
-  );
-};
+  const twitter = {
+    card: yoast.twitter_card || "summary_large_image",
+    title: title,
+    description,
+    images: ogImages?.[0]?.url ? [ogImages[0].url] : undefined,
+  };
 
-export default ProjetoPage;
+  const robots = mapRobots(yoast.robots || {});
+
+  // Dica: se tiver `metadataBase`, configure no layout raiz.
+  return {
+    title,
+    description,
+    alternates: canonical ? { canonical } : undefined,
+    robots,
+    openGraph,
+    twitter,
+  };
+}
+
+export async function generateMetadata({ params }) {
+  try {
+    // Busca só o necessário para SEO por slug
+    const res = await fetch(
+      `${WP}/wp/v2/projeto?slug=${encodeURIComponent(params?.slug)}&_fields=yoast_head_json`,
+      { next: { revalidate: 1800 } }
+    );
+
+    if (!res.ok) return {};
+
+    const data = await res.json();
+    const yoast = data?.[0]?.yoast_head_json;
+
+    return mapYoastToNextMetadata(yoast);
+  } catch {
+    return {};
+  }
+}
+
+// A página em si continua sendo o seu Client Component:
+export default function Page() {
+  return <ClientProjetoPage />;
+}
