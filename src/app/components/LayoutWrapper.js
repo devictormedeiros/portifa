@@ -6,12 +6,11 @@ import LoadingPage from "./LoadingPage";
 import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
-import { useEffect } from "react";
 import ScrollToTop from "./ScrollTop";
+import Head from "next/head"; // Importa o Head
 
 export default function LayoutWrapper({ children }) {
   const { dataOption, isLoading } = useDataOptions();
-
   return (
     <>
       <ScrollToTop />
@@ -19,6 +18,7 @@ export default function LayoutWrapper({ children }) {
         data-page-load={isLoading.toString()}
         className="antialiased text-white-100"
       >
+        <style>{dataOption?.code_editor.custom_code_css}</style>
         {dataOption?.styleguide && (
           <Styleguide styleguide={dataOption.styleguide} />
         )}
