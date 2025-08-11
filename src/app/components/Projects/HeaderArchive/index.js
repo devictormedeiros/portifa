@@ -18,7 +18,7 @@ const HeaderArchive = ({
           ref={scrollRef}
           className={`${
             technologies.length > 6 ? "cursor-horizontal" : ""
-          } flex items-center gap-8 lg:gap-4 relative self-stretch px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full overflow-x-auto list-categories lg:px-0`}
+          } flex items-center gap-8 lg:gap-4 relative self-stretch px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full overflow-x-auto list-categories scroll-hide-bar-mobile lg:px-0`}
         >
           {technologies.map((tech) => {
             const isActive = selectedTech === tech.id;
