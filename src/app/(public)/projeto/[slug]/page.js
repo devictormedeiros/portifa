@@ -11,7 +11,7 @@ const getProjeto = makeCptFetcherWithYoast(
 export async function generateMetadata({ params }) {
   const post = await getProjeto(params.slug);
   if (!post) return {};
-  return yoastToMetadata(post.yoast_head_json);
+  return yoastToMetadata(post.yoast_head_json, { path: `/projetos/${params.slug}` });
 }
 
 export default async function Page({ params }) {

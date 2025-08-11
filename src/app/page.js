@@ -5,7 +5,7 @@ const getHome = makePageFetcherWithYoast("home");
 
 export async function generateMetadata() {
   const page = await getHome();
-  return yoastToMetadata(page?.yoast_head_json);
+  return yoastToMetadata(page?.yoast_head_json, { path: "/" });
 }
 
 export default async function Page() {

@@ -5,7 +5,7 @@ const getProjetos = makePageFetcherWithYoast("projetos");
 
 export async function generateMetadata() {
   const page = await getProjetos();
-  return yoastToMetadata(page?.yoast_head_json);
+  return yoastToMetadata(page?.yoast_head_json, { path: "/projetos" });
 }
 
 export default async function Page() {
