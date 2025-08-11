@@ -6,37 +6,52 @@ import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import IconsLib from "../Icons";
 
-
 import ScrollingText from "../Home/ScrollText/ScrollText";
 import Footer from "../Footer";
-const Contact = ({ data, scrollText }) => {
+const Contact = ({ data, scrollText, dataForm }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const handleError = (errors) => {
     resetAlert();
     console.log("Erros de validação:", errors);
     setTimeout(() => setIsSuccess(false), 0);
   };
+
   const [isSuccess, setIsSuccess] = useState(null);
   const [loadingForm, setLoadingForm] = useState(false);
   const form = useRef();
+  const cfg = dataForm || {};
+
+  const EMAILJS_SERVICE_ID = cfg.emailjs_service_id;
+  const EMAILJS_TEMPLATE_ID = cfg.emailjs_template_id;
+  const EMAILJS_PUBLIC_KEY = cfg.emailjs_public_key;
+
+  const emailJsReady = Boolean(
+    EMAILJS_SERVICE_ID && EMAILJS_TEMPLATE_ID && EMAILJS_PUBLIC_KEY
+  );
 
   const resetAlert = () => {
     setIsSuccess(null); // Redefine o estado antes de qualquer tentativa de envio
   };
 
   const onSubmit = (value) => {
+    if (!emailJsReady) {
+      setIsSuccess(false);
+      console.warn("EmailJS não configurado nas opções ACF/ENV.");
+      return;
+    }
     setLoadingForm(true);
     resetAlert();
     emailjs
       .sendForm(
-        "service_mqzb30w",
-        "template_qvp80rs",
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
         form.current,
-        "4Uw6beMwHYhllmMdd",
+        EMAILJS_PUBLIC_KEY
       )
       .then(
         (result) => {
@@ -49,7 +64,7 @@ const Contact = ({ data, scrollText }) => {
           console.log(error.text);
           setIsSuccess(false);
           setLoadingForm(false);
-        },
+        }
       );
   };
 
