@@ -9,7 +9,7 @@ import IconsLib from "../Icons";
 
 import ScrollingText from "../Home/ScrollText/ScrollText";
 import Footer from "../Footer";
-const Contact = ({ data, scrollText }) => {
+const Contact = ({ data, scrollText, dataForm }) => {
   const {
     register,
     handleSubmit,
@@ -33,10 +33,10 @@ const Contact = ({ data, scrollText }) => {
     resetAlert();
     emailjs
       .sendForm(
-        "service_mqzb30w",
-        "template_qvp80rs",
+        dataForm?.emailjs_service_id,
+        dataForm?.emailjs_template_id,
         form.current,
-        "4Uw6beMwHYhllmMdd",
+        dataForm?.emailjs_public_key,
       )
       .then(
         (result) => {
