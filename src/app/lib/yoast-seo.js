@@ -1,5 +1,3 @@
-// app/lib/yoast-seo.js
-import { cache } from "react";
 import { getBySlug } from "@/app/api/getBySlug";
 
 const DEFAULT_DEV_URL = "http://localhost:3000";
@@ -67,12 +65,23 @@ export function yoastToMetadata(y = {}, opts = {}) {
   };
 }
 
-// fetchers iguais...
 export const makePageFetcherWithYoast = (slug, fields = [], opts = {}) => {
   const uniq = Array.from(new Set([...fields, "yoast_head_json"]));
-  return cache(async () => getBySlug("pages", slug, { ...opts, fields: uniq }));
+  return async () =>
+    getBySlug("pages", slug, {
+      ...opts,
+      fields: uniq,
+      revalidate: process.env.NODE_ENV === "development" ? 0 : 300, // 0 = sempre fresco em dev; 5 min em prod
+    });
 };
+
 export const makeCptFetcherWithYoast = (type, fields = [], opts = {}) => {
   const uniq = Array.from(new Set([...fields, "yoast_head_json"]));
-  return cache(async (slug) => getBySlug(type, slug, { embed: true, ...opts, fields: uniq }));
+  return async (slug) =>
+    getBySlug(type, slug, {
+      embed: true,
+      ...opts,
+      fields: uniq,
+      revalidate: process.env.NODE_ENV === "development" ? 0 : 300,
+    });
 };
