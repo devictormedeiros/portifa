@@ -1,14 +1,6 @@
 // app/api/getBySlug.js
 import getAPI from "./getAPI";
 
-/**
- * Busca um item no WP por slug em /wp/v2/{type}?slug={slug}
- * opts:
- *  - fields: [] -> monta _fields (use dot-notation: "title.rendered")
- *  - embed: true -> adiciona _embed=1
- *  - lang: "pt" -> adiciona lang=pt (Polylang/WPML, se usar)
- *  - revalidate: number -> se seu getAPI suportar revalidate, repasse aqui
- */
 export async function getBySlug(type, slug, opts = {}) {
   try {
     if (!type || !slug) throw new Error("type e slug são obrigatórios");

@@ -15,11 +15,6 @@ export default function HomePage({ pageData }) {
   const [scrollEnabled, setScrollEnabled] = useState(true);
   const { dataOption: data } = useDataOptions();
 
-  // só para debugar o que veio do server
-  useEffect(() => {
-    if (pageData) console.log("pageData(home) SSR:", pageData);
-  }, [pageData]);
-
   useEffect(() => {
     const handleScroll = (event) => {
       if (!scrollEnabled) {

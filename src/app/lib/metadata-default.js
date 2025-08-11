@@ -1,4 +1,4 @@
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://seu-site.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const DEFAULT_METADATA = {
   title: { default: "Portfólio", template: "%s | Portfólio" },
