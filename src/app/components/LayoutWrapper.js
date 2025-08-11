@@ -18,7 +18,7 @@ export default function LayoutWrapper({ children }) {
         data-page-load={isLoading.toString()}
         className="antialiased text-white-100"
       >
-        <style>{dataOption?.code_editor.custom_code_css}</style>
+        <style>{dataOption?.code_editor?.custom_code_css}</style>
         {dataOption?.styleguide && (
           <Styleguide styleguide={dataOption.styleguide} />
         )}
