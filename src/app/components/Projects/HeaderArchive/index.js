@@ -18,7 +18,7 @@ const HeaderArchive = ({
           ref={scrollRef}
           className={`${
             technologies.length > 6 ? "cursor-horizontal" : ""
-          } flex items-center gap-8 lg:gap-4 relative self-stretch px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full overflow-x-auto list-categories lg:px-0`}
+          } flex items-center gap-8 lg:gap-4 relative self-stretch px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full overflow-x-auto list-categories scroll-hide-bar-mobile lg:px-0`}
         >
           {technologies.map((tech) => {
             const isActive = selectedTech === tech.id;
@@ -26,7 +26,7 @@ const HeaderArchive = ({
               <button
                 key={tech.id}
                 onClick={() => setSelectedTech(isActive ? null : tech.id)}
-                className={`pill-category menu-section flex items-center gap-x-2   py-2 px-4 rounded-3xl duration-300 hover:bg-gray-200  hover:text-gray-700 min-w-[max-content] ${
+                className={`pill-category menu-section flex items-center gap-x-2   py-2 px-4 rounded-3xl duration-300 lg:hover:bg-gray-200  lg:hover:text-gray-700 min-w-[max-content] ${
                   isActive
                     ? "bg-gray-200 text-gray-700 pill-category-active"
                     : "bg-white-10 text-gray-200"

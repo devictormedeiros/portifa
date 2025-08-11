@@ -222,11 +222,35 @@ body:has(.main-archive, .main-single) {
   }
 }
 .pill-category {
-  &:hover,
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      svg,
+      svg * {
+        fill: var(--gray-700);
+      }
+    }
+  }
+
+  @media screen and (max-width: 1023px) {
+    &:hover {
+      svg,
+      svg * {
+        fill: var(--white-50);
+      }
+    }
+  }
+
   &.pill-category-active {
     svg,
     svg * {
       fill: var(--gray-700);
     }
+  }
+}
+.scroll-hide-bar-mobile{
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
