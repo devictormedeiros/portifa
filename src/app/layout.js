@@ -5,6 +5,7 @@ import { DataOptionsProvider } from "./context/DataOptionsContext";
 import LayoutWrapper from "./components/LayoutWrapper";
 import { DEFAULT_METADATA } from "./lib/metadata-default";
 
+
 export const metadata = DEFAULT_METADATA;
 
 export default function RootLayout({ children }) {
