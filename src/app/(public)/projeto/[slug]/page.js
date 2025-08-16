@@ -18,6 +18,7 @@ const ProjetoPage = () => {
   const [currentProject, setCurrentProject] = useState(null);
   const scrollRef = useRef(null);
   const params = useParams();
+  const innerWidth = typeof window !== "undefined" && window?.innerWidth;
 
   useEffect(() => {
     if (!currentProject) return;
@@ -116,7 +117,7 @@ const ProjetoPage = () => {
     : [];
 
   const bgImage = `url(${
-    typeof window !== "undefined" && window?.innerWidth < 768
+   innerWidth < 768
       ? currentProject?.acf["hero-mobile"]?.url
       : currentProject?.acf["hero-desktop"]?.url
   })`;

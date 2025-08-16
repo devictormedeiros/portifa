@@ -19,6 +19,7 @@ const Archive = () => {
     : projects;
 
   const scrollRef = useRef(null);
+  const innerWidth =  typeof window !== "undefined" && window?.innerWidth;
 
   useEffect(() => {
     const slider = scrollRef.current;
@@ -77,7 +78,7 @@ const Archive = () => {
   }, [technologies]);
 
   const bgImage = `url(${
-    typeof window !== "undefined" && window?.innerWidth < 768
+    innerWidth < 768
       ? dataOption?.archive?.cabecalho["hero-mobile"]?.url
       : dataOption?.archive?.cabecalho["hero-desktop"]?.url
   })`;
