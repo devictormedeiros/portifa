@@ -77,7 +77,7 @@ const Archive = () => {
   }, [technologies]);
 
   const bgImage = `url(${
-    window?.innerWidth < 768
+    window && window?.innerWidth < 768
       ? dataOption?.archive?.cabecalho["hero-mobile"]?.url
       : dataOption?.archive?.cabecalho["hero-desktop"]?.url
   })`;

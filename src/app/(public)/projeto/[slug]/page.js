@@ -116,7 +116,7 @@ const ProjetoPage = () => {
     : [];
 
   const bgImage = `url(${
-    window?.innerWidth < 768
+    window && window?.innerWidth < 768
       ? currentProject?.acf["hero-mobile"]?.url
       : currentProject?.acf["hero-desktop"]?.url
   })`;
