@@ -6,7 +6,7 @@ const TopPage = ({ bgImage }) => {
           className={`w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center`}
           aria-hidden="true"
           style={{
-            backgroundImage: `url(${bgImage})`,
+            backgroundImage: bgImage,
           }}
         />
         <div

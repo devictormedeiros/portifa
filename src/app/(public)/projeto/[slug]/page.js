@@ -111,19 +111,21 @@ const ProjetoPage = () => {
   // Filtra as tecnologias do projeto atual
   const projectTechnologies = currentProject.tecnologias
     ? technologies.filter((tech) =>
-        currentProject.tecnologias.includes(tech.id),
+        currentProject.tecnologias.includes(tech.id)
       )
     : [];
+
+  const bgImage = `url(${
+    window.innerWidth < 768
+      ? currentProject?.acf["hero-mobile"]?.url
+      : currentProject?.acf["hero-desktop"]?.url
+  })`;
 
   return (
     <>
       <Header logo={data?.logo_principal || null} />
       <main className="main-single">
-        <TopPage
-          bgImage={
-            currentProject._embedded?.["wp:featuredmedia"]?.[0]?.source_url
-          }
-        />
+        <TopPage bgImage={bgImage} />
         <div className="single-container relative mt-[-3rem]">
           <HeaderSingle
             currentProject={currentProject}
