@@ -13,7 +13,7 @@ const Projects = ({ data }) => {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      const pinneds = gsap.utils.toArray(".pinned > .project-card");
+      const pinneds = gsap.utils.toArray(".pinned");
 
       pinneds?.forEach((pinned, index) => {
         if (index === pinneds.length - 1) return;
@@ -64,8 +64,8 @@ const Projects = ({ data }) => {
       <div className="container h-full relative">
         <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
           {Object?.values(data)
-            .map((project) => project.ID)
-            .map((projectId) => projects.find((p) => p.id === projectId))
+            .map((project) => project)
+            .map((projectId) => projects.find((p) => p.id == projectId))
             .filter(Boolean)
             .map((project, index) => (
               <CardProjectBig
