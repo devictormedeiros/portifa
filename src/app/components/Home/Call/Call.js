@@ -31,12 +31,11 @@ const Call = ({ data }) => {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    canvas.width = 1600;
-    canvas.height = 900;
+    canvas.width = window.innerWidth;
+    canvas.height =  window.innerHeight;
 
     const loadImages = async () => {
       const loadImage = (src) => {
-        console.log(src)
         return new Promise((resolve) => {
           const img = new Image();
           img.src = src;
@@ -106,7 +105,7 @@ const Call = ({ data }) => {
 
   return (
     handleData(data)?.length > 0 && (
-      <section className="sec-call bg-[#000] relative h-[400vh]">
+      <section className="sec-call bg-[#000] relative h-[750vh]">
         <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
           <canvas
             ref={canvasRef}
