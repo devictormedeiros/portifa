@@ -76,12 +76,18 @@ const Archive = () => {
     }
   }, [technologies]);
 
+  const bgImage = `url(${
+    window.innerWidth < 768
+      ? dataOption?.archive?.cabecalho["hero-mobile"]?.url
+      : dataOption?.archive?.cabecalho["hero-desktop"]?.url
+  })`;
+
   return (
     <>
       <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
         {/* Content Wrapper Section */}
-        <TopPage bgImage={dataOption?.archive?.cabecalho.background.url} />
+        <TopPage bgImage={bgImage} />
         <div className="archive-container w-full mt-[-3rem]">
           <HeaderArchive
             dataOption={dataOption}

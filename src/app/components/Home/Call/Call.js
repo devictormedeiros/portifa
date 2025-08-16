@@ -11,6 +11,12 @@ const Call = ({ data }) => {
   const images = useRef([]);
   const airpods = useRef({ frame: 0 });
   const screenSize = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  const handleHeightSection = (h) => {
+    const height = (h * 585) / 911;
+    return `${height}vh`;
+  };
 
   const handleData = useCallback(
     (d) => {
@@ -32,7 +38,7 @@ const Call = ({ data }) => {
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
     canvas.width = window.innerWidth;
-    canvas.height =  window.innerHeight;
+    canvas.height = window.innerHeight;
 
     const loadImages = async () => {
       const loadImage = (src) => {
@@ -61,7 +67,7 @@ const Call = ({ data }) => {
           scrub: 0.5,
           trigger: canvas,
           start: "top top",
-          end: "bottom+=3000 top",
+          end: `+=${frameCount * 10}`, // sincronizado com a altura
         },
         onUpdate: render,
       });
@@ -105,8 +111,14 @@ const Call = ({ data }) => {
 
   return (
     handleData(data)?.length > 0 && (
-      <section className="sec-call bg-[#000] relative h-[750vh] md:h-[700vh]">
+      <section
+        className="sec-call bg-[#000] relative"
+        style={{
+          height: `${frameCount * 22}px`, // 10px por frame, ajuste conforme a fluidez que você quiser
+        }}
+      >
         <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
+          324234234
           <canvas
             ref={canvasRef}
             className="sticky top-0 object-cover object-center w-full aspect-square h-[100vh]"
