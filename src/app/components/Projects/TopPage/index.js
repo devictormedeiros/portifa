@@ -1,4 +1,8 @@
 const TopPage = ({ bgImage }) => {
+  if(!bgImage) {
+    return
+  }
+  
   return (
     <section className="flex flex-col w-full items-center header-projects">
       <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">

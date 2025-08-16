@@ -125,7 +125,7 @@ const ProjetoPage = () => {
     <>
       <Header logo={data?.logo_principal || null} />
       <main className="main-single">
-        <TopPage bgImage={bgImage} />
+        <TopPage bgImage={bgImage ?? null} />
         <div className="single-container relative mt-[-3rem]">
           <HeaderSingle
             currentProject={currentProject}

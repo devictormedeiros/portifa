@@ -87,7 +87,7 @@ const Archive = () => {
       <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
         {/* Content Wrapper Section */}
-        <TopPage bgImage={bgImage} />
+        <TopPage bgImage={bgImage ?? null} />
         <div className="archive-container w-full mt-[-3rem]">
           <HeaderArchive
             dataOption={dataOption}
