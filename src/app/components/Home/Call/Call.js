@@ -105,7 +105,7 @@ const Call = ({ data }) => {
 
   return (
     handleData(data)?.length > 0 && (
-      <section className="sec-call bg-[#000] relative h-[750vh]">
+      <section className="sec-call bg-[#000] relative h-[750vh] md:h-[700vh]">
         <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
           <canvas
             ref={canvasRef}
