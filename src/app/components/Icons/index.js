@@ -20,6 +20,19 @@ import IconPack from "./IconPack";
 import IconUI from "./IconUI";
 import IconUX from "./IconUX";
 import IconVideo from "./IconVideo";
+import IconAdobeAfter from "./IconAdobeAfter";
+import IconAdobeillustrator from "./IconAdobeillustrator";
+import IconAdobeIndesign from "./IconAdobeIndesign";
+import IconAdobePhotoshop from "./IconAdobePhotoshop";
+import IconAdobeXd from "./IconAdobeXd";
+import IconBusiness from "./IconBusiness";
+import IconCode from "./IconCode";
+import IconCorel from "./IconCorel";
+import IconDiscovery from "./IconDiscovery";
+import IconFigma from "./IconFigma";
+import IconGoogle from "./IconGoogle";
+import IconHotjar from "./IconHotjar";
+import IconMotion from "./IconMotion";
 
 const IconsLib = ({ name }) => {
   const iconMap = {
@@ -45,6 +58,19 @@ const IconsLib = ({ name }) => {
     video: IconVideo,
     whats: IconWhats,
     wp: IconWP,
+    adobeAfter: IconAdobeAfter,
+    adobeIllustrator: IconAdobeillustrator,
+    adobeIndesign: IconAdobeIndesign,
+    adobePhotoshop: IconAdobePhotoshop,
+    adobeXd: IconAdobeXd,
+    business: IconBusiness,
+    code: IconCode,
+    corel: IconCorel,
+    discovery: IconDiscovery,
+    figma: IconFigma,
+    google: IconGoogle,
+    hotjar: IconHotjar,
+    motion: IconMotion
   };
   const IconComponent = iconMap[name];
 
