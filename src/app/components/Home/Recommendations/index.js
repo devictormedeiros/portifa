@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Accordion from "../../Accordion";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 
 const Recommendations = ({ data }) => {
   const containerRef = useRef(null);
@@ -56,6 +56,7 @@ const Recommendations = ({ data }) => {
                     src={item.imagem.url}
                     alt="Nome do autor"
                     fill
+                    sizes="100vw"
                   />
                 </figure>
                 <div className="p-6">

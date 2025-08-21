@@ -16,6 +16,7 @@ const Tecnologias = ({ data }) => {
     }
   }, [isVisible, isAnimated]);
 
+
   return (
     <section ref={targetRef} className="sec-tecnologias g-col-12">
       {data?.map((accordion, index) => {

@@ -43,6 +43,7 @@ const CardProjectBig = ({ project, technologies }) => {
                 }
                 alt={project.title?.rendered}
                 fill
+                sizes="100vw"
               />
             </figure>
             <div className="flex flex-col gap-6 flex-1">
