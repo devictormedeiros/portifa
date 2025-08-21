@@ -8,12 +8,13 @@ const Projects = ({ data }) => {
   const { projects, technologies } = useProjects();
 
   useLayoutEffect(() => {
-    if (!data?.length) return;
+     if (!data || data.length === 0) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
       const pinneds = gsap.utils.toArray(".pinned");
+      console.log(pinneds)
 
       pinneds?.forEach((pinned, index) => {
         if (index === pinneds.length - 1) return;
@@ -22,8 +23,8 @@ const Projects = ({ data }) => {
           scale: "0.8",
           scrollTrigger: {
             trigger: pinned,
-            start: window.innerWidth < 767 ? "top 50vh" : "top 0",
-            end: window.innerWidth < 767 ? "bottom -10%" : `bottom -70%`,
+            start: "top 0",
+            end: `bottom -70%`,
             scrub: true,
             markers: false,
           },
@@ -54,7 +55,7 @@ const Projects = ({ data }) => {
     }, 1000);
 
     return () => ctx.revert();
-  }, [data]);
+  }, [data, projects]);
 
   return (
     <section
