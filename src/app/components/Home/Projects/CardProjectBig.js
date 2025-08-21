@@ -47,10 +47,14 @@ const CardProjectBig = ({ project, technologies }) => {
             </figure>
             <div className="flex flex-col gap-6 flex-1">
               <p className="content-text text-white-70 md:line-clamp-none">
-                {(project.excerpt?.rendered || "")
-                  .replace(/<[^>]+>/g, "") // remove tags HTML
-                  .slice(0, 120) // limita os caracteres
-                  .trim() + "..."}
+                {(() => {
+                  const text = project.acf?.resumoCardHome
+                    ? project.acf.resumoCardHome
+                    : (project.excerpt?.rendered || "").replace(/<[^>]+>/g, "");
+
+                  const sliced = text.slice(0, 120).trim();
+                  return project.acf?.resumoCardHome ? sliced : sliced + "...";
+                })()}
               </p>
               <a
                 href={`/projeto/${project.slug}`}

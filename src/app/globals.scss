@@ -194,11 +194,9 @@ main {
 }
 
 body:has(.main-archive, .main-single) {
-  @media (min-width: 768px) {
     header {
       background: transparent;
     }
-  }
 }
 
 .slick-slider {

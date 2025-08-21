@@ -17,7 +17,6 @@ const Contact = ({ data, scrollText, dataForm }) => {
   } = useForm();
   const handleError = (errors) => {
     resetAlert();
-    console.log("Erros de validação:", errors);
     setTimeout(() => setIsSuccess(false), 0);
   };
   const [isSuccess, setIsSuccess] = useState(null);
@@ -40,13 +39,11 @@ const Contact = ({ data, scrollText, dataForm }) => {
       )
       .then(
         (result) => {
-          console.log("SUCCESS!", result.status, result.text);
           setIsSuccess(true);
           setLoadingForm(false);
           form.current.reset();
         },
         (error) => {
-          console.log(error.text);
           setIsSuccess(false);
           setLoadingForm(false);
         },

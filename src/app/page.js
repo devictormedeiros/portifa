@@ -16,10 +16,6 @@ const HomePage = () => {
   const { dataOption: data } = useDataOptions();
 
   useEffect(() => {
-    console.log(data)
-  }, [data])
-
-  useEffect(() => {
     const handleScroll = (event) => {
       if (!scrollEnabled) {
         event.preventDefault();

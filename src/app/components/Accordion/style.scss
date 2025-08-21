@@ -1,12 +1,13 @@
 .accordion {
   .overflow-hidden {
     opacity: 0;
-    transition: opacity 1s linear;
+    transition: opacity 0.2s linear;
     height: auto !important;
   }
   &.open {
     .overflow-hidden {
       opacity: 1;
+      transition: opacity 0.4s linear;
     }
   }
   .accordion-header {

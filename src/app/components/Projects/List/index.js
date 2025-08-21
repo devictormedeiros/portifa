@@ -5,8 +5,13 @@ const List = ({ filteredProjects, technologies }) => {
     <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {filteredProjects.map((project, index) => {
-          const imageUrl =
-            project._embedded?.["wp:featuredmedia"]?.[0]?.source_url;
+const media = project._embedded?.["wp:featuredmedia"]?.[0];
+const sizes = media?.media_details?.sizes;
+
+const imageUrl =
+  sizes?.["card-thumb"]?.source_url || // usa o crop exato
+  sizes?.medium_large?.source_url ||   // fallback
+  media?.source_url;                   // fallback full
 
           return (
             <article
@@ -36,7 +41,7 @@ const List = ({ filteredProjects, technologies }) => {
                       <div className="flex items-center gap-4">
                         {project.tecnologias.map((techId, techIndex) => {
                           const tech = technologies.find(
-                            (t) => t.id === techId,
+                            (t) => t.id === techId
                           );
                           const iconSlug = tech?.acf?.tecnologias?.icone;
 
@@ -57,10 +62,17 @@ const List = ({ filteredProjects, technologies }) => {
                     )}
                   </div>
                   <p className="w-full text-white-70 feed-excerpt">
-                    {(project.excerpt?.rendered || "")
-                      .replace(/<[^>]+>/g, "") // remove tags HTML
-                      .slice(0, 120) // limita os caracteres
-                      .trim() + "..."}
+                    {(() => {
+                      const text = project.acf?.resumoCard
+                        ? project.acf.resumoCard
+                        : (project.excerpt?.rendered || "").replace(
+                            /<[^>]+>/g,
+                            ""
+                          );
+
+                      const sliced = text.slice(0, 120).trim();
+                      return project.acf?.resumoCard ? sliced : sliced + "...";
+                    })()}
                   </p>
                 </div>
               </a>

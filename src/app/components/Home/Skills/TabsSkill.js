@@ -9,7 +9,7 @@ import {
 import Accordion from "../../Accordion/Accordion";
 import CardSkill from "./CardSkill";
 
-const TabsSkill = ({ skills, title }) => {
+const TabsSkill = ({ skills, title, pill }) => {
   const [activeTab, setActiveTab] = useState(0);
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -55,7 +55,7 @@ const TabsSkill = ({ skills, title }) => {
             onTouchMove={onDragging}
             onTouchEnd={stopDragging}
           >
-            {skills?.map(({ ano, titulo }, index) => (
+            {skills?.map(({ dataPill, pill }, index) => (
               <Tab
                 key={crypto.randomUUID()}
                 value={index}
@@ -68,7 +68,7 @@ const TabsSkill = ({ skills, title }) => {
                 }`}
                 onClick={() => !isDragging && setActiveTab(index)}
               >
-                <strong>{ano}</strong> - {titulo}
+                <strong>{dataPill}</strong> {dataPill && " - "}{pill}
               </Tab>
             ))}
           </TabsHeader>

@@ -49,7 +49,6 @@ export default function ScrollingTexts({ data }) {
 
           res = setTimeout(() => {
             ScrollTrigger.refresh();
-            console.log("ScrollTrigger atualizado");
           }, [1000]);
         }
       }

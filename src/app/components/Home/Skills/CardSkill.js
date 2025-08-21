@@ -8,7 +8,10 @@ const CardSkill = ({ titulo, subtitulo, ano, texto }) => {
         </div>
         <h4 className="content-title-h4 text-white-70">{ano}</h4>
       </div>
-      <p className="text-white-70 content-text">{texto}</p>
+      <p
+  className="text-white-70 content-text"
+  dangerouslySetInnerHTML={{ __html: texto }}
+/>
     </article>
   );
 };

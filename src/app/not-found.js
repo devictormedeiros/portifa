@@ -19,7 +19,6 @@ export default function NotFound() {
 
   useEffect(() => {
     if (isLoading || !data) return;
-    console.log("Data carregado no 404:", data);
 
     const canvasShown = canvasRef.current;
     if (!canvasShown) return;
