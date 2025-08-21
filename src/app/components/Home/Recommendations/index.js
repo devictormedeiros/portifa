@@ -2,7 +2,7 @@ import Image from "next/image";
 import Accordion from "../../Accordion/Accordion";
 import { useRef, useState } from "react";
 
-const Recomendacoes = ({ data }) => {
+const Recommendations = ({ data }) => {
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -29,10 +29,10 @@ const Recomendacoes = ({ data }) => {
   };
 
   return (
-    <section className={`sec-recomendacoes g-col-12`}>
+    <section className={`sec-recommendations g-col-12`}>
       <Accordion title={data.titulo}>
         <div
-          className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-horizontal list-recomentadions scroll-hide-bar-mobile"
+          className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-horizontal list-recommendations scroll-hide-bar-mobile"
           ref={containerRef}
           onMouseDown={startDragging}
           onMouseMove={onDragging}
@@ -46,7 +46,7 @@ const Recomendacoes = ({ data }) => {
             data.cards.map((item, index) => (
               <article
                 key={index}
-                className={`card-recomendations flex flex-col min-w-[17.3125rem] rounded-2xl overflow-hidden md:min-w-[30rem]${
+                className={`card-recommendations flex flex-col min-w-[17.3125rem] rounded-2xl overflow-hidden md:min-w-[30rem]${
                   index === 0 ? " ms-6 md:ms-0" : ""
                 }`}
               >
@@ -74,4 +74,4 @@ const Recomendacoes = ({ data }) => {
   );
 };
 
-export default Recomendacoes;
+export default Recommendations;

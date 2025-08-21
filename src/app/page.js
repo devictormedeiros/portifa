@@ -7,7 +7,7 @@ import Contact from "./components/Contact";
 import Projects from "./components/Home/Projects";
 import Call from "./components/Home/Call/Call";
 import Skills from "./components/Home/Skills/Skills";
-import Recomendacoes from "./components/Home/Recomendacoes/Recomendacoes";
+import Recommendations from "./components/Home/recommendations";
 import { useDataOptions } from "./context/DataOptionsContext";
 import { useEffect, useState } from "react";
 
@@ -89,7 +89,7 @@ const HomePage = () => {
               <Tecnologias data={data?.home.tecnologias_atuacoes || null} />
             )}
             {data?.home.recomendacoes && (
-              <Recomendacoes data={data.home.recomendacoes} />
+              <Recommendations data={data.home.recomendacoes} />
             )}
           </section>
         </div>
