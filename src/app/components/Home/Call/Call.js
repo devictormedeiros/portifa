@@ -8,15 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Call = ({ data }) => {
   const canvasRef = useRef(null);
+  const sec = useRef(null);
   const images = useRef([]);
   const airpods = useRef({ frame: 0 });
   const screenSize = window.innerWidth;
   const screenHeight = window.innerHeight;
-
-  const handleHeightSection = (h) => {
-    const height = (h * 585) / 911;
-    return `${height}vh`;
-  };
 
   const handleData = useCallback(
     (d) => {
@@ -65,9 +61,9 @@ const Call = ({ data }) => {
         ease: "none",
         scrollTrigger: {
           scrub: 0.5,
-          trigger: canvas,
+          trigger: '.sec-call',
           start: "top top",
-          end: `+=${frameCount * 10}`, // sincronizado com a altura
+          end: `bottom bottom`, // sincronizado com a altura
         },
         onUpdate: render,
       });
@@ -112,13 +108,9 @@ const Call = ({ data }) => {
   return (
     handleData(data)?.length > 0 && (
       <section
-        className="sec-call bg-[#000] relative"
-        style={{
-          height: `${frameCount * 22}px`, // 10px por frame, ajuste conforme a fluidez que você quiser
-        }}
+        className="sec-call bg-[#000] relative h-[500vh] lg:h-[700vh]"
       >
         <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
-          324234234
           <canvas
             ref={canvasRef}
             className="sticky top-0 object-cover object-center w-full aspect-square h-[100vh]"
