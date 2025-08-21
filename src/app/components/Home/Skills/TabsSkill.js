@@ -6,10 +6,10 @@ import {
   TabsBody,
   TabsHeader,
 } from "@material-tailwind/react";
-import Accordion from "../../Accordion/Accordion";
+import Accordion from "../../Accordion";
 import CardSkill from "./CardSkill";
 
-const TabsSkill = ({ skills, title, pill }) => {
+const TabsSkill = ({ skills, title, pill, condition }) => {
   const [activeTab, setActiveTab] = useState(0);
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -42,7 +42,7 @@ const TabsSkill = ({ skills, title, pill }) => {
 
   return (
     skills?.length > 0 && (
-      <Accordion title={title}>
+      <Accordion title={title} condition={condition}>
         <Tabs value={activeTab} className="tabs-skill flex flex-col gap-6">
           <TabsHeader
             ref={containerRef}

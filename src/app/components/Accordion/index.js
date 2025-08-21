@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import {
   Accordion,
   AccordionHeader,
@@ -12,13 +12,20 @@ const accordionAnimation = {
   unmount: { opacity: 0 },
 };
 
-const AccordionCustom = ({ title, children }) => {
-  const [open, setOpen] = useState(true);
+const normalize = (v) =>
+  typeof v === "string" ? v.trim().toLowerCase() : v;
+
+const AccordionCustom = ({ title, children, condition }) => {
+  const shouldStartOpen = useMemo(() => normalize(condition) !== "fechado", [condition]);
+  const [open, setOpen] = useState(shouldStartOpen);
+
   const inputRef = useRef(null);
 
-  const handleOpen = () => {
-    setOpen(!open);
-  };
+  useEffect(() => {
+    setOpen(shouldStartOpen);
+  }, [shouldStartOpen]);
+
+  const handleOpen = () => setOpen((prev) => !prev);
 
   return (
     <>

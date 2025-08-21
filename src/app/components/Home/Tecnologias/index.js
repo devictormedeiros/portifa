@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Accordion from "../../Accordion/Accordion";
+import Accordion from "../../Accordion";
 import "./style.scss";
 import { memo } from "react";
 import { useEffect, useState } from "react";
@@ -20,7 +20,7 @@ const Tecnologias = ({ data }) => {
     <section ref={targetRef} className="sec-tecnologias g-col-12">
       {data?.map((accordion, index) => {
         return (
-          <Accordion key={index} title={accordion.titulo}>
+          <Accordion key={index} title={accordion.titulo} condition={accordion.condicao}>
             <ul className={`grid grid-cols-12 gap-y-6 px-6 md:px-0`}>
               {accordion.itens?.map((items, idx) => (
                 <li
