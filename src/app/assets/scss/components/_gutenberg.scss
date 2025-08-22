@@ -5,6 +5,10 @@
 
   > .wp-block-image {
     @apply my-[2.5rem];
+
+    .wp-element-caption {
+      @apply text-white-70;
+    }
   }
 
   > h1,
