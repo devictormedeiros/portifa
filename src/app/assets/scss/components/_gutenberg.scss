@@ -273,26 +273,26 @@
     }
   }
 
-  // Justify Items
-  .justify-items-left {
-    justify-items: start;
+  // Justify content
+  .justify-content-left {
+    justify-content: start;
   }
-  .justify-items-center {
-    justify-items: center;
+  .justify-content-center {
+    justify-content: center;
   }
-  .justify-items-right {
-    justify-items: end;
+  .justify-content-right {
+    justify-content: end;
   }
 
   @media (min-width: 992px) {
-    .justify-items-lg-left {
-      justify-items: start;
+    .justify-content-lg-left {
+      justify-content: start;
     }
-    .justify-items-lg-center {
-      justify-items: center;
+    .justify-content-lg-center {
+      justify-content: center;
     }
-    .justify-items-lg-right {
-      justify-items: end;
+    .justify-content-lg-right {
+      justify-content: end;
     }
   }
 }
