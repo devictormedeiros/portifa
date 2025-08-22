@@ -7,9 +7,9 @@ import Contact from "./components/Contact";
 import Projects from "./components/Home/Projects";
 import Call from "./components/Home/Call/Call";
 import Skills from "./components/Home/Skills/Skills";
-import Recommendations from "./components/Home/recommendations";
 import { useDataOptions } from "./context/DataOptionsContext";
 import { useEffect, useState } from "react";
+import Recommendations from "./components/Home/Recommendations";
 
 const HomePage = () => {
   const [scrollEnabled, setScrollEnabled] = useState(true);
