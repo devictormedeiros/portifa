@@ -14,7 +14,6 @@ const Projects = ({ data }) => {
 
     const ctx = gsap.context(() => {
       const pinneds = gsap.utils.toArray(".pinned");
-      console.log(pinneds)
 
       pinneds?.forEach((pinned, index) => {
         if (index === pinneds.length - 1) return;
@@ -42,8 +41,7 @@ const Projects = ({ data }) => {
 
           res = setTimeout(() => {
             ScrollTrigger.refresh();
-            console.log("ScrollTrigger atualizado");
-          }, [300]);
+          }, [1000]);
         }
       }
     });

@@ -1,12 +1,13 @@
 import IconsLib from "@/app/components/Icons";
 
 const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
+  console.log(currentProject)
   return (
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
       <div className="w-full flex flex-col gap-[1.5rem] pb-[3rem] border-b border-[#FFFFFF33] lg:flex-row lg:items-end lg:gap-[5rem]">
         <div className="lg:min-w-[41.125rem]">
           <small className="content-text-bold text-white-70">
-            {currentProject.type || "Projeto"}
+            {currentProject?.acf?.hat || "Projeto"}
           </small>
           <div className="flex items-center gap-[2.0625rem] mb-[1rem] lg:gap-[4rem]">
             <h1 className="content-title-h2 text-gray-200 uppercase">

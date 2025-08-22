@@ -42,7 +42,6 @@ const CardProjectBig = ({ project, technologies }) => {
                   "/images/image.png"
                 }
                 alt={project.title?.rendered}
-                fill
               />
             </figure>
             <div className="flex flex-col gap-6 flex-1">
