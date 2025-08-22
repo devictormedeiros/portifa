@@ -7,20 +7,20 @@ import { Metadata } from "next";
 
 export const metadata = {
   title: {
-    default: "Portfólio", // título padrão da página
+    default: "Portfólio - Marcello Vanzillotta", // título padrão da página
     template: "%s | Portfólio", // formato para títulos dinâmicos
   },
   description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para SEO
   keywords: ["portfólio", "desenvolvimento", "projetos", "trabalhos"], // palavras-chave para SEO
-  authors: [{ name: "Seu Nome" }], // autor do site
-  creator: "Seu Nome", // criador do conteúdo
-  publisher: "Seu Nome", // editor/publicador do site
+  authors: [{ name: "Marcello Vanzillotta" }], // autor do site
+  creator: "Marcello Vanzillotta", // criador do conteúdo
+  publisher: "Marcello Vanzillotta", // editor/publicador do site
   formatDetection: {
     email: false, // evita detecção automática de e-mails
     address: false, // evita detecção automática de endereços
     telephone: false, // evita detecção automática de telefones
   },
-  metadataBase: new URL("https://seu-site.com"), // URL base para metadados
+  metadataBase: new URL("https://www.vanzillotta.com"), // URL base para metadados
   alternates: {
     canonical: "/", // URL canônica (principal) da página
   },
