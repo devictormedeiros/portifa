@@ -57,7 +57,7 @@ const TabsSkill = ({ skills, title, pill, condition }) => {
           >
             {skills?.map(({ dataPill, pill }, index) => (
               <Tab
-                key={crypto.randomUUID()}
+                key={index}
                 value={index}
                 className={`w-auto md:min-w-[11.875rem] whitespace-nowrap rounded-lg py-2 px-4 text-gray-200 bg-gray-700 duration-500 ${
                   !isDragging

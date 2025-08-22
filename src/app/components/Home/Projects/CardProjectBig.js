@@ -3,8 +3,8 @@ import IconsLib from "../../Icons";
 
 const CardProjectBig = ({ project, technologies }) => {
   return (
-    <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0">
-      <div className="project-card bg-gradient-primary-c rounded-2xl md:mx-0">
+    <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0 w-full">
+      <div className="project-card bg-gradient-primary-c w-full rounded-2xl md:mx-0">
         <div className="p-[2rem] flex flex-col gap-6 md:gap-[2.5rem] rounded-lg md:p-[4rem]">
           <div className="flex flex-col gap-[0.5rem] justify-between pb-[.5rem] border-b border-white-10 md:flex-row">
             <h3 className="content-title-h3 text-gray-200 uppercase">
@@ -35,15 +35,13 @@ const CardProjectBig = ({ project, technologies }) => {
 
           <div className="flex flex-col gap-6 md:gap-[2.5rem] md:flex-row md:items-center">
             <figure className="relative h-[11.25rem] md:h-auto md:aspect-[3/2] md:max-w-[45rem] w-full">
-              <Image
+              <img
                 className="rounded-lg w-full h-full object-cover"
                 src={
                   project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
                   "/images/image.png"
                 }
                 alt={project.title?.rendered}
-                fill
-                sizes="100vw"
               />
             </figure>
             <div className="flex flex-col gap-6 flex-1">

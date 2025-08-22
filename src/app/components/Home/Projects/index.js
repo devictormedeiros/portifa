@@ -24,7 +24,7 @@ const Projects = ({ data }) => {
             trigger: pinned,
             start: "top 0",
             end: `bottom -70%`,
-            scrub: true,
+            scrub: 0.5,
             markers: false,
           },
         });
@@ -41,7 +41,7 @@ const Projects = ({ data }) => {
 
           res = setTimeout(() => {
             ScrollTrigger.refresh();
-          }, [300]);
+          }, [1000]);
         }
       }
     });
