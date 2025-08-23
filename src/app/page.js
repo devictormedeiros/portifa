@@ -26,15 +26,15 @@ const HomePage = () => {
       if (window.innerWidth <= 768) return; // Mantém scroll normal no mobile
 
       const introSection = document.querySelector(".sec-intro");
-      const sectionSobre = document.querySelector(".sec-about");
+      const sectionAbout = document.querySelector(".sec-about");
 
-      if (!introSection || !sectionSobre) return;
+      if (!introSection || !sectionAbout) return;
 
       const scrollPosition = window.scrollY;
       const introTop = introSection.offsetTop;
       const introHeight = introSection.offsetHeight;
-      const sobreTop = sectionSobre.offsetTop;
-      const sobreHeight = sectionSobre.offsetHeight;
+      const sobreTop = sectionAbout.offsetTop;
+      const sobreHeight = sectionAbout.offsetHeight;
 
       const isInsideIntro =
         scrollPosition >= introTop && scrollPosition < introTop + introHeight;
@@ -49,16 +49,14 @@ const HomePage = () => {
         setScrollEnabled(false);
 
         // Faz o scroll suave para a seção "about"
-        sectionSobre.scrollIntoView({ behavior: "smooth" });
-
-        // ✅ Se for a primeira vez, travamos o scroll por 3,5s
+        sectionAbout.scrollIntoView({ behavior: "smooth" });
+        
         if (firstScroll) {
           setFirstScroll(false);
           setTimeout(() => {
             setScrollEnabled(true);
           }, 3500);
         } else {
-          // Depois da primeira vez, libera o scroll instantaneamente
           setScrollEnabled(true);
         }
       }
