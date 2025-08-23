@@ -63,7 +63,7 @@ const SectionMoreProjoects = ({
     let missingQuantity = 5 - projs?.length;
     let otherProjs = [];
 
-    if (missingQuantity !== 0 && projects?.length > 0) {
+    if (missingQuantity > 0 && projects?.length > 0) {
       otherProjs = projects
         ?.filter((p, i) => (i + 1 <= missingQuantity) && (projs?.find((s) => s === p.id) === undefined) )
         .map((p) => p.id);
