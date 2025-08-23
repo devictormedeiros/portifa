@@ -7,65 +7,83 @@ import { Metadata } from "next";
 
 export const metadata = {
   title: {
-    default: "Portfólio - Marcello Vanzillotta", // título padrão da página
-    template: "%s | Portfólio", // formato para títulos dinâmicos
+    default: "Marcello Vanzillotta — Portfólio",
+    template: "%s | Marcello Vanzillotta",
   },
-  description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para SEO
-  keywords: ["portfólio", "desenvolvimento", "projetos", "trabalhos"], // palavras-chave para SEO
-  authors: [{ name: "Marcello Vanzillotta" }], // autor do site
-  creator: "Marcello Vanzillotta", // criador do conteúdo
-  publisher: "Marcello Vanzillotta", // editor/publicador do site
+  description:
+    "Designer de produtos digitais com foco em UI, UX, user research e design de serviços. Atuo de forma estratégica articulando propósito ao negócio, mapeando jornadas e entregando valor por meio de soluções criativas e relevantes.",
+  keywords: [
+    "Marcello Vanzillotta",
+    "portfólio",
+    "design de produto",
+    "UI",
+    "UX",
+    "user research",
+    "design de serviços",
+    "experiência do usuário",
+    "modelagem de negócios",
+    "metodologias ágeis",
+    "estratégia de design",
+  ],
+  authors: [{ name: "Marcello Vanzillotta" }],
+  creator: "Marcello Vanzillotta",
+  publisher: "Marcello Vanzillotta",
+  applicationName: "Portfólio — Marcello Vanzillotta",
   formatDetection: {
-    email: false, // evita detecção automática de e-mails
-    address: false, // evita detecção automática de endereços
-    telephone: false, // evita detecção automática de telefones
+    email: false,
+    address: false,
+    telephone: false,
   },
-  metadataBase: new URL("https://www.vanzillotta.com"), // URL base para metadados
+  metadataBase: new URL("https://www.vanzillotta.com"),
   alternates: {
-    canonical: "/", // URL canônica (principal) da página
+    canonical: "/",
   },
   icons: {
-    icon: '/favicon.ico', // caminho na pasta public
-    shortcut: '/favicon.ico', // ícone de atalho
-    apple: '/apple-touch-icon.png', // ícone para iOS
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/apple-touch-icon.png",
   },
   openGraph: {
-    title: "Portfólio", // título para compartilhamento (Open Graph)
-    description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para OG
-    url: "https://seu-site.com", // URL da página para OG
-    siteName: "Portfólio", // nome do site para OG
+    title: "Marcello Vanzillotta — Portfólio",
+    description:
+      "Designer de produtos digitais (UI/UX) com abordagem estratégica: interpretação de contextos, mapeamento de jornadas e entregas de valor para startups e grandes empresas.",
+    url: "https://www.vanzillotta.com",
+    siteName: "Marcello Vanzillotta",
     images: [
       {
-        url: "https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/03/archive-min.png", // thumbnail do site
-        width: 1200, // largura da imagem OG
-        height: 630, // altura da imagem OG
-        alt: "Portfólio", // texto alternativo da imagem OG
+        url: "/og/portfolio-cover.jpg", // substitua pelo caminho real do seu OG (1200x630)
+        width: 1200,
+        height: 630,
+        alt: "Portfólio de Marcello Vanzillotta",
       },
     ],
-    locale: "pt_BR", // idioma/região do site
-    type: "website", // tipo de conteúdo (site, artigo, etc.)
+    locale: "pt_BR",
+    type: "website",
   },
   twitter: {
-    card: "summary_large_image", // tipo de card do Twitter
-    title: "Portfólio", // título para Twitter
-    description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para Twitter
-    images: ["/twitter-image.jpg"], // thumbnail para Twitter
+    card: "summary_large_image",
+    title: "Marcello Vanzillotta — Portfólio",
+    description:
+      "Designer de produtos digitais com foco em UI/UX, pesquisa e design de serviços.",
+    images: ["/og/portfolio-cover.jpg"], // use o mesmo OG aqui
+    // creator: "@seu_handle", // opcional: preencha se houver
   },
   robots: {
-    index: true, // permitir indexação
-    follow: true, // permitir seguir links
+    index: true,
+    follow: true,
     googleBot: {
-      index: true, // permitir indexação pelo Googlebot
-      follow: true, // permitir seguir links pelo Googlebot
-      "max-video-preview": -1, // sem limite para prévia de vídeos
-      "max-image-preview": "large", // usar prévia grande de imagens
-      "max-snippet": -1, // sem limite para snippets de texto
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {
-    google: "seu-google-site-verification", // código de verificação do Google Search Console
+    google: "SEU_GOOGLE_SITE_VERIFICATION", // substitua pelo código do Search Console do domínio vanzillotta.com
   },
 };
+
 
 
 export default function RootLayout({ children }) {
