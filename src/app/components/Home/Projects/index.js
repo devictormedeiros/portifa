@@ -41,7 +41,7 @@ const Projects = ({ data }) => {
 
           res = setTimeout(() => {
             ScrollTrigger.refresh();
-          }, [1000]);
+          }, [3000]);
         }
       }
     });
