@@ -9,6 +9,7 @@ const SectionMoreProjoects = ({
   projects,
 }) => {
   const [isSwiper, setIsSwiper] = useState(false);
+  const [showedProjects, setShowedProjects] = useState([]);
 
   const settings = {
     dots: true,
@@ -57,15 +58,34 @@ const SectionMoreProjoects = ({
     });
   }, []);
 
+  useEffect(() => {
+    let projs = moreProjects || [];
+    let missingQuantity = 5 - projs?.length;
+    let otherProjs = [];
+
+    if (missingQuantity !== 0 && projects?.length > 0) {
+      otherProjs = projects
+        ?.filter((p, i) => (i + 1 <= missingQuantity) && (projs?.find((s) => s === p.id) === undefined) )
+        .map((p) => p.id);
+    }
+    projs?.push(...otherProjs);
+
+    setShowedProjects(projs);
+  }, [moreProjects, projects]);
+
   return (
-    moreProjects?.length > 0 && (
+    showedProjects?.length > 0 && (
       <section className="pt-[5rem] pb-[8.75rem] lg:pt-[7.5rem]">
         <div className="container">
           <div className="py-4 antialiased font-sans text-xl text-left font-semibold leading-snug select-none transition-colors flex items-center justify-between w-full mb-[2rem] pb-[1rem] pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 lg:mb-[2.5rem]">
             <h2 className="content-title-h2 text-gray-200 uppercase">
               Mais Projetos
             </h2>
-            <a href={"/projetos"} className="content-title-h6 capitalize" title="Ver todos os projetos">
+            <a
+              href={"/projetos"}
+              className="content-title-h6 capitalize"
+              title="Ver todos os projetos"
+            >
               Ver todos
             </a>
           </div>
@@ -73,8 +93,8 @@ const SectionMoreProjoects = ({
             {...settings}
             className="mx-[-1.5rem] cursor-horizontal lg:mx-0"
           >
-            {Object.values(moreProjects)
-              .map((project) => project.ID)
+            {showedProjects
+              .map((project) => project)
               .map((projectId) => projects.find((p) => p.id === projectId))
               .filter(Boolean)
               .map((project) => (
