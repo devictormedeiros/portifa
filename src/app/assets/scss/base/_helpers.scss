@@ -24,4 +24,21 @@
       background: #555;
     }
   }
+
+  .list-categories {
+    -webkit-mask-image: linear-gradient(
+      to left,
+      transparent 0,
+      transparent 0,
+      var(--black-100) 4.8125rem,
+      var(--black-100) 100%
+    );
+    mask-image: linear-gradient(
+      to left,
+      transparent 0,
+      transparent 0,
+      var(--black-100) 4.8125rem,
+      var(--black-100) 100%
+    );
+  }
 }

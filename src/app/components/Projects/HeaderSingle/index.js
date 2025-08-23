@@ -1,7 +1,31 @@
 import IconsLib from "@/app/components/Icons";
+import { useRef, useState } from "react";
 
 const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
-  console.log(currentProject)
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const containerRef = useRef(null);
+
+  const startDragging = (e) => {
+    setIsDragging(true);
+    const pageX = e.touches ? e.touches[0].pageX : e.pageX;
+    setStartX(pageX);
+    setScrollLeft(containerRef.current?.scrollLeft || 0);
+  };
+
+  const onDragging = (e) => {
+    if (!isDragging || !containerRef.current) return;
+    //e.preventDefault();
+    const pageX = e.touches ? e.touches[0].pageX : e.pageX;
+    const walk = (pageX - startX) * 1.5;
+    containerRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const stopDragging = () => {
+    setIsDragging(false);
+  };
+
   return (
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
       <div className="w-full flex flex-col gap-[1.5rem] pb-[3rem] border-b border-[#FFFFFF33] lg:flex-row lg:items-end lg:gap-[5rem]">
@@ -38,15 +62,23 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
             )}
           </div>
           <div
-            ref={scrollRef}
-            className="scroll-drag flex items-center gap-8 relative self-stretch overflow-x-auto list-categories scroll-hide-bar-mobile px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0"
+            ref={containerRef}
+            className="scroll-drag flex items-center gap-8 relative self-stretch overflow-x-auto list-categories scroll-hide-bar-mobile px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0 cursor-horizontal"
+            onMouseDown={startDragging}
+            onMouseMove={onDragging}
+            onMouseUp={stopDragging}
+            onMouseLeave={stopDragging}
+            onTouchStart={startDragging}
+            onTouchMove={onDragging}
+            onTouchEnd={stopDragging}
           >
             {projectTechnologies.map((tech) => (
               <a
                 key={tech.id}
                 href={`/projetos?t=${tech.slug}`}
-                className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group lg:hover:bg-gray-200 lg:hover:text-gray-700 bg-white-10 text-gray-200 "
+                className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group lg:hover:bg-gray-200 lg:hover:text-gray-700 bg-white-10 text-gray-200"
                 title={tech.name}
+                draggable="false"
               >
                 {tech.acf?.tecnologias?.icone && (
                   <div className="img-tech">
