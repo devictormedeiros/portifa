@@ -32,13 +32,13 @@ export const metadata = {
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL(SITE_URL),
+  metadataBase: new URL("https://vanzillotta.com"),
   alternates: { canonical: "/" },
   openGraph: {
     title: "Marcello Vanzillotta | Product Designer & UI/UX",
     description:
       "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
-    url: SITE_URL,
+    url: "https://vanzillotta.com",
     siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
     images: [
       { url: "/meta/open-graph.png", width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
