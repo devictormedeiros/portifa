@@ -3,85 +3,81 @@ import "animate.css/animate.compat.css";
 import { ProjectsProvider } from "./context/ProjectsContext";
 import { DataOptionsProvider } from "./context/DataOptionsContext";
 import LayoutWrapper from "./components/LayoutWrapper";
-import { Metadata } from "next";
 
 export const metadata = {
-  title: {
-    default: "Marcello Vanzillotta — Portfólio",
-    template: "%s | Marcello Vanzillotta",
+  title: { 
+    default: "Marcello Vanzillotta | Product Designer & UI/UX", 
+    template: "%s | Marcello Vanzillotta" 
   },
   description:
-    "Designer de produtos digitais com foco em UI, UX, user research e design de serviços. Atuo de forma estratégica articulando propósito ao negócio, mapeando jornadas e entregando valor por meio de soluções criativas e relevantes.",
+    "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
   keywords: [
-    "Marcello Vanzillotta",
-    "portfólio",
-    "design de produto",
-    "UI",
+    "Product Designer",
     "UX",
-    "user research",
-    "design de serviços",
-    "experiência do usuário",
-    "modelagem de negócios",
-    "metodologias ágeis",
-    "estratégia de design",
+    "UI",
+    "Branding",
+    "Identidade visual",
+    "Portfólio de design",
+    "Experiência do Usuário",
+    "Projetos de design",
+    "Design digital",
+    "Design Thinking",
+    "Interface",
+    "UI&UX"
   ],
   authors: [{ name: "Marcello Vanzillotta" }],
   creator: "Marcello Vanzillotta",
   publisher: "Marcello Vanzillotta",
-  applicationName: "Portfólio — Marcello Vanzillotta",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL("https://www.vanzillotta.com"),
-  alternates: {
-    canonical: "/",
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  applicationName: "Portfólio de Marcello Vanzillotta",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
+  formatDetection: { email: false, address: false, telephone: false },
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Marcello Vanzillotta — Portfólio",
+    title: "Marcello Vanzillotta | Product Designer & UI/UX",
     description:
-      "Designer de produtos digitais (UI/UX) com abordagem estratégica: interpretação de contextos, mapeamento de jornadas e entregas de valor para startups e grandes empresas.",
-    url: "https://www.vanzillotta.com",
-    siteName: "Marcello Vanzillotta",
+      "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+    url: SITE_URL,
+    siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
     images: [
-      {
-        url: "/og/portfolio-cover.jpg", // substitua pelo caminho real do seu OG (1200x630)
-        width: 1200,
-        height: 630,
-        alt: "Portfólio de Marcello Vanzillotta",
-      },
+      { url: "/meta/open-graph.png", width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
     ],
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marcello Vanzillotta — Portfólio",
+    title: "Marcello Vanzillotta | Product Designer & UI/UX",
     description:
-      "Designer de produtos digitais com foco em UI/UX, pesquisa e design de serviços.",
-    images: ["/og/portfolio-cover.jpg"], // use o mesmo OG aqui
-    // creator: "@seu_handle", // opcional: preencha se houver
+      "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+    images: ["/meta/twitter-card.png"],
   },
   robots: {
     index: true,
     follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+    googleBot: { 
+      index: true, 
+      follow: true, 
+      "max-video-preview": -1, 
+      "max-image-preview": "large", 
+      "max-snippet": -1 
     },
   },
-  verification: {
-    google: "SEU_GOOGLE_SITE_VERIFICATION", // substitua pelo código do Search Console do domínio vanzillotta.com
+  verification: {},
+  manifest: "/meta/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/meta/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/meta/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/meta/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
+  ],
 };
 
 

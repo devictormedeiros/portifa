@@ -1,7 +1,7 @@
 import "./style.scss";
 import { memo, useState, useEffect } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
-const Sobre = ({ data }) => {
+const About = ({ data }) => {
   const [offsetValue, setOffsetValue] = useState(150); // Valor padrão
 
   const [isMobile, setIsMobile] = useState(false);
@@ -23,7 +23,7 @@ const Sobre = ({ data }) => {
   };
 
   return (
-    <section className="sec-sobre g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]">
+    <section className="sec-about g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]">
       <div className="container">
         <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
           <AnimationWrapper
@@ -61,4 +61,4 @@ const Sobre = ({ data }) => {
     </section>
   );
 };
-export default memo(Sobre);
+export default memo(About);

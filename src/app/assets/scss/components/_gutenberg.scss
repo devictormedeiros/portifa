@@ -6,9 +6,18 @@
   > .wp-block-image {
     @apply my-[2.5rem];
 
+    img {
+      border-radius: 1.5rem;
+    }
+
     .wp-element-caption {
       @apply text-white-70;
     }
+  }
+
+  .is-layout-flex {
+    display: flex;
+    flex-wrap: wrap;
   }
 
   > h1,
@@ -129,6 +138,14 @@
 
     img {
       @apply w-full object-cover;
+    }
+  }
+
+  .rounded-0 {
+    border-radius: 0;
+
+    * {
+      border-radius: 0;
     }
   }
 

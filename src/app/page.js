@@ -1,6 +1,6 @@
 "use client";
 import Header from "./components/Header";
-import Sobre from "./components/Home/Sobre";
+import About from "./components/Home/About";
 import Intro from "./components/Home/Intro";
 import Tecnologias from "./components/Home/Tecnologias";
 import Contact from "./components/Contact";
@@ -12,7 +12,8 @@ import { useEffect, useState } from "react";
 import Recommendations from "./components/Home/Recommendations";
 
 const HomePage = () => {
-  const [scrollEnabled, setScrollEnabled] = useState(true);
+  const [scrollEnabled, setScrollEnabled] = useState(true); // Controla se o scroll está liberado ou não
+  const [firstScroll, setFirstScroll] = useState(true); // ✅ Controla se é a primeira vez
   const { dataOption: data } = useDataOptions();
 
   useEffect(() => {
@@ -21,43 +22,52 @@ const HomePage = () => {
         event.preventDefault();
         return;
       }
-      if (window.innerWidth <= 768) return; // Mantém o scroll normal no mobile
+
+      if (window.innerWidth <= 768) return; // Mantém scroll normal no mobile
 
       const introSection = document.querySelector(".sec-intro");
-      const sectionSobre = document.querySelector(".sec-sobre");
+      const sectionAbout = document.querySelector(".sec-about");
 
-      if (!introSection || !sectionSobre) return;
+      if (!introSection || !sectionAbout) return;
 
       const scrollPosition = window.scrollY;
       const introTop = introSection.offsetTop;
       const introHeight = introSection.offsetHeight;
-      const sobreTop = sectionSobre.offsetTop;
-      const sobreHeight = sectionSobre.offsetHeight;
+      const sobreTop = sectionAbout.offsetTop;
+      const sobreHeight = sectionAbout.offsetHeight;
 
-      // Verifica se o usuário está dentro das seções desejadas (sec-intro ou sec-sobre)
       const isInsideIntro =
         scrollPosition >= introTop && scrollPosition < introTop + introHeight;
       const isInsideSobre =
         scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
 
-      // Se o usuário não estiver dentro dessas seções, não executa nada
       if (!isInsideIntro && !isInsideSobre) return;
 
+      // Sempre permitir o efeito, mas travar só na primeira vez
       if (isInsideIntro && event.deltaY > 0) {
-        // Scroll para baixo na sec-intro → vai para sec-sobre
         event.preventDefault();
         setScrollEnabled(false);
-        sectionSobre.scrollIntoView({ behavior: "smooth" });
 
-        setTimeout(() => {
+        // Faz o scroll suave para a seção "about"
+        sectionAbout.scrollIntoView({ behavior: "smooth" });
+        
+        if (firstScroll) {
+          setFirstScroll(false);
+          setTimeout(() => {
+            setScrollEnabled(true);
+          }, 3500);
+        } else {
           setScrollEnabled(true);
-        }, 3500);
-      } else if (isInsideSobre && event.deltaY < 0) {
-        // Scroll para cima na sec-sobre → volta para sec-intro
+        }
+      }
+
+      // Scroll de volta da sec-about para sec-intro
+      else if (isInsideSobre && event.deltaY < 0) {
         event.preventDefault();
         setScrollEnabled(false);
         introSection.scrollIntoView({ behavior: "smooth" });
 
+        // Na volta, não precisamos de delay, sempre libera rápido
         setTimeout(() => {
           setScrollEnabled(true);
         }, 500);
@@ -65,19 +75,17 @@ const HomePage = () => {
     };
 
     window.addEventListener("wheel", handleScroll, { passive: false });
-
     return () => {
       window.removeEventListener("wheel", handleScroll);
     };
-  }, [scrollEnabled]);
+  }, [scrollEnabled, firstScroll]);
 
   return (
     <>
       {data?.home.introducao && <Intro data={data.home.introducao} />}
-
       <Header />
       <main className="main-home flex flex-wrap relative z-[1]">
-        {data?.home.sobre && <Sobre data={data?.home.sobre || null} />}
+        {data?.home.sobre && <About data={data?.home.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.home?.scroll && <Call data={data?.home?.scroll || null} />}
           {data?.home.projetos && (
