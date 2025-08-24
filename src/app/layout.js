@@ -3,68 +3,81 @@ import "animate.css/animate.compat.css";
 import { ProjectsProvider } from "./context/ProjectsContext";
 import { DataOptionsProvider } from "./context/DataOptionsContext";
 import LayoutWrapper from "./components/LayoutWrapper";
-import { Metadata } from "next";
 
 export const metadata = {
-  title: {
-    default: "Portfólio", // título padrão da página
-    template: "%s | Portfólio", // formato para títulos dinâmicos
+  title: { 
+    default: "Marcello Vanzillotta | Product Designer & UI/UX", 
+    template: "%s | Marcello Vanzillotta" 
   },
-  description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para SEO
-  keywords: ["portfólio", "desenvolvimento", "projetos", "trabalhos"], // palavras-chave para SEO
-  authors: [{ name: "Seu Nome" }], // autor do site
-  creator: "Seu Nome", // criador do conteúdo
-  publisher: "Seu Nome", // editor/publicador do site
-  formatDetection: {
-    email: false, // evita detecção automática de e-mails
-    address: false, // evita detecção automática de endereços
-    telephone: false, // evita detecção automática de telefones
-  },
-  metadataBase: new URL("https://seu-site.com"), // URL base para metadados
-  alternates: {
-    canonical: "/", // URL canônica (principal) da página
-  },
-  icons: {
-    icon: '/favicon.ico', // caminho na pasta public
-    shortcut: '/favicon.ico', // ícone de atalho
-    apple: '/apple-touch-icon.png', // ícone para iOS
-  },
+  description:
+    "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+  keywords: [
+    "Product Designer",
+    "UX",
+    "UI",
+    "Branding",
+    "Identidade visual",
+    "Portfólio de design",
+    "Experiência do Usuário",
+    "Projetos de design",
+    "Design digital",
+    "Design Thinking",
+    "Interface",
+    "UI&UX"
+  ],
+  authors: [{ name: "Marcello Vanzillotta" }],
+  creator: "Marcello Vanzillotta",
+  publisher: "Marcello Vanzillotta",
+  applicationName: "Portfólio de Marcello Vanzillotta",
+  generator: "Next.js",
+  referrer: "origin-when-cross-origin",
+  formatDetection: { email: false, address: false, telephone: false },
+  metadataBase: new URL(SITE_URL),
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Portfólio", // título para compartilhamento (Open Graph)
-    description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para OG
-    url: "https://seu-site.com", // URL da página para OG
-    siteName: "Portfólio", // nome do site para OG
+    title: "Marcello Vanzillotta | Product Designer & UI/UX",
+    description:
+      "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+    url: SITE_URL,
+    siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
     images: [
-      {
-        url: "https://devictormedeiros.com/portifa-wp/wp-content/uploads/2025/03/archive-min.png", // thumbnail do site
-        width: 1200, // largura da imagem OG
-        height: 630, // altura da imagem OG
-        alt: "Portfólio", // texto alternativo da imagem OG
-      },
+      { url: "/meta/open-graph.png", width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
     ],
-    locale: "pt_BR", // idioma/região do site
-    type: "website", // tipo de conteúdo (site, artigo, etc.)
+    locale: "pt_BR",
+    type: "website",
   },
   twitter: {
-    card: "summary_large_image", // tipo de card do Twitter
-    title: "Portfólio", // título para Twitter
-    description: "Portfólio profissional com projetos e trabalhos realizados", // descrição para Twitter
-    images: ["/twitter-image.jpg"], // thumbnail para Twitter
+    card: "summary_large_image",
+    title: "Marcello Vanzillotta | Product Designer & UI/UX",
+    description:
+      "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+    images: ["/meta/twitter-card.png"],
   },
   robots: {
-    index: true, // permitir indexação
-    follow: true, // permitir seguir links
-    googleBot: {
-      index: true, // permitir indexação pelo Googlebot
-      follow: true, // permitir seguir links pelo Googlebot
-      "max-video-preview": -1, // sem limite para prévia de vídeos
-      "max-image-preview": "large", // usar prévia grande de imagens
-      "max-snippet": -1, // sem limite para snippets de texto
+    index: true,
+    follow: true,
+    googleBot: { 
+      index: true, 
+      follow: true, 
+      "max-video-preview": -1, 
+      "max-image-preview": "large", 
+      "max-snippet": -1 
     },
   },
-  verification: {
-    google: "seu-google-site-verification", // código de verificação do Google Search Console
+  verification: {},
+  manifest: "/meta/site.webmanifest",
+  icons: {
+    icon: [
+      { url: "/meta/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/meta/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
+    apple: [{ url: "/meta/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
   },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
+  ],
 };
 
 
