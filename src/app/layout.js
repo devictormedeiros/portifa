@@ -6,9 +6,9 @@ import LayoutWrapper from "./components/LayoutWrapper";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 export const metadata = {
-  title: { 
-    default: "Marcello Vanzillotta | Product Designer & UI/UX", 
-    template: "%s | Marcello Vanzillotta" 
+  title: {
+    default: "Marcello Vanzillotta | Product Designer & UI/UX",
+    template: "%s | Marcello Vanzillotta",
   },
   description:
     "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
@@ -24,7 +24,7 @@ export const metadata = {
     "Design digital",
     "Design Thinking",
     "Interface",
-    "UI&UX"
+    "UI&UX",
   ],
   authors: [{ name: "Marcello Vanzillotta" }],
   creator: "Marcello Vanzillotta",
@@ -42,7 +42,13 @@ export const metadata = {
     url: SITE_URL,
     siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
     images: [
-      { url: `${SITE_URL}/meta/open-graph.png`,  width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
+      {
+        url: `${SITE_URL}/meta/open-graph.png`,
+        secureUrl: `${SITE_URL}/meta/open-graph.png`,
+        width: 1200,
+        height: 630,
+        alt: "Marcello Vanzillotta | Product Designer & UI/UX",
+      },
     ],
     locale: "pt_BR",
     type: "website",
@@ -57,31 +63,43 @@ export const metadata = {
   robots: {
     index: true,
     follow: true,
-    googleBot: { 
-      index: true, 
-      follow: true, 
-      "max-video-preview": -1, 
-      "max-image-preview": "large", 
-      "max-snippet": -1 
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
     },
   },
   verification: {},
   manifest: `${SITE_URL}/meta/site.webmanifest`,
   icons: {
     icon: [
-      { url: `${SITE_URL}/meta/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
-      { url: `${SITE_URL}/meta/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
+      {
+        url: `${SITE_URL}/meta/favicon-32x32.png`,
+        sizes: "32x32",
+        type: "image/png",
+      },
+      {
+        url: `${SITE_URL}/meta/favicon-16x16.png`,
+        sizes: "16x16",
+        type: "image/png",
+      },
     ],
     shortcut: ["/favicon.ico"],
-    apple: [{ url: `${SITE_URL}/meta/apple-touch-icon.png`, sizes: "180x180", type: "image/png" }],
+    apple: [
+      {
+        url: `${SITE_URL}/meta/apple-touch-icon.png`,
+        sizes: "180x180",
+        type: "image/png",
+      },
+    ],
   },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
     { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
   ],
 };
-
-
 
 export default function RootLayout({ children }) {
   return (
