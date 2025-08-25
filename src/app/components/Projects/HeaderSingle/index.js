@@ -37,7 +37,7 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
             <h1 className="content-title-h2 text-gray-200 uppercase">
               {currentProject.title?.rendered || "Sem título"}
             </h1>
-            {currentProject.link && (
+            {currentProject?.acf?.link !== "" && (
               <a
                 href={currentProject.link}
                 className="text-gray-200 bg-white-10 hover:bg-primary menu-section flex items-center py-2 px-4 rounded-3xl gap-x-2 flex-none duration-500"
