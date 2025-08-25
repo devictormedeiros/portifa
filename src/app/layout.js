@@ -4,6 +4,7 @@ import { ProjectsProvider } from "./context/ProjectsContext";
 import { DataOptionsProvider } from "./context/DataOptionsContext";
 import LayoutWrapper from "./components/LayoutWrapper";
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 export const metadata = {
   title: { 
     default: "Marcello Vanzillotta | Product Designer & UI/UX", 
@@ -32,7 +33,7 @@ export const metadata = {
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL("https://vanzillotta.com"),
+  metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   openGraph: {
     title: "Marcello Vanzillotta | Product Designer & UI/UX",
@@ -41,7 +42,7 @@ export const metadata = {
     url: "https://vanzillotta.com",
     siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
     images: [
-      { url: "/meta/open-graph.png", width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
+      { url: `${SITE_URL}/meta/open-graph.png`,  width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
     ],
     locale: "pt_BR",
     type: "website",
@@ -51,7 +52,7 @@ export const metadata = {
     title: "Marcello Vanzillotta | Product Designer & UI/UX",
     description:
       "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
-    images: ["/meta/twitter-card.png"],
+    images: [`${SITE_URL}/meta/twitter-card.png`],
   },
   robots: {
     index: true,
@@ -65,14 +66,14 @@ export const metadata = {
     },
   },
   verification: {},
-  manifest: "/meta/site.webmanifest",
+  manifest: `${SITE_URL}/meta/site.webmanifest`,
   icons: {
     icon: [
-      { url: "/meta/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/meta/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: `${SITE_URL}/meta/favicon-32x32.png`, sizes: "32x32", type: "image/png" },
+      { url: `${SITE_URL}/meta/favicon-16x16.png`, sizes: "16x16", type: "image/png" },
     ],
     shortcut: ["/favicon.ico"],
-    apple: [{ url: "/meta/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [{ url: `${SITE_URL}/meta/apple-touch-icon.png`, sizes: "180x180", type: "image/png" }],
   },
   themeColor: [
     { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
