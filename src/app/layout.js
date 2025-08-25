@@ -39,7 +39,7 @@ export const metadata = {
     title: "Marcello Vanzillotta | Product Designer & UI/UX",
     description:
       "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
-    url: "https://vanzillotta.com",
+    url: SITE_URL,
     siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
     images: [
       { url: `${SITE_URL}/meta/open-graph.png`,  width: 1200, height: 630, alt: "Marcello Vanzillotta | Product Designer & UI/UX" }
