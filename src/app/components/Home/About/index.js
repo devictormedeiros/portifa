@@ -2,7 +2,7 @@ import "./style.scss";
 import { memo, useState, useEffect } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
 const About = ({ data }) => {
-  const [offsetValue, setOffsetValue] = useState(150); // Valor padrão
+  const [offsetValue, setOffsetValue] = useState(100); // Valor padrão
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -30,7 +30,8 @@ const About = ({ data }) => {
             className="text col-span-12 md:col-span-7"
             animateIn="fadeInUp"
             duration={3}
-            offset={offsetValue}
+            offset={window.innerHeight * 0.3}
+   
             animateOnce={true}
           >
             <h2 className="content-title-h2 text-gray-200 mb-[1rem] uppercase md:mb-6">
@@ -45,9 +46,10 @@ const About = ({ data }) => {
           <AnimationWrapper
             className="image col-span-12 md:col-span-5"
             animateIn="fadeIn"
-            duration={2}
-            delay={500}
+            duration={3}
+            delay={600}
             animateOnce={true}
+            offset={window.innerHeight * 0.3}
           >
             <img
               src={data?.imagem.url}

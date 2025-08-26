@@ -16,69 +16,69 @@ const HomePage = () => {
   const [firstScroll, setFirstScroll] = useState(true); // ✅ Controla se é a primeira vez
   const { dataOption: data } = useDataOptions();
 
-  useEffect(() => {
-    const handleScroll = (event) => {
-      if (!scrollEnabled) {
-        event.preventDefault();
-        return;
-      }
+  // useEffect(() => {
+  //   const handleScroll = (event) => {
+  //     if (!scrollEnabled) {
+  //       event.preventDefault();
+  //       return;
+  //     }
 
-      if (window.innerWidth <= 768) return; // Mantém scroll normal no mobile
+  //     if (window.innerWidth <= 768) return; // Mantém scroll normal no mobile
 
-      const introSection = document.querySelector(".sec-intro");
-      const sectionAbout = document.querySelector(".sec-about");
+  //     const introSection = document.querySelector(".sec-intro");
+  //     const sectionAbout = document.querySelector(".sec-about");
 
-      if (!introSection || !sectionAbout) return;
+  //     if (!introSection || !sectionAbout) return;
 
-      const scrollPosition = window.scrollY;
-      const introTop = introSection.offsetTop;
-      const introHeight = introSection.offsetHeight;
-      const sobreTop = sectionAbout.offsetTop;
-      const sobreHeight = sectionAbout.offsetHeight;
+  //     const scrollPosition = window.scrollY;
+  //     const introTop = introSection.offsetTop;
+  //     const introHeight = introSection.offsetHeight;
+  //     const sobreTop = sectionAbout.offsetTop;
+  //     const sobreHeight = sectionAbout.offsetHeight;
 
-      const isInsideIntro =
-        scrollPosition >= introTop && scrollPosition < introTop + introHeight;
-      const isInsideSobre =
-        scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
+  //     const isInsideIntro =
+  //       scrollPosition >= introTop && scrollPosition < introTop + introHeight;
+  //     const isInsideSobre =
+  //       scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
 
-      if (!isInsideIntro && !isInsideSobre) return;
+  //     if (!isInsideIntro && !isInsideSobre) return;
 
-      // Sempre permitir o efeito, mas travar só na primeira vez
-      if (isInsideIntro && event.deltaY > 0) {
-        event.preventDefault();
-        setScrollEnabled(false);
+  //     // Sempre permitir o efeito, mas travar só na primeira vez
+  //     if (isInsideIntro && event.deltaY > 0) {
+  //       event.preventDefault();
+  //       setScrollEnabled(false);
 
-        // Faz o scroll suave para a seção "about"
-        sectionAbout.scrollIntoView({ behavior: "smooth" });
+  //       // Faz o scroll suave para a seção "about"
+  //       sectionAbout.scrollIntoView({ behavior: "smooth" });
         
-        if (firstScroll) {
-          setFirstScroll(false);
-          setTimeout(() => {
-            setScrollEnabled(true);
-          }, 3500);
-        } else {
-          setScrollEnabled(true);
-        }
-      }
+  //       if (firstScroll) {
+  //         setFirstScroll(false);
+  //         setTimeout(() => {
+  //           setScrollEnabled(true);
+  //         }, 3500);
+  //       } else {
+  //         setScrollEnabled(true);
+  //       }
+  //     }
 
-      // Scroll de volta da sec-about para sec-intro
-      else if (isInsideSobre && event.deltaY < 0) {
-        event.preventDefault();
-        setScrollEnabled(false);
-        introSection.scrollIntoView({ behavior: "smooth" });
+  //     // Scroll de volta da sec-about para sec-intro
+  //     else if (isInsideSobre && event.deltaY < 0) {
+  //       event.preventDefault();
+  //       setScrollEnabled(false);
+  //       introSection.scrollIntoView({ behavior: "smooth" });
 
-        // Na volta, não precisamos de delay, sempre libera rápido
-        setTimeout(() => {
-          setScrollEnabled(true);
-        }, 500);
-      }
-    };
+  //       // Na volta, não precisamos de delay, sempre libera rápido
+  //       setTimeout(() => {
+  //         setScrollEnabled(true);
+  //       }, 500);
+  //     }
+  //   };
 
-    window.addEventListener("wheel", handleScroll, { passive: false });
-    return () => {
-      window.removeEventListener("wheel", handleScroll);
-    };
-  }, [scrollEnabled, firstScroll]);
+  //   window.addEventListener("wheel", handleScroll, { passive: false });
+  //   return () => {
+  //     window.removeEventListener("wheel", handleScroll);
+  //   };
+  // }, [scrollEnabled, firstScroll]);
 
   return (
     <>

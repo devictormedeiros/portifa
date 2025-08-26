@@ -47,12 +47,17 @@ const CardProjectBig = ({ project, technologies }) => {
             <div className="flex flex-col gap-6 flex-1">
               <p className="content-text text-white-70 md:line-clamp-none">
                 {(() => {
-                  const text = project.acf?.resumoCardHome
-                    ? project.acf.resumoCardHome
-                    : (project.excerpt?.rendered || "").replace(/<[^>]+>/g, "");
+                  const resumo = project.acf?.resumoCardHome;
+                  const excerpt = (project.excerpt?.rendered || "").replace(
+                    /<[^>]+>/g,
+                    ""
+                  );
 
-                  const sliced = text.slice(0, 120).trim();
-                  return project.acf?.resumoCardHome ? sliced : sliced + "...";
+                  if (resumo) {
+                    return resumo;
+                  }
+                  const sliced = excerpt.slice(0, 120).trim();
+                  return excerpt.length > 120 ? sliced + "..." : sliced;
                 })()}
               </p>
               <a

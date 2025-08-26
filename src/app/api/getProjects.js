@@ -11,7 +11,7 @@ export const getProjects = async () => {
         lang = storedLang;
       }
     }
-    const projects = await getAPI(`/wp/v2/projeto?_embed&lang=${lang}`);
+    const projects = await getAPI(`/wp/v2/projeto?_embed&per_page=100&lang=${lang}`);
     const technologies = await getAPI("/wp/v2/tecnologias?hide_empty=true");
 
     return { projects, technologies };

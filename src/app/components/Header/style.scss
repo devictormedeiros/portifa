@@ -25,6 +25,7 @@ header {
         backdrop-filter: blur(0.25rem);
         position: absolute;
         transition: background 0.3s;
+        transition-delay: 20s;
         top: 0;
         z-index: -1;
       }
