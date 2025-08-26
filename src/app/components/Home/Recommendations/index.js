@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Accordion from "../../Accordion";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const Recommendations = ({ data }) => {
   const containerRef = useRef(null);
@@ -28,8 +28,13 @@ const Recommendations = ({ data }) => {
     setIsDragging(false);
   };
 
+  useEffect(() => {
+    console.log(data)
+  }, []);
+
   return (
-    <section className={`sec-recommendations g-col-12`}>
+    <section className={`sec-recommendations g-col-12`} style={data?.orderSection ? { order: data.orderSection } : undefined}
+>
       <Accordion title={data.titulo} condition={data.condicao}>
         <div
           className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-horizontal list-recommendations scroll-hide-bar-mobile"
