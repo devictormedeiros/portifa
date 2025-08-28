@@ -45,21 +45,21 @@ const CardProjectBig = ({ project, technologies }) => {
               />
             </figure>
             <div className="flex flex-col gap-6 flex-1">
-              <p className="content-text text-white-70 md:line-clamp-none">
-                {(() => {
-                  const resumo = project.acf?.resumoCardHome;
-                  const excerpt = (project.excerpt?.rendered || "").replace(
-                    /<[^>]+>/g,
-                    ""
-                  );
+            <div
+  className="content-text text-white-70 md:line-clamp-none"
+  dangerouslySetInnerHTML={{
+    __html: (() => {
+      const resumo = project.acf?.resumoCardHome;
+      const excerpt = project.excerpt?.rendered || "";
 
-                  if (resumo) {
-                    return resumo;
-                  }
-                  const sliced = excerpt.slice(0, 120).trim();
-                  return excerpt.length > 120 ? sliced + "..." : sliced;
-                })()}
-              </p>
+      if (resumo) return resumo;
+
+      const sliced = excerpt.slice(0, 120).trim();
+      return excerpt.length > 120 ? sliced + "..." : sliced;
+    })(),
+  }}
+/>
+
               <a
                 href={`/projeto/${project.slug}`}
                 title={project.title?.rendered || "Sem título"}

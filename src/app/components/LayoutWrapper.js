@@ -2,20 +2,25 @@
 
 import { StickyProvider } from "../context/StickyContext";
 import { useDataOptions } from "../context/DataOptionsContext";
+import { useProjects } from "../context/ProjectsContext";
 import LoadingPage from "./LoadingPage";
 import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
 import ScrollToTop from "./ScrollTop";
-import Head from "next/head"; // Importa o Head
 
 export default function LayoutWrapper({ children }) {
   const { dataOption, isLoading } = useDataOptions();
+  
+  const { isLoadingProjects } = useProjects();
+
+  const isPageLoading = isLoading || isLoadingProjects;
+
   return (
     <>
       <ScrollToTop />
       <body
-        data-page-load={isLoading.toString()}
+        data-page-load={isPageLoading.toString()}
         className="antialiased text-white-100"
       >
         <style>{dataOption?.code_editor?.custom_code_css}</style>

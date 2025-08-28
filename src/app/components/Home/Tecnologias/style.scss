@@ -6,12 +6,12 @@
     row-gap: 5rem;
   }
   .accordion {
-    // &:not(.open), .accordion-content ul:not(.sec-visible){
-    //   .progress-bar .progress-bar-percent {
-    //     width: 0 !important;
-    //     transition: width 0.5s ease-out 0.5s;
-    //   }
-    // }
+    &:not(.open), &:not(.sec-visible){
+      .progress-bar .progress-bar-percent {
+        width: 0 !important;
+        transition: width 0.5s ease-out 0.5s;
+      }
+    }
     .progress-bar .progress-bar-percent {
       transition: width 0.5s ease-out 0.5s;
     }

@@ -6,7 +6,6 @@ import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import IconsLib from "../Icons";
 
-
 import ScrollingText from "../Home/ScrollText/ScrollText";
 import Footer from "../Footer";
 const Contact = ({ data, scrollText, dataForm }) => {
@@ -35,7 +34,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
         dataForm?.emailjs_service_id,
         dataForm?.emailjs_template_id,
         form.current,
-        dataForm?.emailjs_public_key,
+        dataForm?.emailjs_public_key
       )
       .then(
         (result) => {
@@ -46,7 +45,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
         (error) => {
           setIsSuccess(false);
           setLoadingForm(false);
-        },
+        }
       );
   };
 
@@ -170,9 +169,12 @@ const Contact = ({ data, scrollText, dataForm }) => {
                     className="text-sm content-caption text-white-70"
                     htmlFor="input-consent"
                   >
-                    Etiam non diam sit amet enim euismod blandit luctus lacinia
-                    lorem. Vestibulum ultricies est turpis, ut pulvinar lorem
-                    tempor a.
+                    <div
+                      className="text-privacy"
+                      dangerouslySetInnerHTML={{
+                        __html: dataForm.texto_de_privacidade,
+                      }}
+                    />
                   </label>
                 </div>
                 <div className="flex flex-wrap items-center justify-end w-full md:w-1/4">
@@ -182,7 +184,11 @@ const Contact = ({ data, scrollText, dataForm }) => {
                       loadingForm ? "is-loading" : ""
                     }`}
                   >
-                    Enviar
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: dataForm.texto_do_botao,
+                      }}
+                    />
                     <Spinner className="h-4 w-4 absolute right-2" />
                   </button>
                 </div>

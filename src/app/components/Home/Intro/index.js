@@ -90,33 +90,29 @@ const Intro = ({ data }) => {
     <section className="sec-intro overflow-hidden bg-gray-900">
       <div className="container-text">
         {layout_intro === "video" ? (
-          <>
-            {video_intro_desktop && (
-              <video
-                src={video_intro_desktop}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="hidden md:block w-full h-full object-cover"
-              >
-                Seu navegador não suporta o elemento <code>video</code>.
-              </video>
-            )}
-
-            {video_intro_mobile && (
-              <video
-                src={video_intro_mobile}
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="block md:hidden w-full h-full object-cover"
-              >
-                Seu navegador não suporta o elemento <code>video</code>.
-              </video>
-            )}
-          </>
+          <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          {video_intro_desktop && (
+            <source
+              src={video_intro_desktop}
+              type="video/webm"
+              media="(min-width: 768px)"
+            />
+          )}
+          {video_intro_mobile && (
+            <source
+              src={video_intro_mobile}
+              type="video/webm"
+              media="(max-width: 767px)"
+            />
+          )}
+          Seu navegador não suporta o elemento <code>video</code>.
+        </video>
         ) : (
           <div
             className="text container"

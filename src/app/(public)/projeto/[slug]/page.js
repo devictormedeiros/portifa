@@ -11,6 +11,8 @@ import SectionMoreProjoects from "@/app/components/Single/SectionMoreProjects";
 import TopPage from "@/app/components/Projects/TopPage";
 import ContentProject from "@/app/components/Projects/ContentProject";
 import HeaderSingle from "@/app/components/Projects/HeaderSingle";
+import { notFound } from "next/navigation";
+
 
 const ProjetoPage = () => {
   const { dataOption: data } = useDataOptions();
@@ -106,7 +108,7 @@ const ProjetoPage = () => {
   }, []);
 
   if (!currentProject) {
-    return <div>Projeto não encontrado</div>; // Ou uma página 404
+    notFound();
   }
 
   // Filtra as tecnologias do projeto atual

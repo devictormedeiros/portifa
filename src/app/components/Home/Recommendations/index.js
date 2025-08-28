@@ -29,12 +29,14 @@ const Recommendations = ({ data }) => {
   };
 
   useEffect(() => {
-    console.log(data)
+    console.log(data);
   }, []);
 
   return (
-    <section className={`sec-recommendations g-col-12`} style={data?.orderSection ? { order: data.orderSection } : undefined}
->
+    <section
+      className={`sec-recommendations g-col-12`}
+      style={data?.orderSection ? { order: data.orderSection } : undefined}
+    >
       <Accordion title={data.titulo} condition={data.condicao}>
         <div
           className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-horizontal list-recommendations scroll-hide-bar-mobile"
@@ -65,9 +67,10 @@ const Recommendations = ({ data }) => {
                   />
                 </figure>
                 <div className="p-6">
-                  <p className="content-text text-white-70 pb-6 border-b border-white-10 italic">
-                    {item.texto}
-                  </p>
+                  <p
+                    className="content-text text-white-70 pb-6 border-b border-white-10 italic"
+                    dangerouslySetInnerHTML={{ __html: item.texto }}
+                  />
                   <div className="flex pt-6 gap-2 items-center text-white-70">
                     <p className="content-text">{item.nome}</p>
                   </div>

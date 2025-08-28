@@ -53,7 +53,7 @@ export default function SwitchLang({ onChange }) {
     window.location.reload();
   };
 
-  if (!selected || languages.length === 0) return null;
+  if (!selected || languages.length <= 1) return null;
 
   return (
     <div

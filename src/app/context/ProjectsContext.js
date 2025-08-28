@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import { getProjects } from "../api/getProjects"; // ajuste o caminho se necessário
+import { getProjects } from "../api/getProjects";
 
 const ProjectsContext = createContext();
 export const ProjectsProvider = ({ children }) => {

@@ -4,6 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
+import ObserverHtml from "../../hooks/ObserverHtml";
 import ScrollAnimation from "react-animate-on-scroll";
 import "./style.scss";
 
@@ -26,6 +27,7 @@ const AccordionCustom = ({ title, children, condition }) => {
   }, [shouldStartOpen]);
 
   const handleOpen = () => setOpen((prev) => !prev);
+  const { isVisible, targetRef } = ObserverHtml({ threshold: 0.5 });
 
   return (
     <>
@@ -37,7 +39,9 @@ const AccordionCustom = ({ title, children, condition }) => {
       >
         <Accordion
           open={open}
-          className={`accordion w-full mb-0 px-0 ${open ? "open" : 0}`}
+          ref={targetRef}
+
+          className={`accordion w-full mb-0 px-0 ${isVisible ? "sec-visible" : ""} ${open ? "open" : 0}`}
           animate={accordionAnimation}
         >
           <div className="container">
