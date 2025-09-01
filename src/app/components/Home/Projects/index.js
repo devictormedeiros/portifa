@@ -63,7 +63,7 @@ const Projects = ({ data }) => {
       <div className="container h-full relative">
         <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
           {Object?.values(data)
-            .map((project) => project)
+            .map((project) => project.ID)
             .map((projectId) => projects.find((p) => p.id == projectId))
             .filter(Boolean)
             .map((project, index) => (

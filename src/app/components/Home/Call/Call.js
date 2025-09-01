@@ -33,8 +33,8 @@ const Call = ({ data }) => {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    canvas.width = 2 * window.innerWidth;
+    canvas.height = 2 * window.innerHeight;
 
     const loadImages = async () => {
       const loadImage = (src) => {
