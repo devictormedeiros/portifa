@@ -5,13 +5,13 @@ const List = ({ filteredProjects, technologies }) => {
     <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {filteredProjects.map((project, index) => {
-const media = project._embedded?.["wp:featuredmedia"]?.[0];
-const sizes = media?.media_details?.sizes;
+          const media = project._embedded?.["wp:featuredmedia"]?.[0];
+          const sizes = media?.media_details?.sizes;
 
-const imageUrl =
-  sizes?.["card-thumb"]?.source_url || // usa o crop exato
-  sizes?.medium_large?.source_url ||   // fallback
-  media?.source_url;                   // fallback full
+          const imageUrl =
+            sizes?.["card-thumb"]?.source_url || // usa o crop exato
+            sizes?.medium_large?.source_url || // fallback
+            media?.source_url; // fallback full
 
           return (
             <article

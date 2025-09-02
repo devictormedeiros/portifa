@@ -19,7 +19,7 @@ export default function ScrollingTexts({ data }) {
         markers: false,
       },
       x: "-50%",
-      duration: 5,
+      duration: 10,
       /* ease: "none", */
       overwrite: "auto",
       immediateRender: false,
@@ -33,7 +33,7 @@ export default function ScrollingTexts({ data }) {
         markers: false,
       },
       x: "50%",
-      duration: 5,
+      duration: 10,
       /* ease: "none", */
       overwrite: "auto",
       immediateRender: false,
