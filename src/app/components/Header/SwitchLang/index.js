@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./style.scss";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
+import { getCurrentLang } from "@/app/utils/getCurrentLang";
 
 export default function SwitchLang({ onChange }) {
   const { dataOption } = useDataOptions();
@@ -10,7 +11,7 @@ export default function SwitchLang({ onChange }) {
   const [selected, setSelected] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
-
+  
   // monta os idiomas a partir do ACF Options
   useEffect(() => {
     const acf = (dataOption && (dataOption.acf || dataOption)) || {};
@@ -38,8 +39,8 @@ export default function SwitchLang({ onChange }) {
     .filter(Boolean);
   
   
-  
-    const savedSlug = typeof window !== "undefined" ? localStorage.getItem("lang") : null;
+    const savedSlug = getCurrentLang();
+
 
     const initial =
       langs.find((l) => l.slug === savedSlug) ||
