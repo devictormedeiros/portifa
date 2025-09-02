@@ -21,6 +21,7 @@ const ProjetoPage = () => {
   const scrollRef = useRef(null);
   const params = useParams();
   const innerWidth = typeof window !== "undefined" && window?.innerWidth;
+  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     if (!currentProject) return;
@@ -56,8 +57,9 @@ const ProjetoPage = () => {
 
   useEffect(() => {
     if (projects.length > 0 && params.slug) {
-      const project = projects.find((p) => p.slug === params.slug);
+      const project = projects.find((p) => p.slug === params.slug) ?? null;
       setCurrentProject(project);
+      setIsReady(true); // <- só aqui digo que já sei se existe ou não
     }
   }, [projects, params.slug]);
 
@@ -107,9 +109,14 @@ const ProjetoPage = () => {
     };
   }, []);
 
-  if (!currentProject) {
+  if (!isReady) {
+    return null; // ou um loader
+  }
+  
+  if (isReady && !currentProject) {
     notFound();
   }
+  
 
   // Filtra as tecnologias do projeto atual
   const projectTechnologies = currentProject.tecnologias
