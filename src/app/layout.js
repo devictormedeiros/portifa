@@ -4,7 +4,7 @@ import { ProjectsProvider } from "./context/ProjectsContext";
 import { DataOptionsProvider } from "./context/DataOptionsContext";
 import LayoutWrapper from "./components/LayoutWrapper";
 
-/* const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 export const metadata = {
   title: {
     default: "Marcello Vanzillotta | Product Designer & UI/UX",
@@ -99,7 +99,8 @@ export const metadata = {
     { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
     { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
   ],
-}; */
+};
+
 
 export default function RootLayout({ children }) {
   return (
