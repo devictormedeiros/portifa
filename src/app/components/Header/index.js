@@ -7,20 +7,21 @@ import getPosts from "../../api/getAPI";
 import { useSticky } from "../../context/StickyContext";
 import SwitchLang from "./SwitchLang";
 import MainLogo from "../Icons/Logos/MainLogo";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getCurrentLang } from "../../utils/getCurrentLang";
 
 const Header = () => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
-
+  const lang = getCurrentLang();
   const [itemslink, setItemsLink] = useState([]);
 
   useEffect(() => {
     const fetchItemsLinks = async () => {
-      const data = await getPosts("/menus/menu-principal");
+      const data = await getPosts(`/menus/menu-principal?lang=${lang}`, false);
       setItemsLink(data);
     };
     fetchItemsLinks();
   }, []);
+  
 
   return (
     <header
