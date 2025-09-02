@@ -82,22 +82,22 @@ const HomePage = () => {
 
   return (
     <>
-      {data?.home.introducao && <Intro data={data.home.introducao} />}
+      {data?.home?.introducao && <Intro data={data.home?.introducao} />}
       <Header />
       <main className="main-home flex flex-wrap relative z-[1]">
-        {data?.home.sobre && <About data={data?.home.sobre || null} />}
+        {data?.home?.sobre && <About data={data?.home?.sobre || null} />}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.home?.scroll && <Call data={data?.home?.scroll || null} />}
-          {data?.home.projetos && (
+          {data?.home?.projetos && (
             <Projects data={data?.home?.projetos || null} />
           )}
           <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
-            {data?.home.tabs && <Skills data={data?.home.tabs} />}
-            {data?.home.tecnologias_atuacoes && (
-              <Tecnologias data={data?.home.tecnologias_atuacoes || null} />
+            {data?.home?.tabs && <Skills data={data?.home.tabs} />}
+            {data?.home?.tecnologias_atuacoes && (
+              <Tecnologias data={data?.home?.tecnologias_atuacoes || null} />
             )}
-            {data?.home.recomendacoes && (
-              <Recommendations data={data.home.recomendacoes} />
+            {data?.home?.recomendacoes && (
+              <Recommendations data={data.home?.recomendacoes} />
             )}
           </section>
         </div>

@@ -172,7 +172,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
                     <div
                       className="text-privacy"
                       dangerouslySetInnerHTML={{
-                        __html: dataForm.texto_de_privacidade,
+                        __html: dataForm?.texto_de_privacidade,
                       }}
                     />
                   </label>
@@ -186,7 +186,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
                   >
                     <div
                       dangerouslySetInnerHTML={{
-                        __html: dataForm.texto_do_botao,
+                        __html: dataForm?.texto_do_botao,
                       }}
                     />
                     <Spinner className="h-4 w-4 absolute right-2" />
