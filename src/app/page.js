@@ -1,4 +1,5 @@
 "use client";
+import { useEffect, useRef, useState } from "react";
 import Header from "./components/Header";
 import About from "./components/Home/About";
 import Intro from "./components/Home/Intro";
@@ -8,96 +9,74 @@ import Projects from "./components/Home/Projects";
 import Call from "./components/Home/Call/Call";
 import Skills from "./components/Home/Skills/Skills";
 import { useDataOptions } from "./context/DataOptionsContext";
-import { useEffect, useState } from "react";
 import Recommendations from "./components/Home/Recommendations";
 
 const HomePage = () => {
-  const [scrollEnabled, setScrollEnabled] = useState(true); // Controla se o scroll está liberado ou não
-  const [firstScroll, setFirstScroll] = useState(true); // ✅ Controla se é a primeira vez
   const { dataOption: data } = useDataOptions();
+  const mainRef = useRef(null);
+  const [scrollLocked, setScrollLocked] = useState(false);
+  const [alreadyLocked, setAlreadyLocked] = useState(false);
 
-  // useEffect(() => {
-  //   const handleScroll = (event) => {
-  //     if (!scrollEnabled) {
-  //       event.preventDefault();
-  //       return;
-  //     }
+  useEffect(() => {
+    let ticking = false;
 
-  //     if (window.innerWidth <= 768) return; // Mantém scroll normal no mobile
+    const handleScroll = () => {
+      if (
+        scrollLocked ||
+        alreadyLocked ||
+        !mainRef.current ||
+        window.innerWidth < 1024 // só desktop
+      ) {
+        return;
+      }
 
-  //     const introSection = document.querySelector(".sec-intro");
-  //     const sectionAbout = document.querySelector(".sec-about");
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const rect = mainRef.current.getBoundingClientRect();
 
-  //     if (!introSection || !sectionAbout) return;
+          if (rect.top <= 0 && window.scrollY > 100) {
+            setScrollLocked(true);
+            setAlreadyLocked(true);
+            document.body.style.overflowY = "hidden";
 
-  //     const scrollPosition = window.scrollY;
-  //     const introTop = introSection.offsetTop;
-  //     const introHeight = introSection.offsetHeight;
-  //     const sobreTop = sectionAbout.offsetTop;
-  //     const sobreHeight = sectionAbout.offsetHeight;
+            // Libera o scroll após 2 segundos (2000ms)
+            setTimeout(() => {
+              document.body.style.overflowY = "auto";
+              setScrollLocked(false);
+            }, 1600);
+          }
 
-  //     const isInsideIntro =
-  //       scrollPosition >= introTop && scrollPosition < introTop + introHeight;
-  //     const isInsideSobre =
-  //       scrollPosition >= sobreTop && scrollPosition < sobreTop + sobreHeight;
+          ticking = false;
+        });
 
-  //     if (!isInsideIntro && !isInsideSobre) return;
+        ticking = true;
+      }
+    };
 
-  //     // Sempre permitir o efeito, mas travar só na primeira vez
-  //     if (isInsideIntro && event.deltaY > 0) {
-  //       event.preventDefault();
-  //       setScrollEnabled(false);
-
-  //       // Faz o scroll suave para a seção "about"
-  //       sectionAbout.scrollIntoView({ behavior: "smooth" });
-        
-  //       if (firstScroll) {
-  //         setFirstScroll(false);
-  //         setTimeout(() => {
-  //           setScrollEnabled(true);
-  //         }, 3500);
-  //       } else {
-  //         setScrollEnabled(true);
-  //       }
-  //     }
-
-  //     // Scroll de volta da sec-about para sec-intro
-  //     else if (isInsideSobre && event.deltaY < 0) {
-  //       event.preventDefault();
-  //       setScrollEnabled(false);
-  //       introSection.scrollIntoView({ behavior: "smooth" });
-
-  //       // Na volta, não precisamos de delay, sempre libera rápido
-  //       setTimeout(() => {
-  //         setScrollEnabled(true);
-  //       }, 500);
-  //     }
-  //   };
-
-  //   window.addEventListener("wheel", handleScroll, { passive: false });
-  //   return () => {
-  //     window.removeEventListener("wheel", handleScroll);
-  //   };
-  // }, [scrollEnabled, firstScroll]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrollLocked, alreadyLocked]);
 
   return (
     <>
-      {data?.home.introducao && <Intro data={data.home.introducao} />}
+      {data?.home?.introducao && <Intro data={data.home?.introducao} />}
       <Header />
-      <main className="main-home flex flex-wrap relative z-[1]">
-        {data?.home.sobre && <About data={data?.home.sobre || null} />}
+      <main ref={mainRef} className="main-home flex flex-wrap relative z-[1]">
+        {data?.home?.sobre && (
+          <About data={data?.home?.sobre || null} />
+        )}
         <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
           {data?.home?.scroll && <Call data={data?.home?.scroll || null} />}
-          {data?.home.projetos && (
+          {data?.home?.projetos && (
             <Projects data={data?.home?.projetos || null} />
           )}
           <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
-            {data?.home.tabs && <Skills data={data?.home.tabs} />}
-            {data?.home.tecnologias_atuacoes && (
-              <Tecnologias data={data?.home.tecnologias_atuacoes || null} />
+            {data?.home?.tabs && <Skills data={data?.home.tabs} />}
+            {data?.home?.tecnologias_atuacoes && (
+              <Tecnologias data={data?.home?.tecnologias_atuacoes || null} />
             )}
-            {data?.home.recomendacoes && (
-              <Recommendations data={data.home.recomendacoes} />
+            {data?.home?.recomendacoes && (
+              <Recommendations data={data.home?.recomendacoes} />
             )}
           </section>
         </div>

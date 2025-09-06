@@ -1,46 +1,63 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { getLanguages } from "@/app/api/getLanguages";
 import "./style.scss";
+import { useDataOptions } from "@/app/context/DataOptionsContext";
+import { getCurrentLang } from "@/app/utils/getCurrentLang";
 
 export default function SwitchLang({ onChange }) {
+  const { dataOption } = useDataOptions();
   const [languages, setLanguages] = useState([]);
   const [selected, setSelected] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
-
+  
+  // monta os idiomas a partir do ACF Options
   useEffect(() => {
-    const loadLanguages = async () => {
-      try {
-        const langs = await getLanguages();
+    const acf = (dataOption && (dataOption.acf || dataOption)) || {};
+    const acfSlugs = Array.isArray(acf.idiomas_exibidos) ? acf.idiomas_exibidos : [];
+    if (acfSlugs.length === 0) return;
 
-        if (!Array.isArray(langs) || langs.length === 0) return;
+    const defaultSlug = acf.idioma_padrao || acf.idiomaDefault || null;
 
-        const savedLang = localStorage.getItem("lang");
-        const defaultLang = langs.find((lang) => lang.is_default);
-        const initialLang =
-          langs.find((lang) => lang.slug === savedLang) ||
-          defaultLang ||
-          langs[0];
+    const langs = acfSlugs
+    .map((item) => {
+      const raw = typeof item === "string"
+        ? item
+        : item?.value || item?.slug || null;
+  
+      if (!raw || typeof raw !== "string") return null;
+  
+      const cleanSlug = raw.replace(/^pll_/, ""); // remove "pll_"
+  
+      return {
+        slug: cleanSlug, // <-- agora o slug NÃO tem "pll_"
+        name: cleanSlug.toUpperCase(),
+        is_default: defaultSlug?.replace(/^pll_/, "") === cleanSlug,
+      };
+    })
+    .filter(Boolean);
+  
+  
+    const savedSlug = getCurrentLang();
 
-        setLanguages(langs);
-        setSelected(initialLang);
-      } catch (err) {
-        console.error("Erro ao carregar idiomas:", err);
-      }
-    };
 
-    loadLanguages();
-  }, []);
+    const initial =
+      langs.find((l) => l.slug === savedSlug) ||
+      (defaultSlug ? langs.find((l) => l.slug === defaultSlug) : null) ||
+      langs[0];
 
+    setLanguages(langs);
+    setSelected(initial || null);
+  }, [dataOption]);
+
+  // fecha dropdown ao clicar fora
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (selectRef.current && !selectRef.current.contains(e.target)) {
         setIsOpen(false);
       }
     };
-
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
@@ -48,7 +65,9 @@ export default function SwitchLang({ onChange }) {
   const handleSelect = (lang) => {
     setSelected(lang);
     setIsOpen(false);
-    localStorage.setItem("lang", lang.slug);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("lang", lang.slug);
+    }
     if (onChange) onChange(lang.slug);
     window.location.reload();
   };
@@ -68,8 +87,9 @@ export default function SwitchLang({ onChange }) {
           src={`/images/flags/${selected.slug}.svg`}
           alt={selected.name}
         />
-        <span>{selected.slug.toUpperCase()}</span>
+        <span>{selected.name}</span>
       </div>
+
       <ul className="options-lang">
         {languages
           .filter((lang) => lang.slug !== selected.slug)
@@ -80,7 +100,7 @@ export default function SwitchLang({ onChange }) {
                 src={`/images/flags/${lang.slug}.svg`}
                 alt={lang.name}
               />
-              <span>{lang.slug.toUpperCase()}</span>
+              <span>{lang.name}</span>
             </li>
           ))}
       </ul>

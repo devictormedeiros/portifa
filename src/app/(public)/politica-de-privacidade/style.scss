@@ -1,0 +1,41 @@
+.main-privacy-page {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+  h1{
+    @apply text-5xl;
+    @apply font-bold;
+    @apply mb-11;
+  }
+  h2{
+    @apply text-4xl;
+    @apply font-bold;
+  }
+  h3{
+    @apply text-3xl;
+    @apply font-bold;
+  }
+  h4{
+    @apply text-2xl;
+    @apply font-bold;
+  }
+  h5{
+    @apply text-xl;
+    @apply font-bold;
+  }
+  h6{
+    @apply text-lg;
+    @apply font-bold;
+  }
+  p {
+    @apply content-text;
+    margin-bottom: 1rem;
+    color: var(--white-80);
+  }
+}

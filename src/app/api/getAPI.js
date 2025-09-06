@@ -1,4 +1,4 @@
-async function getAPI(routes) {
+async function getAPI(routes, redirectOnFail = true) {
   try {
     // Realiza a requisição para o endpoint do Wordpress API
     const response = await fetch(
@@ -8,7 +8,7 @@ async function getAPI(routes) {
     // Se o response não for ok, redireciona para 404
     if (!response.ok) {
       // Verifica se já não está na página 404 para evitar loop
-      if (window.location.pathname !== "/404") {
+      if (redirectOnFail && typeof window !== "undefined" && window.location.pathname !== "/404") {
         window.location.href = "/404";
       }
       return null;
@@ -18,9 +18,7 @@ async function getAPI(routes) {
     const wpdata = await response.json();
     return wpdata;
   } catch (error) {
-    console.error("Erro ao se conectar com o WP REST", error);
-    // Verifica se já não está na página 404 para evitar loop
-    if (window.location.pathname !== "/404") {
+    if (redirectOnFail && typeof window !== "undefined" && window.location.pathname !== "/404") {
       window.location.href = "/404";
     }
     return null;
