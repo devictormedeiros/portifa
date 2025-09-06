@@ -40,7 +40,6 @@ const AccordionCustom = ({ title, children, condition }) => {
         <Accordion
           open={open}
           ref={targetRef}
-
           className={`accordion w-full mb-0 px-0 ${isVisible ? "sec-visible" : ""} ${open ? "open" : 0}`}
           animate={accordionAnimation}
         >
@@ -48,7 +47,7 @@ const AccordionCustom = ({ title, children, condition }) => {
             <div className="accordion-header">
               <AccordionHeader
                 onClick={handleOpen}
-                className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10  cursor-expand`}
+                className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 cursor-expand`}
               >
                 <span className="accordion-title content-title-h2">
                   {title}
@@ -73,17 +72,17 @@ const AccordionCustom = ({ title, children, condition }) => {
               </AccordionHeader>
             </div>
             <div
-              className={`duration-1000 mx-[-1.5rem] md:mx-0`}
+              className={`duration-500 mx-[-1.5rem] md:mx-0`}
               style={{
                 height:
-                  open && inputRef.current ? inputRef.current.clientHeight : 0,
+                  !open && 0,
               }}
             >
               <AccordionBody
                 ref={inputRef}
                 className={`accordion-body ${
                   open ? "accordion-open" : ""
-                } mt-6 md:mt-12 pt-0 text-base font-normal text-gray-400`}
+                } mt-6 md:mt-12 pt-0 text-base font-normal text-gray-400 duration-1000`}
               >
                 <div className="accordion-content">{children}</div>
               </AccordionBody>

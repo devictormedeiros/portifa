@@ -18,7 +18,7 @@ export default function ScrollingTexts({ data }) {
         scrub: true,
         markers: false,
       },
-      x: "-50%",
+      x: "-70%",
       duration: 6,
       /* ease: "none", */
       overwrite: "auto",
@@ -32,7 +32,7 @@ export default function ScrollingTexts({ data }) {
         scrub: true,
         markers: false,
       },
-      x: "50%",
+      x: "70%",
       duration: 6,
       /* ease: "none", */
       overwrite: "auto",
@@ -72,8 +72,11 @@ export default function ScrollingTexts({ data }) {
           ref={textTop}
           className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
-          {data.texto_superior}
-          {data.texto_superior}
+          {/* {data.texto_superior}
+          {data.texto_superior} */}
+          Vamos Conversar ?
+          Vamos Conversar ?
+          Vamos Conversar ?
         </div>
       </div>
 
@@ -83,8 +86,9 @@ export default function ScrollingTexts({ data }) {
           ref={textBottom}
           className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
-          {data.texto_inferior}
-          {data.texto_inferior}
+          Vamos Conversar ?
+          Vamos Conversar ?
+          Vamos Conversar ?
         </div>
       </div>
     </section>

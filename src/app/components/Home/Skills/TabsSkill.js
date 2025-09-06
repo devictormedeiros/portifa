@@ -82,7 +82,7 @@ const TabsSkill = ({ skills, title, pill, condition }) => {
           >
             {skills?.map((skill, index) => (
               <TabPanel
-                className="duration-[1500ms] ease-in-out px-6 py-0 md:px-0"
+                className="duration-[500ms] ease-in-out px-6 py-0 md:px-0"
                 key={index}
                 value={index}
               >
