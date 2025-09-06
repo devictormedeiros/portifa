@@ -1,8 +1,9 @@
 import IconsLib from "@/app/components/Icons";
-import { useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
   const [isDragging, setIsDragging] = useState(false);
+  const [isPillsScrolled, setIsPillsScrolled] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const containerRef = useRef(null);
@@ -25,6 +26,14 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
   const stopDragging = () => {
     setIsDragging(false);
   };
+
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      setIsPillsScrolled(
+        containerRef.current.scrollWidth > containerRef.current.clientWidth
+      );
+    }, 4000);
+  }, [containerRef]);
 
   return (
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
@@ -63,7 +72,9 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
           </div>
           <div
             ref={containerRef}
-            className="scroll-drag flex items-center gap-8 relative self-stretch overflow-x-auto list-categories scroll-hide-bar-mobile px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0 cursor-horizontal"
+            className={`${
+              isPillsScrolled ? "cursor-horizontal" : ""
+            } scroll-drag flex items-center gap-8 relative self-stretch overflow-x-auto list-categories scroll-hide-bar-mobile px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0`}
             onMouseDown={startDragging}
             onMouseMove={onDragging}
             onMouseUp={stopDragging}

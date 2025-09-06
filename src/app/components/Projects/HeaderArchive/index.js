@@ -1,4 +1,5 @@
 import IconsLib from "@/app/components/Icons";
+import { useEffect, useLayoutEffect, useState } from "react";
 
 const HeaderArchive = ({
   dataOption,
@@ -7,6 +8,14 @@ const HeaderArchive = ({
   setSelectedTech,
   scrollRef,
 }) => {
+  const [isPillsScrolled, setIsPillsScrolled] = useState(false);
+
+  useLayoutEffect(() => {
+    setTimeout(() => {
+      setIsPillsScrolled(scrollRef.current.scrollWidth >  scrollRef.current.clientWidth);
+    }, 4000);
+  }, [scrollRef]);
+
   return (
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
       <div className="flex flex-col gap-6 w-full p-0">
@@ -17,7 +26,7 @@ const HeaderArchive = ({
         <div
           ref={scrollRef}
           className={`${
-            technologies.length > 6 ? "cursor-horizontal" : ""
+            isPillsScrolled ? "cursor-horizontal" : ""
           } flex items-center gap-8 lg:gap-4 relative self-stretch px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full overflow-x-auto list-categories scroll-hide-bar-mobile lg:px-0`}
         >
           {technologies.map((tech) => {
