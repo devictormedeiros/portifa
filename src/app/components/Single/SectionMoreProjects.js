@@ -94,7 +94,7 @@ const SectionMoreProjoects = ({
             className="mx-[-1.5rem] cursor-horizontal lg:mx-0"
           >
             {showedProjects
-              .map((project) => project.ID)
+              .map((project) => project)
               .map((projectId) => projects.find((p) => p.id === projectId))
               .filter(Boolean)
               .map((project) => (
