@@ -62,8 +62,10 @@ const Recommendations = ({ data }) => {
                     className="w-full h-full object-cover"
                     src={item.imagem.url}
                     alt="Nome do autor"
-                    fill
-                    sizes="100vw"
+                    width={550}
+                    height={350}
+                    sizes="(min-width:1024px) 33vw, 100vw"
+
                   />
                 </figure>
                 <div className="p-6">

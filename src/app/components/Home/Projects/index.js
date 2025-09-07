@@ -8,7 +8,7 @@ const Projects = ({ data }) => {
   const { projects, technologies } = useProjects();
 
   useLayoutEffect(() => {
-     if (!data || data.length === 0) return;
+    if (!data || data.length === 0) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -62,15 +62,14 @@ const Projects = ({ data }) => {
     >
       <div className="container h-full relative">
         <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
-          {Object?.values(data)
-            .map((project) => project.ID)
-            .map((projectId) => projects.find((p) => p.id == projectId))
+          {data
+            .map((id) => projects.find((p) => p.id === Number(id)))
             .filter(Boolean)
             .map((project, index) => (
               <CardProjectBig
+                key={`project-${index}`}
                 project={project}
                 technologies={technologies}
-                key={`project-${index}`}
               />
             ))}
         </div>

@@ -1,7 +1,13 @@
 import Image from "next/image";
 import IconsLib from "../../Icons";
+import { useEffect, useLayoutEffect } from "react";
+
 
 const CardProjectBig = ({ project, technologies }) => {
+
+  useEffect(()=>{
+    console.log(project);
+  }, [project])
   return (
     <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0 w-full">
       <div className="project-card bg-gradient-primary-c w-full rounded-2xl md:mx-0">
@@ -49,6 +55,10 @@ const CardProjectBig = ({ project, technologies }) => {
                   "/images/image.png"
                 }
                 alt={project.title?.rendered}
+                width={800}
+                height={800}
+                sizes="(min-width:1024px) 720px, 100vw"
+                className="rounded-lg object-cover"
               />
             </figure>
             <div className="flex flex-col gap-6 flex-1">

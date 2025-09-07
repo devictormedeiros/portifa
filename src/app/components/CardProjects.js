@@ -33,6 +33,8 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
             }
             alt={project.title?.rendered}
             className="w-full h-full object-cover"
+            width={450}
+            height={350}
           />
         </div>
 
