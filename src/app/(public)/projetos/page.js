@@ -77,11 +77,10 @@ const Archive = () => {
     }
   }, [technologies]);
 
-  const bgImage = `url(${
-    innerWidth < 768
-      ? dataOption?.archive?.cabecalho["hero-mobile"]?.url
-      : dataOption?.archive?.cabecalho["hero-desktop"]?.url
-  })`;
+  const bgImage =
+  typeof window !== "undefined" && window.innerWidth < 768
+  ? dataOption?.archive?.cabecalho["hero-mobile"]?.url
+  : dataOption?.archive?.cabecalho["hero-desktop"]?.url
 
   return (
     <>

@@ -125,12 +125,12 @@ const ProjetoPage = () => {
       )
     : [];
 
-  const bgImage = `url(${
-   innerWidth < 768
-      ? currentProject?.acf["hero-mobile"]?.url
-      : currentProject?.acf["hero-desktop"]?.url
-  })`;
-
+    const bgImage =
+    typeof window !== "undefined" && window.innerWidth < 768
+      ? currentProject?.acf?.["hero-mobile"]?.url
+      : currentProject?.acf?.["hero-desktop"]?.url;
+  
+      
   return (
     <>
       <Header logo={data?.logo_principal || null} />
