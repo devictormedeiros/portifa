@@ -1,5 +1,6 @@
 import Link from "next/link";
 import IconsLib from "@/app/components/Icons";
+import Image from "next/image";
 
 const CardProject = ({ project, technologies, isSwiper = false }) => {
   const handleClick = (e) => {
@@ -17,7 +18,15 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
         onClick={handleClick}
       >
         <div className="w-full h-[14.375rem]">
-          <img
+          {/* <img
+            src={
+              project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+              "/images/image.png"
+            }
+            alt={project.title?.rendered}
+            className="w-full h-full object-cover"
+          /> */}
+          <Image
             src={
               project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
               "/images/image.png"

@@ -35,8 +35,15 @@ const CardProjectBig = ({ project, technologies }) => {
 
           <div className="flex flex-col gap-6 md:gap-[2.5rem] md:flex-row md:items-center">
             <figure className="relative h-[11.25rem] md:h-auto md:aspect-[3/2] md:max-w-[45rem] w-full">
-              <img
+              {/* <img
                 className="rounded-lg w-full h-full object-cover"
+                src={
+                  project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
+                  "/images/image.png"
+                }
+                alt={project.title?.rendered}
+              /> */}
+              <Image
                 src={
                   project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
                   "/images/image.png"

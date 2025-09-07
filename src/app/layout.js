@@ -5,6 +5,7 @@ import { DataOptionsProvider } from "./context/DataOptionsContext";
 import LayoutWrapper from "./components/LayoutWrapper";
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
+const MEDIA_ORIGIN = NEXT_PUBLIC_WORDPRESS_API_URL || NEXT_PUBLIC_SITE_URL;
 export const metadata = {
   title: {
     default: "Marcello Vanzillotta | Product Designer & UI/UX",
@@ -104,6 +105,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className="root">
+      <head>
+        <link rel="preconnect" href={MEDIA_ORIGIN} crossOrigin="anonymous" />
+      </head>
       <ProjectsProvider>
         <DataOptionsProvider>
           <LayoutWrapper>{children}</LayoutWrapper>

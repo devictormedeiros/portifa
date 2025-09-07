@@ -1,4 +1,5 @@
 import IconsLib from "@/app/components/Icons";
+import Image from "next/image";
 
 const List = ({ filteredProjects, technologies }) => {
   return (
@@ -24,10 +25,15 @@ const List = ({ filteredProjects, technologies }) => {
                 className="flex flex-col flex-wrap w-full h-full"
               >
                 <div className="w-full h-[14.375rem] rounded-t-2xl">
-                  <img
+                  {/* <img
                     className="w-full h-full object-cover rounded-t-2xl"
                     alt="Imagem do projeto"
                     src={imageUrl || "https://placehold.co/600x400"}
+                  /> */}
+                  <Image
+                    src={imageUrl || "https://placehold.co/600x400"}
+                    alt="Imagem do projeto"
+                    className="w-full h-full object-cover rounded-t-2xl"
                   />
                 </div>
                 <div className="flex flex-1 flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">

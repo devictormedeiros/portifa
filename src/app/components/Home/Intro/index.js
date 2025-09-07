@@ -94,6 +94,8 @@ const Intro = ({ data }) => {
           autoPlay
           muted
           loop
+          preload="auto"
+          fetchPriority="high"
           playsInline
           className="w-full h-full object-cover"
         >
@@ -102,6 +104,7 @@ const Intro = ({ data }) => {
               src={video_intro_desktop}
               type="video/webm"
               media="(min-width: 768px)"
+              fetchpriority="high"
             />
           )}
           {video_intro_mobile && (
@@ -109,6 +112,7 @@ const Intro = ({ data }) => {
               src={video_intro_mobile}
               type="video/webm"
               media="(max-width: 767px)"
+              fetchpriority="high"
             />
           )}
           Seu navegador não suporta o elemento <code>video</code>.

@@ -1,6 +1,8 @@
 import "./style.scss";
 import { memo, useState, useEffect } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
+import Image from "next/image";
+
 const About = ({ data }) => {
   const [offsetValue, setOffsetValue] = useState(100); // Valor padrão
 
@@ -51,7 +53,13 @@ const About = ({ data }) => {
             animateOnce={true}
             offset={window.innerHeight * 0.3}
           >
-            <img
+            {/* <img
+              src={data?.imagem.url}
+              alt={data?.imagem.description}
+              title={data?.imagem.title}
+              className="distorted-image"
+            /> */}
+            <Image
               src={data?.imagem.url}
               alt={data?.imagem.description}
               title={data?.imagem.title}
