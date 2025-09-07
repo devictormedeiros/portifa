@@ -5,6 +5,7 @@ import { memo } from "react";
 import { useEffect, useState } from "react";
 import ObserverHtml from "../../../hooks/ObserverHtml";
 import IconsLib from "../../Icons";
+import React from "react";
 
 const Tecnologias = ({ data }) => {
   const [isAnimated, setIsAnimated] = useState(false);
@@ -16,17 +17,22 @@ const Tecnologias = ({ data }) => {
     }
   }, [isVisible, isAnimated]);
 
-
-
-
   return (
     <>
       {data?.map((accordion, index) => {
         return (
-          <>
-            <section key={index} ref={targetRef} className={`sec-tecnologias g-col-12`} style={accordion?.orderSection ? { order: accordion.orderSection } : undefined}>
+          <React.Fragment key={accordion.id || index}>
+            <section
+              key={index}
+              ref={targetRef}
+              className={`sec-tecnologias g-col-12`}
+              style={
+                accordion?.orderSection
+                  ? { order: accordion.orderSection }
+                  : undefined
+              }
+            >
               <Accordion
-                
                 title={accordion.titulo}
                 condition={accordion.condicao}
               >
@@ -73,7 +79,7 @@ const Tecnologias = ({ data }) => {
                 </ul>
               </Accordion>
             </section>
-          </>
+          </React.Fragment>
         );
       })}
     </>
