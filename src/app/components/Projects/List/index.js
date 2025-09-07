@@ -34,6 +34,8 @@ const List = ({ filteredProjects, technologies }) => {
                     src={imageUrl || "https://placehold.co/600x400"}
                     alt="Imagem do projeto"
                     className="w-full h-full object-cover rounded-t-2xl"
+                    width={450}
+                    height={350}
                   />
                 </div>
                 <div className="flex flex-1 flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">

@@ -53,17 +53,14 @@ const About = ({ data }) => {
             animateOnce={true}
             offset={window.innerHeight * 0.3}
           >
-            {/* <img
-              src={data?.imagem.url}
-              alt={data?.imagem.description}
-              title={data?.imagem.title}
-              className="distorted-image"
-            /> */}
             <Image
               src={data?.imagem.url}
               alt={data?.imagem.description}
               title={data?.imagem.title}
               className="distorted-image"
+              width={479} // Proporção
+              height={533}
+              sizes="(max-width: 768px) 90vw, (max-width: 1024px) 60vw, 40vw"
             />
           </AnimationWrapper>
         </div>
