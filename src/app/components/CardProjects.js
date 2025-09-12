@@ -35,6 +35,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
             className="w-full h-full object-cover"
             width={450}
             height={350}
+            loading="eager"
           />
         </div>
 
