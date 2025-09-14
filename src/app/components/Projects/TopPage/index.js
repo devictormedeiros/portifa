@@ -22,6 +22,7 @@ const TopPage = ({ bgImage }) => {
           priority
           className="object-cover object-center z-0"
           sizes="100vw"
+          loading="eager"
         />
         <div
           className="absolute inset-0 w-full h-full [background:linear-gradient(180deg,rgba(13,13,13,1)_0%,rgba(13,13,13,0.6)_33%,rgba(13,13,13,0.6)_67%,rgba(13,13,13,1)_100%)]"

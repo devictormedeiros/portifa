@@ -36,6 +36,7 @@ const List = ({ filteredProjects, technologies }) => {
                     className="w-full h-full object-cover rounded-t-2xl"
                     width={450}
                     height={350}
+                    loading="eager"
                   />
                 </div>
                 <div className="flex flex-1 flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">

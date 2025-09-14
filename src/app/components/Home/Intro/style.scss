@@ -22,6 +22,11 @@ section.sec-intro {
       position: relative;
     }
   }
+  &:has(video){
+    &::after, &::before{
+      display: none;
+    }
+  }
   &:after {
     content: "";
     display: block;
