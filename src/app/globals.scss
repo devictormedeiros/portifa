@@ -34,6 +34,7 @@
   --black-80: #000000cc;
   --black-90: #000000e5;
   --black-100: #000000;
+  --black-rgb: 0,0,0;
 
   --white-5: #ffffff0d;
   --white-10: #ffffff1a;
@@ -46,6 +47,7 @@
   --white-80: #ffffffcc;
   --white-90: #ffffffe5;
   --white-100: #ffffff;
+  --white-rgb: 255, 255, 255;
 
   --gray-50: #f5f5f5;
   --gray-100: #ededed;
@@ -194,9 +196,9 @@ main {
 }
 
 body:has(.main-archive, .main-single) {
-    header {
-      background: transparent;
-    }
+  header {
+    background: transparent;
+  }
 }
 
 .slick-slider {
@@ -245,7 +247,7 @@ body:has(.main-archive, .main-single) {
     }
   }
 }
-.scroll-hide-bar-mobile{
+.scroll-hide-bar-mobile {
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
@@ -256,9 +258,9 @@ body:has(.main-archive, .main-single) {
 .img-with-skeleton {
   background: linear-gradient(
     90deg,
-    var(--white-5) 5%,
-    var(--white-10) 25%,
-    var(--white-5) 50%
+    rgb(var(--white-rgb), 5%) 25%,
+    rgb(var(--white-rgb), 25%) 50%,
+    rgb(var(--white-rgb), 5%) 75%
   );
   background-size: 200% 100%;
   animation: skeleton-animation 1.5s linear infinite;
