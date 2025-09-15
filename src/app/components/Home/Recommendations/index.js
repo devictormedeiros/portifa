@@ -59,7 +59,7 @@ const Recommendations = ({ data }) => {
               >
                 <figure className="relative aspect-[16/9]">
                   <Image
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover img-with-skeleton"
                     src={item.imagem.url}
                     alt="Nome do autor"
                     width={550}

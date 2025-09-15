@@ -32,7 +32,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
               "/images/image.png"
             }
             alt={project.title?.rendered}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover img-with-skeleton"
             width={450}
             height={350}
             loading="eager"

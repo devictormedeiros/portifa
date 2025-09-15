@@ -2,7 +2,7 @@ async function getAPI(routes, redirectOnFail = true) {
   try {
     // Realiza a requisição para o endpoint do Wordpress API
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL + routes}`,
+      `${process.env.NEXT_PUBLIC_WORDPRESS_API_URL +`/wp-json`+ routes}`,
     );
 
     // Se o response não for ok, redireciona para 404

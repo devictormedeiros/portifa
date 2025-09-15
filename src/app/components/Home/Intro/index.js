@@ -42,7 +42,7 @@ const AnimatedText = ({ text, onComplete }) => {
         duration: 1,
         ease: "power3.out",
         onComplete,
-      },
+      }
     );
   }, [text, onComplete]);
 
@@ -79,42 +79,51 @@ const AnimatedText = ({ text, onComplete }) => {
 
 const Intro = ({ data }) => {
   const [showTextAnimate, setShowTextAnimate] = useState(false);
-
   const phrases = data?.destaque_introducao?.map((item) => item.destaque) || [];
   const layout_intro = data?.layout || "";
   const texto_intro = data?.texto_introducao || "";
+  const video_capa_intro_desktop = data?.video_capa_intro_desktop || "";
   const video_intro_desktop = data?.video || "";
   const video_intro_mobile = data?.video_mobile || "";
-
+  
+  useEffect(() => {
+    if (video_intro_desktop) {
+      const preloadLink = document.createElement('link');
+      preloadLink.rel = 'preload';
+      preloadLink.as = 'video';
+      preloadLink.href = video_intro_desktop;
+      preloadLink.type = 'video/webm';
+      preloadLink.setAttribute('fetchpriority', 'high');
+      document.head.appendChild(preloadLink);
+    }
+  }, [video_intro_desktop]);
   return (
-    <section className="sec-intro overflow-hidden bg-gray-900">
+    <>
+    <section className="sec-intro overflow-hidden bg-gray-900 relative">
       <div className="container-text">
         {layout_intro === "video" ? (
           <video
-          autoPlay
-          muted
-          loop
-          preload="auto"
-          fetchPriority="high"
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          {video_intro_desktop && (
-            <source
-              src={video_intro_desktop}
-              type="video/webm"
-              media="(min-width: 768px)"
-            />
-          )}
-          {video_intro_mobile && (
-            <source
-              src={video_intro_mobile}
-              type="video/webm"
-              media="(max-width: 767px)"
-            />
-          )}
-          Seu navegador não suporta o elemento <code>video</code>.
-        </video>
+            autoPlay
+            muted
+            loop
+            preload="auto"
+            fetchPriority="high"
+            playsInline
+            poster={video_capa_intro_desktop}
+            className="w-full h-full object-cover z-[2]"
+          >
+            {video_intro_desktop && (
+              <source src={video_intro_desktop} type="video/webm" media="(min-width: 768px)" />
+            )}
+            {video_intro_mobile && (
+              <source
+                src={video_intro_mobile}
+                type="video/webm"
+                media="(max-width: 767px)"
+              />
+            )}
+            Seu navegador não suporta o elemento <code>video</code>.
+          </video>
         ) : (
           <div
             className="text container"
@@ -142,6 +151,7 @@ const Intro = ({ data }) => {
         )}
       </div>
     </section>
+    </>
   );
 };
 
