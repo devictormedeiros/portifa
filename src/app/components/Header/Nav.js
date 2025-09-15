@@ -1,5 +1,6 @@
 "use client";
 import { memo } from "react";
+import Link from "next/link";
 const Nav = ({ data }) => {
   return (
     <nav className="main-menu">
@@ -7,12 +8,12 @@ const Nav = ({ data }) => {
         {data?.map((item) => {
           return (
             <li key={item.id}>
-              <a
+              <Link
                 href={item.url}
                 className="menu-section text-white-50 hover:text-white-100 hover:underline"
               >
                 {item.title}
-              </a>
+              </Link>
             </li>
           );
         })}

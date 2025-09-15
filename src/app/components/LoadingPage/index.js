@@ -14,10 +14,18 @@ const LoadingPage = () => {
       const pageLoad = body.getAttribute("data-page-load") === "true";
       setIsLoading(pageLoad);
 
-      if (!pageLoad) {
-        setTimeout(() => setBgFull(true), 300); // O fundo sobe depois de 0.3s
-        setTimeout(() => setShowIcon(true), 2000); // O icon aparece depois de 2s
+      if (pageLoad) {
+        setIsLoading(true);
+        setBgFull(false);
+        setShowIcon(false);
+      } else {
+        setTimeout(() => setBgFull(true), 300);
+        setTimeout(() => {
+          setShowIcon(true);
+          setIsLoading(false);
+        }, 2000);
       }
+      
     });
 
     observer.observe(body, {

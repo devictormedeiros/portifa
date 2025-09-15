@@ -28,9 +28,6 @@ const Recommendations = ({ data }) => {
     setIsDragging(false);
   };
 
-  useEffect(() => {
-    console.log(data);
-  }, []);
 
   return (
     <section
