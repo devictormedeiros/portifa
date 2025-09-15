@@ -20,7 +20,7 @@ const TopPage = ({ bgImage }) => {
           alt=""
           fill
           priority
-          className="object-cover object-center z-0"
+          className="object-cover object-center z-0 img-with-skeleton"
           sizes="100vw"
           loading="eager"
         />

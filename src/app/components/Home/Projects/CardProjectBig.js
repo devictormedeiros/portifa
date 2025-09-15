@@ -58,7 +58,7 @@ const CardProjectBig = ({ project, technologies }) => {
                 width={800}
                 height={800}
                 sizes="(min-width:1024px) 720px, 100vw"
-                className="rounded-lg object-cover"
+                className="rounded-lg object-cover img-with-skeleton"
                 loading="eager"
               />
             </figure>

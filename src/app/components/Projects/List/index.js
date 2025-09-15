@@ -33,7 +33,7 @@ const List = ({ filteredProjects, technologies }) => {
                   <Image
                     src={imageUrl || "https://placehold.co/600x400"}
                     alt="Imagem do projeto"
-                    className="w-full h-full object-cover rounded-t-2xl"
+                    className="w-full h-full object-cover rounded-t-2xl img-with-skeleton"
                     width={450}
                     height={350}
                     loading="eager"

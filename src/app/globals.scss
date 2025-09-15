@@ -252,3 +252,23 @@ body:has(.main-archive, .main-single) {
     display: none;
   }
 }
+
+.img-with-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--white-5) 5%,
+    var(--white-10) 25%,
+    var(--white-5) 50%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-animation 1.5s linear infinite;
+}
+
+@keyframes skeleton-animation {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
