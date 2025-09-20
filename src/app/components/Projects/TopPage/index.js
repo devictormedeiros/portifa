@@ -1,27 +1,27 @@
 import Image from "next/image";
+import { useEffect } from "react";
 
 const TopPage = ({ bgImage }) => {
+  
+  useEffect(() => {
+    console.log(bgImage);
+  }, []);
+
   if (!bgImage) {
     return;
   }
 
+
+
   return (
     <section className="flex flex-col w-full items-center header-projects">
       <div className="relative w-full h-[22.5rem] md:h-[28.125rem]">
-        {/* <div
-          className={`${bgImage} w-full h-[22.5rem] md:h-[28.125rem] bg-cover bg-center`}
-          aria-hidden="true"
-          style={{
-            backgroundImage: bgImage,
-          }}
-        /> */}
         <Image
           src={bgImage}
           alt=""
           fill
           priority
           className="object-cover object-center z-0 img-with-skeleton"
-          sizes="100vw"
           loading="eager"
         />
         <div

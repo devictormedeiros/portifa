@@ -1,6 +1,5 @@
 import Image from "next/image";
 import IconsLib from "../../Icons";
-import { useEffect, useLayoutEffect } from "react";
 import Link from "next/link";
 
 
@@ -83,6 +82,13 @@ const CardProjectBig = ({ project, technologies }) => {
   Ver projeto
 </Link>
 
+              <Link
+                href={`/projeto/${project.slug}`}
+                title={project.title?.rendered || "Sem título"}
+                className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary"
+              >
+                Ver projeto
+              </Link>
             </div>
           </div>
         </div>

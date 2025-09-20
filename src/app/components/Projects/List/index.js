@@ -1,5 +1,6 @@
 import IconsLib from "@/app/components/Icons";
 import Image from "next/image";
+import Link from "next/link";
 
 const List = ({ filteredProjects, technologies }) => {
   return (
@@ -19,7 +20,7 @@ const List = ({ filteredProjects, technologies }) => {
               key={`project-${index}`}
               className="flex flex-col project-card rounded-2xl"
             >
-              <a
+              <Link
                 title={project.title?.rendered || "Sem título"}
                 href={`/projeto/${project.slug}`}
                 className="flex flex-col flex-wrap w-full h-full"
@@ -84,7 +85,7 @@ const List = ({ filteredProjects, technologies }) => {
                     })()}
                   </p>
                 </div>
-              </a>
+              </Link>
             </article>
           );
         })}

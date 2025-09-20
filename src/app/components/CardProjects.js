@@ -11,7 +11,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
 
   return (
     <article className="flex flex-col project-card rounded-[0.625rem] overflow-hidden lg:rounded-[1rem] select-none">
-      <a
+      <Link
         href={`/projeto/${project.slug}`}
         className="block w-full h-full"
         draggable="false"
@@ -76,7 +76,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
               .trim() + "..."}
           </p>
         </div>
-      </a>
+      </Link>
     </article>
   );
 };
