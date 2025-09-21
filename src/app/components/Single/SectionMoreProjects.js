@@ -1,7 +1,6 @@
-import Link from "next/link";
 import CardProject from "../CardProjects";
 import Slider from "react-slick";
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const SectionMoreProjoects = ({
   moreProjects = [],
@@ -59,18 +58,43 @@ const SectionMoreProjoects = ({
   }, []);
 
   useEffect(() => {
-    let projs = moreProjects || [];
-    let missingQuantity = 5 - projs?.length;
-    let otherProjs = [];
 
-    if (missingQuantity > 0 && projects?.length > 0) {
-      otherProjs = projects
-        ?.filter((p, i) => (i + 1 <= missingQuantity) && (projs?.find((s) => s === p.id) === undefined) )
-        .map((p) => p.id);
+    if( projects?.length === 0) {
+      return;
+    } 
+
+    const quantityOfProjectsToShow = 5;
+    let pinnedProjects = moreProjects || [];
+    let remainingProjects = [];
+
+    // Quantos Projetos Faltam para Completar
+    const missingQuantityProjects = quantityOfProjectsToShow - pinnedProjects?.length;
+
+    // Se faltar adicionar projetos
+    if (missingQuantityProjects > 0) {
+      let countRemainingProjects = 0;
+      
+      remainingProjects = projects?.filter((project) => {
+        const isInPinnedProjects = pinnedProjects?.find(pinnedProject => {
+          return pinnedProject?.ID === project?.id;
+        });
+
+        if( !isInPinnedProjects ) {
+          countRemainingProjects++;
+        }
+
+        return !isInPinnedProjects && countRemainingProjects <= missingQuantityProjects;
+      });
     }
-    projs?.push(...otherProjs);
 
-    setShowedProjects(projs);
+    pinnedProjects?.push(...remainingProjects);
+    pinnedProjects = pinnedProjects.map(pinnedProject => {
+      return pinnedProject?.ID || pinnedProject?.id
+    });
+
+    console.log(pinnedProjects)
+
+    setShowedProjects(pinnedProjects);
   }, [moreProjects, projects]);
 
   return (
