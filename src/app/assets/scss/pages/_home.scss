@@ -33,6 +33,13 @@
   @media screen and (max-width: 767px) {
     height: inherit !important;
 
+    .content-text {
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 9;
+      overflow: hidden;
+      display: -webkit-box;
+    }
+
     .project-card-container {
       height: calc(100vh - 3.75rem);
     }

@@ -2,7 +2,7 @@
   .overflow-hidden {
     opacity: 0;
     transition: opacity 0.2s linear;
-    height: auto !important;
+    //height: auto !important;
   }
   &.open {
     .overflow-hidden {
