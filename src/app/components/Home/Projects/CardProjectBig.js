@@ -2,9 +2,7 @@ import Image from "next/image";
 import IconsLib from "../../Icons";
 import Link from "next/link";
 
-
 const CardProjectBig = ({ project, technologies }) => {
-
   return (
     <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0 w-full">
       <div className="project-card bg-gradient-primary-c w-full rounded-2xl md:mx-0">
@@ -60,28 +58,20 @@ const CardProjectBig = ({ project, technologies }) => {
               />
             </figure>
             <div className="flex flex-col gap-6 flex-1">
-            <div
-  className="content-text text-white-70 md:line-clamp-none"
-  dangerouslySetInnerHTML={{
-    __html: (() => {
-      const resumo = project.acf?.resumoCardHome;
-      const excerpt = project.excerpt?.rendered || "";
+              <div
+                className="content-text text-white-70 md:line-clamp-none"
+                dangerouslySetInnerHTML={{
+                  __html: (() => {
+                    const resumo = project.acf?.resumoCardHome;
+                    const excerpt = project.excerpt?.rendered || "";
 
-      if (resumo) return resumo;
+                    if (resumo) return resumo;
 
-      const sliced = excerpt.slice(0, 120).trim();
-      return excerpt.length > 120 ? sliced + "..." : sliced;
-    })(),
-  }}
-/>
-<Link
-  href={`/projeto/${project.slug}`}
-  title={project.title?.rendered || "Sem título"}
-  className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary"
->
-  Ver projeto
-</Link>
-
+                    const sliced = excerpt.slice(0, 120).trim();
+                    return excerpt.length > 120 ? sliced + "..." : sliced;
+                  })(),
+                }}
+              />
               <Link
                 href={`/projeto/${project.slug}`}
                 title={project.title?.rendered || "Sem título"}
