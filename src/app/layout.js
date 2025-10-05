@@ -8,8 +8,8 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 const MEDIA_ORIGIN = process.env.NEXT_PUBLIC_WORDPRESS_API_URL || process.env.NEXT_PUBLIC_SITE_URL;
 export const metadata = {
   title: {
-    default: "Marcello Vanzillotta | Product Designer & UI/UX",
-    template: "%s | Marcello Vanzillotta",
+    default: "Victor Medeiros | Dev Front-end",
+    template: "%s | Victor Medeiros",
   },
   description:
     "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
@@ -27,28 +27,28 @@ export const metadata = {
     "Interface",
     "UI&UX",
   ],
-  authors: [{ name: "Marcello Vanzillotta" }],
-  creator: "Marcello Vanzillotta",
-  publisher: "Marcello Vanzillotta",
-  applicationName: "Portfólio de Marcello Vanzillotta",
+  authors: [{ name: "Victor Medeiros" }],
+  creator: "Victor Medeiros",
+  publisher: "Victor Medeiros",
+  applicationName: "Portfólio de Victor Medeiros",
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Marcello Vanzillotta | Product Designer & UI/UX",
+    title: "Victor Medeiros | Dev Front-end",
     description:
       "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
     url: SITE_URL,
-    siteName: "Marcello Vanzillotta | Product Designer & UI/UX",
+    siteName: "Victor Medeiros | Dev Front-end",
     images: [
       {
         url: `${SITE_URL}/meta/open-graph.png`,
         secureUrl: `${SITE_URL}/meta/open-graph.png`,
         width: 1200,
         height: 630,
-        alt: "Marcello Vanzillotta | Product Designer & UI/UX",
+        alt: "Victor Medeiros | Dev Front-end",
       },
     ],
     locale: "pt_BR",
@@ -56,7 +56,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Marcello Vanzillotta | Product Designer & UI/UX",
+    title: "Victor Medeiros | Dev Front-end",
     description:
       "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
     images: [`${SITE_URL}/meta/twitter-card.png`],
