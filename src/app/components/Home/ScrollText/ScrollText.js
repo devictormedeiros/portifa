@@ -6,7 +6,6 @@ export default function ScrollingTexts({ data }) {
   const section = useRef(null);
   const textTop = useRef(null);
   const textBottom = useRef(null);
-  
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -72,11 +71,8 @@ export default function ScrollingTexts({ data }) {
           ref={textTop}
           className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
-          {/* {data.texto_superior}
-          {data.texto_superior} */}
-          Vamos Conversar ?
-          Vamos Conversar ?
-          Vamos Conversar ?
+          {data.texto_superior}
+          {data.texto_superior}
         </div>
       </div>
 
@@ -86,9 +82,8 @@ export default function ScrollingTexts({ data }) {
           ref={textBottom}
           className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
-          Vamos Conversar ?
-          Vamos Conversar ?
-          Vamos Conversar ?
+          {data.texto_inferior}
+          {data.texto_inferior}
         </div>
       </div>
     </section>
