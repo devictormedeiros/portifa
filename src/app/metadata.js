@@ -95,5 +95,3 @@ export const metadata = {
     { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
   ],
 };
-
-
