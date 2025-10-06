@@ -1,8 +1,10 @@
 <div align="center">
 
-# Portifa — Portfólio Pessoal em Next.js
+# Portifa — Portfólio Headless com Next.js e WordPress
 
-Exibe projetos relevantes da minha carreira, consumindo conteúdo do WordPress via API.
+Este repositório faz parte do projeto **Portifa**, um portfólio headless desenvolvido por **Victor Medeiros** e **Matheus Felipe**, com design exclusivo criado por **Marcello Vanzillotta** no Figma.
+
+Cada profissional possui sua própria versão do site, utilizando a mesma base de layout, estrutura e animações.
 
 </div>
 
@@ -10,7 +12,7 @@ Exibe projetos relevantes da minha carreira, consumindo conteúdo do WordPress v
 
 ## ✨ Visão Geral
 
-Este repositório contém meu portfólio pessoal desenvolvido com Next.js. O conteúdo — projetos, tecnologias e opções globais — é gerenciado no WordPress e consumido via REST API (incluindo ACF e Polylang para multi-idiomas).
+Este repositório contém um site portfólio desenvolvido com Next.js. O conteúdo — projetos, tecnologias e opções globais — é gerenciado no WordPress e consumido via REST API (incluindo ACF e Polylang para multi-idiomas).
 
 - **Stack principal**: Next.js 14, React 18, SCSS/Tailwind, GSAP/Framer Motion
 - **CMS headless**: WordPress + ACF + Polylang
@@ -143,8 +145,12 @@ npm run lint
 
 ## 🧾 Licença
 
-Este projeto é de uso pessoal/portfólio. Entre em contato para usos específicos.
+Este projeto é de uso pessoal e profissional dos autores. Entre em contato para usos específicos.
 
-## 👋 Autor
+## 👨‍💻 Colaboração
 
-Feito por Victor Medeiros & Matheus Felipe (@mafiuss99)
+Victor Medeiros (@devictormedeiros) - Front-end Developer (devictormedeiros.com)
+
+Matheus Felipe (@mafiuss99) — Front-end Developer 
+
+Marcello Vanzillotta — UI/UX Designer (vanzillotta.com)
