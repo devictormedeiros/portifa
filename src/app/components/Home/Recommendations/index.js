@@ -2,6 +2,7 @@ import Image from "next/image";
 import Accordion from "../../Accordion";
 import { useRef, useState, useEffect } from "react";
 
+
 const Recommendations = ({ data }) => {
   const containerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -28,8 +29,9 @@ const Recommendations = ({ data }) => {
     setIsDragging(false);
   };
 
-
   return (
+    <>
+    {typeof data?.titulo === "string" && data.titulo.trim() !== "" && (
     <section
       className={`sec-recommendations g-col-12`}
       style={data?.orderSection ? { order: data.orderSection } : undefined}
@@ -79,6 +81,8 @@ const Recommendations = ({ data }) => {
         </div>
       </Accordion>
     </section>
+      )}
+    </>
   );
 };
 
