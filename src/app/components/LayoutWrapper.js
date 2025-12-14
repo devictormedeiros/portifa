@@ -21,24 +21,18 @@ export default function LayoutWrapper({ children }) {
   const router = useRouter();
   const pathname = usePathname();
 
-  useEffect(() => {
-    console.log("Página trocada");
-    // Você pode iniciar o loading aqui se quiser
-    document.body.setAttribute("data-page-load", "true");
+  // useEffect(() => {
 
-    // Simula fim do carregamento
-    setTimeout(() => {
-      document.body.setAttribute("data-page-load", "false");
-    }, 1500);
-  }, [pathname]);
+  //   console.log("Página trocada");
+  //   document.body.setAttribute("data-page-load", "true");
+  //   setTimeout(() => {
+  //     document.body.setAttribute("data-page-load", "false");
+  //   }, 2000);
+  // }, [pathname]);
 
-  useEffect(() => {
-    console.log("Página visitada:", pathname);
-  }, [pathname]);
-
-  useEffect(() => {
-    document.body.setAttribute("data-page-load", isPageLoading.toString());
-  }, [isPageLoading]);
+  // useEffect(() => {
+  //   document.body.setAttribute("data-page-load", isPageLoading.toString());
+  // }, [isPageLoading]);
 
   return (
     <>
