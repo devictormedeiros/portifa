@@ -2,11 +2,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL;
 
 export const metadata = {
   title: {
-    default: "Victor Medeiros | Dev Front-end",
-    template: "%s | Victor Medeiros",
+    default: "Portfólio",
+    template: "%s | Portfólio",
   },
   description:
-    "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+    "Acompanhe um acervo com projetos de design e desenvolvimento focados em UI, UX e produto digital.",
   keywords: [
     "Product Designer",
     "UX",
@@ -21,28 +21,28 @@ export const metadata = {
     "Interface",
     "UI&UX",
   ],
-  authors: [{ name: "Victor Medeiros" }],
-  creator: "Victor Medeiros",
-  publisher: "Victor Medeiros",
-  applicationName: "Portfólio de Victor Medeiros",
+  authors: [{ name: "Equipe" }],
+  creator: "Equipe",
+  publisher: "Equipe",
+  applicationName: "Portfólio Pessoal",
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   formatDetection: { email: false, address: false, telephone: false },
   metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Victor Medeiros | Dev Front-end",
+    title: "Portfólio",
     description:
-      "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+      "Acompanhe um acervo com projetos de design e desenvolvimento focados em UI, UX e produto digital.",
     url: SITE_URL,
-    siteName: "Victor Medeiros | Dev Front-end",
+    siteName: "Portfólio",
     images: [
       {
         url: `${SITE_URL}/meta/open-graph.png`,
         secureUrl: `${SITE_URL}/meta/open-graph.png`,
         width: 1200,
         height: 630,
-        alt: "Victor Medeiros | Dev Front-end",
+        alt: "Portfólio",
       },
     ],
     locale: "pt_BR",
@@ -50,9 +50,9 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Victor Medeiros | Dev Front-end",
+    title: "Portfólio",
     description:
-      "Conheça minha filosofia de trabalho e acompanhe um acervo com meus últimos projetos como Product Designer, UI e UX.",
+      "Acompanhe um acervo com projetos de design e desenvolvimento focados em UI, UX e produto digital.",
     images: [`${SITE_URL}/meta/twitter-card.png`],
   },
   robots: {
@@ -90,4 +90,8 @@ export const metadata = {
       },
     ],
   },
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
+    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
+  ],
 };
