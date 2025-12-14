@@ -1,7 +1,7 @@
 import IconsLib from "@/app/components/Icons";
 import Image from "next/image";
 import Link from "next/link";
-
+import SmartLink from "@/app/components/SmartLink";
 const List = ({ filteredProjects, technologies }) => {
   return (
     <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">
@@ -20,7 +20,7 @@ const List = ({ filteredProjects, technologies }) => {
               key={`project-${index}`}
               className="flex flex-col project-card rounded-2xl"
             >
-              <Link
+              <SmartLink
                 title={project.title?.rendered || "Sem título"}
                 href={`/projeto/${project.slug}`}
                 className="flex flex-col flex-wrap w-full h-full"
@@ -85,7 +85,7 @@ const List = ({ filteredProjects, technologies }) => {
                     })()}
                   </p>
                 </div>
-              </Link>
+              </SmartLink>
             </article>
           );
         })}

@@ -90,7 +90,7 @@ body[data-page-load="true"] {
   visibility: hidden;
   animation:
     rotateLoading 1s linear infinite,
-    fadeInLoading 1s ease 2s forwards;
+    fadeInLoading 1s ease 1s forwards;
 
   transition: opacity 0.2s ease;
   &:before,

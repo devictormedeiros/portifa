@@ -20,7 +20,7 @@ const LoadingPage = () => {
         setShowIcon(false);
       } else {
         // Aqui atrasamos um pouco a classe "hide" no loading
-        setTimeout(() => setBgFull(true), 1020);
+        setTimeout(() => setBgFull(true), 1000);
       }
       
     });

@@ -8,7 +8,8 @@ import { useSticky } from "../../context/StickyContext";
 import SwitchLang from "./SwitchLang";
 import MainLogo from "../Icons/Logos/MainLogo";
 import { getCurrentLang } from "../../utils/getCurrentLang";
-import Link from "next/link";
+import SmartLink from "@/app/components/SmartLink";
+
 
 const Header = () => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
@@ -32,9 +33,9 @@ const Header = () => {
       <div className="mx-auto px-6 md:px-10">
         <div className="grid grid-cols-12 items-center gap-4">
           <div className="col-span-4 md:col-span-3 flex items-center">
-            <Link className="logo" href="/" title="Voltar para a página inicial">
+            <SmartLink className="logo" href="/" title="Voltar para a página inicial">
               <MainLogo />
-            </Link>
+            </SmartLink>
           </div>
           <div className="col-span-6 hidden md:block">
             <Nav data={itemslink} />

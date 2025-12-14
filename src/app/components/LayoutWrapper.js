@@ -8,7 +8,6 @@ import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
 import ScrollToTop from "./ScrollTop";
-import { useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation"; // App Router (use next/router se for Pages Router)
 
 
@@ -20,19 +19,6 @@ export default function LayoutWrapper({ children }) {
   const isPageLoading = isLoading || isLoadingProjects;
   const router = useRouter();
   const pathname = usePathname();
-
-  // useEffect(() => {
-
-  //   console.log("Página trocada");
-  //   document.body.setAttribute("data-page-load", "true");
-  //   setTimeout(() => {
-  //     document.body.setAttribute("data-page-load", "false");
-  //   }, 2000);
-  // }, [pathname]);
-
-  // useEffect(() => {
-  //   document.body.setAttribute("data-page-load", isPageLoading.toString());
-  // }, [isPageLoading]);
 
   return (
     <>

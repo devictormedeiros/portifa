@@ -1,6 +1,6 @@
-import Link from "next/link";
 import IconsLib from "@/app/components/Icons";
 import Image from "next/image";
+import SmartLink from "@/app/components/SmartLink";
 
 const CardProject = ({ project, technologies, isSwiper = false }) => {
   const handleClick = (e) => {
@@ -11,7 +11,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
 
   return (
     <article className="flex flex-col project-card rounded-[0.625rem] overflow-hidden lg:rounded-[1rem] select-none">
-      <Link
+      <SmartLink
         href={`/projeto/${project.slug}`}
         className="block w-full h-full"
         draggable="false"
@@ -76,7 +76,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
               .trim() + "..."}
           </p>
         </div>
-      </Link>
+      </SmartLink>
     </article>
   );
 };

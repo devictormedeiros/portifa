@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import SmartLink from "@/app/components/SmartLink";
 
 const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);
@@ -55,12 +55,12 @@ const DrawerMenu = ({ data }) => {
         <ul className="text-2xl uppercase font-bold text-center space-y-6">
           {data?.map((item, index) => (
             <li key={index}>
-              <Link
+              <SmartLink
                 href={item.url}
                 className="content-title-h2 text-gray-700 hover:text-white-100 hover:underline uppercase mb-10 block"
               >
                 {item.title}
-              </Link>
+              </SmartLink>
             </li>
           ))}
         </ul>

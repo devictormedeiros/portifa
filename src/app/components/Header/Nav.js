@@ -1,6 +1,7 @@
 "use client";
 import { memo } from "react";
-import Link from "next/link";
+import SmartLink from "@/app/components/SmartLink";
+
 const Nav = ({ data }) => {
   return (
     <nav className="main-menu">
@@ -8,12 +9,12 @@ const Nav = ({ data }) => {
         {data?.map((item) => {
           return (
             <li key={item.id}>
-              <Link
+              <SmartLink
                 href={item.url}
                 className="menu-section text-white-50 hover:text-white-100 hover:underline"
               >
                 {item.title}
-              </Link>
+              </SmartLink>
             </li>
           );
         })}
