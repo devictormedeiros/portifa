@@ -63,7 +63,7 @@ const Projects = ({ data }) => {
       <div className="container h-full relative">
         <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
           {data
-            .map((id) => projects.find((p) => p.id === Number(id)))
+            .map((id) => projects.find((p) => String(p.id) === String(id)))
             .filter(Boolean)
             .map((project, index) => (
               <CardProjectBig
