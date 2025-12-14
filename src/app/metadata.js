@@ -90,8 +90,4 @@ export const metadata = {
       },
     ],
   },
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#0d0d0d" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d0d0d" },
-  ],
 };
