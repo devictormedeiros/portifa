@@ -13,11 +13,9 @@ const DrawerMenu = ({ data }) => {
 
   useEffect(() => {
     if (open) {
-      document.documentElement.style.overflowX = "hidden";
       document.body.style.overflowX = "hidden";
     } else {
       const timeout = setTimeout(() => {
-        document.documentElement.style.overflowX = "";
         document.body.style.overflowX = "hidden";
       }, 1000);
 
