@@ -5,63 +5,19 @@ import { useDataOptions } from "@/app/context/DataOptionsContext";
 import Contact from "@/app/components/Contact";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
-import TopPage from "@/app/components/Projects/TopPage";
 import List from "@/app/components/Projects/List";
-import HeaderArchive from "@/app/components/Projects/HeaderArchive";
+import TopPage from "@/features/projects/sections/TopPage";
+import HeaderArchive from "@/features/projects/sections/HeaderArchive";
 
-const Archive = () => {
+const Archive = ({ searchParams }) => {
   const { dataOption } = useDataOptions();
   const { projects, technologies } = useProjects();
+
   const [selectedTech, setSelectedTech] = useState(null);
+
   const filteredProjects = selectedTech
     ? projects.filter((project) => project.tecnologias?.includes(selectedTech))
     : projects;
-
-  const scrollRef = useRef(null);
-
-  useEffect(() => {
-    const slider = scrollRef.current;
-    let isDown = false;
-    let startX;
-    let scrollLeft;
-
-    const handleMouseDown = (e) => {
-      isDown = true;
-      slider.classList.add("dragging");
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
-    };
-
-    const handleMouseLeave = () => {
-      isDown = false;
-      slider.classList.remove("dragging");
-    };
-
-    const handleMouseUp = () => {
-      isDown = false;
-      slider.classList.remove("dragging");
-    };
-
-    const handleMouseMove = (e) => {
-      if (!isDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const walk = (x - startX) * 1.5; // multiplicador de velocidade
-      slider.scrollLeft = scrollLeft - walk;
-    };
-
-    slider.addEventListener("mousedown", handleMouseDown);
-    slider.addEventListener("mouseleave", handleMouseLeave);
-    slider.addEventListener("mouseup", handleMouseUp);
-    slider.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      slider.removeEventListener("mousedown", handleMouseDown);
-      slider.removeEventListener("mouseleave", handleMouseLeave);
-      slider.removeEventListener("mouseup", handleMouseUp);
-      slider.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
 
   // Aplica filtro se ?t=slug estiver presente
   useEffect(() => {
@@ -75,22 +31,21 @@ const Archive = () => {
     }
   }, [technologies]);
 
-  const bgImage =
-  typeof window !== "undefined" && window.innerWidth < 768
-  ? dataOption?.archive?.cabecalho["hero-mobile"]?.url
-  : dataOption?.archive?.cabecalho["hero-desktop"]?.url
-
   return (
     <>
       <main className="main-archive">
-        <TopPage bgImage={bgImage ?? null} />
+        <TopPage
+          bgImageMobile={dataOption?.archive?.cabecalho["hero-mobile"]}
+          bgImageDesktop={dataOption?.archive?.cabecalho["hero-desktop"]}
+        />
         <div className="archive-container w-full mt-[-3rem]">
           <HeaderArchive
             dataOption={dataOption}
             technologies={technologies}
             selectedTech={selectedTech}
             setSelectedTech={setSelectedTech}
-            scrollRef={scrollRef}
+            title={dataOption?.archive?.cabecalho?.titulo || ""}
+            description={dataOption?.archive?.cabecalho?.descricao || ""}
           />
           <List
             filteredProjects={filteredProjects}

@@ -1,0 +1,53 @@
+import IconsLib from "@/app/components/Icons";
+import HeaderScrollWrapper from "./wrappers/HeaderScrollWrapper";
+
+const HeaderArchive = ({
+  technologies,
+  selectedTech,
+  setSelectedTech,
+  title,
+  description,
+}) => {
+  return (
+    <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
+      <div className="flex flex-col gap-6 w-full p-0">
+        {title !== "" && (
+          <h2 className="content-title-h2 text-gray-200 ">{title}</h2>
+        )}
+
+        {technologies?.length > 0 && (
+          <HeaderScrollWrapper>
+            {technologies.map((tech) => {
+              const isActive = selectedTech === tech.id;
+
+              return (
+                <button
+                  key={tech.id}
+                  onClick={() => setSelectedTech(isActive ? null : tech.id)}
+                  className={`pill-category menu-section flex items-center gap-x-2   py-2 px-4 rounded-3xl duration-300 lg:hover:bg-gray-200  lg:hover:text-gray-700 min-w-[max-content] ${
+                    isActive
+                      ? "bg-gray-200 text-gray-700 pill-category-active"
+                      : "bg-white-10 text-gray-200"
+                  }`}
+                >
+                  {tech.acf?.tecnologias?.icone && (
+                    <div className="img-tech">
+                      <IconsLib name={tech.acf?.tecnologias?.icone} />
+                    </div>
+                  )}
+                  {tech.name}
+                </button>
+              );
+            })}
+          </HeaderScrollWrapper>
+        )}
+      </div>
+
+      {description !== "" && (
+        <p className="relative self-stretch text-white-70">{description}</p>
+      )}
+    </section>
+  );
+};
+
+export default HeaderArchive;

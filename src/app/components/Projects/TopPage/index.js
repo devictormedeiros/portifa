@@ -1,17 +1,9 @@
 import Image from "next/image";
-import { useEffect } from "react";
-
 const TopPage = ({ bgImage }) => {
-  
-  useEffect(() => {
-    console.log(bgImage);
-  }, []);
 
   if (!bgImage) {
     return;
   }
-
-
 
   return (
     <section className="flex flex-col w-full items-center header-projects">

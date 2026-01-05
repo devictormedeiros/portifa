@@ -1,12 +1,12 @@
-import Header from "@/app/components/Header";
-import { getHeaderData } from "@/features/layout/service/header.service";
+import Header from "@/features/layout/Header";
+import { getHeaderData } from "@/features/layout/services/header.service";
 
 export default async function RootLayoutProjects({ children }) {
-  const data = await getHeaderData();
+  const {menu, logo} = await getHeaderData();
 
   return (
     <>
-      <Header logo={data?.logo_principal || null} />
+      <Header logo={logo || null} menu={menu || null}/>
       {children}
     </>
   );

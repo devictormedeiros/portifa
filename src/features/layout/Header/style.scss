@@ -1,0 +1,275 @@
+header {
+  position: sticky;
+  top: 0;
+  border-top-right-radius: 1.5rem;
+  border-top-left-radius: 1.5rem;
+  z-index: 98;
+  width: 100%;
+  padding: 1rem 0;
+  transition: all 0.5s ease;
+  height: var(--header-height);
+  background: var(--gray-900);
+  @media (max-width: 48rem) {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    padding: 0.75rem 0;
+    margin-top: -0.0625rem;
+
+    &.sticky-header {
+      background-color: transparent;
+      &:before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(0.25rem);
+        position: absolute;
+        transition: background 0.3s;
+        transition-delay: 20s;
+        top: 0;
+        z-index: -1;
+      }
+    }
+  }
+  .logo {
+    svg {
+      max-height: 2.75rem;
+      max-width: 2.75rem;
+      object-fit: contain;
+      @media (max-width: 48rem) {
+        width: 100%;
+        max-height: 2.3rem;
+        max-width: 2.3rem;
+      }
+    }
+  }
+  nav.main-menu {
+    column-gap: 1.5rem;
+    @media screen and (max-width: 48rem) {
+      display: none !important;
+    }
+    ul {
+      column-gap: 5rem;
+      @media screen and (max-width: 62.5rem) {
+        column-gap: 2.5rem;
+      }
+      li {
+        a {
+          transform: translateY(0);
+          transition: all 0.5s ease;
+        }
+      }
+    }
+  }
+  &:has(.nav-open) {
+    .logo {
+      z-index: 10;
+      svg,
+      svg * {
+        fill: var(--gray-700);
+      }
+    }
+  }
+  &.sticky-header {
+    border-radius: 0 !important;
+    position: fixed;
+    bottom: auto;
+    top: 0;
+
+    background: transparent;
+    @media (min-width: 768px) {
+      padding-top: 1rem;
+    }
+    &:before {
+      background-color: var(--black-70);
+    }
+    nav.main-menu ul li a {
+      opacity: 0;
+      transform: translateY(-1.25rem);
+    }
+    &:has(.nav-open) {
+      .logo {
+        z-index: 10;
+      }
+    }
+  }
+}
+
+.menu-hamburguer {
+  position: relative;
+  > button {
+    transition: all 0.3s ease-in-out;
+    z-index: 1001;
+    position: relative;
+    @media (min-width: 48rem) {
+      &:after {
+        content: "";
+        width: 2.5rem;
+        height: 2.5rem;
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: var(--primary);
+        border-radius: 100%;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.6s ease;
+      }
+      &:hover {
+        &:after {
+          opacity: 1;
+        }
+      }
+    }
+    .burger {
+      position: relative;
+      width: 1.625rem;
+      height: 1.125rem;
+      background: transparent;
+      display: block;
+      input {
+        display: none;
+        &:checked {
+          & ~ span:nth-of-type(1) {
+            transform: rotate(45deg);
+            top: -0.125rem;
+            left: 0.1875rem;
+          }
+
+          & ~ span:nth-of-type(2) {
+            width: 0%;
+            opacity: 0;
+          }
+
+          & ~ span:nth-of-type(3) {
+            transform: rotate(-45deg);
+            top: 1.0625rem;
+            left: 0.1875rem;
+          }
+        }
+      }
+      .path-hamburguer-animate {
+        transform: scaleX(0.5) !important;
+        transition: transform 0.2s ease-in-out;
+        transition-delay: 0.1s;
+      }
+      span {
+        display: block;
+        position: absolute;
+        height: 0.125rem;
+        width: 100%;
+        background: var(--white-100);
+        border-radius: 0.5625rem;
+        opacity: 1;
+        left: 0;
+        transform: rotate(0deg);
+        transition: 0.25s ease-in-out;
+        &:nth-of-type(1) {
+          top: 0rem;
+          transform-origin: left center;
+        }
+
+        &:nth-of-type(2) {
+          top: 47%;
+          transform: translateY(-50%);
+          transform-origin: left center;
+        }
+
+        &:nth-of-type(3) {
+          top: 100%;
+          transform-origin: left center;
+          transform: translateY(-100%);
+        }
+      }
+    }
+
+    &:hover {
+      .path-hamburguer-animate {
+        transform: scaleX(1) !important;
+      }
+    }
+  }
+  &:has(.nav-open) {
+    > button .burger span {
+      background: var(--gray-700);
+    }
+  }
+
+  nav {
+    transition:
+      opacity 0.4s ease,
+      height 0.4s ease;
+    top: 0;
+    margin: auto;
+    left: 0;
+    opacity: 0;
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    ul {
+      position: relative;
+      z-index: 2;
+      li {
+        opacity: 0;
+        transform: translateY(1.25rem);
+        transition:
+          opacity 0.7s linear,
+          transform 0.7s linear;
+      }
+    }
+
+    &.nav-open {
+      opacity: 1;
+      z-index: 1;
+      pointer-events: all;
+      ul li {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+  .bg-nav {
+    background: var(--primary);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    z-index: 1;
+    transition:
+      transform 2s ease-out 0.2s,
+      width 0.7s ease-out 0.2s,
+      height 0.7s ease-out 0.2s;
+    transform: translate(-50%, -50%) scale(0);
+
+    &.nav-open {
+      width: 220vw;
+      height: 220vw;
+      transform: translate(-50%, -50%) scale(1);
+      transition:
+        transform 0.7s ease-out 0.1s,
+        width 0.7s ease-out 0.1s,
+        height 0.7s ease-out 0.1s;
+      @media (max-width: 48rem) {
+        width: 220vh;
+        height: 220vh;
+      }
+    }
+  }
+}
+
+/* Loop SCSS para criar delays automáticos */
+@for $i from 1 through 10 {
+  nav {
+    &.nav-open ul li:nth-child(#{$i}) {
+      transition-delay: #{0.3s + ($i * 0.2s)};
+    }
+  }
+}
+

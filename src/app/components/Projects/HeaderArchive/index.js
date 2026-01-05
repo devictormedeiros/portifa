@@ -1,5 +1,5 @@
 import IconsLib from "@/app/components/Icons";
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 const HeaderArchive = ({
   dataOption,
