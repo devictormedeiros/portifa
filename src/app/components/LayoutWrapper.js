@@ -8,8 +8,6 @@ import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
 import ScrollToTop from "./ScrollTop";
-import { useRouter, usePathname } from "next/navigation"; // App Router (use next/router se for Pages Router)
-
 
 export default function LayoutWrapper({ children }) {
   const { dataOption, isLoading } = useDataOptions();
@@ -17,8 +15,6 @@ export default function LayoutWrapper({ children }) {
   const { isLoadingProjects } = useProjects();
 
   const isPageLoading = isLoading || isLoadingProjects;
-  const router = useRouter();
-  const pathname = usePathname();
 
   return (
     <>

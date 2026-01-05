@@ -20,7 +20,6 @@ const ProjetoPage = () => {
   const [currentProject, setCurrentProject] = useState(null);
   const scrollRef = useRef(null);
   const params = useParams();
-  const innerWidth = typeof window !== "undefined" && window?.innerWidth;
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
@@ -116,7 +115,6 @@ const ProjetoPage = () => {
   if (isReady && !currentProject) {
     notFound();
   }
-  
 
   // Filtra as tecnologias do projeto atual
   const projectTechnologies = currentProject.tecnologias

@@ -1,15 +1,15 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-import Header from "./components/Header";
-import About from "./components/Home/About";
-import Intro from "./components/Home/Intro";
-import Tecnologias from "./components/Home/Tecnologias";
-import Contact from "./components/Contact";
-import Projects from "./components/Home/Projects";
-import Call from "./components/Home/Call/Call";
-import Skills from "./components/Home/Skills/Skills";
-import { useDataOptions } from "./context/DataOptionsContext";
-import Recommendations from "./components/Home/Recommendations";
+import Header from "../components/Header";
+import About from "../components/Home/About";
+import Intro from "../components/Home/Intro";
+import Tecnologias from "../components/Home/Tecnologias";
+import Contact from "../components/Contact";
+import Projects from "../components/Home/Projects";
+import Call from "../components/Home/Call/Call";
+import Skills from "../components/Home/Skills/Skills";
+import { useDataOptions } from "../context/DataOptionsContext";
+import Recommendations from "../components/Home/Recommendations";
 
 const HomePage = () => {
   const { dataOption: data } = useDataOptions();

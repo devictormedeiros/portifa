@@ -3,7 +3,6 @@ import React from "react";
 import { useRef, useEffect, useState } from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
 import Contact from "@/app/components/Contact";
-import Header from "@/app/components/Header";
 import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
 import TopPage from "@/app/components/Projects/TopPage";
@@ -19,7 +18,6 @@ const Archive = () => {
     : projects;
 
   const scrollRef = useRef(null);
-  const innerWidth =  typeof window !== "undefined" && window?.innerWidth;
 
   useEffect(() => {
     const slider = scrollRef.current;
@@ -84,9 +82,7 @@ const Archive = () => {
 
   return (
     <>
-      <Header logo={dataOption?.logo_principal || null} />
       <main className="main-archive">
-        {/* Content Wrapper Section */}
         <TopPage bgImage={bgImage ?? null} />
         <div className="archive-container w-full mt-[-3rem]">
           <HeaderArchive

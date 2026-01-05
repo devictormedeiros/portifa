@@ -28,7 +28,7 @@ export const metadata = {
   generator: "Next.js",
   referrer: "origin-when-cross-origin",
   formatDetection: { email: false, address: false, telephone: false },
-  metadataBase: new URL(SITE_URL),
+  //metadataBase: new URL(SITE_URL),
   alternates: { canonical: "/" },
   openGraph: {
     title: "Portfólio",
