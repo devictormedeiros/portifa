@@ -1,3 +1,5 @@
+"use client";
+
 import {
   IconButton,
   SpeedDial,
@@ -19,6 +21,7 @@ import {
 import { memo } from "react";
 import "./style.scss";
 import { useSticky } from "../../context/StickyContext";
+
 const FloatSocial = ({ data }) => {
   const { isHeaderSticky } = useSticky();
   return (

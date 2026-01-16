@@ -15,5 +15,9 @@ export async function getGeneralData(menuSlug = 'menu-principal') {
     configuracao_do_formulario: options?.acf?.configuracao_do_formulario ?? null,
     code_editor: options?.acf?.code_editor,
     styleguide: options?.acf?.styleguide,
+    code_editor: options?.acf?.code_editor,
+    idiomas_exibidos: options?.acf?.idiomas_exibidos,
+    idiomaDefault: options?.acf?.idiomaDefault,
+    idioma_padrao: options?.acf?.idioma_padrao,
   };
 }

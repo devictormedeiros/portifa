@@ -2,11 +2,9 @@
 
 import { useState, useEffect, useRef } from "react";
 import "./style.scss";
-import { useDataOptions } from "@/app/context/DataOptionsContext";
 import { getCurrentLang } from "@/app/utils/getCurrentLang";
 
-export default function SwitchLang({ onChange }) {
-  const { dataOption } = useDataOptions();
+export default function SwitchLang({ onChange, idiomas }) {
   const [languages, setLanguages] = useState([]);
   const [selected, setSelected] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -14,11 +12,10 @@ export default function SwitchLang({ onChange }) {
   
   // monta os idiomas a partir do ACF Options
   useEffect(() => {
-    const acf = (dataOption && (dataOption.acf || dataOption)) || {};
-    const acfSlugs = Array.isArray(acf.idiomas_exibidos) ? acf.idiomas_exibidos : [];
+    const acfSlugs = Array.isArray(idiomas?.idiomas_exibidos) ? idiomas?.idiomas_exibidos : [];
     if (acfSlugs.length === 0) return;
 
-    const defaultSlug = acf.idioma_padrao || acf.idiomaDefault || null;
+    const defaultSlug = idiomas?.idioma_padrao || idiomas?.idiomaDefault || null;
 
     const langs = acfSlugs
     .map((item) => {
@@ -49,7 +46,7 @@ export default function SwitchLang({ onChange }) {
 
     setLanguages(langs);
     setSelected(initial || null);
-  }, [dataOption]);
+  }, [idiomas]);
 
   // fecha dropdown ao clicar fora
   useEffect(() => {

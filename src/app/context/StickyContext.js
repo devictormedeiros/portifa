@@ -1,3 +1,5 @@
+"use client"
+
 import { createContext, useContext, useState, useEffect, useRef } from "react";
 
 // Criando o contexto

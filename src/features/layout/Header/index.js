@@ -7,7 +7,7 @@ import SmartLink from "@/app/components/SmartLink";
 import MainLogo from "@/app/components/Icons/Logos/MainLogo";
 import HeaderStickyWrapper from "../wrappers/HeaderStickyWrapper";
 
-const Header = ({menu}) => {
+const Header = ({menu, idiomas}) => {
   return (
     <HeaderStickyWrapper>
       <div className="mx-auto px-6 md:px-10">
@@ -21,7 +21,7 @@ const Header = ({menu}) => {
             <Nav data={menu} />
           </div>
           <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-[2rem] gap-x-[1.25rem]">
-            <SwitchLang />
+            <SwitchLang idiomas={idiomas}/>
             <div className="menu-hamburguer">
               <DrawerMenu data={menu} />
             </div>
