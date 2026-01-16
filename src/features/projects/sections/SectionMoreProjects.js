@@ -1,6 +1,8 @@
-import CardProject from "../CardProjects";
+"use client";
+
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
+import CardProject from "@/app/components/CardProjects";
 
 const SectionMoreProjoects = ({
   moreProjects = [],
@@ -58,7 +60,6 @@ const SectionMoreProjoects = ({
   }, []);
 
   useEffect(() => {
-
     if( projects?.length === 0) {
       return;
     } 

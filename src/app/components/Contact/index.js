@@ -1,3 +1,5 @@
+"use client";
+
 import "./style.scss";
 import { useForm } from "react-hook-form";
 import { useState, useRef } from "react";
@@ -5,15 +7,16 @@ import emailjs from "emailjs-com";
 import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import IconsLib from "../Icons";
-
 import ScrollingText from "../Home/ScrollText/ScrollText";
 import Footer from "../Footer";
+
 const Contact = ({ data, scrollText, dataForm }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
   const handleError = (errors) => {
     resetAlert();
     setTimeout(() => setIsSuccess(false), 0);
@@ -51,7 +54,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
 
   return (
     <section className="sec-contact g-col-12">
-      {scrollText && <ScrollingText data={scrollText} />}
+      <ScrollingText data={scrollText} />
       <div className="container">
         <div className="sec-contact-header w-full">
           <h2 className="content-title-h2 text-gray-200 uppercase pb-4  border-white-10 border-b">

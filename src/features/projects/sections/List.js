@@ -1,12 +1,12 @@
 import IconsLib from "@/app/components/Icons";
 import Image from "next/image";
-import Link from "next/link";
 import SmartLink from "@/app/components/SmartLink";
-const List = ({ filteredProjects, technologies }) => {
+
+const List = ({ projects, technologies }) => {
   return (
     <section className="w-full mx-auto flex flex-col gap-12 md:mt-[4rem] mt-[2.5rem] container">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-        {filteredProjects.map((project, index) => {
+        {projects.map((project, index) => {
           const media = project._embedded?.["wp:featuredmedia"]?.[0];
           const sizes = media?.media_details?.sizes;
 
@@ -14,7 +14,6 @@ const List = ({ filteredProjects, technologies }) => {
             sizes?.["card-thumb"]?.source_url || // usa o crop exato
             sizes?.medium_large?.source_url || // fallback
             media?.source_url; // fallback full
-
           return (
             <article
               key={`project-${index}`}
@@ -22,15 +21,10 @@ const List = ({ filteredProjects, technologies }) => {
             >
               <SmartLink
                 title={project.title?.rendered || "Sem título"}
-                href={`/projeto/${project.slug}`}
+                href={`/projetos/${project.slug}`}
                 className="flex flex-col flex-wrap w-full h-full"
               >
                 <div className="w-full h-[14.375rem] rounded-t-2xl">
-                  {/* <img
-                    className="w-full h-full object-cover rounded-t-2xl"
-                    alt="Imagem do projeto"
-                    src={imageUrl || "https://placehold.co/600x400"}
-                  /> */}
                   <Image
                     src={imageUrl || "https://placehold.co/600x400"}
                     alt="Imagem do projeto"

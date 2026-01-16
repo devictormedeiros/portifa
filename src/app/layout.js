@@ -1,4 +1,4 @@
-import "./globals.scss";
+import './globals.scss';
 import "animate.css/animate.compat.css";
 import { ProjectsProvider } from "./context/ProjectsContext";
 import { DataOptionsProvider } from "./context/DataOptionsContext";

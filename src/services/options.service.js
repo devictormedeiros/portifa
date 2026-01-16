@@ -1,5 +1,3 @@
-// lib/services/options.service.ts
-
 import getAPI from "@/app/api/getAPI";
 
 export async function getOptions() {

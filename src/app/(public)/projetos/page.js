@@ -1,67 +1,82 @@
-"use client";
-import React from "react";
-import { useRef, useEffect, useState } from "react";
-import { useDataOptions } from "@/app/context/DataOptionsContext";
-import Contact from "@/app/components/Contact";
-import { useProjects } from "@/app/context/ProjectsContext";
 import "./style.scss";
-import List from "@/app/components/Projects/List";
+import { getProjectsPageData } from "@/features/projects/services/projects.service";
 import TopPage from "@/features/projects/sections/TopPage";
 import HeaderArchive from "@/features/projects/sections/HeaderArchive";
+import List from "@/features/projects/sections/List";
 
-const Archive = ({ searchParams }) => {
-  const { dataOption } = useDataOptions();
-  const { projects, technologies } = useProjects();
+export async function generateMetadata({ searchParams }) {
+  const techSlug = searchParams?.t || null;
 
-  const [selectedTech, setSelectedTech] = useState(null);
+  const data = await getProjectsPageData({ techSlug });
 
-  const filteredProjects = selectedTech
-    ? projects.filter((project) => project.tecnologias?.includes(selectedTech))
-    : projects;
+  // SEO base do archive (ACF / Options)
+  const archiveSEO = data?.archive?.seo;
+  const archiveHeader = data?.archive?.cabecalho;
 
-  // Aplica filtro se ?t=slug estiver presente
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const techSlug = params.get("t");
-    if (techSlug && technologies.length > 0) {
-      const tech = technologies.find((t) => t.slug === techSlug);
-      if (tech) {
-        setSelectedTech(tech.id);
-      }
-    }
-  }, [technologies]);
+  // Caso NÃO tenha filtro
+  if (!techSlug) {
+    return {
+      title: archiveSEO?.title || "Projetos",
+      description: archiveSEO?.description || "",
+      openGraph: {
+        title: archiveSEO?.title || "Projetos",
+        description: archiveSEO?.description || "",
+        images: archiveHeader?.["hero-desktop"]
+          ? [archiveHeader["hero-desktop"]]
+          : [],
+        type: "website",
+      },
+    };
+  }
+
+  // Caso TENHA filtro por tecnologia
+  const currentTech = data?.technologies?.find(
+    (tech) => tech.slug === techSlug
+  );
+
+  const title = currentTech?.yoast_head_json?.title
+    || `Projetos com ${currentTech?.name}`;
+
+  const description =
+    currentTech?.yoast_head_json?.description
+    || `Veja projetos desenvolvidos utilizando ${currentTech?.name}.`;
+
+  const ogImage =
+    currentTech?.yoast_head_json?.og_image?.[0]?.url
+    || archiveHeader?.["hero-desktop"];
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      description,
+      images: ogImage ? [ogImage] : [],
+      type: "website",
+    },
+  };
+}
+
+export default async function Projetos({ searchParams }) {
+  const techSlug = searchParams?.t || null;
+
+  const data = await getProjectsPageData({ techSlug });
 
   return (
-    <>
-      <main className="main-archive">
-        <TopPage
-          bgImageMobile={dataOption?.archive?.cabecalho["hero-mobile"]}
-          bgImageDesktop={dataOption?.archive?.cabecalho["hero-desktop"]}
+    <main className="main-archive">
+      <TopPage
+        bgImageMobile={data?.archive?.cabecalho["hero-mobile"]}
+        bgImageDesktop={data?.archive?.cabecalho["hero-desktop"]}
+      />
+      <div className="archive-container w-full mt-[-3rem]">
+        <HeaderArchive
+          technologies={data?.technologies}
+          activeTech={techSlug}
+          title={data?.archive?.cabecalho?.titulo || ""}
+          description={data?.archive?.cabecalho?.descricao || ""}
         />
-        <div className="archive-container w-full mt-[-3rem]">
-          <HeaderArchive
-            dataOption={dataOption}
-            technologies={technologies}
-            selectedTech={selectedTech}
-            setSelectedTech={setSelectedTech}
-            title={dataOption?.archive?.cabecalho?.titulo || ""}
-            description={dataOption?.archive?.cabecalho?.descricao || ""}
-          />
-          <List
-            filteredProjects={filteredProjects}
-            technologies={technologies}
-          />
-        </div>
-        {dataOption && dataOption.secao_contato && (
-          <Contact
-            scrollText={dataOption.texto_scroll || null}
-            data={dataOption.secao_contato}
-            dataForm={dataOption.configuracao_do_formulario || null}
-          />
-        )}
-      </main>
-    </>
+        <List projects={data?.projects} technologies={data?.technologies} />
+      </div>
+    </main>
   );
 };
-
-export default Archive;

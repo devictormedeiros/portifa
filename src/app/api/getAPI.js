@@ -5,9 +5,10 @@ async function getAPI(routes, options = {}) {
       `${process.env.NEXT_PUBLIC_SITE_URL +`/wp-json`+ routes}`,
       {
         ...options,
-        next: {
+        /* next: {
           revalidate: options?.revalidate ?? 60
-        }
+        } */
+       cache: "no-store",
       }
     );
 

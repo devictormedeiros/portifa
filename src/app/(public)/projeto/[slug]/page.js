@@ -7,7 +7,7 @@ import Contact from "@/app/components/Contact";
 import "./style.scss";
 import Header from "@/app/components/Header";
 import { useParams } from "next/navigation";
-import SectionMoreProjoects from "@/app/components/Single/SectionMoreProjects";
+import SectionMoreProjoects from "@/features/projects/sections/SectionMoreProjects";
 import TopPage from "@/app/components/Projects/TopPage";
 import ContentProject from "@/app/components/Projects/ContentProject";
 import HeaderSingle from "@/app/components/Projects/HeaderSingle";

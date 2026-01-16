@@ -1,40 +1,8 @@
 import IconsLib from "@/app/components/Icons";
-import { useLayoutEffect, useRef, useState } from "react";
+import HeaderScrollWrapper from "@/features/projects/sections/HeaderArchive/wrappers/HeaderScrollWrapper";
+import Link from "next/link";
 
-const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
-  const [isDragging, setIsDragging] = useState(false);
-  const [isPillsScrolled, setIsPillsScrolled] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const containerRef = useRef(null);
-
-  const startDragging = (e) => {
-    setIsDragging(true);
-    const pageX = e.touches ? e.touches[0].pageX : e.pageX;
-    setStartX(pageX);
-    setScrollLeft(containerRef.current?.scrollLeft || 0);
-  };
-
-  const onDragging = (e) => {
-    if (!isDragging || !containerRef.current) return;
-    //e.preventDefault();
-    const pageX = e.touches ? e.touches[0].pageX : e.pageX;
-    const walk = (pageX - startX) * 1.5;
-    containerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const stopDragging = () => {
-    setIsDragging(false);
-  };
-
-  useLayoutEffect(() => {
-    setTimeout(() => {
-      setIsPillsScrolled(
-        containerRef.current.scrollWidth > containerRef.current.clientWidth
-      );
-    }, 4000);
-  }, [containerRef]);
-
+const HeaderSingle = ({ currentProject }) => {
   return (
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
       <div className="w-full flex flex-col gap-[1.5rem] pb-[3rem] border-b border-[#FFFFFF33] lg:flex-row lg:items-center lg:gap-[5rem] mt-[-0.0625rem]">
@@ -70,36 +38,26 @@ const HeaderSingle = ({ currentProject, projectTechnologies, scrollRef }) => {
               </a>
             )}
           </div>
-          <div
-            ref={containerRef}
-            className={`${
-              isPillsScrolled ? "cursor-horizontal" : ""
-            } scroll-drag flex items-center gap-8 relative self-stretch overflow-x-auto list-categories scroll-hide-bar-mobile px-6 w-[100vw] mx-[-1.5rem] lg:mx-0 lg:w-full lg:max-w-[41.125rem] lg:gap-4 lg:px-0`}
-            onMouseDown={startDragging}
-            onMouseMove={onDragging}
-            onMouseUp={stopDragging}
-            onMouseLeave={stopDragging}
-            onTouchStart={startDragging}
-            onTouchMove={onDragging}
-            onTouchEnd={stopDragging}
-          >
-            {projectTechnologies.map((tech) => (
-              <a
-                key={tech.id}
-                href={`/projetos?t=${tech.slug}`}
-                className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group lg:hover:bg-gray-200 lg:hover:text-gray-700 bg-white-10 text-gray-200"
-                title={tech.name}
-                draggable="false"
-              >
-                {tech.acf?.tecnologias?.icone && (
-                  <div className="img-tech">
-                    <IconsLib name={tech.acf?.tecnologias?.icone} />
-                  </div>
-                )}
-                {tech.name}
-              </a>
-            ))}
-          </div>
+          {currentProject?.tecnologia_detalhes?.length > 0 && (
+            <HeaderScrollWrapper>
+              {currentProject?.tecnologia_detalhes?.map((tech) => (
+                <Link
+                  key={tech.id}
+                  href={`/projetos?t=${tech.slug}`}
+                  className="pill-category menu-section flex items-center gap-x-2  py-2 px-4 rounded-3xl duration-300 flex-none group lg:hover:bg-gray-200 lg:hover:text-gray-700 bg-white-10 text-gray-200"
+                  title={tech.name}
+                  draggable="false"
+                >
+                  {tech.acf?.tecnologias?.icone && (
+                    <div className="img-tech">
+                      <IconsLib name={tech.acf?.tecnologias?.icone} />
+                    </div>
+                  )}
+                  {tech.name}
+                </Link>
+              ))}
+            </HeaderScrollWrapper>
+          )}
         </div>
         <div className="text-white-70 feed-excerpt lg:flex-1">
           <div

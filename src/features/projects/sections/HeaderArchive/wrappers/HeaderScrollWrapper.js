@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const HeaderScrollWrapper = ({ children }) => {
@@ -52,7 +54,7 @@ const HeaderScrollWrapper = ({ children }) => {
   useLayoutEffect(() => {
     setTimeout(() => {
       setIsPillsScrolled(
-        scrollRef?.current?.scrollWidth > scrollRef.current.clientWidth
+        scrollRef?.current?.scrollWidth > scrollRef?.current?.clientWidth
       );
     }, 4000);
   }, [scrollRef]);

@@ -7,7 +7,7 @@ import SmartLink from "@/app/components/SmartLink";
 import MainLogo from "@/app/components/Icons/Logos/MainLogo";
 import HeaderStickyWrapper from "../wrappers/HeaderStickyWrapper";
 
-const Header = ({logo, menu}) => {
+const Header = ({menu}) => {
   return (
     <HeaderStickyWrapper>
       <div className="mx-auto px-6 md:px-10">

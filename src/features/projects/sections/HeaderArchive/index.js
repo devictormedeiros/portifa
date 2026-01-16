@@ -1,13 +1,30 @@
+"use client";
+
 import IconsLib from "@/app/components/Icons";
 import HeaderScrollWrapper from "./wrappers/HeaderScrollWrapper";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const HeaderArchive = ({
   technologies,
-  selectedTech,
-  setSelectedTech,
   title,
   description,
+  activeTech
 }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const handleClick = (slug) => {
+    const params = new URLSearchParams(searchParams.toString());
+
+    if (activeTech === slug) {
+      params.delete("t");
+    } else {
+      params.set("t", slug);
+    }
+
+    router.push(`/projetos?${params.toString()}`);
+  };
+
   return (
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
       <div className="flex flex-col gap-6 w-full p-0">
@@ -18,12 +35,12 @@ const HeaderArchive = ({
         {technologies?.length > 0 && (
           <HeaderScrollWrapper>
             {technologies.map((tech) => {
-              const isActive = selectedTech === tech.id;
+              const isActive = activeTech === tech.slug;
 
               return (
                 <button
                   key={tech.id}
-                  onClick={() => setSelectedTech(isActive ? null : tech.id)}
+                  onClick={() => handleClick(tech.slug)}
                   className={`pill-category menu-section flex items-center gap-x-2   py-2 px-4 rounded-3xl duration-300 lg:hover:bg-gray-200  lg:hover:text-gray-700 min-w-[max-content] ${
                     isActive
                       ? "bg-gray-200 text-gray-700 pill-category-active"
