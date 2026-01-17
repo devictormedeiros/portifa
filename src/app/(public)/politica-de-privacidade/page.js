@@ -2,8 +2,8 @@
 import React from "react";
 import { useDataOptions } from "@/app/context/DataOptionsContext";
 import Contact from "@/app/components/Contact";
-import Header from "@/app/components/Header";
 import "./style.scss";
+import Header from "@/features/layout/Header";
 
 const PrivacyPage = () => {
   const { dataOption: data } = useDataOptions();
@@ -13,9 +13,13 @@ const PrivacyPage = () => {
       <Header logo={data?.logo_principal || null} />
       <main className="main-privacy-page">
         <div className="container py-10">
-         {data?.politica_de_privacidade && (
-          <div dangerouslySetInnerHTML={{ __html: data?.politica_de_privacidade?.texto }} />
-         )}
+          {data?.politica_de_privacidade && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: data?.politica_de_privacidade?.texto,
+              }}
+            />
+          )}
         </div>
 
         {data && data?.secao_contato && (

@@ -1,9 +1,4 @@
-import CustomCursor from "@/app/components/CustomCursor";
-import FloatSocial from "@/app/components/FloatSocial";
 import LayoutWrapper from "@/app/components/LayoutWrapper";
-import ScrollToTop from "@/app/components/ScrollTop";
-import Styleguide from "@/app/hooks/Styleguide";
-import StickyProviderClient from "@/app/providers/StickyProvider.client";
 import Footer from "@/features/layout/Footer";
 import Header from "@/features/layout/Header";
 import { getGeneralData } from "@/services/general.service";

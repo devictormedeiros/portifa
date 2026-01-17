@@ -1,4 +1,5 @@
 async function getAPI(routes, options = {}) {
+  
   try {
     // Realiza a requisição para o endpoint do Wordpress API
     const response = await fetch(

@@ -8,7 +8,7 @@ import { useForm } from "react-hook-form";
 const ContactForm = ({ dataForm }) => {
   const [isSuccess, setIsSuccess] = useState(null);
   const [loadingForm, setLoadingForm] = useState(false);
-  
+
   const form = useRef();
 
   const {
@@ -34,7 +34,7 @@ const ContactForm = ({ dataForm }) => {
         dataForm?.emailjs_service_id,
         dataForm?.emailjs_template_id,
         form.current,
-        dataForm?.emailjs_public_key
+        dataForm?.emailjs_public_key,
       )
       .then(
         (result) => {
@@ -45,7 +45,7 @@ const ContactForm = ({ dataForm }) => {
         (error) => {
           setIsSuccess(false);
           setLoadingForm(false);
-        }
+        },
       );
   };
 

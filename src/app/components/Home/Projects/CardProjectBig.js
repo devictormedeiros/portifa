@@ -1,7 +1,7 @@
 import Image from "next/image";
 import IconsLib from "../../Icons";
-import Link from "next/link";
 import SmartLink from "@/app/components/SmartLink";
+
 const CardProjectBig = ({ project, technologies }) => {
   return (
     <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0 w-full">
@@ -65,7 +65,7 @@ const CardProjectBig = ({ project, technologies }) => {
                 }}
               />
               <SmartLink
-                href={`/projeto/${project.slug}`}
+                href={`/projetos/${project.slug}`}
                 title={project.title?.rendered || "Sem título"}
                 className="py-[.75rem] px-6 text-white button-md text-center bg-white-10 duration-300 rounded uppercase w-full md:w-fit hover:bg-primary"
               >

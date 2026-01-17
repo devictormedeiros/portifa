@@ -1,8 +1,3 @@
-"use client";
-
-import { StickyProvider } from "../context/StickyContext";
-import { useDataOptions } from "../context/DataOptionsContext";
-import { useProjects } from "../context/ProjectsContext";
 import LoadingPage from "./LoadingPage";
 import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
@@ -23,6 +18,7 @@ export default function LayoutWrapper({
       {styleguide && <Styleguide styleguide={styleguide} />}
       <CustomCursor />
       <StickyProviderClient>
+        {/* <LoadingPage /> */}
         {children}
         {secao_contato && <FloatSocial data={secao_contato} />}
       </StickyProviderClient>

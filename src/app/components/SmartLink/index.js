@@ -2,12 +2,7 @@
 
 import Link from "next/link";
 
-export default function SmartLink({
-  href,
-  onClick,
-  children,
-  ...props
-}) {
+export default function SmartLink({ href, onClick, children, ...props }) {
   return (
     <Link
       href={href}

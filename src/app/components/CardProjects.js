@@ -12,20 +12,12 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
   return (
     <article className="flex flex-col project-card rounded-[0.625rem] overflow-hidden lg:rounded-[1rem] select-none">
       <SmartLink
-        href={`/projeto/${project.slug}`}
+        href={`/projetos/${project.slug}`}
         className="block w-full h-full"
         draggable="false"
         onClick={handleClick}
       >
         <div className="w-full h-[14.375rem]">
-          {/* <img
-            src={
-              project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-              "/images/image.png"
-            }
-            alt={project.title?.rendered}
-            className="w-full h-full object-cover"
-          /> */}
           <Image
             src={
               project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
@@ -35,7 +27,6 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
             className="w-full h-full object-cover img-with-skeleton"
             width={450}
             height={350}
-            loading="eager"
           />
         </div>
 
