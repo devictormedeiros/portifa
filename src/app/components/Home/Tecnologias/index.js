@@ -53,7 +53,6 @@ const Tecnologias = ({ data }) => {
                               className="img-fluid contain"
                               width={34}
                               height={34}
-                              loading="eager"
                             />
                           </div>
                         ) : items?.icone ? (

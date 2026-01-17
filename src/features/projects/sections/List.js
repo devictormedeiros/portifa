@@ -31,7 +31,6 @@ const List = ({ projects, technologies }) => {
                     className="w-full h-full object-cover rounded-t-2xl img-with-skeleton"
                     width={450}
                     height={350}
-                    loading="eager"
                   />
                 </div>
                 <div className="flex flex-1 flex-col items-start gap-4 p-6 bg-white-5 rounded-b-2xl">
@@ -45,7 +44,7 @@ const List = ({ projects, technologies }) => {
                       <div className="flex items-center gap-4">
                         {project.tecnologias.map((techId, techIndex) => {
                           const tech = technologies.find(
-                            (t) => t.id === techId
+                            (t) => t.id === techId,
                           );
                           const iconSlug = tech?.acf?.tecnologias?.icone;
 
@@ -71,7 +70,7 @@ const List = ({ projects, technologies }) => {
                         ? project.acf.resumoCard
                         : (project.excerpt?.rendered || "").replace(
                             /<[^>]+>/g,
-                            ""
+                            "",
                           );
 
                       const sliced = text.slice(0, 120).trim();

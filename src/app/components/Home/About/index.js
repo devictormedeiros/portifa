@@ -62,7 +62,6 @@ const About = ({ data }) => {
               width={479} // Proporção
               height={533}
               sizes="(max-width: 768px) 90vw, (max-width: 1024px) 60vw, 40vw"
-              loading="eager"
             />
           </AnimationWrapper>
         </div>

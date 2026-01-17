@@ -65,7 +65,6 @@ const Recommendations = ({ data }) => {
                         width={550}
                         height={350}
                         sizes="(min-width:1024px) 33vw, 100vw"
-                        loading="eager"
                       />
                     </figure>
                     <div className="p-6">
