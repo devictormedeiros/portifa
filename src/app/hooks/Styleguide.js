@@ -1,4 +1,5 @@
 "use client"; // Este componente será renderizado no cliente
+
 import { useEffect, useState } from "react";
 
 export default function Styleguide({ styleguide }) {

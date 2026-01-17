@@ -1,5 +1,4 @@
 import { ProjectsProvider } from "../context/ProjectsContext";
-import { DataOptionsProvider } from "../context/DataOptionsContext";
 import LayoutWrapper from "../components/LayoutWrapper";
 import Intro from "../components/Home/Intro";
 import Header from "@/features/layout/Header";
@@ -32,45 +31,43 @@ export default async function Home() {
 
   return (
     <ProjectsProvider>
-      <DataOptionsProvider>
-        <LayoutWrapper code_editor={code_editor} styleguide={styleguide}>
-          {data?.introducao && <Intro data={data.introducao} />}
-          <Header
-            logo={logo || null}
-            menu={menu || null}
-            idiomas={{
-              idiomas_exibidos,
-              idiomaDefault,
-              idioma_padrao,
-            }}
-          />
-          <ScrollLockWrapper>
-            <main className="main-home flex flex-wrap relative z-[1]">
-              {data?.sobre && <About data={data?.sobre || null} />}
-              <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
-                {data?.scroll && <Call data={data?.scroll || null} />}
-                {data?.projetos && <Projects data={data?.projetos || null} />}
-                <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
-                  {data?.tabs && <Skills data={data?.tabs} />}
-                  {data?.tecnologias_atuacoes && (
-                    <Tecnologias data={data?.tecnologias_atuacoes || null} />
-                  )}
-                  {data?.recomendacoes && (
-                    <Recommendations data={data.recomendacoes} />
-                  )}
-                </section>
-              </div>
-              {secao_contato && (
-                <Contact
-                  scrollText={texto_scroll}
-                  data={secao_contato}
-                  dataForm={configuracao_do_formulario}
-                />
-              )}
-            </main>
-          </ScrollLockWrapper>
-        </LayoutWrapper>
-      </DataOptionsProvider>
+      <LayoutWrapper code_editor={code_editor} styleguide={styleguide}>
+        {data?.introducao && <Intro data={data.introducao} />}
+        <Header
+          logo={logo || null}
+          menu={menu || null}
+          idiomas={{
+            idiomas_exibidos,
+            idiomaDefault,
+            idioma_padrao,
+          }}
+        />
+        <ScrollLockWrapper>
+          <main className="main-home flex flex-wrap relative z-[1]">
+            {data?.sobre && <About data={data?.sobre || null} />}
+            <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
+              {data?.scroll && <Call data={data?.scroll || null} />}
+              {data?.projetos && <Projects data={data?.projetos || null} />}
+              <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
+                {data?.tabs && <Skills data={data?.tabs} />}
+                {data?.tecnologias_atuacoes && (
+                  <Tecnologias data={data?.tecnologias_atuacoes || null} />
+                )}
+                {data?.recomendacoes && (
+                  <Recommendations data={data.recomendacoes} />
+                )}
+              </section>
+            </div>
+            {secao_contato && (
+              <Contact
+                scrollText={texto_scroll}
+                data={secao_contato}
+                dataForm={configuracao_do_formulario}
+              />
+            )}
+          </main>
+        </ScrollLockWrapper>
+      </LayoutWrapper>
     </ProjectsProvider>
   );
 }

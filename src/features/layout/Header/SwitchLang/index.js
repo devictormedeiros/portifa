@@ -2,42 +2,42 @@
 
 import { useState, useEffect, useRef } from "react";
 import "./style.scss";
-import { getCurrentLang } from "@/app/utils/getCurrentLang";
+import { getCurrentLang } from "@/libs/utils/getCurrentLang";
 
 export default function SwitchLang({ onChange, idiomas }) {
   const [languages, setLanguages] = useState([]);
   const [selected, setSelected] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef(null);
-  
+
   // monta os idiomas a partir do ACF Options
   useEffect(() => {
-    const acfSlugs = Array.isArray(idiomas?.idiomas_exibidos) ? idiomas?.idiomas_exibidos : [];
+    const acfSlugs = Array.isArray(idiomas?.idiomas_exibidos)
+      ? idiomas?.idiomas_exibidos
+      : [];
     if (acfSlugs.length === 0) return;
 
-    const defaultSlug = idiomas?.idioma_padrao || idiomas?.idiomaDefault || null;
+    const defaultSlug =
+      idiomas?.idioma_padrao || idiomas?.idiomaDefault || null;
 
     const langs = acfSlugs
-    .map((item) => {
-      const raw = typeof item === "string"
-        ? item
-        : item?.value || item?.slug || null;
-  
-      if (!raw || typeof raw !== "string") return null;
-  
-      const cleanSlug = raw.replace(/^pll_/, ""); // remove "pll_"
-  
-      return {
-        slug: cleanSlug, // <-- agora o slug NÃO tem "pll_"
-        name: cleanSlug.toUpperCase(),
-        is_default: defaultSlug?.replace(/^pll_/, "") === cleanSlug,
-      };
-    })
-    .filter(Boolean);
-  
-  
-    const savedSlug = getCurrentLang();
+      .map((item) => {
+        const raw =
+          typeof item === "string" ? item : item?.value || item?.slug || null;
 
+        if (!raw || typeof raw !== "string") return null;
+
+        const cleanSlug = raw.replace(/^pll_/, ""); // remove "pll_"
+
+        return {
+          slug: cleanSlug, // <-- agora o slug NÃO tem "pll_"
+          name: cleanSlug.toUpperCase(),
+          is_default: defaultSlug?.replace(/^pll_/, "") === cleanSlug,
+        };
+      })
+      .filter(Boolean);
+
+    const savedSlug = getCurrentLang();
 
     const initial =
       langs.find((l) => l.slug === savedSlug) ||

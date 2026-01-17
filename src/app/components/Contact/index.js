@@ -8,7 +8,7 @@ import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import IconsLib from "../Icons";
 import ScrollingText from "../Home/ScrollText/ScrollText";
-import Footer from "../Footer";
+import Footer from "@/features/layout/Footer";
 
 const Contact = ({ data, scrollText, dataForm }) => {
   const {
@@ -37,7 +37,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
         dataForm?.emailjs_service_id,
         dataForm?.emailjs_template_id,
         form.current,
-        dataForm?.emailjs_public_key
+        dataForm?.emailjs_public_key,
       )
       .then(
         (result) => {
@@ -48,7 +48,7 @@ const Contact = ({ data, scrollText, dataForm }) => {
         (error) => {
           setIsSuccess(false);
           setLoadingForm(false);
-        }
+        },
       );
   };
 
@@ -214,7 +214,6 @@ const Contact = ({ data, scrollText, dataForm }) => {
           </div>
         </div>
       </div>
-      <Footer />
     </section>
   );
 };

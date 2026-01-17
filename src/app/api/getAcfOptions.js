@@ -1,5 +1,5 @@
+import { getCurrentLang } from "@/libs/utils/getCurrentLang";
 import getAPI from "./getAPI";
-import { getCurrentLang } from "../utils/getCurrentLang";
 
 export const getAcfOptions = async () => {
   try {

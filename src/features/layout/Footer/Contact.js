@@ -72,7 +72,7 @@ const Contact = ({ data, dataForm }) => {
               </a>
             </div>
           </div>
-          {/* <ContactForm dataForm={dataForm} /> */}
+          <ContactForm dataForm={dataForm} />
         </div>
       </div>
     </section>

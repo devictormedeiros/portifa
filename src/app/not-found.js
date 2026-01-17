@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import Header from "./components/Header";
+import Header from "@/features/layout/Header";
 import { useDataOptions } from "./context/DataOptionsContext";
-import Footer from "./components/Footer";
+import Footer from "@/features/layout/Footer";
 
 export default function NotFound() {
   const { dataOption: data, isLoading } = useDataOptions();
