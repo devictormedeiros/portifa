@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState, useRef } from "react";
 import {
   Tab,
@@ -68,7 +70,8 @@ const TabsSkill = ({ skills, title, pill, condition }) => {
                 }`}
                 onClick={() => !isDragging && setActiveTab(index)}
               >
-                <strong>{dataPill}</strong> {dataPill && " - "}{pill}
+                <strong>{dataPill}</strong> {dataPill && " - "}
+                {pill}
               </Tab>
             ))}
           </TabsHeader>

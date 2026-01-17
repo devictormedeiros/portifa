@@ -8,34 +8,24 @@ import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
 import ScrollToTop from "./ScrollTop";
+import StickyProviderClient from "../providers/StickyProvider.client";
 
-export default function LayoutWrapper({ children }) {
-  const { dataOption, isLoading } = useDataOptions();
-  
-  const { isLoadingProjects } = useProjects();
-
-  const isPageLoading = isLoading || isLoadingProjects;
-
+export default function LayoutWrapper({
+  children,
+  code_editor,
+  styleguide,
+  secao_contato,
+}) {
   return (
-    <>
+    <body className="antialiased text-white-100" data-page-load="false">
       <ScrollToTop />
-      <body
-        data-page-load={isPageLoading.toString()}
-        className="antialiased text-white-100"
-      >
-        <style>{dataOption?.code_editor?.custom_code_css}</style>
-        {dataOption?.styleguide && (
-          <Styleguide styleguide={dataOption.styleguide} />
-        )}
-        <CustomCursor />
-        <LoadingPage />
-        <StickyProvider>
-          {children}
-          {dataOption?.secao_contato && (
-            <FloatSocial data={dataOption?.secao_contato} />
-          )}
-        </StickyProvider>
-      </body>
-    </>
+      <style>{code_editor?.custom_code_css}</style>
+      {styleguide && <Styleguide styleguide={styleguide} />}
+      <CustomCursor />
+      <StickyProviderClient>
+        {children}
+        {secao_contato && <FloatSocial data={secao_contato} />}
+      </StickyProviderClient>
+    </body>
   );
 }

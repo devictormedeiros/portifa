@@ -1,3 +1,5 @@
+"use client";
+
 import { useProjects } from "@/app/context/ProjectsContext";
 import CardProjectBig from "./CardProjectBig";
 import gsap from "gsap";

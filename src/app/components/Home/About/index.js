@@ -1,3 +1,5 @@
+"use client";
+
 import "./style.scss";
 import { memo, useState, useEffect } from "react";
 import ScrollAnimation from "react-animate-on-scroll";
@@ -33,7 +35,6 @@ const About = ({ data }) => {
             animateIn="fadeInUp"
             duration={3}
             offset={window.innerHeight * 0.3}
-   
             animateOnce={true}
           >
             <h2 className="content-title-h2 text-gray-200 mb-[1rem] uppercase md:mb-6">
