@@ -1,4 +1,3 @@
-import LoadingPage from "./LoadingPage";
 import Styleguide from "../hooks/Styleguide";
 import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
@@ -18,7 +17,6 @@ export default function LayoutWrapper({
       {styleguide && <Styleguide styleguide={styleguide} />}
       <CustomCursor />
       <StickyProviderClient>
-        {/* <LoadingPage /> */}
         {children}
         {secao_contato && <FloatSocial data={secao_contato} />}
       </StickyProviderClient>
