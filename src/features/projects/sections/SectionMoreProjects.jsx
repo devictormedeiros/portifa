@@ -60,40 +60,44 @@ const SectionMoreProjoects = ({
   }, []);
 
   useEffect(() => {
-    if( projects?.length === 0) {
+    if (projects?.length === 0) {
       return;
-    } 
+    }
 
     const quantityOfProjectsToShow = 5;
     let pinnedProjects = moreProjects || [];
     let remainingProjects = [];
 
     // Quantos Projetos Faltam para Completar
-    const missingQuantityProjects = quantityOfProjectsToShow - pinnedProjects?.length;
+    const missingQuantityProjects =
+      quantityOfProjectsToShow - pinnedProjects?.length;
 
     // Se faltar adicionar projetos
     if (missingQuantityProjects > 0) {
       let countRemainingProjects = 0;
-      
+
       remainingProjects = projects?.filter((project) => {
-        const isInPinnedProjects = pinnedProjects?.find(pinnedProject => {
+        const isInPinnedProjects = pinnedProjects?.find((pinnedProject) => {
           return pinnedProject?.ID === project?.id;
         });
 
-        if( !isInPinnedProjects ) {
+        if (!isInPinnedProjects) {
           countRemainingProjects++;
         }
 
-        return !isInPinnedProjects && countRemainingProjects <= missingQuantityProjects;
+        return (
+          !isInPinnedProjects &&
+          countRemainingProjects <= missingQuantityProjects
+        );
       });
     }
 
     pinnedProjects?.push(...remainingProjects);
-    pinnedProjects = pinnedProjects.map(pinnedProject => {
-      return pinnedProject?.ID || pinnedProject?.id
+    pinnedProjects = pinnedProjects.map((pinnedProject) => {
+      return pinnedProject?.ID || pinnedProject?.id;
     });
 
-    console.log(pinnedProjects)
+    console.log(pinnedProjects);
 
     setShowedProjects(pinnedProjects);
   }, [moreProjects, projects]);

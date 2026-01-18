@@ -5,7 +5,7 @@ const Contact = ({ data, dataForm }) => {
   return (
     <section className="sec-contact g-col-12">
       <div className="container">
-        <h2 className="sec-contact-header w-full content-title-h2 text-gray-200 uppercase pb-4  border-white-10 border-b">
+        <h2 className="sec-contact-header w-full content-title-h2 text-gray-200 uppercase pb-8 md:pb-[4.3rem] border-white-10 border-b">
           {data?.titulo}
         </h2>
         <div className="sec-contact-body flex justify-between flex-wrap gap-y-12 md:gap-y-0">

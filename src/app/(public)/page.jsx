@@ -4,7 +4,7 @@ import Intro from "@/features/home/sections/Intro";
 import Header from "@/features/layout/Header";
 import ScrollLockWrapper from "@/features/home/wrappers/ScrollLockWrapper";
 import About from "@/features/home/sections/About";
-import Call from "@/features/home/sections/Call/Call";
+import Call from "@/features/home/sections/Call";
 import Projects from "@/features/home/sections/Projects";
 import Skills from "@/features/home/sections/Skills/Skills";
 import Tecnologias from "@/features/home/sections/Tecnologias";

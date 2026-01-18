@@ -15,6 +15,7 @@ export default function SwitchLang({ onChange, idiomas }) {
     const acfSlugs = Array.isArray(idiomas?.idiomas_exibidos)
       ? idiomas?.idiomas_exibidos
       : [];
+
     if (acfSlugs.length === 0) return;
 
     const defaultSlug =
