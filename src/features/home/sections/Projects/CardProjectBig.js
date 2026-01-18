@@ -1,5 +1,5 @@
 import Image from "next/image";
-import IconsLib from "../../Icons";
+import IconsLib from "@/app/components/Icons";
 import SmartLink from "@/app/components/SmartLink";
 
 const CardProjectBig = ({ project, technologies }) => {

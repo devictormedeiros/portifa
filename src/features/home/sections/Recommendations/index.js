@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import Accordion from "../../Accordion";
+import Accordion from "@/app/components/Accordion";
 import { useRef, useState, useEffect } from "react";
 
 const Recommendations = ({ data }) => {

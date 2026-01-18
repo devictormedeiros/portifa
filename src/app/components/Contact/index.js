@@ -7,8 +7,7 @@ import emailjs from "emailjs-com";
 import { AlertForm } from "../AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import IconsLib from "../Icons";
-import ScrollingText from "../Home/ScrollText/ScrollText";
-import Footer from "@/features/layout/Footer";
+import ScrollingText from "@/features/home/sections/ScrollText/ScrollText";
 
 const Contact = ({ data, scrollText, dataForm }) => {
   const {

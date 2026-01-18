@@ -5,7 +5,9 @@ import { useDataOptions } from "./context/DataOptionsContext";
 import Footer from "@/features/layout/Footer";
 
 export default function NotFound() {
+  
   const { dataOption: data, isLoading } = useDataOptions();
+  
   const pagina404 = data?.pagina_404;
   const titulo = pagina404?.titulo;
   const texto = pagina404?.texto;
