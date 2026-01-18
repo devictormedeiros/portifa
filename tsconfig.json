@@ -29,6 +29,6 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/components/RouteLoader.tsx"
-  ],
+, "src/features/not-found/components/Glitch.jsx"  ],
   "exclude": ["node_modules"]
 }

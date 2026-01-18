@@ -8,11 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Call = ({ data }) => {
   const canvasRef = useRef(null);
-  const sec = useRef(null);
   const images = useRef([]);
   const airpods = useRef({ frame: 0 });
   const screenSize = window.innerWidth;
-  const screenHeight = window.innerHeight;
 
   const handleData = useCallback(
     (d) => {
@@ -23,7 +21,7 @@ const Call = ({ data }) => {
       }
       return null;
     },
-    [screenSize]
+    [screenSize],
   );
 
   const frameCount = handleData(data)?.length ?? 0;
@@ -46,7 +44,7 @@ const Call = ({ data }) => {
       };
 
       const loadedImages = await Promise.all(
-        handleData(data)?.map((frame) => loadImage(frame.image))
+        handleData(data)?.map((frame) => loadImage(frame.image)),
       );
 
       images.current = loadedImages;
@@ -61,7 +59,7 @@ const Call = ({ data }) => {
         ease: "none",
         scrollTrigger: {
           scrub: 0.5,
-          trigger: '.sec-call',
+          trigger: ".sec-call",
           start: "top top",
           end: `bottom bottom`, // sincronizado com a altura
         },
@@ -107,9 +105,7 @@ const Call = ({ data }) => {
 
   return (
     handleData(data)?.length > 0 && (
-      <section
-        className="sec-call bg-[#000] relative h-[500vh] lg:h-[700vh]"
-      >
+      <section className="sec-call bg-[#000] relative h-[500vh] lg:h-[700vh]">
         <div className="sec-call-image image absolute top-0 w-full lg:right-0 h-full">
           <canvas
             ref={canvasRef}

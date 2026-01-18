@@ -1,8 +1,9 @@
 import Image from "next/image";
 import IconsLib from "@/app/components/Icons";
 import SmartLink from "@/app/components/SmartLink";
+import Link from "next/link";
 
-const CardProjectBig = ({ project, technologies }) => {
+const CardProjectBig = ({ project }) => {
   return (
     <article className="project-card-big project-card-container sticky col-span-12 flex items-center justify-center h-[100vh] pinned duration-300 ease-out top-[3.75rem] lg:top-0 w-full">
       <div className="project-card bg-gradient-primary-c w-full rounded-2xl md:mx-0">
@@ -11,19 +12,22 @@ const CardProjectBig = ({ project, technologies }) => {
             <h3 className="content-title-h3 text-gray-200 uppercase">
               {project.title?.rendered || "Sem título"}
             </h3>
-            {project?.tecnologias?.length > 0 && (
+            {project?.tecnologia_detalhes?.length > 0 && (
               <div className="flex items-center gap-[1.25rem] md:gap-6">
-                {project?.tecnologias?.map((techId, techIndex) => {
-                  const tech = technologies.find((t) => t.id === techId);
-                  const iconSlug = tech?.acf?.tecnologias?.icone;
+                {project?.tecnologia_detalhes?.map((tech, techId) => {
+                  const iconSlug = tech?.slug;
 
                   return iconSlug ? (
-                    <div className="img-tech" key={`tech-${techIndex}`}>
-                      <IconsLib name={tech.acf?.tecnologias?.icone} />
-                    </div>
+                    <Link
+                      href={`projetos?t=${iconSlug}`}
+                      className="img-tech"
+                      key={`tech-${techId}`}
+                    >
+                      <IconsLib name={tech?.acf?.tecnologias?.icone} />
+                    </Link>
                   ) : (
                     <span
-                      key={`tech-${techIndex}`}
+                      key={`tech-${techId}`}
                       className="text-white-70 text-sm"
                     >
                       {tech?.name}

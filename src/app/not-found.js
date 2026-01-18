@@ -1,109 +1,65 @@
-"use client";
-
 import Header from "@/features/layout/Header";
-import { useDataOptions } from "./context/DataOptionsContext";
-import Footer from "@/features/layout/Footer";
+import Glitch from "../features/not-found/components/Glitch";
+import { getGeneralData } from "@/services/general.service";
+import { getNotFoundData } from "../features/not-found/services/not-found.service";
+import LayoutWrapper from "@/app/components/LayoutWrapper";
+import Contact from "@/app/components/Contact";
+import Link from "next/link";
 
-export default function NotFound() {
-  
-  const { dataOption: data, isLoading } = useDataOptions();
-  
-  const pagina404 = data?.pagina_404;
+export default async function NotFound() {
+  const {
+    menu,
+    logo,
+    texto_scroll,
+    secao_contato,
+    configuracao_do_formulario,
+    code_editor,
+    styleguide,
+  } = await getGeneralData();
+
+  const { data: pagina404 } = await getNotFoundData();
+
   const titulo = pagina404?.titulo;
   const texto = pagina404?.texto;
   const link = pagina404?.link;
   const linkCustomizado = pagina404?.link_customizado;
   const isHome = link === "home";
-  const href = isHome ? "/" : linkCustomizado;
+  const href = isHome ? "/" : `${linkCustomizado}`;
   const buttonLabel = isHome ? "Acessar Home" : "Acessar";
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    if (isLoading || !data) return;
-
-    const canvasShown = canvasRef.current;
-    if (!canvasShown) return;
-
-    const canvasHidden = document.createElement("canvas");
-    const ctxHidden = canvasHidden.getContext("2d");
-    const ctxShown = canvasShown.getContext("2d");
-
-    if (!ctxHidden || !ctxShown) return;
-
-    const isMobile = window.innerWidth < 768;
-    const width = isMobile ? 318 : 680;
-    const height = isMobile ? 150 : 343;
-    const fontSize = isMobile
-      ? "bold 10rem Roboto, serif"
-      : "bold 22rem Roboto, serif";
-
-    canvasShown.width = width;
-    canvasShown.height = height;
-
-    function init() {
-      canvasHidden.width = width;
-      canvasHidden.height = height;
-
-      ctxHidden.clearRect(0, 0, width, height);
-      ctxHidden.textAlign = "center";
-      ctxHidden.textBaseline = "middle";
-      ctxHidden.font = fontSize;
-      ctxHidden.fillStyle = "#404040";
-      ctxHidden.fillText("404", width / 2, height / 2);
-
-      ctxShown.clearRect(0, 0, width, height);
-      ctxShown.drawImage(canvasHidden, 0, 0);
-
-      let i = 2;
-      while (i--) glitch();
-    }
-
-    function glitch() {
-      const w = 200 + Math.random() * 200;
-      const h = 100 + Math.random() * 100;
-      const x = Math.random() * width;
-      const y = Math.random() * height;
-      const dx = x + (Math.random() * 80 - 40);
-      const dy = y + (Math.random() * 30 - 30);
-
-      ctxShown.clearRect(x, y, w, h);
-      ctxShown.drawImage(canvasHidden, x, y, w, h, dx, dy, w, h);
-    }
-
-    const interval = setInterval(init, 1000 / 15);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [isLoading, data]);
 
   return (
-    <>
-      <Header logo={data?.logo_principal || null} />
+    <LayoutWrapper code_editor={code_editor} styleguide={styleguide}>
+      <Header logo={logo} menu={menu} />
       <main className="main-404">
         <div className="flex flex-col items-center justify-center relative overflow-hidden pt-[11.25rem] px-[1.5rem] pb-[11.25rem] md:pb-[15.625rem]">
-          <canvas ref={canvasRef} className="pointer-events-none z-0" />
+          <Glitch />
           <div className="text-404 text-center md:px-4 z-10 md:mt-[-2.75rem] mt-[-1rem]">
             <h2 className="content-title-h2 text-white-100 mb-[1rem] md:mb-[0.5rem]">
               {titulo}
             </h2>
             <div className="flex md:gap-6 gap-5 items-center flex-wrap md:justify-start justify-center">
-              <p
+              <div
                 className="content-text text-white-70 mb-0 text-center md:text-left md:flex-1"
                 dangerouslySetInnerHTML={{ __html: texto }}
-              ></p>
-              <a
+              />
+              <Link
                 href={href}
                 title="Acessa home"
                 className="inline-block px-6 py-3 text-white-70 rounded border-white-70 border button-md uppercase md:w-auto w-full"
               >
                 {buttonLabel}
-              </a>
+              </Link>
             </div>
           </div>
         </div>
+        {secao_contato && (
+          <Contact
+            scrollText={texto_scroll}
+            data={secao_contato}
+            dataForm={configuracao_do_formulario}
+          />
+        )}
       </main>
-      <Footer />
-    </>
+    </LayoutWrapper>
   );
 }

@@ -21,11 +21,11 @@ const Tecnologias = ({ data }) => {
 
   return (
     <>
-      {data?.map((accordion, index) => {
-        return (
-          <React.Fragment key={accordion.id || index}>
+      {data?.length > 0 &&
+        data?.map((accordion, index) => {
+          return (
             <section
-              key={index}
+              key={accordion.id || index}
               ref={targetRef}
               className={`sec-tecnologias g-col-12`}
               style={
@@ -81,9 +81,8 @@ const Tecnologias = ({ data }) => {
                 </ul>
               </Accordion>
             </section>
-          </React.Fragment>
-        );
-      })}
+          );
+        })}
     </>
   );
 };

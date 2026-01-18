@@ -51,7 +51,7 @@ const ContactForm = ({ dataForm }) => {
 
   return (
     <form
-      className="w-full md:w-1/2 flex gap-6 flex-col relative"
+      className="w-full flex gap-6 flex-col relative"
       onSubmit={handleSubmit(onSubmit, handleError)}
       ref={form}
     >

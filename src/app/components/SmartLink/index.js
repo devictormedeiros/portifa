@@ -26,6 +26,7 @@ export default function SmartLink({ href, onClick, children, ...props }) {
           document.body.setAttribute("data-page-load", "false");
         }, 1000);
       }}
+      prefetch
     >
       {children}
     </Link>

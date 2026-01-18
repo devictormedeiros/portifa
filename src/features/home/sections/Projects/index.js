@@ -4,7 +4,7 @@ import { useProjects } from "@/app/context/ProjectsContext";
 import CardProjectBig from "./CardProjectBig";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useLayoutEffect } from "react";
+import { useLayoutEffect } from "react";
 
 const Projects = ({ data }) => {
   const { projects, technologies } = useProjects();
@@ -68,11 +68,7 @@ const Projects = ({ data }) => {
             .map((id) => projects?.find((p) => String(p.id) === String(id)))
             .filter(Boolean)
             .map((project, index) => (
-              <CardProjectBig
-                key={`project-${index}`}
-                project={project}
-                technologies={technologies}
-              />
+              <CardProjectBig key={`project-${index}`} project={project} />
             ))}
         </div>
       </div>

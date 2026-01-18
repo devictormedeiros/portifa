@@ -1,35 +1,7 @@
-"use client";
-
 import Image from "next/image";
-import Accordion from "@/app/components/Accordion";
-import { useRef, useState, useEffect } from "react";
+import IsDraggingWrapper from "./IsDraggingWrapper";
 
-const Recommendations = ({ data }) => {
-  const containerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-
-  const startDragging = (e) => {
-    setIsDragging(true);
-    e.preventDefault();
-    const pageX = e.touches ? e.touches[0].pageX : e.pageX;
-    setStartX(pageX);
-    setScrollLeft(containerRef.current?.scrollLeft || 0);
-  };
-
-  const onDragging = (e) => {
-    if (!isDragging || !containerRef.current) return;
-    e.preventDefault();
-    const pageX = e.touches ? e.touches[0].pageX : e.pageX;
-    const walk = (pageX - startX) * 1.5;
-    containerRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const stopDragging = () => {
-    setIsDragging(false);
-  };
-
+export default function Recommendations({ data }) {
   return (
     <>
       {typeof data?.titulo === "string" && data.titulo.trim() !== "" && (
@@ -37,18 +9,8 @@ const Recommendations = ({ data }) => {
           className={`sec-recommendations g-col-12`}
           style={data?.orderSection ? { order: data.orderSection } : undefined}
         >
-          <Accordion title={data.titulo} condition={data.condicao}>
-            <div
-              className="flex gap-6 items-start shadow-right md:gap-[3rem] overflow-x-auto md:overflow-x-hidden cursor-horizontal list-recommendations scroll-hide-bar-mobile"
-              ref={containerRef}
-              onMouseDown={startDragging}
-              onMouseMove={onDragging}
-              onMouseUp={stopDragging}
-              onMouseLeave={stopDragging}
-              onTouchStart={startDragging}
-              onTouchMove={onDragging}
-              onTouchEnd={stopDragging}
-            >
+          <div className="container">
+            <IsDraggingWrapper title={data.title} condition={data.condicao}>
               {Array.isArray(data?.cards) &&
                 data.cards.map((item, index) => (
                   <article
@@ -78,12 +40,10 @@ const Recommendations = ({ data }) => {
                     </div>
                   </article>
                 ))}
-            </div>
-          </Accordion>
+            </IsDraggingWrapper>
+          </div>
         </section>
       )}
     </>
   );
-};
-
-export default Recommendations;
+}

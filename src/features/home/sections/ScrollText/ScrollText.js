@@ -1,3 +1,5 @@
+"use client";
+
 import gsap from "gsap";
 import { useEffect, useRef } from "react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -72,7 +74,6 @@ export default function ScrollingTexts({ data }) {
           className="relative whitespace-nowrap motion text-primary w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
           {data.texto_superior}
-          {data.texto_superior}
         </div>
       </div>
 
@@ -82,7 +83,6 @@ export default function ScrollingTexts({ data }) {
           ref={textBottom}
           className="relative whitespace-nowrap motion w-fit duration-[1.5s] md:duration-[2s] ease-out"
         >
-          {data.texto_inferior}
           {data.texto_inferior}
         </div>
       </div>

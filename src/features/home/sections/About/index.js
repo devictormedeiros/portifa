@@ -1,36 +1,15 @@
 "use client";
 
 import "./style.scss";
-import { memo, useState, useEffect } from "react";
-import ScrollAnimation from "react-animate-on-scroll";
 import Image from "next/image";
+import AnimetionAboutWrapper from "./AnimationAboutWrapper";
 
 const About = ({ data }) => {
-  const [offsetValue, setOffsetValue] = useState(100); // Valor padrão
-
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    setIsMobile(window?.innerWidth < 768);
-  }, []);
-
-  useEffect(() => {
-    setOffsetValue(window?.innerHeight * 1); // Calcula 50vh
-  }, []);
-
-  const AnimationWrapper = ({ children, ...props }) => {
-    return isMobile ? (
-      <div className={props.className}>{children}</div>
-    ) : (
-      <ScrollAnimation {...props}>{children}</ScrollAnimation>
-    );
-  };
-
   return (
     <section className="sec-about g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]">
       <div className="container">
         <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
-          <AnimationWrapper
+          <AnimetionAboutWrapper
             className="text col-span-12 md:col-span-7"
             animateIn="fadeInUp"
             duration={3}
@@ -44,9 +23,9 @@ const About = ({ data }) => {
               className="content-text"
               dangerouslySetInnerHTML={{ __html: data?.texto_sobre }}
             />
-          </AnimationWrapper>
+          </AnimetionAboutWrapper>
 
-          <AnimationWrapper
+          <AnimetionAboutWrapper
             className="image col-span-12 md:col-span-5"
             animateIn="fadeIn"
             duration={3}
@@ -63,10 +42,10 @@ const About = ({ data }) => {
               height={533}
               sizes="(max-width: 768px) 90vw, (max-width: 1024px) 60vw, 40vw"
             />
-          </AnimationWrapper>
+          </AnimetionAboutWrapper>
         </div>
       </div>
     </section>
   );
 };
-export default memo(About);
+export default About;
