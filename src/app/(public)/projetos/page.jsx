@@ -31,19 +31,19 @@ export async function generateMetadata({ searchParams }) {
 
   // Caso TENHA filtro por tecnologia
   const currentTech = data?.technologies?.find(
-    (tech) => tech.slug === techSlug
+    (tech) => tech.slug === techSlug,
   );
 
-  const title = currentTech?.yoast_head_json?.title
-    || `Projetos com ${currentTech?.name}`;
+  const title =
+    currentTech?.yoast_head_json?.title || `Projetos com ${currentTech?.name}`;
 
   const description =
-    currentTech?.yoast_head_json?.description
-    || `Veja projetos desenvolvidos utilizando ${currentTech?.name}.`;
+    currentTech?.yoast_head_json?.description ||
+    `Veja projetos desenvolvidos utilizando ${currentTech?.name}.`;
 
   const ogImage =
-    currentTech?.yoast_head_json?.og_image?.[0]?.url
-    || archiveHeader?.["hero-desktop"];
+    currentTech?.yoast_head_json?.og_image?.[0]?.url ||
+    archiveHeader?.["hero-desktop"];
 
   return {
     title,
@@ -79,4 +79,4 @@ export default async function Projetos({ searchParams }) {
       </div>
     </main>
   );
-};
+}

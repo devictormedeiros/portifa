@@ -42,12 +42,7 @@ export async function getProjectsPageData({ techSlug } = {}) {
 }
 
 export async function getProjectBySlug(slug) {
-  const params = new URLSearchParams({
-    _embed: "true",
-    ...(slug && { slug: slug }),
-  });
-
-  const data = await getAPI(`/wp/v2/projeto?slug=?${params.toString()}`, {
+  const data = await getAPI(`/portifa/v1/projects/${slug}`, {
     revalidate: 300,
   });
 

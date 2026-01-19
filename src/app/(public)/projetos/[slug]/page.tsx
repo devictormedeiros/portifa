@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: PageProps) {
   const { slug } = params;
 
   const project = await getProjectBySlug(slug);
-  const currentProject: WPProject | undefined = project?.[0];
+
+  const currentProject: WPProject | undefined = project;
 
   if (!currentProject) {
     return {
@@ -75,17 +76,17 @@ const Projeto = async ({ params }: PageProps) => {
   return (
     <main className="main-single">
       <TopPage
-        bgImageDesktop={currentProject[0]?.acf?.["hero-desktop"]}
-        bgImageMobile={currentProject[0]?.acf?.["hero-mobile"]}
+        bgImageDesktop={currentProject?.acf?.["hero-desktop"]}
+        bgImageMobile={currentProject?.acf?.["hero-mobile"]}
       />
       <div className="single-container relative mt-[-3rem]">
-        <HeaderSingle currentProject={currentProject[0]} />
+        <HeaderSingle currentProject={currentProject} />
 
-        <ContentProject content={currentProject[0]?.content?.rendered} />
+        <ContentProject content={currentProject?.content?.rendered} />
       </div>
       <div className="bg-gradient-primary-d">
         <SectionMoreProjoects
-          moreProjects={currentProject[0]?.acf["more-projects"]}
+          moreProjects={currentProject?.acf["more-projects"]}
           projects={[]}
         />
       </div>

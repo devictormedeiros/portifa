@@ -1,4 +1,3 @@
-import React from "react";
 import "./globals.scss";
 import "animate.css/animate.compat.css";
 import "animate.css/animate.compat.css";
