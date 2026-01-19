@@ -76,19 +76,16 @@ const Projeto = async ({ params }: PageProps) => {
   return (
     <main className="main-single">
       <TopPage
-        bgImageDesktop={currentProject?.acf?.["hero-desktop"]}
-        bgImageMobile={currentProject?.acf?.["hero-mobile"]}
+        bgImageDesktop={currentProject?.hero_desktop}
+        bgImageMobile={currentProject?.hero_mobile}
       />
       <div className="single-container relative mt-[-3rem]">
         <HeaderSingle currentProject={currentProject} />
 
-        <ContentProject content={currentProject?.content?.rendered} />
+        <ContentProject content={currentProject?.content} />
       </div>
       <div className="bg-gradient-primary-d">
-        <SectionMoreProjoects
-          moreProjects={currentProject?.acf["more-projects"]}
-          projects={[]}
-        />
+        {/* <SectionMoreProjoects moreProjects={currentProject?.more_projects} /> */}
       </div>
     </main>
   );

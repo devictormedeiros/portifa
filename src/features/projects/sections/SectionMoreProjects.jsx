@@ -4,11 +4,7 @@ import Slider from "react-slick";
 import { useEffect, useState } from "react";
 import CardProject from "@/app/components/CardProjects";
 
-const SectionMoreProjoects = ({
-  moreProjects = [],
-  technologies,
-  projects,
-}) => {
+const SectionMoreProjoects = ({ moreProjects = [] }) => {
   const [isSwiper, setIsSwiper] = useState(false);
   const [showedProjects, setShowedProjects] = useState([]);
 
@@ -97,10 +93,8 @@ const SectionMoreProjoects = ({
       return pinnedProject?.ID || pinnedProject?.id;
     });
 
-    console.log(pinnedProjects);
-
     setShowedProjects(pinnedProjects);
-  }, [moreProjects, projects]);
+  }, [moreProjects]);
 
   return (
     showedProjects?.length > 0 && (

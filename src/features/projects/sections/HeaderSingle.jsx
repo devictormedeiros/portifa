@@ -8,15 +8,15 @@ const HeaderSingle = ({ currentProject }) => {
       <div className="w-full flex flex-col gap-[1.5rem] pb-[3rem] border-b border-[#FFFFFF33] lg:flex-row lg:items-center lg:gap-[5rem] mt-[-0.0625rem]">
         <div className="lg:max-w-[41.4375rem]">
           <small className="content-text-bold text-white-70">
-            {currentProject?.acf?.hat || "Projeto"}
+            {currentProject?.hat || "Projeto"}
           </small>
           <div className="flex items-center gap-[2.0625rem] mb-[1rem] lg:gap-[4rem]">
             <h1 className="content-title-h2 text-gray-200 uppercase">
-              {currentProject.title?.rendered || "Sem título"}
+              {currentProject.title || "Sem título"}
             </h1>
-            {currentProject?.acf?.link !== "" && (
+            {currentProject?.link_external !== "" && (
               <a
-                href={currentProject.link}
+                href={currentProject.link_external}
                 className="text-gray-200 bg-white-10 hover:bg-primary menu-section flex items-center py-2 px-4 rounded-3xl gap-x-2 flex-none duration-500"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -38,9 +38,9 @@ const HeaderSingle = ({ currentProject }) => {
               </a>
             )}
           </div>
-          {currentProject?.tecnologia_detalhes?.length > 0 && (
+          {currentProject?.technologies?.length > 0 && (
             <HeaderScrollWrapper>
-              {currentProject?.tecnologia_detalhes?.map((tech) => (
+              {currentProject?.technologies?.map((tech) => (
                 <Link
                   key={tech.id}
                   href={`/projetos?t=${tech.slug}`}
@@ -48,9 +48,9 @@ const HeaderSingle = ({ currentProject }) => {
                   title={tech.name}
                   draggable="false"
                 >
-                  {tech.acf?.tecnologias?.icone && (
+                  {tech.icon && (
                     <div className="img-tech">
-                      <IconsLib name={tech.acf?.tecnologias?.icone} />
+                      <IconsLib name={tech.icon} />
                     </div>
                   )}
                   {tech.name}
@@ -62,8 +62,7 @@ const HeaderSingle = ({ currentProject }) => {
         <div className="text-white-70 feed-excerpt lg:flex-1">
           <div
             dangerouslySetInnerHTML={{
-              __html:
-                currentProject.excerpt?.rendered || "Sem descrição disponível",
+              __html: currentProject.excerpt || "Sem descrição disponível",
             }}
           />
         </div>
