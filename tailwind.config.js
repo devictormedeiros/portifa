@@ -19,6 +19,9 @@ module.exports = withMT({
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-roboto-flex)"],
+      },
       colors: {
         black: {
           5: "var(--black-5)",

@@ -4,7 +4,7 @@ import {
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import ObserverHtml from "../../hooks/ObserverHtml";
+import ObserverHtml from "@/hooks/ObserverHtml";
 import ScrollAnimation from "react-animate-on-scroll";
 import "./style.scss";
 
@@ -18,7 +18,7 @@ const normalize = (v) => (typeof v === "string" ? v.trim().toLowerCase() : v);
 const AccordionCustom = ({ title, children, condition }) => {
   const shouldStartOpen = useMemo(
     () => normalize(condition) !== "fechado",
-    [condition]
+    [condition],
   );
   const [open, setOpen] = useState(shouldStartOpen);
 
@@ -82,9 +82,7 @@ const AccordionCustom = ({ title, children, condition }) => {
               onClick={handleOpen}
               className={`accordion-toggle flex items-center justify-between w-full pb-2 pt-0 text-gray-200 hover:text-gray-200 uppercase border-b border-white-10 cursor-expand`}
             >
-              <span className="accordion-title content-title-h2">
-                {title}
-              </span>
+              <span className="accordion-title content-title-h2">{title}</span>
               <svg
                 width="24"
                 height="24"

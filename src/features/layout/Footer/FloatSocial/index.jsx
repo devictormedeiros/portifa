@@ -20,10 +20,11 @@ import {
 } from "react-icons/fa6";
 import { memo } from "react";
 import "./style.scss";
-import { useSticky } from "../../../../app/context/StickyContext";
+import { useSticky } from "@/context/StickyContext";
 
 const FloatSocial = ({ data }) => {
   const { isHeaderSticky } = useSticky();
+
   return (
     <>
       <div

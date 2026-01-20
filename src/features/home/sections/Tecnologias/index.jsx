@@ -5,7 +5,7 @@ import Accordion from "@/app/components/Accordion";
 import "./style.scss";
 import { memo } from "react";
 import { useEffect, useState } from "react";
-import ObserverHtml from "@/app/hooks/ObserverHtml";
+import ObserverHtml from "@/hooks/ObserverHtml";
 import IconsLib from "@/app/components/Icons";
 import React from "react";
 

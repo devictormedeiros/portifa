@@ -22,6 +22,7 @@ const CardProjectBig = ({ project }) => {
                       href={`projetos?t=${iconSlug}`}
                       className="img-tech"
                       key={tech.id}
+                      title={`Abrir listagem de ${tech.name}`}
                     >
                       <IconsLib name={tech?.icon} />
                     </Link>

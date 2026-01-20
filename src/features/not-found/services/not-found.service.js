@@ -1,4 +1,4 @@
-import getAPI from "@/app/api/getAPI";
+import getAPI from "@/services/api";
 
 export async function getNotFoundData() {
   const data = await getAPI(`/portifa/v1/not-found`, {

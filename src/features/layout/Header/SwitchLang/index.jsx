@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import "./style.scss";
 import { getCurrentLang } from "@/libs/utils/getCurrentLang";
+import Image from "next/image";
 
 export default function SwitchLang({ onChange, idiomas }) {
   const [languages, setLanguages] = useState([]);
@@ -80,10 +81,12 @@ export default function SwitchLang({ onChange, idiomas }) {
       tabIndex={0}
     >
       <div className="option-lang-selected">
-        <img
+        <Image
           id={`flag-lang-${selected.slug}`}
           src={`/images/flags/${selected.slug}.svg`}
           alt={selected.name}
+          width={20}
+          height={20}
         />
         <span>{selected.name}</span>
       </div>

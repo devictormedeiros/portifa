@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 // Base
-@import "assets/scss/base/types";
+//@import "assets/scss/base/types";
 @import "assets/scss/base/animations";
 @import "assets/scss/base/helpers";
 @import "assets/scss/base/container";
@@ -137,7 +137,7 @@ html {
   scroll-behavior: smooth;
   scrollbar-color: var(--primary) var(--gray-900);
   scrollbar-width: thin;
-  font-family: "Roboto Flex", serif;
+  @apply font-sans;
 
   @media (max-width: 3740px) {
     font-size: 18px;
@@ -164,8 +164,8 @@ html {
   }
 
   body {
-    font-family: "Roboto Flex", serif;
     overflow-x: hidden;
+    @apply font-sans;
   }
 }
 
