@@ -1,5 +1,4 @@
 import getAPI from "@/app/api/getAPI";
-import { getOptions } from "@/services/options.service";
 
 export async function getProjects({ techId }) {
   const params = new URLSearchParams({
@@ -21,10 +20,13 @@ export async function getTechnologies() {
   });
 }
 
-export async function getProjectsPageData({ techSlug } = {}) {
-  const data = await getAPI(`/portifa/v1/projects/?t=${techSlug}`, {
-    revalidate: 300,
-  });
+export async function getProjectsPageData({ techSlug }) {
+  const data = await getAPI(
+    `/portifa/v1/projects/${techSlug ? `?t=${techSlug}` : ""}`,
+    {
+      revalidate: 300,
+    },
+  );
 
   return data;
 }

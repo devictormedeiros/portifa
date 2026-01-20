@@ -1,37 +1,26 @@
-"use client";
-import React from "react";
-import { useDataOptions } from "@/app/context/DataOptionsContext";
-import Contact from "@/app/components/Contact";
 import "./style.scss";
 import Header from "@/features/layout/Header";
+import Footer from "@/features/layout/Footer";
+import { getPrivacyData } from "@/features/privacy/services/privacy.service";
 
-const PrivacyPage = () => {
-  const { dataOption: data } = useDataOptions();
+export default async function PrivacyPage() {
+  const data = await getPrivacyData();
 
   return (
     <>
-      <Header logo={data?.logo_principal || null} />
+      <Header />
       <main className="main-privacy-page">
         <div className="container py-10">
-          {data?.politica_de_privacidade && (
+          {data && (
             <div
               dangerouslySetInnerHTML={{
-                __html: data?.politica_de_privacidade?.texto,
+                __html: data?.texto,
               }}
             />
           )}
         </div>
-
-        {data && data?.secao_contato && (
-          <Contact
-            scrollText={data?.texto_scroll || null}
-            data={data?.secao_contato}
-            dataForm={data?.configuracao_do_formulario || null}
-          />
-        )}
+        <Footer />
       </main>
     </>
   );
-};
-
-export default PrivacyPage;
+}

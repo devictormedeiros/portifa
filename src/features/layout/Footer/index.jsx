@@ -4,6 +4,7 @@ import ScrollingText from "@/features/home/sections/ScrollText/ScrollText";
 import ContactForm from "./ContactForm";
 import SubFooter from "./SubFooter";
 import { getFooterData } from "@/features/layout/services/layout.service";
+import FloatSocial from "./FloatSocial";
 
 export default async function Footer() {
   const { texto_scroll, secao_contato, configuracao_do_formulario } =
@@ -95,6 +96,8 @@ export default async function Footer() {
           </div>
         </div>
       </section>
+
+      {secao_contato && <FloatSocial data={secao_contato} />}
 
       <SubFooter />
     </>

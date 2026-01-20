@@ -11,6 +11,41 @@ import Footer from "../features/layout/Footer";
 
 import { getHomeData } from "@/features/home/services/home.service";
 
+export async function generateMetadata() {
+  const data = await getHomeData();
+
+  return {
+    title: data?.seo?.title || "Home | Seu Site",
+    description:
+      data?.seo?.description ||
+      "Conheça nossos projetos, tecnologias e soluções digitais.",
+
+    openGraph: {
+      title: data?.seo?.title || "Home | Seu Site",
+      description:
+        data?.seo?.description ||
+        "Conheça nossos projetos, tecnologias e soluções digitais.",
+      url: "https://seusite.com",
+      siteName: "Seu Site",
+      images: [
+        {
+          url: data?.seo?.image || "/og-default.jpg",
+          width: 1200,
+          height: 630,
+          alt: data?.seo?.title || "Seu Site",
+        },
+      ],
+      locale: "pt_BR",
+      type: "website",
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
 export default async function Home() {
   const data = await getHomeData();
 

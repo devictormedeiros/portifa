@@ -1,24 +1,22 @@
 import Header from "@/features/layout/Header";
 import Glitch from "../features/not-found/components/Glitch";
-import { getGeneralData } from "@/services/general.service";
 import { getNotFoundData } from "../features/not-found/services/not-found.service";
-import LayoutWrapper from "@/app/components/LayoutWrapper";
 import Link from "next/link";
 import Footer from "../features/layout/Footer";
 
 export default async function NotFound() {
-  const { data: pagina404 } = await getNotFoundData();
+  const data = await getNotFoundData();
 
-  const titulo = pagina404?.titulo;
-  const texto = pagina404?.texto;
-  const link = pagina404?.link;
-  const linkCustomizado = pagina404?.link_customizado;
+  const titulo = data?.titulo;
+  const texto = data?.texto;
+  const link = data?.link;
+  const linkCustomizado = data?.link_customizado;
   const isHome = link === "home";
   const href = isHome ? "/" : `${linkCustomizado}`;
   const buttonLabel = isHome ? "Acessar Home" : "Acessar";
 
   return (
-    <LayoutWrapper>
+    <>
       <Header />
       <main className="main-404">
         <div className="flex flex-col items-center justify-center relative overflow-hidden pt-[11.25rem] px-[1.5rem] pb-[11.25rem] md:pb-[15.625rem]">
@@ -44,6 +42,6 @@ export default async function NotFound() {
         </div>
         <Footer />
       </main>
-    </LayoutWrapper>
+    </>
   );
 }
