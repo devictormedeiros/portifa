@@ -102,7 +102,7 @@ const Call = ({ data }) => {
     };
 
     loadImages();
-  }, [data, frameCount, handleData]);
+  }, [data, frameCount, handleData, height, width]);
 
   return (
     handleData(data)?.length > 0 && (
