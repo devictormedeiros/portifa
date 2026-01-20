@@ -3,20 +3,10 @@ import Glitch from "../features/not-found/components/Glitch";
 import { getGeneralData } from "@/services/general.service";
 import { getNotFoundData } from "../features/not-found/services/not-found.service";
 import LayoutWrapper from "@/app/components/LayoutWrapper";
-import Contact from "@/app/components/Contact";
 import Link from "next/link";
+import Footer from "../features/layout/Footer";
 
 export default async function NotFound() {
-  const {
-    menu,
-    logo,
-    texto_scroll,
-    secao_contato,
-    configuracao_do_formulario,
-    code_editor,
-    styleguide,
-  } = await getGeneralData();
-
   const { data: pagina404 } = await getNotFoundData();
 
   const titulo = pagina404?.titulo;
@@ -28,8 +18,8 @@ export default async function NotFound() {
   const buttonLabel = isHome ? "Acessar Home" : "Acessar";
 
   return (
-    <LayoutWrapper code_editor={code_editor} styleguide={styleguide}>
-      <Header logo={logo} menu={menu} />
+    <LayoutWrapper>
+      <Header />
       <main className="main-404">
         <div className="flex flex-col items-center justify-center relative overflow-hidden pt-[11.25rem] px-[1.5rem] pb-[11.25rem] md:pb-[15.625rem]">
           <Glitch />
@@ -52,13 +42,7 @@ export default async function NotFound() {
             </div>
           </div>
         </div>
-        {secao_contato && (
-          <Contact
-            scrollText={texto_scroll}
-            data={secao_contato}
-            dataForm={configuracao_do_formulario}
-          />
-        )}
+        <Footer />
       </main>
     </LayoutWrapper>
   );

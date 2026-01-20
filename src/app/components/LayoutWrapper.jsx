@@ -3,13 +3,11 @@ import CustomCursor from "./CustomCursor";
 import FloatSocial from "./FloatSocial";
 import ScrollToTop from "./ScrollTop";
 import StickyProviderClient from "../providers/StickyProvider.client";
+import { getStyleguideData } from "@/features/layout/services/layout.service";
 
-export default function LayoutWrapper({
-  children,
-  code_editor,
-  styleguide,
-  secao_contato,
-}) {
+export default async function LayoutWrapper({ children, secao_contato }) {
+  const { code_editor, styleguide } = await getStyleguideData();
+
   return (
     <>
       <ScrollToTop />

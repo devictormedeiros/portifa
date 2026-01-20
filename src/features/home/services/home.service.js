@@ -1,9 +1,9 @@
-import { getOptions } from "@/services/options.service";
+import getAPI from "@/app/api/getAPI";
 
 export async function getHomeData() {
-  const options = await getOptions();
+  const data = await getAPI(`/portifa/v1/home`, {
+    revalidate: 300,
+  });
 
-  return {
-    data: options?.acf?.home,
-  };
+  return data;
 }

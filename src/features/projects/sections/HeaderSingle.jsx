@@ -12,11 +12,11 @@ const HeaderSingle = ({ currentProject }) => {
           </small>
           <div className="flex items-center gap-[2.0625rem] mb-[1rem] lg:gap-[4rem]">
             <h1 className="content-title-h2 text-gray-200 uppercase">
-              {currentProject.title || "Sem título"}
+              {currentProject?.title || "Sem título"}
             </h1>
-            {currentProject?.link_external !== "" && (
+            {currentProject?.link_external && (
               <a
-                href={currentProject.link_external}
+                href={currentProject?.link_external}
                 className="text-gray-200 bg-white-10 hover:bg-primary menu-section flex items-center py-2 px-4 rounded-3xl gap-x-2 flex-none duration-500"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -62,7 +62,7 @@ const HeaderSingle = ({ currentProject }) => {
         <div className="text-white-70 feed-excerpt lg:flex-1">
           <div
             dangerouslySetInnerHTML={{
-              __html: currentProject.excerpt || "Sem descrição disponível",
+              __html: currentProject?.excerpt || "Sem descrição disponível",
             }}
           />
         </div>

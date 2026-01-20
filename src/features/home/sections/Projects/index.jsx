@@ -1,16 +1,13 @@
 "use client";
 
-import { useProjects } from "@/app/context/ProjectsContext";
 import CardProjectBig from "./CardProjectBig";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLayoutEffect } from "react";
 
-const Projects = ({ data }) => {
-  const { projects, technologies } = useProjects();
-
+const Projects = ({ projects }) => {
   useLayoutEffect(() => {
-    if (!data || data.length === 0) return;
+    if (!projects || projects.length === 0) return;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -55,21 +52,18 @@ const Projects = ({ data }) => {
     }, 1000);
 
     return () => ctx.revert();
-  }, [data, projects]);
+  }, [projects]);
 
   return (
     <section
       className="sec-projects"
-      style={{ height: `${data.length * 100 + 120}vh` }}
+      style={{ height: `${projects.length * 100 + 120}vh` }}
     >
       <div className="container h-full relative">
         <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
-          {data
-            .map((id) => projects?.find((p) => String(p.id) === String(id)))
-            .filter(Boolean)
-            .map((project, index) => (
-              <CardProjectBig key={`project-${index}`} project={project} />
-            ))}
+          {projects?.map((project, index) => (
+            <CardProjectBig key={`project-${index}`} project={project} />
+          ))}
         </div>
       </div>
     </section>

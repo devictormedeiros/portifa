@@ -65,17 +65,17 @@ export default async function Projetos({ searchParams }) {
   return (
     <main className="main-archive">
       <TopPage
-        bgImageMobile={data?.archive?.cabecalho["hero-mobile"]}
-        bgImageDesktop={data?.archive?.cabecalho["hero-desktop"]}
+        bgImageMobile={data?.hero_mobile}
+        bgImageDesktop={data?.hero_desktop}
       />
       <div className="archive-container w-full mt-[-3rem]">
         <HeaderArchive
           technologies={data?.technologies}
           activeTech={techSlug}
-          title={data?.archive?.cabecalho?.titulo || ""}
-          description={data?.archive?.cabecalho?.descricao || ""}
+          title={data?.title}
+          description={data?.description}
         />
-        <List projects={data?.projects} technologies={data?.technologies} />
+        <List projects={data?.list} />
       </div>
     </main>
   );

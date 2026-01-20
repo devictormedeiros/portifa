@@ -1,16 +1,15 @@
 async function getAPI(routes, options = {}) {
-  
   try {
     // Realiza a requisição para o endpoint do Wordpress API
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SITE_URL +`/wp-json`+ routes}`,
+      `${process.env.NEXT_PUBLIC_SITE_URL + `/wp-json` + routes}`,
       {
-        ...options,
-        /* next: {
-          revalidate: options?.revalidate ?? 60
-        } */
-       cache: "no-store",
-      }
+        /* ...options,
+        next: {
+          revalidate: options?.revalidate ?? 60,
+        }, */
+        cache: "no-store",
+      },
     );
 
     // Se o response não for ok, redireciona para 404
@@ -26,9 +25,8 @@ async function getAPI(routes, options = {}) {
     // Se o response for ok, retorna os dados em formato JSON
     const wpdata = await response.json();
     return wpdata;
-    
   } catch (error) {
-   /*  if (redirectOnFail && typeof window !== "undefined" && window.location.pathname !== "/404") {
+    /*  if (redirectOnFail && typeof window !== "undefined" && window.location.pathname !== "/404") {
       window.location.href = "/404";
     }
     return null; */

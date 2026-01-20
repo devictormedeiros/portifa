@@ -7,7 +7,7 @@ export default function SmartLink({ href, onClick, children, ...props }) {
     <Link
       href={href}
       {...props}
-      onClick={(e) => {
+      /* onClick={(e) => {
         // respeita onClick de fora
         onClick?.(e);
         if (e.defaultPrevented) return;
@@ -25,7 +25,7 @@ export default function SmartLink({ href, onClick, children, ...props }) {
         setTimeout(() => {
           document.body.setAttribute("data-page-load", "false");
         }, 1000);
-      }}
+      }} */
       prefetch
     >
       {children}

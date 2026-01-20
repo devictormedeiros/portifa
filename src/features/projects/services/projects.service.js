@@ -22,23 +22,11 @@ export async function getTechnologies() {
 }
 
 export async function getProjectsPageData({ techSlug } = {}) {
-  const [options, technologies] = await Promise.all([
-    getOptions(),
-    getTechnologies(),
-  ]);
-
-  const activeTech = technologies.find((tech) => tech.slug === techSlug);
-
-  const projects = await getProjects({
-    techId: activeTech?.id,
+  const data = await getAPI(`/portifa/v1/projects/?t=${techSlug}`, {
+    revalidate: 300,
   });
 
-  return {
-    archive: options?.acf?.archive ?? null,
-    projects: projects ?? [],
-    technologies: technologies ?? [],
-    activeTech: activeTech ?? null,
-  };
+  return data;
 }
 
 export async function getProjectBySlug(slug) {

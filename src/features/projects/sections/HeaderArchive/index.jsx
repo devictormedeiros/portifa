@@ -4,12 +4,7 @@ import IconsLib from "@/app/components/Icons";
 import HeaderScrollWrapper from "./wrappers/HeaderScrollWrapper";
 import { useRouter, useSearchParams } from "next/navigation";
 
-const HeaderArchive = ({
-  technologies,
-  title,
-  description,
-  activeTech
-}) => {
+const HeaderArchive = ({ technologies, title, description, activeTech }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -29,7 +24,7 @@ const HeaderArchive = ({
     <section className="flex flex-col w-full items-center md:gap-10 gap-8 px-6 py-0 relative container">
       <div className="flex flex-col gap-6 w-full p-0">
         {title !== "" && (
-          <h2 className="content-title-h2 text-gray-200 ">{title}</h2>
+          <h2 className="content-title-h2 text-gray-200">{title}</h2>
         )}
 
         {technologies?.length > 0 && (
@@ -47,9 +42,9 @@ const HeaderArchive = ({
                       : "bg-white-10 text-gray-200"
                   }`}
                 >
-                  {tech.acf?.tecnologias?.icone && (
+                  {tech.icon && (
                     <div className="img-tech">
-                      <IconsLib name={tech.acf?.tecnologias?.icone} />
+                      <IconsLib name={tech.icon} />
                     </div>
                   )}
                   {tech.name}

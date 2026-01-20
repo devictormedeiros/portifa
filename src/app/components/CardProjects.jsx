@@ -1,8 +1,10 @@
+"use client";
+
 import IconsLib from "@/app/components/Icons";
 import Image from "next/image";
 import SmartLink from "@/app/components/SmartLink";
 
-const CardProject = ({ project, technologies, isSwiper = false }) => {
+const CardProject = ({ project, isSwiper = false }) => {
   const handleClick = (e) => {
     if (isSwiper) {
       e.preventDefault();
@@ -19,11 +21,8 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
       >
         <div className="w-full h-[14.375rem]">
           <Image
-            src={
-              project._embedded?.["wp:featuredmedia"]?.[0]?.source_url ||
-              "/images/image.png"
-            }
-            alt={project.title?.rendered}
+            src={project?.thumb?.url}
+            alt={project?.thumb?.alt ?? project?.title}
             className="w-full h-full object-cover img-with-skeleton"
             width={450}
             height={350}
@@ -35,18 +34,15 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
           <div className="flex flex-col items-start gap-3">
             <div className="flex flex-col items-start gap-[0.2344rem]">
               <h3 className="mt-[-0.0587rem] content-title-h5  text-gray-200">
-                {project.title?.rendered || "Sem título"}
+                {project.title || "Sem título"}
               </h3>
             </div>
-            {project.tecnologias?.length > 0 && (
+            {project?.technologies?.length > 0 && (
               <div className="flex items-center gap-4">
-                {project.tecnologias.map((techId, techIndex) => {
-                  const tech = technologies.find((t) => t.id === techId);
-                  const iconSlug = tech?.acf?.tecnologias?.icone;
-
-                  return iconSlug ? (
-                    <div className="img-tech" key={`tech-${techIndex}`}>
-                      <IconsLib name={iconSlug} />
+                {project?.technologies.map((tech) => {
+                  return tech?.icon ? (
+                    <div className="img-tech" key={tech.id}>
+                      <IconsLib name={tech?.icon} />
                     </div>
                   ) : (
                     <span
@@ -61,7 +57,7 @@ const CardProject = ({ project, technologies, isSwiper = false }) => {
             )}
           </div>
           <p className="w-full text-white-70 feed-excerpt">
-            {(project.excerpt?.rendered || "")
+            {(project.excerpt || "")
               .replace(/<[^>]+>/g, "") // remove tags HTML
               .slice(0, 120) // limita os caracteres
               .trim() + "..."}

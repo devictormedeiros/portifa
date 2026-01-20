@@ -13,24 +13,18 @@ interface PageProps {
 }
 
 interface WPProject {
-  title?: {
-    rendered: string;
-  };
-  content?: {
-    rendered: string;
-  };
-  excerpt?: {
-    rendered: string;
-  };
+  title?: string;
+  content?: string;
+  excerpt?: string;
   yoast_head_json?: {
     description?: string;
     og_image?: { url: string }[];
   };
-  acf?: {
-    "hero-desktop"?: string;
-    "hero-mobile"?: string;
-    "more-projects"?: any[];
+  hero_desktop?: {
+    url?: string;
+    alt?: string;
   };
+  more_projects: Array<WPProject>;
 }
 
 export async function generateMetadata({ params }: PageProps) {
@@ -46,15 +40,15 @@ export async function generateMetadata({ params }: PageProps) {
     };
   }
 
-  const title = currentProject.title?.rendered;
+  const title = currentProject.title;
 
   const description =
     currentProject.yoast_head_json?.description ||
-    currentProject.excerpt?.rendered?.replace(/<[^>]+>/g, "");
+    currentProject.excerpt?.replace(/<[^>]+>/g, "");
 
   const ogImage =
     currentProject.yoast_head_json?.og_image?.[0]?.url ||
-    currentProject.acf?.["hero-desktop"];
+    currentProject.hero_desktop;
 
   return {
     title,
@@ -85,7 +79,7 @@ const Projeto = async ({ params }: PageProps) => {
         <ContentProject content={currentProject?.content} />
       </div>
       <div className="bg-gradient-primary-d">
-        {/* <SectionMoreProjoects moreProjects={currentProject?.more_projects} /> */}
+        <SectionMoreProjoects projects={currentProject?.more_projects} />
       </div>
     </main>
   );

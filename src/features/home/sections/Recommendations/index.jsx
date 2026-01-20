@@ -23,7 +23,7 @@ export default function Recommendations({ data }) {
                       <Image
                         className="w-full h-full object-cover img-with-skeleton"
                         src={item.imagem.url}
-                        alt="Nome do autor"
+                        alt={item?.imagem?.title ?? item.nome}
                         width={550}
                         height={350}
                         sizes="(min-width:1024px) 33vw, 100vw"

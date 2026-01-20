@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import useWindowDimensions from "@/hooks/useWindowDimensions";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -10,18 +11,18 @@ const Call = ({ data }) => {
   const canvasRef = useRef(null);
   const images = useRef([]);
   const airpods = useRef({ frame: 0 });
-  const screenSize = window.innerWidth;
+  const { height, width } = useWindowDimensions();
 
   const handleData = useCallback(
     (d) => {
-      if (screenSize < 768 && d?.frames_mob[0]) {
+      if (width < 768 && d?.frames_mob[0]) {
         return d?.frames_mob[0]?.frames;
-      } else if (screenSize > 767 && d?.frames_desk[0]) {
+      } else if (width > 767 && d?.frames_desk[0]) {
         return d?.frames_desk[0]?.frames;
       }
       return null;
     },
-    [screenSize],
+    [width],
   );
 
   const frameCount = handleData(data)?.length ?? 0;
@@ -31,8 +32,8 @@ const Call = ({ data }) => {
 
     const canvas = canvasRef.current;
     const context = canvas.getContext("2d");
-    canvas.width = 2 * window.innerWidth;
-    canvas.height = 2 * window.innerHeight;
+    canvas.width = 2 * width;
+    canvas.height = 2 * height;
 
     const loadImages = async () => {
       const loadImage = (src) => {
@@ -56,7 +57,7 @@ const Call = ({ data }) => {
       const tween = gsap.to(airpods.current, {
         frame: frameCount - 1,
         snap: "frame",
-        ease: "none",
+        ease: "power1.out",
         scrollTrigger: {
           scrub: 0.5,
           trigger: ".sec-call",
