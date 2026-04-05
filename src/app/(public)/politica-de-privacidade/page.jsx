@@ -2,6 +2,7 @@ import "./style.scss";
 import Header from "@/features/layout/Header";
 import Footer from "@/features/layout/Footer";
 import { getPrivacyData } from "@/features/privacy/services/privacy.service";
+import { htmlContent } from "@/libs/utils/htmlContent";
 
 export default async function PrivacyPage() {
   const data = await getPrivacyData();
@@ -14,7 +15,7 @@ export default async function PrivacyPage() {
           {data && (
             <div
               dangerouslySetInnerHTML={{
-                __html: data?.texto,
+                __html: htmlContent(data?.texto),
               }}
             />
           )}

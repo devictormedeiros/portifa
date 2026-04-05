@@ -1,6 +1,7 @@
 import Header from "@/features/layout/Header";
 import Glitch from "../features/not-found/components/Glitch";
 import { getNotFoundData } from "../features/not-found/services/not-found.service";
+import { htmlContent } from "@/libs/utils/htmlContent";
 import Link from "next/link";
 import Footer from "../features/layout/Footer";
 
@@ -28,7 +29,7 @@ export default async function NotFound() {
             <div className="flex md:gap-6 gap-5 items-center flex-wrap md:justify-start justify-center">
               <div
                 className="content-text text-white-70 mb-0 text-center md:text-left md:flex-1"
-                dangerouslySetInnerHTML={{ __html: texto }}
+                dangerouslySetInnerHTML={{ __html: htmlContent(texto) }}
               />
               <Link
                 href={href}
