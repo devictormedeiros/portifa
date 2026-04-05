@@ -15,7 +15,7 @@ export default async function Footer() {
       <section className="sec-contact g-col-12">
         <ScrollingText data={texto_scroll} />
 
-        <div className="container">
+        <div className="container scroll-mt-40" id="contato">
           <div className="sec-contact-header w-full">
             <h2 className="content-title-h2 text-gray-200 uppercase pb-4  border-white-10 border-b">
               {secao_contato?.titulo}

@@ -7,7 +7,7 @@
     @apply my-[2.5rem];
 
     img {
-      border-radius: .5rem;
+      border-radius: 0.5rem;
     }
 
     .wp-element-caption {
@@ -151,36 +151,36 @@
 
   // Visibilidade
   .d-none {
-    display: none;
+    display: none !important;
   }
   .d-block {
-    display: block;
+    display: block !important;
   }
   .d-flex {
-    display: flex;
+    display: flex !important;
   }
 
   @media (min-width: 992px) {
     .d-lg-none {
-      display: none;
+      display: none !important;
     }
     .d-lg-block {
-      display: block;
+      display: block !important;
     }
     .d-lg-flex {
-      display: flex;
+      display: flex !important;
     }
   }
 
   @media (max-width: 991px) {
     .d-mobile-none {
-      display: none;
+      display: none !important;
     }
     .d-mobile-block {
-      display: block;
+      display: block !important;
     }
     .d-mobile-flex {
-      display: flex;
+      display: flex !important;
     }
   }
 
@@ -296,24 +296,24 @@
 
   // Justify content
   .justify-content-left {
-    justify-content: start;
+    justify-content: start !important;
   }
   .justify-content-center {
-    justify-content: center;
+    justify-content: center !important;
   }
   .justify-content-right {
-    justify-content: end;
+    justify-content: end !important;
   }
 
   @media (min-width: 992px) {
     .justify-content-lg-left {
-      justify-content: start;
+      justify-content: start !important;
     }
     .justify-content-lg-center {
-      justify-content: center;
+      justify-content: center !important;
     }
     .justify-content-lg-right {
-      justify-content: end;
+      justify-content: end !important;
     }
   }
 }

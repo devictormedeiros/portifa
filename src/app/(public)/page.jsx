@@ -7,7 +7,7 @@ import Projects from "@/features/home/sections/Projects";
 import Skills from "@/features/home/sections/Skills/Skills";
 import Tecnologias from "@/features/home/sections/Tecnologias";
 import Recommendations from "@/features/home/sections/Recommendations";
-import Footer from "../features/layout/Footer";
+import Footer from "../../features/layout/Footer";
 
 import { getHomeData } from "@/features/home/services/home.service";
 
@@ -56,10 +56,13 @@ export default async function Home() {
       <ScrollLockWrapper>
         <main className="main-home flex flex-wrap relative z-[1]">
           {data?.sobre && <About data={data?.sobre || null} />}
-          <div className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
+          <section className="sec-bg-home w-full grid grid-cols-1 gap-y-[5rem] pb-[5rem] md:pb-[7.72rem] md:gap-y-[8.75rem]">
             {data?.scroll && <Call data={data?.scroll || null} />}
             {data?.projetos && <Projects projects={data?.projetos || null} />}
-            <section className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem]">
+            <section
+              className="grid grid-cols-1 gap-y-[5rem] md:gap-y-[8.75rem] pt-[5rem] md:pt-[7.5rem]"
+              id="atuacao"
+            >
               {data?.tabs && <Skills data={data?.tabs} />}
               {data?.tecnologias_atuacoes && (
                 <Tecnologias data={data?.tecnologias_atuacoes || null} />
@@ -68,7 +71,7 @@ export default async function Home() {
                 <Recommendations data={data.recomendacoes} />
               )}
             </section>
-          </div>
+          </section>
           <Footer />
         </main>
       </ScrollLockWrapper>

@@ -2,6 +2,7 @@
 
 import { AlertForm } from "@/components/AlertForm";
 import { Spinner } from "@material-tailwind/react";
+import emailjs from "emailjs-com";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -85,6 +86,7 @@ const ContactForm = ({ dataForm }) => {
       <div className="flex items-center flex-wrap gap-y-8 md:gap-y-0">
         <div className="consent-box flex items-center gap-5 w-full md:w-3/4 pr-4">
           <input
+            id="input-consent"
             type="checkbox"
             className={`rounded cursor-link ${errors.consent && "input-error"}`}
             {...register("consent", { required: true })}
@@ -93,8 +95,8 @@ const ContactForm = ({ dataForm }) => {
             className="text-sm content-caption text-white-70"
             htmlFor="input-consent"
           >
-            <div
-              className="text-privacy"
+            <span
+              className="text-privacy block"
               dangerouslySetInnerHTML={{
                 __html: dataForm?.texto_de_privacidade,
               }}
@@ -108,7 +110,7 @@ const ContactForm = ({ dataForm }) => {
               loadingForm ? "is-loading" : ""
             }`}
           >
-            <div
+            <span
               dangerouslySetInnerHTML={{
                 __html: dataForm?.texto_do_botao,
               }}

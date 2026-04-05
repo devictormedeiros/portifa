@@ -2,27 +2,39 @@
 
 import { useState, useRef, useEffect } from "react";
 import SmartLink from "@/components/SmartLink";
+import { useLenisInstanceRef } from "@/providers/SmoothScrollProvider.client";
 
 const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
   const navRef = useRef(null);
+  const lenisRef = useLenisInstanceRef();
 
   const toggleMenu = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
   useEffect(() => {
-    if (open) {
-      document.body.style.overflowX = "hidden";
-    } else {
-      const timeout = setTimeout(() => {
-        document.body.style.overflowX = "hidden";
-      }, 1000);
+    const lenis = lenisRef?.current;
+    const html = document.documentElement;
+    const { body } = document;
 
-      return () => clearTimeout(timeout);
+    if (open) {
+      lenis?.stop();
+      html.style.overflow = "hidden";
+      body.style.overflow = "hidden";
+    } else {
+      lenis?.start();
+      html.style.overflow = "";
+      body.style.overflow = "";
     }
-  }, [open]);
+
+    return () => {
+      lenis?.start();
+      html.style.overflow = "";
+      body.style.overflow = "";
+    };
+  }, [open, lenisRef]);
 
   return (
     <>

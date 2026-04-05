@@ -3,6 +3,7 @@
 import IconsLib from "@/components/Icons";
 import HeaderScrollWrapper from "./wrappers/HeaderScrollWrapper";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link";
 
 const HeaderArchive = ({ technologies, title, description, activeTech }) => {
   const router = useRouter();
@@ -29,6 +30,18 @@ const HeaderArchive = ({ technologies, title, description, activeTech }) => {
 
         {technologies?.length > 0 && (
           <HeaderScrollWrapper>
+            <Link
+              href="/projetos"
+              title="Ver todos os projetos"
+              className={`pill-category menu-section flex items-center gap-x-2 py-4 px-4 rounded-3xl duration-300 lg:hover:bg-gray-200 lg:hover:text-gray-700 min-w-[max-content] capitalize ${
+                !activeTech
+                  ? "bg-gray-200 text-gray-700 pill-category-active"
+                  : "bg-white-10 text-gray-200"
+              }`}
+            >
+              Todos os projetos
+            </Link>
+
             {technologies.map((tech) => {
               const isActive = activeTech === tech.slug;
 

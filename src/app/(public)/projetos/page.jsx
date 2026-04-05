@@ -62,6 +62,10 @@ export default async function Projetos({ searchParams }) {
 
   const data = await getProjectsPageData({ techSlug });
 
+  const currentTech = data?.technologies?.find(
+    (tech) => tech.slug === techSlug,
+  );
+
   return (
     <main className="main-archive">
       <TopPage
@@ -72,8 +76,8 @@ export default async function Projetos({ searchParams }) {
         <HeaderArchive
           technologies={data?.technologies}
           activeTech={techSlug}
-          title={data?.title}
-          description={data?.description}
+          title={currentTech?.name || data?.title}
+          description={currentTech?.description || data?.description}
         />
         <List projects={data?.list} />
       </div>

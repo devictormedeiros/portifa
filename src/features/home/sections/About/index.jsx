@@ -4,7 +4,10 @@ import AnimetionAboutWrapper from "./AnimationAboutWrapper";
 
 const About = ({ data }) => {
   return (
-    <section className="sec-about g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]">
+    <section
+      className="sec-about g-col-12 pt-6 pb-[5rem] md:pt-[7.5rem] md:pb-[10rem]"
+      id="quem-sou-eu"
+    >
       <div className="container">
         <div className="flex flex-col-reverse md:grid grid-cols-12 gap-y-[2rem] md:gap-x-[2rem]">
           <AnimetionAboutWrapper

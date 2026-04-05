@@ -169,6 +169,11 @@ html {
   }
 }
 
+/* Lenis controla o scroll suave; `scroll-behavior: smooth` no html conflita. */
+html.lenis {
+  scroll-behavior: auto !important;
+}
+
 main {
   background-color: var(--gray-900);
   z-index: 1;

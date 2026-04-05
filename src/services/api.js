@@ -15,7 +15,7 @@ async function getAPI(routes, options = {}) {
 
     return wpdata;
   } catch (error) {
-    throw new Error(`API error: ${error}`);
+    console.log(error);
   }
 }
 
