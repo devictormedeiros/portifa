@@ -1,12 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "dashboard.devictormedeiros.com",
-      "localhost",
-      "wp.vanzillotta.com",
-      "placehold.co",
-      "portifa.local",
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "dashboard.devictormedeiros.com",
+      },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "wp.vanzillotta.com",
+      },
+      {
+        protocol: "https",
+        hostname: "placehold.co",
+      },
+      {
+        protocol: "http",
+        hostname: "portifa.local",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     deviceSizes: [360, 640, 750, 828, 1080, 1200, 1440, 1920],
