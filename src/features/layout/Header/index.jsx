@@ -3,8 +3,8 @@ import "./style.scss";
 import Nav from "./Nav";
 import DrawerMenu from "./DrawerMenu";
 import SwitchLang from "./SwitchLang";
-import SmartLink from "@/app/components/SmartLink";
-import MainLogo from "@/app/components/Icons/Logos/MainLogo";
+import SmartLink from "@/components/SmartLink";
+import MainLogo from "@/components/Icons/Logos/MainLogo";
 import HeaderStickyWrapper from "../wrappers/HeaderStickyWrapper";
 
 import { getHeaderData } from "@/features/layout/services/layout.service";

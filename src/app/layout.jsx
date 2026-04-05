@@ -1,6 +1,6 @@
 import "./globals.scss";
 import "animate.css/animate.compat.css";
-import LayoutWrapper from "./components/LayoutWrapper";
+import LayoutWrapper from "@/components/LayoutWrapper";
 import { Roboto_Flex } from "next/font/google";
 
 const robotoFlex = Roboto_Flex({

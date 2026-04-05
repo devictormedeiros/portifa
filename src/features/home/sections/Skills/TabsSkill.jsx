@@ -8,7 +8,7 @@ import {
   TabsBody,
   TabsHeader,
 } from "@material-tailwind/react";
-import Accordion from "@/app/components/Accordion";
+import Accordion from "@/components/Accordion";
 import CardSkill from "./CardSkill";
 
 const TabsSkill = ({ skills, title, pill, condition }) => {

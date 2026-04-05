@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import Accordion from "@/app/components/Accordion";
+import Accordion from "@/components/Accordion";
 import "./style.scss";
 import { memo } from "react";
 import { useEffect, useState } from "react";
 import ObserverHtml from "@/hooks/ObserverHtml";
-import IconsLib from "@/app/components/Icons";
+import IconsLib from "@/components/Icons";
 import React from "react";
 
 const Tecnologias = ({ data }) => {

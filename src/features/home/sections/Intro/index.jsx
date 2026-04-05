@@ -1,7 +1,7 @@
 "use client";
 import { memo, useEffect, useRef, useState, useCallback } from "react";
 import { gsap } from "gsap";
-import TextAnimate from "@/app/components/TextAnimate";
+import TextAnimate from "@/components/TextAnimate";
 import "./style.scss";
 
 const AnimatedText = ({ text, onComplete }) => {

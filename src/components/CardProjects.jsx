@@ -1,8 +1,8 @@
 "use client";
 
-import IconsLib from "@/app/components/Icons";
+import IconsLib from "@/components/Icons";
 import Image from "next/image";
-import SmartLink from "@/app/components/SmartLink";
+import SmartLink from "@/components/SmartLink";
 
 const CardProject = ({ project, isSwiper = false }) => {
   const handleClick = (e) => {

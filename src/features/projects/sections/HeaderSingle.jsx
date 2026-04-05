@@ -1,4 +1,4 @@
-import IconsLib from "@/app/components/Icons";
+import IconsLib from "@/components/Icons";
 import HeaderScrollWrapper from "@/features/projects/sections/HeaderArchive/wrappers/HeaderScrollWrapper";
 import Link from "next/link";
 

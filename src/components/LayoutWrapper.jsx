@@ -1,6 +1,6 @@
 import Styleguide from "@/hooks/Styleguide";
-import CustomCursor from "./CustomCursor";
-import ScrollToTop from "./ScrollTop";
+import CustomCursor from "@/components/CustomCursor";
+import ScrollToTop from "@/components/ScrollTop";
 import StickyProviderClient from "@/providers/StickyProvider.client";
 import { getStyleguideData } from "@/features/layout/services/layout.service";
 

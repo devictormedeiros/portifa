@@ -1,5 +1,5 @@
 import "./style.scss";
-import IconsLib from "../../../app/components/Icons";
+import IconsLib from "@/components/Icons";
 import ScrollingText from "@/features/home/sections/ScrollText/ScrollText";
 import ContactForm from "./ContactForm";
 import SubFooter from "./SubFooter";

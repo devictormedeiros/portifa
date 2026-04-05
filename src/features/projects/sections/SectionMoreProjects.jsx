@@ -2,7 +2,7 @@
 
 import Slider from "react-slick";
 import { useEffect, useState } from "react";
-import CardProject from "@/app/components/CardProjects";
+import CardProject from "@/components/CardProjects";
 import Link from "next/link";
 
 const SectionMoreProjoects = ({ projects = [] }) => {

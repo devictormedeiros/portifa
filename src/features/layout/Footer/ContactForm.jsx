@@ -1,6 +1,6 @@
 "use client";
 
-import { AlertForm } from "@/app/components/AlertForm";
+import { AlertForm } from "@/components/AlertForm";
 import { Spinner } from "@material-tailwind/react";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";

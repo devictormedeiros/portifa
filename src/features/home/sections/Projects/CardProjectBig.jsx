@@ -1,6 +1,6 @@
 import Image from "next/image";
-import IconsLib from "@/app/components/Icons";
-import SmartLink from "@/app/components/SmartLink";
+import IconsLib from "@/components/Icons";
+import SmartLink from "@/components/SmartLink";
 import Link from "next/link";
 
 const CardProjectBig = ({ project }) => {

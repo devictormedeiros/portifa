@@ -1,6 +1,7 @@
 "use client";
+
 import { useState, useRef, useEffect } from "react";
-import SmartLink from "@/app/components/SmartLink";
+import SmartLink from "@/components/SmartLink";
 
 const DrawerMenu = ({ data }) => {
   const [open, setOpen] = useState(false);

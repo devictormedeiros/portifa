@@ -1,7 +1,4 @@
-import IconsLib from "@/app/components/Icons";
-import Image from "next/image";
-import SmartLink from "@/app/components/SmartLink";
-import CardProject from "@/app/components/CardProjects";
+import CardProject from "@/components/CardProjects";
 
 const List = ({ projects }) => {
   return (
