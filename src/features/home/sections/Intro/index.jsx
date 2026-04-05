@@ -89,7 +89,6 @@ const Intro = ({ data }) => {
   useEffect(() => {
     if (video_intro_desktop) {
       const preloadLink = document.createElement("link");
-      preloadLink.rel = "preload";
       preloadLink.as = "video";
       preloadLink.href = video_intro_desktop;
       preloadLink.type = "video/webm";

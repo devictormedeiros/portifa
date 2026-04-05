@@ -17,9 +17,9 @@ export async function getFooterData() {
 }
 
 export async function getStyleguideData() {
-  const data = await getAPI(`/portifa/v1/styleguide`, {
+  const { code_editor, styleguide } = await getAPI(`/portifa/v1/styleguide`, {
     revalidate: 300,
   });
 
-  return data;
+  return { code_editor: code_editor ?? {}, styleguide: styleguide ?? {} };
 }
