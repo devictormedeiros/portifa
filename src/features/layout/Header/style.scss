@@ -72,7 +72,6 @@ header {
   }
   &.sticky-header {
     border-radius: 0 !important;
-    //position: fixed;
     bottom: auto;
     top: 0;
 
@@ -88,10 +87,27 @@ header {
       transform: translateY(-1.25rem);
     }
     &:has(.nav-open) {
+      position: fixed;
+      left: 0;
+      right: 0;
+      width: 100%;
+      top: 0;
+      z-index: 98;
+
       .logo {
         z-index: 10;
       }
     }
+  }
+
+  /* Menu aberto no topo (sem .sticky-header): mesmo ancoramento ao viewport. */
+  &:has(.nav-open):not(.sticky-header) {
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: 0;
+    z-index: 98;
   }
 }
 
