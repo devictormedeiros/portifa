@@ -66,7 +66,7 @@ const Projects = ({ projects }) => {
     <section
       ref={sectionRef}
       className="sec-projects"
-      style={{ height: `${projects.length * 100 + 120}vh` }}
+      style={{ height: `${projects.length * 85 + 120}vh` }}
     >
       <div className="container h-full relative">
         <div className="grid grid-cols-12 md:gap-y-[7.25rem] lg:h-full">
