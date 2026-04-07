@@ -134,6 +134,8 @@ a:hover {
 }
 
 html {
+  /* Mantém o “espaço” da barra de rolagem ao travar scroll (menu, modais). */
+  scrollbar-gutter: stable;
   scroll-behavior: smooth;
   scrollbar-color: var(--primary) var(--gray-900);
   scrollbar-width: thin;
@@ -159,6 +161,31 @@ html {
     overflow-x: hidden;
     @apply font-sans;
   }
+}
+
+/* Menu lateral: trava scroll sem “pular” o layout (compensa largura da scrollbar). */
+html.menu-scroll-lock {
+  overflow: hidden;
+}
+
+html.menu-scroll-lock body {
+  overflow: hidden;
+}
+
+html.menu-scroll-lock header {
+  padding-right: var(--scrollbar-lock, 0px);
+}
+
+html.menu-scroll-lock .menu-hamburguer > button {
+  margin-inline-end: var(--scrollbar-lock, 0px);
+}
+
+/*
+ * Com menu aberto o header vira `position: fixed` e sai do fluxo; sem compensação,
+ * o primeiro bloco após o header sobe. Mantemos a mesma altura com padding-top.
+ */
+html.menu-scroll-lock header:has(.nav-open) + * {
+  padding-top: var(--header-height);
 }
 
 /* Lenis controla o scroll suave; `scroll-behavior: smooth` no html conflita. */

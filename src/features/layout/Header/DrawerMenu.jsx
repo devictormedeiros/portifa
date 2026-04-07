@@ -3,8 +3,9 @@
 import { useState, useRef, useEffect } from "react";
 import SmartLink from "@/components/SmartLink";
 import { useLenisInstanceRef } from "@/providers/SmoothScrollProvider.client";
+import { resolveMenuHref } from "@/libs/utils/resolveMenuHref";
 
-const DrawerMenu = ({ data }) => {
+const DrawerMenu = ({ data, siteOrigin = "" }) => {
   const [open, setOpen] = useState(false);
   const buttonRef = useRef(null);
   const navRef = useRef(null);
@@ -17,22 +18,31 @@ const DrawerMenu = ({ data }) => {
   useEffect(() => {
     const lenis = lenisRef?.current;
     const html = document.documentElement;
-    const { body } = document;
 
-    if (open) {
-      lenis?.stop();
-      html.style.overflow = "hidden";
-      body.style.overflow = "hidden";
-    } else {
+    const setScrollbarLockVar = () => {
+      const w = window.innerWidth - document.documentElement.clientWidth;
+      html.style.setProperty("--scrollbar-lock", w > 0 ? `${w}px` : "0px");
+    };
+
+    const unlock = () => {
       lenis?.start();
-      html.style.overflow = "";
-      body.style.overflow = "";
+      html.classList.remove("menu-scroll-lock");
+      html.style.removeProperty("--scrollbar-lock");
+    };
+
+    if (!open) {
+      unlock();
+      return unlock;
     }
 
+    lenis?.stop();
+    setScrollbarLockVar();
+    html.classList.add("menu-scroll-lock");
+    window.addEventListener("resize", setScrollbarLockVar);
+
     return () => {
-      lenis?.start();
-      html.style.overflow = "";
-      body.style.overflow = "";
+      window.removeEventListener("resize", setScrollbarLockVar);
+      unlock();
     };
   }, [open, lenisRef]);
 
@@ -68,7 +78,7 @@ const DrawerMenu = ({ data }) => {
           {data?.map((item, index) => (
             <li key={index}>
               <SmartLink
-                href={item.url}
+                href={resolveMenuHref(item.url, siteOrigin)}
                 className="content-title-h2 text-gray-700 hover:text-white-100 hover:underline uppercase mb-10 block"
               >
                 {item.title}

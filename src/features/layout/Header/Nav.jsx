@@ -1,7 +1,8 @@
 import { memo } from "react";
 import Link from "next/link";
+import { resolveMenuHref } from "@/libs/utils/resolveMenuHref";
 
-const Nav = ({ data }) => {
+const Nav = ({ data, siteOrigin = "" }) => {
   return (
     <nav className="main-menu">
       <ul className="flex justify-center space-x-4 w-full">
@@ -9,7 +10,7 @@ const Nav = ({ data }) => {
           return (
             <li key={item.id}>
               <Link
-                href={item.url}
+                href={resolveMenuHref(item.url, siteOrigin)}
                 className="menu-section text-white-50 hover:text-white-100 hover:underline"
               >
                 {item.title}

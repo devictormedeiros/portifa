@@ -8,9 +8,11 @@ import MainLogo from "@/components/Icons/Logos/MainLogo";
 import HeaderStickyWrapper from "../wrappers/HeaderStickyWrapper";
 
 import { getHeaderData } from "@/features/layout/services/layout.service";
+import { getSiteOrigin } from "@/libs/utils/siteOrigin";
 
 export default async function Header() {
   const { menu, languages } = await getHeaderData();
+  const siteOrigin = getSiteOrigin();
 
   return (
     <HeaderStickyWrapper>
@@ -26,7 +28,7 @@ export default async function Header() {
             </SmartLink>
           </div>
           <div className="col-span-6 hidden md:block">
-            <Nav data={menu} />
+            <Nav data={menu} siteOrigin={siteOrigin} />
           </div>
           <div className="col-span-8 md:col-span-3 flex justify-end items-center md:gap-x-[2rem] gap-x-[1.25rem]">
             <SwitchLang
@@ -35,7 +37,7 @@ export default async function Header() {
               }}
             />
             <div className="menu-hamburguer">
-              <DrawerMenu data={menu} />
+              <DrawerMenu data={menu} siteOrigin={siteOrigin} />
             </div>
           </div>
         </div>

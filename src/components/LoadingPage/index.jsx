@@ -2,15 +2,13 @@
 import { useState, useEffect } from "react";
 import "./style.scss"; // Importa os estilos
 import MainLogo from "../Icons/Logos/MainLogo";
-import { usePathname } from "next/navigation";
 
 const LoadingPage = () => {
-  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
   const [bgFull, setBgFull] = useState(false);
   const [showIcon, setShowIcon] = useState(false);
 
-  /* useEffect(() => {
+  /*   useEffect(() => {
     const body = document.body;
     // Observa quando o atributo "data-page-load" muda
     const observer = new MutationObserver(() => {
@@ -37,19 +35,18 @@ const LoadingPage = () => {
   }, []); */
 
   useEffect(() => {
-    // Sempre que a rota mudar, ativa o loading
-    setIsLoading(true);
-    setBgFull(false);
-    setShowIcon(false);
-
     const timeout = setTimeout(() => {
-      setLoading(false);
-    }, 800); // tempo do loading (ajuste como quiser)
+      setIsLoading(false);
+      setShowIcon(false);
+
+      const timeoutBgFull = setTimeout(() => {
+        setBgFull(true);
+      }, 800);
+      return () => clearTimeout(timeoutBgFull);
+    }, 2000); // tempo do loading (ajuste como quiser)
 
     return () => clearTimeout(timeout);
-  }, [pathname]);
-
-  if (!isLoading) return null;
+  }, []);
 
   return (
     <div
