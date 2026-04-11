@@ -41,7 +41,7 @@ const LoadingPage = () => {
 
       const timeoutBgFull = setTimeout(() => {
         setBgFull(true);
-      }, 800);
+      }, 500);
       return () => clearTimeout(timeoutBgFull);
     }, 2000); // tempo do loading (ajuste como quiser)
 

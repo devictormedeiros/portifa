@@ -1,4 +1,4 @@
-const MainLogo = () => {
+const MainLogo = (props) => {
   return (
     <svg
       width="817"
@@ -6,6 +6,7 @@ const MainLogo = () => {
       viewBox="0 0 817 820"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      {...props}
     >
       <path
         fillRule="evenodd"
