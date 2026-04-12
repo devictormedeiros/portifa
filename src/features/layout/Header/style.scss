@@ -102,7 +102,7 @@ header {
 
   /* Menu aberto no topo (sem .sticky-header): mesmo ancoramento ao viewport. */
   &:has(.nav-open):not(.sticky-header) {
-    position: fixed;
+    position: sticky;
     left: 0;
     right: 0;
     width: 100%;

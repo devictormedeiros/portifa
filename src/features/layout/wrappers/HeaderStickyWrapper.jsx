@@ -6,12 +6,14 @@ const HeaderStickyWrapper = ({ children }) => {
   const { isHeaderSticky, headerRef } = useSticky(); // Pegando o estado global
 
   return (
-    <header
-      ref={headerRef}
-      className={`text-white ${isHeaderSticky ? "sticky-header" : ""}`}
-    >
-      {children}
-    </header>
+    <>
+      <header
+        ref={headerRef}
+        className={`text-white ${isHeaderSticky ? "sticky-header" : ""}`}
+      >
+        {children}
+      </header>
+    </>
   );
 };
 

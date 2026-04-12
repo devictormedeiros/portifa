@@ -185,7 +185,7 @@ html.menu-scroll-lock .menu-hamburguer > button {
  * o primeiro bloco após o header sobe. Mantemos a mesma altura com padding-top.
  */
 html.menu-scroll-lock header:has(.nav-open) + * {
-  padding-top: var(--header-height);
+  //padding-top: var(--header-height);
 }
 
 /* Lenis controla o scroll suave; `scroll-behavior: smooth` no html conflita. */
