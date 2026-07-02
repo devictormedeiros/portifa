@@ -14,6 +14,12 @@ const robotoFlex = Roboto_Flex({
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className={`${robotoFlex.variable}`}>
+      <head>
+        <head>
+          {/* Preconecta ao servidor do WordPress para ganhar tempo no DNS/TLS */}
+          <link rel="preconnect" href={process.env.NEXT_PUBLIC_SITE_URL} />
+        </head>
+      </head>
       <body data-page-load="false">
         <LoadingPage />
         <LayoutWrapper>{children}</LayoutWrapper>

@@ -166,11 +166,19 @@ html {
 /* Menu lateral: trava scroll sem “pular” o layout (compensa largura da scrollbar). */
 html.menu-scroll-lock {
   overflow: hidden;
+
+  .sticky-header + div {
+    position: relative;
+    top: var(--header-height);
+    @media (max-width: 48rem) {
+      top: var(--header-height-mobile);
+    }
+  }
 }
 
-html.menu-scroll-lock body {
+/* html.menu-scroll-lock body {
   overflow: hidden;
-}
+} */
 
 html.menu-scroll-lock header {
   padding-right: var(--scrollbar-lock, 0px);

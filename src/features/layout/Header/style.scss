@@ -9,6 +9,7 @@ header {
   transition: all 0.5s ease;
   height: var(--header-height);
   background: var(--gray-900);
+
   @media (max-width: 48rem) {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
