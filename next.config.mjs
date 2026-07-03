@@ -24,6 +24,10 @@ const nextConfig = {
       },
       {
         protocol: "https",
+        hostname: "matheuscarvalhodev.com",
+      },
+      {
+        protocol: "https",
         hostname: "api.matheuscarvalhodev.com",
       },
       {
