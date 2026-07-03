@@ -23,8 +23,12 @@ const nextConfig = {
         hostname: "portifa.local",
       },
       {
-        protocol: "http",
+        protocol: "https",
         hostname: "api.matheuscarvalhodev.com",
+      },
+      {
+        protocol: "https",
+        hostname: "hml-api.matheuscarvalhodev.com",
       },
     ],
     formats: ["image/avif", "image/webp"],
