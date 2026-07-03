@@ -22,6 +22,10 @@ const nextConfig = {
         protocol: "http",
         hostname: "portifa.local",
       },
+      {
+        protocol: "http",
+        hostname: "api.matheuscarvalhodev.com",
+      },
     ],
     formats: ["image/avif", "image/webp"],
     deviceSizes: [360, 640, 750, 828, 1080, 1200, 1440, 1920],
